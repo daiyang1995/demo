@@ -1,0 +1,44 @@
+keytool -genkey -alias server_jks_cennavi -keyalg RSA -keypass 222222 -storepass 222222 -keystore server.jks -validity 3650
+
+keytool -export -trustcacerts -alias server_jks_cennavi  -file server.cer -keystore  server.jks -storepass 222222 
+
+
+keytool -genkey -alias client_p12_cennavi -keyalg RSA  -keypass 444444 -storepass 444444 -keystore client.p12 -validity 3650 -storetype PKCS12
+
+keytool -importkeystore -v -srckeystore client.p12 -srcstoretype pkcs12 -srcstorepass 444444 -destkeystore client.jks -deststoretype jks -deststorepass 444444 
+
+keytool -export -trustcacerts -alias client_p12_cennavi  -file client.cer -keystore  client.p12 -storepass 444444 -storetype PKCS12
+
+keytool -import -trustcacerts -alias client_p12_cennavi -file client.cer -keystore server.jks
+
+keytool -import -trustcacerts -alias server_jks_cennavi -file server.cer -keystore client.jks
+
+
+
+// <Connector 
+  			port="8443" protocol="org.apache.coyote.http11.Http11Protocol"    
+            maxThreads="150" SSLEnabled="true" scheme="https" secure="true"   
+            clientAuth="true" sslProtocol="TLS"
+			keystoreFile="C:\jdk1.7\bin\server.jks" 
+			keystorePass="222222" 
+			truststoreFile="C:\jdk1.7\bin\server.jks" 
+			truststorePass="222222"/>
+
+cer ->pem 
+openssl x509 -in client.cer -inform DER -out cluster-pub.pem -outform PEM
+
+jks ->pfx/p12
+keytool -importkeystore -srckeystore server.jks -destkeystore server.pfx -srcstoretype JKS -deststoretype PKCS12
+
+p12/pfx ->pem
+openssl pkcs12 -in client.p12 -nodes -out client.pem
+
+pem -> key
+openssl rsa -in client.pem -out client.key
+
+pem ->crt 
+openssl x509 -in client.pem -out client.crt
+
+²Î¿¼ÍøÖ· :
+https://help.aliyun.com/knowledge_detail/42214.html
+http://blog.csdn.net/zhongming_software/article/details/8592331
