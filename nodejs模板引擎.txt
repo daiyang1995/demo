@@ -1,0 +1,112 @@
+1、ejs
+	
+ejs 的标签系统非常简单，它只有以下三种标签：
+
+①、 <% code %>：  JavaScript 代码。
+②、 <%= code %>：显示替换过 HTML 特殊字符的内容。
+③、 <%- code %>： 显示原始 HTML 内容。
+
+注意：
+<%= code %> 和  <%- code %> 的区别，当变量 code 为普通字符串时，两者没有区别。当 code 比如为  <h1>hello</h1> 这种字符串时， <%= code %> 会原样输出  <h1>hello</h1> ，而  <%- code %> 则会显示 H1 大的 hello 字符串。
+
+
+2、swig
+原来的package.json
+{
+  "name": "testswig",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "body-parser": "~1.17.1",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.3",
+    "express": "~4.15.2",
+    "jade": "~1.11.0",
+    "morgan": "~1.8.1",
+    "serve-favicon": "~2.4.2"
+  }
+}
+
+更改之后:
+{
+  "name": "testswig",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "body-parser": "~1.17.1",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.3",
+    "express": "~4.15.2",
+    "swig": "~1.4.2",
+    "morgan": "~1.8.1",
+    "serve-favicon": "~2.4.2"
+  }
+}
+
+参考链接：
+1、swig使用指南：http://www.cnblogs.com/elementstorm/p/3142644.html
+
+2、可以创建自己的模板引擎：http://www.expressjs.com.cn/advanced/developing-template-engines.html
+
+3、jade or ejs or handlerbars：http://www.jianshu.com/p/2d7e960624c2
+
+4、jade vs swig：http://vschart.com/compare/swig-template-engine/vs/jade-template-engin
+
+5、swig.js:http://blog.csdn.net/hai8902882/article/details/46419113
+
+6、推荐dust:http://blog.csdn.net/xiaohubeiplus/article/details/51175357
+
+7、jade/ejs/jshtml/mustache/handlebars比较：http://blog.csdn.net/bingbingtea/article/details/51044786
+
+8、ibm开发者编写的各模板引擎的比较：https://developer.ibm.com/node/2014/11/11/compare-javascript-templates-jade-mustache-dust/
+
+9、模板引擎总览：https://github.com/expressjs/express/wiki#template-engines
+
+总结：
+jshtml、vash是Razor风格的，
+Pug是Jade改名之后的。
+
+--------------------------------------
+dust特点：
+
+async/streaming operation
+
+browser/node compatibility
+
+extended Mustache/ctemplate syntax
+
+clean, low-level API
+
+high performance
+
+composable templates
+
+Mustache特点：
+无逻辑的模板语言或者说是轻逻辑语言。
+Mustache.js does not compile the templates ahead of time；不支持预编译。因此它比其他两个实现mustacbhe的要慢。
+
+Handlebars的特点：
+实现了mustache.js，还提供了一些拓展功能。
+最大的特点是预编译。所以在渲染页面时比mustache.js要快。
+不同于mustache的无逻辑理念，handlebars提供了一些基础的拓展以便于处理要用的数据。
+另外，还可以通过注册助手的方式自定义方法来处理数据。
+eg:
+
+	Handlebars.registerHelper('hyphenate', function(tag) {
+  		return tag.split(' ').join('-');
+	});
+因此，如果您希望其中一个输入数据对象以不同的方式进行渲染，那么您不必添加一个表示新渲染的对象（或之后操纵渲染的输出）。您可以简单地使用助手根据输入进行更改。
+
+Hogan特点：
+直接实现mustache,也是预编译。和Handlebars.js不一样的地方是：Hogan没有提供额外的功能。
+Hogan.js在大多数浏览器上表现更佳。Hogan.js对于那些只想简单的使用一个模板的人来说是可选择的。
+
+语法：
+Hogan：http://mustache.github.io/mustache.5.html
+
