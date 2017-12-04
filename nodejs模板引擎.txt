@@ -109,4 +109,5 @@ Hogan.js在大多数浏览器上表现更佳。Hogan.js对于那些只想简单的使用一个模板的人来说
 
 语法：
 Hogan：http://mustache.github.io/mustache.5.html
+中文地址：http://doc.okbase.net/921053/archive/56528.html
 
