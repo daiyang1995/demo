@@ -1,0 +1,1 @@
+createobject("wscript.shell").run "D:\redis\startup_mine.bat",0
