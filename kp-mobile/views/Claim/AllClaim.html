@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=deivce-width, initial-scale=1"/>
+    <title>登陆首页</title>
+    <%-include("../commonJs.html")%>
+    <%-include("../commonCss.html")%>
+    <link rel="stylesheet" href="stylesheets/page/AllClaim/AllClaim.css">
+    <title>全部赔案列表</title>
+    <script type="text/babel">
+        $(document).ready(function () {
+            //回退
+            /*************** start  ***************/
+            $('.header').on('click', '.icon-carat-b-onwer', function () {
+                var thisJquery = this;
+                var action =  $(thisJquery).attr("form-action");
+                window.location.href = action;
+            });
+            /*************** end  ***************/
+
+            //上拉加载逻辑
+            /*************** start  ***************/
+            var index = 1;
+            function readd() {
+                var formData = new FormData();
+                formData.append("pageNum", index);
+                $.ajax({
+                    url:  "entClaimApplyList",
+                    type: 'POST',
+                    data: formData,
+                    async: true,
+                    cache: false,
+                    dataType: 'json',
+                    contentType: false,
+                    processData: false,
+                    success: (data) => {
+                        if (data.ret == "0") {
+                            $.each(data.claimApplyList, (idx, obj) => {
+                                var status , color ;
+                                switch(obj.entClaimApplyBigStatus){
+                                    case "进行中":
+                                        status = "onGoing";
+                                        color = "promptGreen";
+                                        break;
+                                    case "已完成":
+                                        status = "completed";
+                                        color = "promptBlue";
+                                        break;
+                                    case "待操作":
+                                        status = "operation";
+                                        color = "promptRed";
+                                        break;
+                                    default :
+                                        status = "onGoing";
+                                        color = "promptGreen";
+                                        break;
+                                }
+
+                                    $('.ClaimOuterScroller .scroll').append(`
+                                        <div class="allClaimList" open-id="${obj.entClaimApplyId}">
+                                            <span class="outerContent">
+                                                <span class="name">${obj.name}&nbsp;${obj.entClaimApplyFlowNo}&nbsp;<span class="${status}">${obj.entClaimApplyBigStatus}</span></span>
+                                                <span class="createTime">创建时间&nbsp;${obj.entClaimApplyCreateTime}&nbsp;<span class="operationMoney">￥${obj.entClaimApplyApprovedMoney != null ? obj.entClaimApplyApprovedMoney : "- -"}元</span></span>
+                                                <span class="content">出险类型&nbsp;&nbsp;${obj.entClaimApplyType}</span>
+                                                <hr class="hrClass" />
+                                                <span class="">
+                                                    <span class="${color}Img"></span>
+                                                    <span class="${color}">${obj.entClaimApplySmallStatus}</span>
+                                                </span>
+                                            </span>
+                                        </div>
+                                        `);
+
+                            });
+                            $('.ClaimOuterScroller').css('height',$('.ClaimOuterScroller .scroll').css('height'));
+                            if (data.claimApplyList.length < 10) {
+                                console.log(data.claimApplyList);
+                                updownloading.upFinish();
+                            }
+                            index++;
+                        } else {
+                            updownloading.upFinish();
+                        }
+
+                    },
+                    error: (data) => {
+                        //alert("error");
+                    }
+                });
+            }
+            readd();
+            updownloading.init({
+                outerScroller: '.ClaimOuterScroller',
+                downLoadingStatus:false,
+                upLoadingStatus:true,
+                upFunction:readd
+            });
+            /*************** end  ***************/
+
+            //查看详情
+            /*************** start  ***************/
+            $('.bodyContent').on("vclick",".allClaimList",function() {
+                let thisJquery = this;
+                let entClaimApplyId = $(thisJquery).attr("open-id");
+                let formAction =  "getEntClaimApplyInfo";
+                var form1 = document.createElement("form");
+                form1.id = "VirtualForm";
+                form1.name = "VirtualForm";
+                document.body.appendChild(form1);
+                $("#VirtualForm").css("display", "none");
+                var input1 = document.createElement("input");
+                input1.type = "text";
+                input1.name = "entClaimApplyId";
+                input1.value = entClaimApplyId;
+                form1.appendChild(input1);
+                form1.method = "POST";
+                form1.action = formAction;
+                form1.submit();
+            });
+            /*************** end  ***************/
+        });
+    </script>
+</head>
+<body>
+<div class="header">
+    <span class="icon-carat-b-onwer backIcon" form-action="index"></span>
+    <span class="title">全部赔案</span>
+</div>
+<div class="bodyContent">
+    <div class="ClaimOuterScroller">
+        <div class = 'scroll'>
+        </div>
+    </div>
+    <!--<div class="allClaimList">-->
+        <!--<span class="outerContent">-->
+            <!--<span class="name">姚杰&nbsp;CA666666&nbsp;<span class="operation">待操作</span></span>-->
+            <!--<span class="createTime">创建时间&nbsp;2017.08.17 12:12:34&nbsp;<span class="operationMoney">￥- -元</span></span>-->
+            <!--<span class="content">出险类型&nbsp;&nbsp;意外住院</span>-->
+            <!--<hr class="hrClass" />-->
+            <!--<span class="">-->
+                <!--<img src="/stylesheets/images/applyClaim.png"/>-->
+                <!--<span class="promptRed">您的赔案资料有误，请进行影像件补充</span>-->
+            <!--</span>-->
+        <!--</span>-->
+    <!--</div>-->
+    <!--<div class="allClaimList">-->
+        <!--<span class="outerContent">-->
+            <!--<span class="name">姚杰&nbsp;CA666666&nbsp;<span class="onGoing">进行中</span></span>-->
+            <!--<span class="createTime">创建时间&nbsp;2017.08.17 12:12:34<span class="onGoingMoney">￥666元</span></span>-->
+            <!--<span class="content">出险类型&nbsp;&nbsp;意外住院</span>-->
+            <!--<hr class="hrClass" />-->
+            <!--<span class="">-->
+                <!--<img src="/stylesheets/images/applyClaim.png"/>-->
+                <!--<span class="promptGreen">您的赔案资料有误，请进行影像件补充</span>-->
+            <!--</span>-->
+        <!--</span>-->
+    <!--</div>-->
+    <!--<div class="allClaimList">-->
+        <!--<span class="outerContent">-->
+            <!--<span class="name">姚杰&nbsp;CA666666&nbsp;<span class="completed">已完成</span></span>-->
+            <!--<span class="createTime">创建时间&nbsp;2017.08.17 12:12:34&nbsp;<span class="completedMoney">￥0.0元</span></span>-->
+            <!--<span class="content">出险类型&nbsp;&nbsp;意外住院</span>-->
+            <!--<hr class="hrClass" />-->
+            <!--<span>-->
+                <!--<img src="/stylesheets/images/applyClaim.png"/>-->
+                <!--<span class="promptOrange">您的赔案已结案</span>-->
+            <!--</span>-->
+
+        <!--</span>-->
+    <!--</div>-->
+    <!--<div class="allClaimList">-->
+        <!--<span class="outerContent">-->
+            <!--<span class="name">姚杰&nbsp;CA666666&nbsp;<span class="alreadyClosed">已关闭</span></span>-->
+            <!--<span class="createTime">创建时间&nbsp;2017.08.17 12:12:34&nbsp;<span class="alreadyClosedMoney">￥0.0元</span></span>-->
+            <!--<span class="content">出险类型&nbsp;&nbsp;意外住院</span>-->
+            <!--<hr class="hrClass" />-->
+            <!--<span class="">-->
+                <!--<img src="/stylesheets/images/applyClaim.png"/>-->
+                <!--<span class="promptBlue">您的赔案已关闭，若有疑问请致电话服务热线</span>-->
+            <!--</span>-->
+
+        <!--</span>-->
+    <!--</div>-->
+    <!--<div class="findMoreClaimDiv">-->
+        <!--<span class="findMoreClaimSpan" form-action="">-->
+            <!--<span class="inner" >-->
+                <!--查看更多赔案-->
+            <!--</span>-->
+        <!--</span>-->
+    <!--</div>-->
+</div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>错误页面</title>
+    <%-include("commonCss.html")%>
+    <script src = "babel/browser.min.js" ></script>
+    <script src = "jquery/js/jquery.min.js" ></script>
+    <script src = "jquery/js/jquery.mobile-1.4.5.min.js" ></script>
+    <script src = "javascripts/calculateSize.js"  ></script>
+    </head>
+<body>
+<div class="header">
+    <span class="title">错误页面</span>
+</div>
+<div class="bodyContent">
+    <%
+    if(typeof msg === 'undefined' ){
+       var msg ="aaaaa";
+    }
+    %>
+    <div><%=msg%></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>人身险理赔申请</title>
+    <%- include("../commonJs.html") %>
+    <%- include("../commonCss.html") %>
+    <link rel="stylesheet" href="stylesheets/page/ApplyClaim/ApplyClaimList.css">
+    <script type="text/babel">
+        $(document).ready(function () {
+            $('.header').on("vclick",".icon-carat-b-onwer",function () {
+                window.location.href = "index";
+            });
+            
+           $('.bodyContent').on("vclick",".insuranceList",function () {
+               let thisJquery = this;
+               var formAction =  $(thisJquery).attr("form-action");
+               var form1 = document.createElement("form");
+               form1.id = "VirtualForm";
+               form1.name = "VirtualForm";
+               document.body.appendChild(form1);
+               $("#VirtualForm").css("display", "none");
+               form1.method = "POST";
+               form1.action = formAction;
+               form1.submit();
+           });
+        });
+    </script>
+</head>
+<body>
+<div class="header">
+    <span class="icon-carat-b-onwer backIcon"></span>
+    <span class="title">人身险理赔申请</span>
+</div>
+<div class="bodyContent">
+
+    <div class="ui-grid-a">
+        <span class="ui-block-a ">
+            <span class="insuranceList plane" form-action="ApplyPlaneClaimStep1">航延险理赔</span>
+        </span>
+        <span class="ui-block-b">
+            <span class="insuranceList food" form-action="">食品责任险</span>
+        </span>
+    </div>
+
+    <div class="ui-grid-a">
+        <span class="ui-block-a">
+            <span class="insuranceList medicine" form-action="ApplyMedicineClaimStep1">医疗险理赔</span>
+        </span>
+        <span class="ui-block-b">
+            <span class="insuranceList heartbeat" form-action="">意外伤害险</span>
+        </span>
+    </div>
+
+    <div class="ui-grid-a">
+        <span class="ui-block-a">
+            <span class="insuranceList hotel" form-action="">酒店责任险</span>
+        </span>
+        <span class="ui-block-b">
+            <span class="insuranceList hotel" form-action="">酒店责任险</span>
+        </span>
+    </div>
+    <div class="ui-grid-a">
+        <span class="ui-block-a">
+            <span class="insuranceList hotel" form-action="">酒店责任险</span>
+        </span>
+    </div>
+</div>
+</body>
+</html>

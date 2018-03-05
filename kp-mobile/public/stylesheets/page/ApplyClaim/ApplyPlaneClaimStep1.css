@@ -1,0 +1,107 @@
+.bodyContent .schedule{
+    background: #ffffff;
+    height: 1.5rem;
+}
+.bodyContent .img{
+    background: #gray;
+    height: 0.8rem;
+}
+.bodyContent .schedule span{
+    display: inline-block;
+    width: 32%;
+    text-align: center;
+    font-size: 0.24rem;
+}
+.bodyContent .info{
+    padding-top: 0.2rem;
+}
+.bodyContent .nextStep{
+    margin-top: 0.8rem;
+    width: 100%;
+    background: #33CC99;
+    color: #ffffff;
+    text-align: center;
+    line-height: 0.8rem;
+    height: 0.8rem;
+}
+.bodyContent .nextStep span{
+    display: block;
+    line-height: 0.8rem;
+    margin: 0 auto;
+    padding: 0 30%;
+}
+.bankPage , .policyPage,.ownerPage{
+    position: absolute;
+    top:0;
+    width: 100%;
+    height: 100%;
+}
+.bankPage , .policyPage{
+    left: 100%;
+    z-index: 9871229;
+    background-color: #f9f9f9;
+
+}
+.applyClaimInputError{
+    z-index: 871229;
+    display: none;
+    text-align: center;
+    color: #ffffff;
+    position: absolute;
+    font-size: 0.32rem;
+    left: 0;
+    width: 100%;
+    border: none;
+    border: none;
+    outline: none;
+    line-height: 0.756rem;
+    height: 0.756rem;
+    margin-top: -0.17rem;
+    background: #FF0000;
+}
+
+.question-circle-o:before{
+    font-family: fullIconAll;
+    color: #33cc99;
+    content: "\f29c";
+}
+
+.isOwner ,.agreeNotify{
+    display: none;
+}
+#SetDefault .ui-checkbox{
+    margin: 0;
+}
+.notify{
+    padding-left: 0.7rem;
+}
+.isOwnerLabel:after{
+    left: auto;
+    right: 2rem;
+}
+
+
+.personalInfo,.policyInfo{
+    font-size: 0.28rem;
+    color: #a1a1a1;
+}
+.personalInfo .ui-block-a,.policyInfo .ui-block-a{
+    width: 30%;
+}
+.personalInfo .ui-block-b,.policyInfo .ui-block-b{
+    width: 70%;
+}
+
+
+/* 强制修改jquerymobile样式 */
+.ui-checkbox-on:after{
+    background-color: #33cc99 !important;
+}
+.isOwnerLabel ,.notify{
+    background: none !important;
+    font-weight: inherit !important;
+    border: none !important;
+}
+.isOwnerLabel{
+    text-align: right !important;
+}

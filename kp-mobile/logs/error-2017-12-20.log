@@ -1,0 +1,634 @@
+[2017-12-20T10:42:35.021] [ERROR] error - problem with request: connect ECONNREFUSED 192.168.1.93:8080
+[2017-12-20T10:42:40.759] [ERROR] error - problem with request: connect ECONNREFUSED 192.168.1.93:8080
+[2017-12-20T11:30:15.966] [ERROR] error - ApplyClaim  :Unexpected end of JSON input
+[2017-12-20T11:50:24.330] [ERROR] error - GET
+[2017-12-20T11:50:24.331] [ERROR] error - /ApplyClaim
+[2017-12-20T11:50:24.331] [ERROR] error - { message: 'Not Found',
+  error: 
+   { Error: Not Found
+       at C:\Users\owner\WebstormProjects\kp-mobile\app.js:91:15
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\layer.js:95:5)
+       at trim_prefix (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:317:13)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:284:7
+       at Function.process_params (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:335:12)
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:275:10)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:635:15
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:260:14)
+       at Function.handle (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:174:3)
+       at router (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:47:12)
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\layer.js:95:5)
+       at trim_prefix (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:317:13)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:284:7
+       at Function.process_params (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:335:12)
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:275:10)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:635:15 status: 404 } }
+[2017-12-20T11:51:16.912] [ERROR] error - GET
+[2017-12-20T11:51:16.912] [ERROR] error - /ApplyClaim
+[2017-12-20T11:51:16.915] [ERROR] error - { message: 'Not Found',
+  error: 
+   { Error: Not Found
+       at C:\Users\owner\WebstormProjects\kp-mobile\app.js:91:15
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\layer.js:95:5)
+       at trim_prefix (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:317:13)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:284:7
+       at Function.process_params (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:335:12)
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:275:10)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:635:15
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:260:14)
+       at Function.handle (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:174:3)
+       at router (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:47:12)
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\layer.js:95:5)
+       at trim_prefix (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:317:13)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:284:7
+       at Function.process_params (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:335:12)
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:275:10)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:635:15 status: 404 } }
+[2017-12-20T11:52:06.182] [ERROR] error - GET
+[2017-12-20T11:52:06.182] [ERROR] error - /ApplyClaim
+[2017-12-20T11:52:06.183] [ERROR] error - { message: 'Not Found',
+  error: 
+   { Error: Not Found
+       at C:\Users\owner\WebstormProjects\kp-mobile\app.js:91:15
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\layer.js:95:5)
+       at trim_prefix (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:317:13)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:284:7
+       at Function.process_params (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:335:12)
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:275:10)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:635:15
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:260:14)
+       at Function.handle (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:174:3)
+       at router (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:47:12)
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\layer.js:95:5)
+       at trim_prefix (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:317:13)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:284:7
+       at Function.process_params (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:335:12)
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:275:10)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:635:15 status: 404 } }
+[2017-12-20T11:53:04.449] [ERROR] error - GET
+[2017-12-20T11:53:04.450] [ERROR] error - /ApplyClaim
+[2017-12-20T11:53:04.450] [ERROR] error - { message: 'Not Found',
+  error: 
+   { Error: Not Found
+       at C:\Users\owner\WebstormProjects\kp-mobile\app.js:91:15
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\layer.js:95:5)
+       at trim_prefix (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:317:13)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:284:7
+       at Function.process_params (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:335:12)
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:275:10)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:635:15
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:260:14)
+       at Function.handle (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:174:3)
+       at router (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:47:12)
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\layer.js:95:5)
+       at trim_prefix (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:317:13)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:284:7
+       at Function.process_params (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:335:12)
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:275:10)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:635:15 status: 404 } }
+[2017-12-20T11:54:29.062] [ERROR] error - GET
+[2017-12-20T11:54:29.062] [ERROR] error - /ApplyClaim
+[2017-12-20T11:54:29.062] [ERROR] error - { message: 'Not Found',
+  error: 
+   { Error: Not Found
+       at C:\Users\owner\WebstormProjects\kp-mobile\app.js:91:15
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\layer.js:95:5)
+       at trim_prefix (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:317:13)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:284:7
+       at Function.process_params (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:335:12)
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:275:10)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:635:15
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:260:14)
+       at Function.handle (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:174:3)
+       at router (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:47:12)
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\layer.js:95:5)
+       at trim_prefix (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:317:13)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:284:7
+       at Function.process_params (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:335:12)
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:275:10)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:635:15 status: 404 } }
+[2017-12-20T11:54:38.869] [ERROR] error - { message: 'C:\\Users\\owner\\WebstormProjects\\kp-mobile\\views\\ApplyClaim\\ApplyClaimStep1.html:42\n    40|             $(\'#policy\').attr("data-value" , "<%= json.policy.policyPersonId%>");\r\n    41| \r\n >> 42|             console.log("<%=json.policy.entClaimTypeRuleListp[0]%>")\r\n    43|             //初始化出险类型\r\n    44|             /*************** start  ***************/\r\n    45|             var MobileSelect1 = new MobileSelect({\r\n\nCannot read property \'0\' of undefined',
+  error: 
+   { TypeError: C:\Users\owner\WebstormProjects\kp-mobile\views\ApplyClaim\ApplyClaimStep1.html:42
+       40|             $('#policy').attr("data-value" , "<%= json.policy.policyPersonId%>");
+       41| 
+    >> 42|             console.log("<%=json.policy.entClaimTypeRuleListp[0]%>")
+       43|             //初始化出险类型
+       44|             /*************** start  ***************/
+       45|             var MobileSelect1 = new MobileSelect({
+   
+   Cannot read property '0' of undefined
+       at eval (eval at compile (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\ejs\lib\ejs.js:549:12), <anonymous>:38:58)
+       at returnedFn (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\ejs\lib\ejs.js:580:17)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\consolidate\lib\consolidate.js:651:16
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\consolidate\lib\consolidate.js:162:5
+       at Promise._execute (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\consolidate\node_modules\bluebird\js\release\debuggability.js:303:9)
+       at Promise._resolveFromExecutor (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\consolidate\node_modules\bluebird\js\release\promise.js:483:18)
+       at new Promise (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\consolidate\node_modules\bluebird\js\release\promise.js:79:10)
+       at promisify (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\consolidate\lib\consolidate.js:155:10)
+       at Function.exports.ejs.render (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\consolidate\lib\consolidate.js:647:10)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\consolidate\lib\consolidate.js:183:27
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\consolidate\lib\consolidate.js:101:5
+       at tryToString (fs.js:456:3)
+       at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:443:12)
+     path: 'C:\\Users\\owner\\WebstormProjects\\kp-mobile\\views\\ApplyClaim\\ApplyClaimStep1.html' } }
+[2017-12-20T11:56:12.844] [ERROR] error - GET
+[2017-12-20T11:56:12.844] [ERROR] error - /ApplyClaim
+[2017-12-20T11:56:12.844] [ERROR] error - { message: 'Not Found',
+  error: 
+   { Error: Not Found
+       at C:\Users\owner\WebstormProjects\kp-mobile\app.js:91:15
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\layer.js:95:5)
+       at trim_prefix (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:317:13)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:284:7
+       at Function.process_params (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:335:12)
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:275:10)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:635:15
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:260:14)
+       at Function.handle (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:174:3)
+       at router (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:47:12)
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\layer.js:95:5)
+       at trim_prefix (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:317:13)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:284:7
+       at Function.process_params (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:335:12)
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:275:10)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:635:15 status: 404 } }
+[2017-12-20T11:56:24.328] [ERROR] error - GET
+[2017-12-20T11:56:24.328] [ERROR] error - /ApplyClaim
+[2017-12-20T11:56:24.328] [ERROR] error - { message: 'Not Found',
+  error: 
+   { Error: Not Found
+       at C:\Users\owner\WebstormProjects\kp-mobile\app.js:91:15
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\layer.js:95:5)
+       at trim_prefix (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:317:13)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:284:7
+       at Function.process_params (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:335:12)
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:275:10)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:635:15
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:260:14)
+       at Function.handle (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:174:3)
+       at router (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:47:12)
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\layer.js:95:5)
+       at trim_prefix (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:317:13)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:284:7
+       at Function.process_params (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:335:12)
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:275:10)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:635:15 status: 404 } }
+[2017-12-20T12:09:58.879] [ERROR] error - GET
+[2017-12-20T12:09:58.879] [ERROR] error - /ApplyClaim
+[2017-12-20T12:09:58.880] [ERROR] error - { message: 'Not Found',
+  error: 
+   { Error: Not Found
+       at C:\Users\owner\WebstormProjects\kp-mobile\app.js:91:15
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\layer.js:95:5)
+       at trim_prefix (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:317:13)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:284:7
+       at Function.process_params (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:335:12)
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:275:10)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:635:15
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:260:14)
+       at Function.handle (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:174:3)
+       at router (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:47:12)
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\layer.js:95:5)
+       at trim_prefix (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:317:13)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:284:7
+       at Function.process_params (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:335:12)
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:275:10)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:635:15 status: 404 } }
+[2017-12-20T12:10:19.890] [ERROR] error - problem with request: connect ETIMEDOUT 192.168.1.38:8380
+[2017-12-20T12:10:28.833] [ERROR] error - GET
+[2017-12-20T12:10:28.833] [ERROR] error - /ApplyClaim
+[2017-12-20T12:10:28.834] [ERROR] error - { message: 'Not Found',
+  error: 
+   { Error: Not Found
+       at C:\Users\owner\WebstormProjects\kp-mobile\app.js:91:15
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\layer.js:95:5)
+       at trim_prefix (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:317:13)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:284:7
+       at Function.process_params (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:335:12)
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:275:10)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:635:15
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:260:14)
+       at Function.handle (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:174:3)
+       at router (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:47:12)
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\layer.js:95:5)
+       at trim_prefix (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:317:13)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:284:7
+       at Function.process_params (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:335:12)
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:275:10)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:635:15 status: 404 } }
+[2017-12-20T12:10:50.992] [ERROR] error - GET
+[2017-12-20T12:10:50.992] [ERROR] error - /ApplyClaim
+[2017-12-20T12:10:50.992] [ERROR] error - { message: 'Not Found',
+  error: 
+   { Error: Not Found
+       at C:\Users\owner\WebstormProjects\kp-mobile\app.js:91:15
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\layer.js:95:5)
+       at trim_prefix (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:317:13)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:284:7
+       at Function.process_params (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:335:12)
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:275:10)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:635:15
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:260:14)
+       at Function.handle (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:174:3)
+       at router (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:47:12)
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\layer.js:95:5)
+       at trim_prefix (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:317:13)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:284:7
+       at Function.process_params (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:335:12)
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:275:10)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:635:15 status: 404 } }
+[2017-12-20T14:02:44.509] [ERROR] error - problem with request: connect ETIMEDOUT 192.168.1.38:8380
+[2017-12-20T16:28:35.648] [ERROR] error - problem with request: connect ETIMEDOUT 192.168.1.38:8380
+[2017-12-20T16:40:17.523] [ERROR] error - GET
+[2017-12-20T16:40:17.523] [ERROR] error - /ApplyClaim
+[2017-12-20T16:40:17.523] [ERROR] error - { message: 'Not Found',
+  error: 
+   { Error: Not Found
+       at C:\Users\owner\WebstormProjects\kp-mobile\app.js:91:15
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\layer.js:95:5)
+       at trim_prefix (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:317:13)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:284:7
+       at Function.process_params (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:335:12)
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:275:10)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:635:15
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:260:14)
+       at Function.handle (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:174:3)
+       at router (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:47:12)
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\layer.js:95:5)
+       at trim_prefix (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:317:13)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:284:7
+       at Function.process_params (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:335:12)
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:275:10)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:635:15 status: 404 } }
+[2017-12-20T16:43:03.825] [ERROR] error - GET
+[2017-12-20T16:43:03.825] [ERROR] error - /ApplyClaim
+[2017-12-20T16:43:03.825] [ERROR] error - { message: 'Not Found',
+  error: 
+   { Error: Not Found
+       at C:\Users\owner\WebstormProjects\kp-mobile\app.js:91:15
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\layer.js:95:5)
+       at trim_prefix (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:317:13)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:284:7
+       at Function.process_params (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:335:12)
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:275:10)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:635:15
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:260:14)
+       at Function.handle (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:174:3)
+       at router (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:47:12)
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\layer.js:95:5)
+       at trim_prefix (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:317:13)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:284:7
+       at Function.process_params (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:335:12)
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:275:10)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:635:15 status: 404 } }
+[2017-12-20T16:45:20.250] [ERROR] error - GET
+[2017-12-20T16:45:20.250] [ERROR] error - /ApplyClaimStep2
+[2017-12-20T16:45:20.250] [ERROR] error - { message: 'Not Found',
+  error: 
+   { Error: Not Found
+       at C:\Users\owner\WebstormProjects\kp-mobile\app.js:91:15
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\layer.js:95:5)
+       at trim_prefix (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:317:13)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:284:7
+       at Function.process_params (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:335:12)
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:275:10)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:635:15
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:260:14)
+       at Function.handle (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:174:3)
+       at router (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:47:12)
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\layer.js:95:5)
+       at trim_prefix (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:317:13)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:284:7
+       at Function.process_params (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:335:12)
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:275:10)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:635:15 status: 404 } }
+[2017-12-20T17:05:19.634] [ERROR] error - GET
+[2017-12-20T17:05:19.634] [ERROR] error - /ApplyClaim
+[2017-12-20T17:05:19.634] [ERROR] error - { message: 'Not Found',
+  error: 
+   { Error: Not Found
+       at C:\Users\owner\WebstormProjects\kp-mobile\app.js:91:15
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\layer.js:95:5)
+       at trim_prefix (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:317:13)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:284:7
+       at Function.process_params (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:335:12)
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:275:10)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:635:15
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:260:14)
+       at Function.handle (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:174:3)
+       at router (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:47:12)
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\layer.js:95:5)
+       at trim_prefix (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:317:13)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:284:7
+       at Function.process_params (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:335:12)
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:275:10)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:635:15 status: 404 } }
+[2017-12-20T17:07:04.168] [ERROR] error - GET
+[2017-12-20T17:07:04.169] [ERROR] error - /ApplyClaim
+[2017-12-20T17:07:04.169] [ERROR] error - { message: 'Not Found',
+  error: 
+   { Error: Not Found
+       at C:\Users\owner\WebstormProjects\kp-mobile\app.js:91:15
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\layer.js:95:5)
+       at trim_prefix (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:317:13)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:284:7
+       at Function.process_params (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:335:12)
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:275:10)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:635:15
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:260:14)
+       at Function.handle (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:174:3)
+       at router (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:47:12)
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\layer.js:95:5)
+       at trim_prefix (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:317:13)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:284:7
+       at Function.process_params (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:335:12)
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:275:10)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:635:15 status: 404 } }
+[2017-12-20T17:33:58.585] [ERROR] error - GET
+[2017-12-20T17:33:58.585] [ERROR] error - /ApplyClaim
+[2017-12-20T17:33:58.586] [ERROR] error - { message: 'Not Found',
+  error: 
+   { Error: Not Found
+       at C:\Users\owner\WebstormProjects\kp-mobile\app.js:91:15
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\layer.js:95:5)
+       at trim_prefix (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:317:13)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:284:7
+       at Function.process_params (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:335:12)
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:275:10)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:635:15
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:260:14)
+       at Function.handle (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:174:3)
+       at router (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:47:12)
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\layer.js:95:5)
+       at trim_prefix (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:317:13)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:284:7
+       at Function.process_params (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:335:12)
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:275:10)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:635:15 status: 404 } }
+[2017-12-20T17:34:45.224] [ERROR] error - GET
+[2017-12-20T17:34:45.224] [ERROR] error - /ApplyClaimStep2
+[2017-12-20T17:34:45.224] [ERROR] error - { message: 'Not Found',
+  error: 
+   { Error: Not Found
+       at C:\Users\owner\WebstormProjects\kp-mobile\app.js:91:15
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\layer.js:95:5)
+       at trim_prefix (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:317:13)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:284:7
+       at Function.process_params (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:335:12)
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:275:10)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:635:15
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:260:14)
+       at Function.handle (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:174:3)
+       at router (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:47:12)
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\layer.js:95:5)
+       at trim_prefix (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:317:13)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:284:7
+       at Function.process_params (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:335:12)
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:275:10)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:635:15 status: 404 } }
+[2017-12-20T17:36:10.369] [ERROR] error - GET
+[2017-12-20T17:36:10.370] [ERROR] error - /ApplyClaimStep2
+[2017-12-20T17:36:10.370] [ERROR] error - { message: 'Not Found',
+  error: 
+   { Error: Not Found
+       at C:\Users\owner\WebstormProjects\kp-mobile\app.js:91:15
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\layer.js:95:5)
+       at trim_prefix (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:317:13)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:284:7
+       at Function.process_params (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:335:12)
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:275:10)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:635:15
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:260:14)
+       at Function.handle (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:174:3)
+       at router (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:47:12)
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\layer.js:95:5)
+       at trim_prefix (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:317:13)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:284:7
+       at Function.process_params (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:335:12)
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:275:10)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:635:15 status: 404 } }
+[2017-12-20T17:37:08.328] [ERROR] error - GET
+[2017-12-20T17:37:08.328] [ERROR] error - /ApplyClaimStep2
+[2017-12-20T17:37:08.328] [ERROR] error - { message: 'Not Found',
+  error: 
+   { Error: Not Found
+       at C:\Users\owner\WebstormProjects\kp-mobile\app.js:91:15
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\layer.js:95:5)
+       at trim_prefix (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:317:13)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:284:7
+       at Function.process_params (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:335:12)
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:275:10)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:635:15
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:260:14)
+       at Function.handle (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:174:3)
+       at router (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:47:12)
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\layer.js:95:5)
+       at trim_prefix (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:317:13)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:284:7
+       at Function.process_params (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:335:12)
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:275:10)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:635:15 status: 404 } }
+[2017-12-20T17:38:22.258] [ERROR] error - GET
+[2017-12-20T17:38:22.258] [ERROR] error - /ApplyClaimStep2
+[2017-12-20T17:38:22.258] [ERROR] error - { message: 'Not Found',
+  error: 
+   { Error: Not Found
+       at C:\Users\owner\WebstormProjects\kp-mobile\app.js:91:15
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\layer.js:95:5)
+       at trim_prefix (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:317:13)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:284:7
+       at Function.process_params (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:335:12)
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:275:10)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:635:15
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:260:14)
+       at Function.handle (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:174:3)
+       at router (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:47:12)
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\layer.js:95:5)
+       at trim_prefix (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:317:13)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:284:7
+       at Function.process_params (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:335:12)
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:275:10)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:635:15 status: 404 } }
+[2017-12-20T17:39:48.171] [ERROR] error - GET
+[2017-12-20T17:39:48.171] [ERROR] error - /ApplyClaimStep2
+[2017-12-20T17:39:48.171] [ERROR] error - { message: 'Not Found',
+  error: 
+   { Error: Not Found
+       at C:\Users\owner\WebstormProjects\kp-mobile\app.js:91:15
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\layer.js:95:5)
+       at trim_prefix (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:317:13)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:284:7
+       at Function.process_params (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:335:12)
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:275:10)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:635:15
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:260:14)
+       at Function.handle (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:174:3)
+       at router (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:47:12)
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\layer.js:95:5)
+       at trim_prefix (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:317:13)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:284:7
+       at Function.process_params (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:335:12)
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:275:10)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:635:15 status: 404 } }
+[2017-12-20T17:40:43.249] [ERROR] error - GET
+[2017-12-20T17:40:43.249] [ERROR] error - /ApplyClaimStep2
+[2017-12-20T17:40:43.249] [ERROR] error - { message: 'Not Found',
+  error: 
+   { Error: Not Found
+       at C:\Users\owner\WebstormProjects\kp-mobile\app.js:91:15
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\layer.js:95:5)
+       at trim_prefix (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:317:13)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:284:7
+       at Function.process_params (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:335:12)
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:275:10)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:635:15
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:260:14)
+       at Function.handle (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:174:3)
+       at router (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:47:12)
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\layer.js:95:5)
+       at trim_prefix (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:317:13)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:284:7
+       at Function.process_params (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:335:12)
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:275:10)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:635:15 status: 404 } }
+[2017-12-20T17:44:29.922] [ERROR] error - GET
+[2017-12-20T17:44:29.922] [ERROR] error - /ApplyClaimStep2
+[2017-12-20T17:44:29.922] [ERROR] error - { message: 'Not Found',
+  error: 
+   { Error: Not Found
+       at C:\Users\owner\WebstormProjects\kp-mobile\app.js:91:15
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\layer.js:95:5)
+       at trim_prefix (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:317:13)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:284:7
+       at Function.process_params (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:335:12)
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:275:10)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:635:15
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:260:14)
+       at Function.handle (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:174:3)
+       at router (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:47:12)
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\layer.js:95:5)
+       at trim_prefix (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:317:13)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:284:7
+       at Function.process_params (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:335:12)
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:275:10)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:635:15 status: 404 } }
+[2017-12-20T17:47:23.312] [ERROR] error - GET
+[2017-12-20T17:47:23.312] [ERROR] error - /ApplyClaimStep2
+[2017-12-20T17:47:23.312] [ERROR] error - { message: 'Not Found',
+  error: 
+   { Error: Not Found
+       at C:\Users\owner\WebstormProjects\kp-mobile\app.js:91:15
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\layer.js:95:5)
+       at trim_prefix (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:317:13)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:284:7
+       at Function.process_params (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:335:12)
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:275:10)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:635:15
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:260:14)
+       at Function.handle (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:174:3)
+       at router (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:47:12)
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\layer.js:95:5)
+       at trim_prefix (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:317:13)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:284:7
+       at Function.process_params (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:335:12)
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:275:10)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:635:15 status: 404 } }
+[2017-12-20T18:07:08.119] [ERROR] error - GET
+[2017-12-20T18:07:08.120] [ERROR] error - /ApplyClaimStep2
+[2017-12-20T18:07:08.120] [ERROR] error - { message: 'Not Found',
+  error: 
+   { Error: Not Found
+       at C:\Users\owner\WebstormProjects\kp-mobile\app.js:91:15
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\layer.js:95:5)
+       at trim_prefix (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:317:13)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:284:7
+       at Function.process_params (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:335:12)
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:275:10)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:635:15
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:260:14)
+       at Function.handle (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:174:3)
+       at router (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:47:12)
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\layer.js:95:5)
+       at trim_prefix (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:317:13)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:284:7
+       at Function.process_params (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:335:12)
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:275:10)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:635:15 status: 404 } }
+[2017-12-20T18:08:05.362] [ERROR] error - problem with request: read ECONNRESET
+[2017-12-20T18:10:24.285] [ERROR] error - problem with request: connect ETIMEDOUT 192.168.1.38:8380
+[2017-12-20T18:12:24.418] [ERROR] error - problem with request: connect ETIMEDOUT 192.168.1.38:8380
+[2017-12-20T18:22:19.448] [ERROR] error - problem with request: connect ETIMEDOUT 192.168.1.38:8380
+[2017-12-20T18:24:19.566] [ERROR] error - problem with request: connect ETIMEDOUT 192.168.1.38:8380
+[2017-12-20T18:26:24.568] [ERROR] error - problem with request: connect ETIMEDOUT 192.168.1.38:8380
+[2017-12-20T18:28:54.578] [ERROR] error - problem with request: connect ETIMEDOUT 192.168.1.38:8380
+[2017-12-20T18:31:44.258] [ERROR] error - { message: 'C:\\Users\\owner\\WebstormProjects\\kp-mobile\\views\\ApplyClaim\\ApplyClaimStep2.html:171\n    169|             <span class="imgIco"></span><span class="promptMessage">您的赔案，需要以下资料请进行上传！</span>\r\n    170|         </div>\r\n >> 171|         <% json.entClaimAttachRuleList.forEach(function(item){ %>\r\n    172|         <div class="inlineRowInput prompt">\r\n    173|                 <span class="promptMessage" data-value = "<%=item.url%>"><%=item.name%></span> <span class="wenhao"></span>\r\n    174|         </div>\r\n\njson is not defined',
+  error: 
+   { ReferenceError: C:\Users\owner\WebstormProjects\kp-mobile\views\ApplyClaim\ApplyClaimStep2.html:171
+       169|             <span class="imgIco"></span><span class="promptMessage">您的赔案，需要以下资料请进行上传！</span>
+       170|         </div>
+    >> 171|         <% json.entClaimAttachRuleList.forEach(function(item){ %>
+       172|         <div class="inlineRowInput prompt">
+       173|                 <span class="promptMessage" data-value = "<%=item.url%>"><%=item.name%></span> <span class="wenhao"></span>
+       174|         </div>
+   
+   json is not defined
+       at eval (eval at compile (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\ejs\lib\ejs.js:549:12), <anonymous>:30:8)
+       at returnedFn (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\ejs\lib\ejs.js:580:17)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\consolidate\lib\consolidate.js:651:16
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\consolidate\lib\consolidate.js:162:5
+       at Promise._execute (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\consolidate\node_modules\bluebird\js\release\debuggability.js:303:9)
+       at Promise._resolveFromExecutor (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\consolidate\node_modules\bluebird\js\release\promise.js:483:18)
+       at new Promise (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\consolidate\node_modules\bluebird\js\release\promise.js:79:10)
+       at promisify (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\consolidate\lib\consolidate.js:155:10)
+       at Function.exports.ejs.render (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\consolidate\lib\consolidate.js:647:10)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\consolidate\lib\consolidate.js:183:27
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\consolidate\lib\consolidate.js:101:5
+       at tryToString (fs.js:456:3)
+       at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:443:12)
+     path: 'C:\\Users\\owner\\WebstormProjects\\kp-mobile\\views\\ApplyClaim\\ApplyClaimStep2.html' } }
+[2017-12-20T18:33:51.886] [ERROR] error - GET
+[2017-12-20T18:33:51.886] [ERROR] error - /ApplyClaim
+[2017-12-20T18:33:51.886] [ERROR] error - { message: 'Not Found',
+  error: 
+   { Error: Not Found
+       at C:\Users\owner\WebstormProjects\kp-mobile\app.js:91:15
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\layer.js:95:5)
+       at trim_prefix (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:317:13)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:284:7
+       at Function.process_params (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:335:12)
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:275:10)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:635:15
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:260:14)
+       at Function.handle (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:174:3)
+       at router (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:47:12)
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\layer.js:95:5)
+       at trim_prefix (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:317:13)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:284:7
+       at Function.process_params (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:335:12)
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:275:10)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:635:15 status: 404 } }
+[2017-12-20T18:34:04.776] [ERROR] error - { message: 'C:\\Users\\owner\\WebstormProjects\\kp-mobile\\views\\ApplyClaim\\ApplyClaimStep2.html:171\n    169|             <span class="imgIco"></span><span class="promptMessage">您的赔案，需要以下资料请进行上传！</span>\r\n    170|         </div>\r\n >> 171|         <% json.entClaimAttachRuleList.forEach(function(item){ %>\r\n    172|         <div class="inlineRowInput prompt">\r\n    173|                 <span class="promptMessage" data-value = "<%=item.url%>"><%=item.name%></span> <span class="wenhao"></span>\r\n    174|         </div>\r\n\njson is not defined',
+  error: 
+   { ReferenceError: C:\Users\owner\WebstormProjects\kp-mobile\views\ApplyClaim\ApplyClaimStep2.html:171
+       169|             <span class="imgIco"></span><span class="promptMessage">您的赔案，需要以下资料请进行上传！</span>
+       170|         </div>
+    >> 171|         <% json.entClaimAttachRuleList.forEach(function(item){ %>
+       172|         <div class="inlineRowInput prompt">
+       173|                 <span class="promptMessage" data-value = "<%=item.url%>"><%=item.name%></span> <span class="wenhao"></span>
+       174|         </div>
+   
+   json is not defined
+       at eval (eval at compile (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\ejs\lib\ejs.js:549:12), <anonymous>:30:8)
+       at returnedFn (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\ejs\lib\ejs.js:580:17)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\consolidate\lib\consolidate.js:651:16
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\consolidate\lib\consolidate.js:162:5
+       at Promise._execute (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\consolidate\node_modules\bluebird\js\release\debuggability.js:303:9)
+       at Promise._resolveFromExecutor (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\consolidate\node_modules\bluebird\js\release\promise.js:483:18)
+       at new Promise (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\consolidate\node_modules\bluebird\js\release\promise.js:79:10)
+       at promisify (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\consolidate\lib\consolidate.js:155:10)
+       at Function.exports.ejs.render (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\consolidate\lib\consolidate.js:647:10)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\consolidate\lib\consolidate.js:183:27
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\consolidate\lib\consolidate.js:101:5
+       at tryToString (fs.js:456:3)
+       at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:443:12)
+     path: 'C:\\Users\\owner\\WebstormProjects\\kp-mobile\\views\\ApplyClaim\\ApplyClaimStep2.html' } }

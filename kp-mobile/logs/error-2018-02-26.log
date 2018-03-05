@@ -1,0 +1,89 @@
+[2018-02-26T10:38:00.160] [ERROR] error - POST
+[2018-02-26T10:38:00.160] [ERROR] error - /users
+[2018-02-26T10:38:00.161] [ERROR] error - { message: 'Not Found',
+  error: 
+   { Error: Not Found
+       at C:\Users\owner\WebstormProjects\kp-mobile\app.js:119:15
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\layer.js:95:5)
+       at trim_prefix (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:317:13)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:284:7
+       at Function.process_params (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:335:12)
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:275:10)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:635:15
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:260:14)
+       at Function.handle (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:174:3)
+       at router (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:47:12) status: 404 } }
+[2018-02-26T10:38:01.217] [ERROR] error - problem with request: connect ECONNREFUSED 192.168.1.93:8080
+[2018-02-26T10:38:49.734] [ERROR] error - { message: 'Cannot read property \'length\' of undefined',
+  error: 
+   TypeError: Cannot read property 'length' of undefined
+       at Function.uploadTool.uploadSingleZip (C:\Users\owner\WebstormProjects\kp-mobile\tool\uploadTool.js:13:22)
+       at C:\Users\owner\WebstormProjects\kp-mobile\routes\users.js:8:27
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\layer.js:95:5)
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\route.js:137:13)
+       at Route.dispatch (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\route.js:112:3)
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\layer.js:95:5)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:281:22
+       at Function.process_params (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:335:12)
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:275:10)
+       at Function.handle (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:174:3) }
+[2018-02-26T10:39:27.338] [ERROR] error - POST
+[2018-02-26T10:39:27.338] [ERROR] error - /users
+[2018-02-26T10:39:27.338] [ERROR] error - { message: 'Not Found',
+  error: 
+   { Error: Not Found
+       at C:\Users\owner\WebstormProjects\kp-mobile\app.js:119:15
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\layer.js:95:5)
+       at trim_prefix (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:317:13)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:284:7
+       at Function.process_params (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:335:12)
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:275:10)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:635:15
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:260:14)
+       at Function.handle (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:174:3)
+       at router (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:47:12) status: 404 } }
+[2018-02-26T10:39:28.364] [ERROR] error - problem with request: connect ECONNREFUSED 192.168.1.93:8080
+[2018-02-26T10:41:11.009] [ERROR] error - problem with request: connect ECONNREFUSED 192.168.1.93:8080
+[2018-02-26T10:41:28.757] [ERROR] error - POST
+[2018-02-26T10:41:28.757] [ERROR] error - /users
+[2018-02-26T10:41:28.757] [ERROR] error - { message: 'Not Found',
+  error: 
+   { Error: Not Found
+       at C:\Users\owner\WebstormProjects\kp-mobile\app.js:119:15
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\layer.js:95:5)
+       at trim_prefix (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:317:13)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:284:7
+       at Function.process_params (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:335:12)
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:275:10)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:635:15
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:260:14)
+       at Function.handle (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:174:3)
+       at router (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:47:12) status: 404 } }
+[2018-02-26T10:41:29.771] [ERROR] error - problem with request: connect ECONNREFUSED 192.168.1.93:8080
+[2018-02-26T10:41:54.577] [ERROR] error - problem with request: connect ECONNREFUSED 192.168.1.93:8080
+[2018-02-26T10:44:05.157] [ERROR] error - { message: '..\\src\\Image.cc:341 Unknow format',
+  error: 
+   Error: ..\src\Image.cc:341 Unknow format
+       at Error (native)
+       at WrappedImage.loadFromBuffer (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\images\index.js:54:22)
+       at WrappedImage.loadFromBuffer (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\images\index.js:142:34)
+       at Function.images.loadFromBuffer (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\images\index.js:214:27)
+       at images (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\images\index.js:172:24)
+       at Function.uploadTool.uploadSingleZip (C:\Users\owner\WebstormProjects\kp-mobile\tool\uploadTool.js:23:23)
+       at C:\Users\owner\WebstormProjects\kp-mobile\routes\users.js:8:27
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\layer.js:95:5)
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\route.js:137:13)
+       at Route.dispatch (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\route.js:112:3) }
+[2018-02-26T10:44:19.049] [ERROR] error - { message: '..\\src\\Image.cc:341 Unknow format',
+  error: 
+   Error: ..\src\Image.cc:341 Unknow format
+       at Error (native)
+       at WrappedImage.loadFromBuffer (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\images\index.js:54:22)
+       at WrappedImage.loadFromBuffer (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\images\index.js:142:34)
+       at Function.images.loadFromBuffer (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\images\index.js:214:27)
+       at images (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\images\index.js:172:24)
+       at Function.uploadTool.uploadSingleZip (C:\Users\owner\WebstormProjects\kp-mobile\tool\uploadTool.js:23:23)
+       at C:\Users\owner\WebstormProjects\kp-mobile\routes\users.js:8:27
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\layer.js:95:5)
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\route.js:137:13)
+       at Route.dispatch (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\route.js:112:3) }

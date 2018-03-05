@@ -1,0 +1,50 @@
+.BangDingError{
+    z-index: 871229;
+    display: none;
+    text-align: center;
+    color: #ffffff;
+    position: absolute;
+    font-size: 0.32rem;
+    left: 0;
+    width: 100%;
+    border: none;
+    border: none;
+    outline: none;
+    line-height: 0.756rem;
+    height: 0.756rem;
+    margin-top: -0.17rem;
+    background: #FF0000;
+}
+#identifyCodeInput{
+    width: 1.48rem;
+}
+#sendCode{
+    margin-top: -0.17rem;
+    width: 2.6rem;
+    position: absolute;
+    right: 0rem;
+    font-size: 0.28rem;
+    display: inline-block;
+    background: #33CC99;
+    line-height: 0.66rem;
+    text-align: center;
+    color: #fff;
+}
+#isSend{
+    display: none;
+}
+.bodyContent .binding{
+    margin-top: 0.8rem;
+    width: 100%;
+    background: #33CC99;
+    color: #ffffff;
+    text-align: center;
+    line-height: 0.8rem;
+    height: 0.8rem;
+}
+.bodyContent .binding span{
+    display: block;
+    line-height: 0.8rem;
+    margin: 0 auto;
+    padding: 0 30%;
+}

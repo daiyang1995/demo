@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>申请赔案</title>
+    <%-include("../commonJs.html")%>
+    <%-include("../commonCss.html")%>
+    <link rel="stylesheet" href="stylesheets/page/ApplyClaim/ApplyPlaneClaimStep2.css">
+    <script type="text/babel" >
+        $(document).ready(function () {
+            let thisJquery ; //删除使用
+            let that ; //添加使用
+            
+            //删除确定弹框声明
+            /*************** start  ***************/
+            var delPopup = popup.init({
+                popup:$('#Confirmdel'),
+                cancel : $('#cancel'),
+                submit : $('#submit'),
+                submitCallback : del
+            });
+            /*************** end  ***************/
+
+            //删除成功弹框声明
+            /*************** start  ***************/
+            var delSuccess = popup.init({
+                popup:$('#SuccessConfirm'),
+                submit : $('#SuccessConfirmButton'),
+                submitCallback : function () {
+                    popup.clearAll();
+                }
+            });
+            /*************** end  ***************/
+
+            //图片弹框声明
+            /*************** start  ***************/
+            var imgShow = popup.init({
+                popup:$('#showImg'),
+                submit : $('#SuccessConfirmButton'),
+                submitCallback : function () {
+                    popup.clearAll();
+                }
+            });
+            /*************** end  ***************/
+
+            //添加文件 按钮
+            // *************** start  ***************
+            $('.imgAdd').on("click",'#imgBorder',function(){
+                that = this;
+                $('#file').trigger("click");
+            });
+            // *************** end  ***************
+
+            //文件上传
+            // *************** start  ***************
+            $('#uploadform').on('change','#file',function(){
+                if($("#file")[0].files.length != 1){
+                    $(".bodyContent").after(` <div class="infoText"><span>只能上传一张图片</span></div>`);
+                    $(".infoText").show();
+                    setTimeout(function(){
+                        $(".infoText").remove();
+                    },2000);
+                    return false;
+                }
+                $(that).removeAttr("id");
+                $("body").append(`<div  id="screen"><div id="screenLoading"></div></div>`);
+                var formData = new FormData($('#uploadform')[0]);
+                $.ajax({
+                    url: "uploadPlaneClaimFile",
+                    type: 'POST',
+                    data: formData,
+                    async: true,
+                    cache: false,
+                    dataType: 'json',
+                    contentType: false,
+                    processData: false,
+                    success: (data) => {
+                        console.log(data);
+                        if(data.ret == "0" ){
+                            let name = $(that).parent().attr("data-name");
+                            $(that).parent().removeClass("add");
+                            $(that).append(`<img src="${data.imgBase64}" class="uploadImg">`);
+                            $(`.${name}Text`).val(data.imgBase64);
+                            $('#file').val("");
+                        }else{
+                            $(that).attr("id","imgBorder");
+                        }
+                        $(".bodyContent").after(` <div class="infoText"><span>${data.msg}</span></div>`);
+                    },complete: function(data) {
+                        $('#screen').remove();
+                        $(".infoText").show();
+                        setTimeout(function(){
+                            $(".infoText").remove();
+                        },2000);
+                    },
+                    error: (data) => {
+                        $(that).attr("id","imgBorder");
+                        $(".bodyContent").after(` <div class="infoText"><span>${data.msg}</span></div>`);
+                    }
+                });
+
+            });
+            // *************** end  ***************
+
+            //文件删除
+            $('.imgBorder').on("vclick", "img" , function () {
+                thisJquery  = this ;
+                popup.show(delPopup);
+            });
+
+            function del() {
+                $(thisJquery).parent().parent().addClass("add");
+                let name =  $(thisJquery).parent().parent().attr("data-name");
+                $(`.${name}Text`).val("");
+                $(thisJquery).parent().attr("id","imgBorder");
+                $(thisJquery).remove();
+                thisJquery = "";
+                $('#SuccessConfirm').find(".msg").html("删除成功");
+                popup.show(delSuccess);
+            }
+
+            $('.bodyContent').on("vclick" , ".nextStep", function(){
+                let thisJquery  = this ;
+                let entClaimApplyId = $(thisJquery).attr("data-value");
+                var formData = new FormData();
+                formData.append("entClaimApplyId",entClaimApplyId);
+                let hasError = false;
+                var text = "";
+                if($(".idCardText").val()==""){
+                    text +="身份证,";
+                    hasError = true;
+                }
+                if($(".ticketText").val()==""){
+                    text +="机票或登机牌,";
+                    hasError = true;
+                }
+                if($(".proveText").val()==""){
+                    text +="航班延误证明,";
+                    hasError = true;
+                }
+                if($(".proofText").val()==""){
+                    text +="交易凭证,";
+                    hasError = true;
+                }
+                if($(".cardText").val()==""){
+                    text +="银行卡相关信息,";
+                    hasError = true;
+                }
+                if(hasError){
+                    $('#SuccessConfirm').find(".msg").html("图片未上传");
+                    popup.show(delSuccess);
+                    return false;
+                }
+                return false;
+                $("body").append(`<div  id="screen"><div id="screenLoading"></div></div>`);
+                $.ajax({
+                    url: "savePlaneClaimStep2",
+                    type: 'POST',
+                    data: formData,
+                    async: true,
+                    cache: false,
+                    dataType: 'json',
+                    contentType: false,
+                    processData: false,
+                    success: (data) => {
+                        console.log(data);
+                        $(".bodyContent").after(` <div class="infoText"><span>`+data.msg+`</span></div>`);
+                        if(data.ret == "0"){
+                            $(".infoText").show();
+                            setTimeout(function(){
+                                $(".infoText").remove();
+                                window.location.href = "ApplyPlaneClaimStep3?entClaimApplyFlowNo=" + data.entClaimApplyFlowNo;
+                            },2000);
+                        }else{
+                            $(".infoText").show();
+                            setTimeout(function(){
+                                $(".infoText").remove();
+                            },2000);
+                        }
+
+                    },complete: function (XMLHttpRequest, textStatus) {
+                        $('#screen').remove();
+                    },
+                    error: (data) => {
+                        $(".bodyContent").after(` <div class="infoText"><span>`+data.msg+`</span></div>`);
+                        $(".infoText").show();
+                        setTimeout(function(){
+                            $(".infoText").remove();
+                        },2000);
+                    }
+                });
+            });
+
+            $('.bodyContent').on("vclick",".imgAddText .ui-block-a,.imgAddText .ui-block-b",function(){
+                let thisJquery = this;
+                $('#showImg div').html($(thisJquery).attr("data-text"));
+                $('#showImg .img').attr("src" , $(thisJquery).attr("data-value"));
+                popup.show(imgShow);
+            });
+
+        })
+
+    </script>
+</head>
+<body>
+<div class="header">
+    <span class="title">航延险理赔申请</span>
+</div>
+<div class="bodyContent">
+    <div class="schedule">
+        <div class="img"></div>
+        <span>填写信息</span>
+        <span>上传影像</span>
+        <span>完成</span>
+    </div>
+    <div class="info">
+        <div class="inlineRowInput">
+            <span class="imgIco ClaimRecord"></span><span class="promptMessage">您的申请，需要以下资料请进行上传！</span>
+        </div>
+        <div class="inlineRowInput imgAddText ui-grid-a">
+            <span class="ui-block-a" data-value="#" data-text="持卡人身份证">
+                <span>身份证</span>
+            </span>
+            <span class="ui-block-b" data-value="#" data-text="国际航班请一并提供护照">
+                <span>护照</span>
+            </span>
+        </div>
+        <div class="inlineRowInput imgAdd ui-grid-a">
+            <span class="add ui-block-a" data-name="idCard">
+               <span id="imgBorder" class="imgBorder"></span>
+            </span>
+            <span class="add ui-block-b" data-name="passport">
+                <span id="imgBorder" class="imgBorder"></span>
+            </span>
+            <textarea class="base64File idCardText" ></textarea>
+            <textarea class="base64File passportText" ></textarea>
+        </div>
+
+        <div class="inlineRowInput imgAddText ui-grid-a">
+            <span class="ui-block-a" data-value="#" data-text="机票或登机牌">
+                <span>机票或登机牌</span>
+            </span>
+            <span class="ui-block-b" data-value="#" data-text="航班延误证明">
+                <span>航班延误证明</span>
+            </span>
+        </div>
+        <div class="inlineRowInput imgAdd ui-grid-a">
+            <span class="add ui-block-a" data-name="ticket">
+               <span id="imgBorder" class="imgBorder"></span>
+            </span>
+            <span class="add ui-block-b" data-name="prove">
+                <span id="imgBorder" class="imgBorder"></span>
+            </span>
+            <textarea class="base64File ticketText" ></textarea>
+            <textarea class="base64File proveText" ></textarea>
+        </div>
+
+        <div class="inlineRowInput imgAddText ui-grid-a">
+            <span class="ui-block-a" data-value="#" data-text="购票交易凭证／电子客票行程单 (即订单详情，包含航班信息及票价）">
+                <span>交易凭证</span>
+            </span>
+            <span class="ui-block-b" data-value="#" data-text="卡号，刷卡日期，刷卡金额">
+                <span>银行卡相关信息</span>
+            </span>
+        </div>
+        <div class="inlineRowInput imgAdd ui-grid-a">
+            <span class="add ui-block-a" data-name="proof">
+               <span id="imgBorder" class="imgBorder"></span>
+            </span>
+            <span class="add ui-block-b" data-name="card">
+                <span id="imgBorder" class="imgBorder"></span>
+            </span>
+            <textarea class="base64File proofText" ></textarea>
+            <textarea class="base64File cardText" ></textarea>
+        </div>
+
+
+
+        <form id="uploadform"enctype="multipart/form-data" >
+            <input type="file" name="file" id="file" value="" accept="image/png,image/jpeg" multiple="multiple"  data-role="none" />
+        </form>
+    </div>
+
+    <div class="nextStep" form-action="ApplyPlaneClaimStep2" data-value="<%=entClaimApplyId%>">
+        <span>下一步</span>
+    </div>
+
+    <div id="Confirmdel">
+        <div>你确定要删除么</div>
+        <span id="cancel">取消</span>    <span id="submit" >确定</span>
+    </div>
+    <div id="SuccessConfirm">
+        <div class="msg">删除成功</div>
+        <span id="SuccessConfirmButton">确定</span>
+    </div>
+    <div id="showImg">
+        <div></div>
+        <img class="img" onerror="this.src='stylesheets/images/ajax-loader.gif'"/>
+    </div>
+</div>
+
+
+</body>
+</html>

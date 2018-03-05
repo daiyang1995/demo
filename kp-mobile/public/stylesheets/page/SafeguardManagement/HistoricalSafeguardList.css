@@ -1,0 +1,30 @@
+.policyList {
+    margin: 0.2rem 0.3rem;
+    background: #ffffff;
+    padding: 0.3rem;
+    padding-left: 0;
+    padding-bottom: 0.22rem;
+}
+
+.policyList .planName{
+    display: inline-block;
+    padding-left: 0.3rem;
+    margin-bottom: 0.08rem;
+    font-size: 0.28rem;
+    color: #000000;
+}
+
+.policyList .policyPersonNameInfo, .policyList .policyDateInfo,  .policyList .policyNoInfo {
+    font-size: 0.20rem;
+    padding-left: 0.3rem;
+    display: inline-block;
+    margin-bottom: 0.08rem;
+}
+.protecting{
+    width: 1.5rem;
+    height: 1.5rem;
+    background-size:1.5rem 1.5rem;
+    top:-1.65rem;
+    float: right;
+    position: relative;
+}

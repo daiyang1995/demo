@@ -1,0 +1,97 @@
+.header-cancel, .header-save{
+   position: absolute;
+   color: #ffffff;
+   margin-top: 0.2rem;
+   margin-left: 0.4rem;
+   font-size: 0.28rem;
+}
+.header-save{
+   top: 0;
+   right: 0;
+   margin-right: 0.4rem;
+}
+.cue1{
+   font-size: 0.28rem ;
+   padding: 1.5% 3%;
+}
+#identityImg{
+   border-bottom: 0.02rem #d8d8d8 solid ;
+}
+
+#SetDefault{
+   margin: 0.2rem 0;
+   border-bottom: 0.02rem #d8d8d8 solid ;
+}
+#SetDefault div.ui-slider-switch.ui-mini{
+   float: right;
+   top: -0.2rem;
+}
+#SetDefault span:first-child{
+   color: #A1A1A1;
+}
+.personInputError{
+   display: none;
+   text-align: center;
+   color: #ffffff;
+   position: absolute;
+   font-size: 0.32rem;
+   left: 0;
+   width: 100%;
+   border: none;
+   border: none;
+   outline: none;
+   line-height: 0.756rem;
+   height: 0.756rem;
+   margin-top: -0.17rem;
+   background: #FF0000;
+}
+
+.personDel{
+   width: 100%;
+   background: #33CC99;
+   color: #ffffff;
+   text-align: center;
+   line-height: 0.8rem;
+   height: 0.8rem;
+}
+.personDel span{
+   display: block;
+   line-height: 0.8rem;
+   margin: 0 auto;
+   padding: 0 30%;
+}
+#Confirmdel{
+   padding: 0.4rem;
+   display: none;
+   text-align: center;
+   background: #ffffff;
+   font-size: 0.4rem;
+}
+#Confirmdel div{
+   padding: 0.4rem;
+}
+#Confirmdel span{
+   text-align: center;
+   display: inline-block;
+   width: 48%;
+   line-height: 0.7rem;
+   color: #fff;
+}
+
+#SuccessConfirm{
+   padding: 0.4rem;
+   text-align: center;
+   background: #ffffff;
+   font-size: 0.4rem;
+   display: none;
+}
+#SuccessConfirm div{
+   padding: 0.4rem;
+}
+#SuccessConfirm span{
+   text-align: center;
+   display: inline-block;
+   width: 48%;
+   line-height: 0.7rem;
+   color: #fff;
+}
