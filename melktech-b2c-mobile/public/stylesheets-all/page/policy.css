@@ -1,0 +1,73 @@
+.dataList{
+    margin:0.2rem;
+    padding: 0.3rem;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    font-size: 0.26rem;
+    color: #a1a1a1;
+}
+.dataList .ui-grid-a .ui-block-a{
+    width: 30%;
+}
+.dataList .ui-grid-a .ui-block-b{
+    width: 70%;
+}
+
+.bodyOuterScroller,.scroll{
+    margin-bottom: 0.8rem;
+}
+
+.noPolicy{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.noPolicyImg{
+    text-align: center;
+}
+.noPolicyImg img{
+    width: 50%;
+    height: 50%;
+}
+.noPolicyStr{
+    text-align: center;
+}
+
+
+#pdfShow{
+    z-index: 871229;
+    background-color: #FFFFFF;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+#pdfShow .pdfHeader{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background: #208bd8 -webkit-linear-gradient(top,#0f79d1,#3ea9e4);
+    z-index: 9871229;
+    height: 0.8rem;
+    font-size: 0.32rem;
+}
+#pdfShow .pdfHeader .pdfTitle{
+    width: 100%;
+    text-align: center;
+    display: inline-block;
+    height: 0.8rem;
+    line-height: 0.8rem;
+    color: #FFFFFF;
+}
+#pdfFrame{
+    z-index: 871229;
+    border: none;
+    position: absolute;
+    top: 0;
+    box-sizing: border-box;
+    padding-top: 0.8rem;
+    width: 100%;
+    height: 100%;
+}

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>常用信息-人员</title>
+    <%-include("../commonJs.html")%>
+    <%-include("../commonCss.html")%>
+    <link rel="stylesheet" href="stylesheets/page/CommonInformation/PersonInformationView.css">
+    <script type="text/babel">
+        $(document).ready(function () {
+            //取消
+            /*************** start  ***************/
+            $('.header').on('click','.header-cancel',function (e) {
+                let thisJquery = this;
+                let formAction;
+                formAction = $(thisJquery).attr("form-action");
+                var form1 = document.createElement("form");
+                form1.id = "VirtualForm";
+                form1.name = "VirtualForm";
+                document.body.appendChild(form1);
+                $("#VirtualForm").css("display", "none");
+                /*var input0 = document.createElement("input");
+                input0.type = "text";
+                input0.name = "creator";
+                input0.value = "{{creator}}";
+                form1.appendChild(input0);*/
+                form1.method = "POST";
+                form1.action = formAction;
+                form1.submit();
+            });
+            /*************** end  ***************/
+
+            //删除确定弹框声明
+            /*************** start  ***************/
+            var delPopup = popup.init({
+                popup:$('#Confirmdel'),
+                cancel : $('#cancel'),
+                submit : $('#submit')/*,*/
+                /*submitCallback : del*/
+            });
+            /*************** end  ***************/
+
+            //删除成功弹框声明
+            /*************** start  ***************/
+            var delSuccess = popup.init({
+                popup:$('#SuccessConfirm'),
+                submit : $('#SuccessConfirmButton'),
+                submitCallback : function () {
+                    $(".header .header-cancel").trigger("click");
+                }
+            });
+            /*************** end  ***************/
+
+            //删除
+            /*************** start  ***************/
+            $('.personDel span').on('click',function (e) {
+                popup.show(delPopup);
+            });
+            /*************** end  ***************/
+
+        });
+    </script>
+</head>
+<body>
+<div class="header">
+    <span class="header-cancel" form-action="PersonInformation">取消</span>
+    <span class="title">查看常用人员</span>
+    <span class="header-save" form-action="PersonInformation">保存</span>
+</div>
+<div class="bodyContent">
+    <div class="cue1">
+        <span class="cue">人员姓名</span>
+    </div>
+    <div class="inlineRowInput ui-grid-a">
+        <span class="lable ui-block-a">中文姓名</span><input type="text" class="inputText ui-block-b" id="name" name="name" data-role="none" readonly value="<%=user.name%>">
+        <div class="personInputError" id="nameError"></div><!--错误-->
+    </div>
+    <div class="cue1">
+        <span class="cue">为今后便利，请确保人员姓名与证件上一致。</span><span class="icon-question-onwer"></span>
+    </div>
+    <div class="cue1">
+        <span class="cue">证件</span>
+    </div>
+    <div class="inlineRowInput ui-grid-a">
+        <span class="lable ui-block-a">证件类型</span><input type="text" class="inputText ui-block-b" id="identityType" name="identityType" data-role="none" readonly value="<%=user.identifyType%>">
+    </div>
+    <div  class="inlineRowInput ui-grid-a">
+        <span class="lable ui-block-a">证件号码</span><input type="text" class="inputText ui-block-b" id="identityNumber" name="identityNumber" data-role="none"readonly value="<%=user.identifyNubmer%>">
+    </div>
+    <div class="inlineRowInput ui-grid-a">
+        <span class="lable ui-block-a">证件有效期</span><div id="validDate" class="choice ui-block-b"></div>
+    </div>
+    <div class="inlineRowInput ui-grid-a">
+        <span class="lable ui-block-a">证件影像</span><div id="identityImg" class="choice ui-block-b"></div>
+    </div>
+    <div class="cue1">
+        <span class="cue">身份证、护照可通过影像识别内容。</span><span class="icon-question-onwer"></span>
+    </div>
+    <div class="cue1">
+        <span class="cue">其他信息</span>
+    </div>
+    <div class="inlineRowInput ui-grid-a">
+        <span class="lable ui-block-a">出生日期</span><input type="text" class="inputText ui-block-b" id="dateOfBirth" name="dateOfBirth" data-role="none"readonly value="<%=user.dateOfBirth%>">
+    </div>
+    <div class="inlineRowInput ui-grid-a">
+        <span class="lable ui-block-a">性别</span><input type="text" class="inputText ui-block-b" id="gender" name="gender" data-role="none" readonly  <% if(user.gender==1){%> value="男"<%}else{%>value="女"<%}%>>
+    </div>
+    <div class="inlineRowInput ui-grid-a">
+        <span class="lable ui-block-a">手机号码</span><input type="text" class="inputText ui-block-b" id="phone" name="phone" data-role="none" readonly value="<%=user.mobile%>">
+    </div>
+    <div class="inlineRowInput ui-grid-a">
+        <span class="lable ui-block-a">邮箱地址</span><input type="text" class="inputText ui-block-b" id="email" name="email" data-role="none" readonly value="<%=user.email%>">
+    </div>
+    <div id="SetDefault" class="inlineRowInput">
+        <span>设置为本人</span> <select name="isDefault" id="isDefault" data-role="slider" data-mini="true" disabled="disabled">
+        <option value="0" ></option>
+        <option value="1" <% if(user.isSelf) {%>selected <%}%>  ></option>
+    </select>
+    </div>
+    <!--<div class="personDel" >-->
+        <!--<span>删除</span>-->
+    <!--</div>-->
+    <!--<div id="Confirmdel">-->
+        <!--<div>你确定要删除么</div>-->
+        <!--<span id="cancel" style="background: red">取消</span>    <span id="submit" style="background: #17BFB5">确定</span>-->
+    <!--</div>-->
+    <!--<div id="SuccessConfirm">-->
+        <!--<div>删除成功</div>-->
+        <!--<span id="SuccessConfirmButton" style="background: #17BFB5">确定</span>-->
+    <!--</div>-->
+</div>
+
+</body>
+</html>

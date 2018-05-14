@@ -1,0 +1,99 @@
+[2017-12-26T13:23:38.785] [DEBUG] default - Some debug messages
+[2017-12-26T16:39:06.069] [DEBUG] default - Some debug messages
+[2017-12-26T16:39:13.569] [INFO] default - have state : undefined
+[2017-12-26T16:39:13.569] [INFO] default - req.method  : GET
+[2017-12-26T16:39:13.569] [INFO] default - 未登陆
+[2017-12-26T16:39:13.627] [INFO] default - {}
+[2017-12-26T16:39:13.628] [INFO] default - 这不是从session 登陆缓存走的
+[2017-12-26T16:39:13.628] [INFO] default - requireUrl = /kp-api/ssl/h5/Oauth/getUserInfo
+[2017-12-26T16:39:13.628] [INFO] default - requireBody = {"openId":"oW00nwWggzfXeJPTb0dN-xO9h-6A","userId":"3e1040bfa48047308b5927ecc3d199e8","url":"Oauth/getUserInfo"}
+[2017-12-26T16:39:14.635] [ERROR] error - problem with request: connect ECONNREFUSED 192.168.1.93:8080
+[2017-12-26T16:39:21.924] [INFO] default - have state : undefined
+[2017-12-26T16:39:21.925] [INFO] default - req.method  : GET
+[2017-12-26T16:39:21.925] [INFO] default - 未登陆
+[2017-12-26T16:39:21.930] [INFO] default - {}
+[2017-12-26T16:39:21.930] [INFO] default - 这不是从session 登陆缓存走的
+[2017-12-26T16:39:21.930] [INFO] default - requireUrl = /kp-api/ssl/h5/Oauth/getUserInfo
+[2017-12-26T16:39:21.930] [INFO] default - requireBody = {"openId":"oW00nwWggzfXeJPTb0dN-xO9h-6A","userId":"3e1040bfa48047308b5927ecc3d199e8","url":"Oauth/getUserInfo"}
+[2017-12-26T16:39:22.933] [ERROR] error - problem with request: connect ECONNREFUSED 192.168.1.93:8080
+[2017-12-26T16:39:33.990] [INFO] default - have state : undefined
+[2017-12-26T16:39:33.990] [INFO] default - req.method  : GET
+[2017-12-26T16:39:33.990] [INFO] default - 未登陆
+[2017-12-26T16:39:33.995] [INFO] default - {}
+[2017-12-26T16:39:33.995] [INFO] default - 这不是从session 登陆缓存走的
+[2017-12-26T16:39:33.996] [INFO] default - requireUrl = /kp-api/ssl/h5/Oauth/getUserInfo
+[2017-12-26T16:39:33.996] [INFO] default - requireBody = {"openId":"oW00nwWggzfXeJPTb0dN-xO9h-6A","userId":"3e1040bfa48047308b5927ecc3d199e8","url":"Oauth/getUserInfo"}
+[2017-12-26T16:39:34.997] [ERROR] error - problem with request: connect ECONNREFUSED 192.168.1.93:8080
+[2017-12-26T16:39:49.013] [INFO] default - have state : undefined
+[2017-12-26T16:39:49.014] [INFO] default - req.method  : GET
+[2017-12-26T16:39:49.014] [INFO] default - 未登陆
+[2017-12-26T16:39:49.017] [INFO] default - {}
+[2017-12-26T16:39:49.018] [INFO] default - 这不是从session 登陆缓存走的
+[2017-12-26T16:39:49.018] [INFO] default - requireUrl = /kp-api/ssl/h5/Oauth/getUserInfo
+[2017-12-26T16:39:49.018] [INFO] default - requireBody = {"openId":"oW00nwWggzfXeJPTb0dN-xO9h-6A","userId":"3e1040bfa48047308b5927ecc3d199e8","url":"Oauth/getUserInfo"}
+[2017-12-26T16:39:50.020] [ERROR] error - problem with request: connect ECONNREFUSED 192.168.1.93:8080
+[2017-12-26T16:39:58.159] [DEBUG] default - Some debug messages
+[2017-12-26T16:39:58.260] [INFO] default - {}
+[2017-12-26T16:39:58.262] [INFO] default - 这不是从session 登陆缓存走的
+[2017-12-26T16:39:58.262] [INFO] default - requireUrl = /kp-api/ssl/h5/Oauth/getUserInfo
+[2017-12-26T16:39:58.262] [INFO] default - requireBody = {"openId":"oW00nwWggzfXeJPTb0dN-xO9h-6A","userId":"3e1040bfa48047308b5927ecc3d199e8","url":"Oauth/getUserInfo"}
+[2017-12-26T16:39:59.270] [ERROR] error - problem with request: connect ECONNREFUSED 192.168.1.93:8080
+[2017-12-26T16:40:01.055] [INFO] default - have state : undefined
+[2017-12-26T16:40:01.055] [INFO] default - req.method  : GET
+[2017-12-26T16:40:01.055] [INFO] default - 未登陆
+[2017-12-26T16:40:01.066] [INFO] default - {}
+[2017-12-26T16:40:01.066] [INFO] default - 这不是从session 登陆缓存走的
+[2017-12-26T16:40:01.066] [INFO] default - requireUrl = /kp-api/ssl/h5/Oauth/getUserInfo
+[2017-12-26T16:40:01.066] [INFO] default - requireBody = {"openId":"oW00nwWggzfXeJPTb0dN-xO9h-6A","userId":"3e1040bfa48047308b5927ecc3d199e8","url":"Oauth/getUserInfo"}
+[2017-12-26T16:40:02.069] [ERROR] error - problem with request: connect ECONNREFUSED 192.168.1.93:8080
+[2017-12-26T16:40:17.177] [DEBUG] default - Some debug messages
+[2017-12-26T16:40:17.345] [INFO] default - {}
+[2017-12-26T16:40:17.347] [INFO] default - 这不是从session 登陆缓存走的
+[2017-12-26T16:40:17.347] [INFO] default - requireUrl = /kp-api/ssl/h5/Oauth/getUserInfo
+[2017-12-26T16:40:17.347] [INFO] default - requireBody = {"openId":"oW00nwWggzfXeJPTb0dN-xO9h-6A","userId":"3e1040bfa48047308b5927ecc3d199e8","url":"Oauth/getUserInfo"}
+[2017-12-26T16:40:18.356] [ERROR] error - problem with request: connect ECONNREFUSED 192.168.1.93:8080
+[2017-12-26T16:40:20.254] [INFO] default - have state : undefined
+[2017-12-26T16:40:20.254] [INFO] default - req.method  : GET
+[2017-12-26T16:40:20.254] [INFO] default - 未登陆
+[2017-12-26T16:40:20.265] [INFO] default - {}
+[2017-12-26T16:40:20.265] [INFO] default - 这不是从session 登陆缓存走的
+[2017-12-26T16:40:20.265] [INFO] default - requireUrl = /kp-api/ssl/h5/Oauth/getUserInfo
+[2017-12-26T16:40:20.265] [INFO] default - requireBody = {"openId":"oW00nwWggzfXeJPTb0dN-xO9h-6A","userId":"3e1040bfa48047308b5927ecc3d199e8","url":"Oauth/getUserInfo"}
+[2017-12-26T16:40:21.270] [ERROR] error - problem with request: connect ECONNREFUSED 192.168.1.93:8080
+[2017-12-26T16:40:32.963] [INFO] default - have state : 1
+[2017-12-26T16:40:32.964] [INFO] default - req.method  : GET
+[2017-12-26T16:40:32.964] [ERROR] error - GET
+[2017-12-26T16:40:32.964] [ERROR] error - /bindingPage?state=1
+[2017-12-26T16:40:32.964] [ERROR] error - { message: 'Not Found',
+  error: 
+   { Error: Not Found
+       at C:\Users\owner\WebstormProjects\kp-mobile\app.js:91:15
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\layer.js:95:5)
+       at trim_prefix (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:317:13)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:284:7
+       at Function.process_params (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:335:12)
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:275:10)
+       at C:\Users\owner\WebstormProjects\kp-mobile\app.js:80:5
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\layer.js:95:5)
+       at trim_prefix (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:317:13)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:284:7
+       at Function.process_params (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:335:12)
+       at next (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:275:10)
+       at multipart (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\connect-multiparty\index.js:53:63)
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\layer.js:95:5)
+       at trim_prefix (C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:317:13)
+       at C:\Users\owner\WebstormProjects\kp-mobile\node_modules\express\lib\router\index.js:284:7 status: 404 } }
+[2017-12-26T16:40:33.013] [INFO] default - {}
+[2017-12-26T16:40:33.013] [INFO] default - 这不是从session 登陆缓存走的
+[2017-12-26T16:40:33.013] [INFO] default - requireUrl = /kp-api/ssl/h5/Oauth/getUserInfo
+[2017-12-26T16:40:33.013] [INFO] default - requireBody = {"openId":"oW00nwWggzfXeJPTb0dN-xO9h-6A","userId":"3e1040bfa48047308b5927ecc3d199e8","url":"Oauth/getUserInfo"}
+[2017-12-26T16:40:34.015] [ERROR] error - problem with request: connect ECONNREFUSED 192.168.1.93:8080
+[2017-12-26T16:40:51.359] [DEBUG] default - Some debug messages
+[2017-12-26T16:40:51.566] [INFO] default - have state : undefined
+[2017-12-26T16:40:51.567] [INFO] default - req.method  : GET
+[2017-12-26T16:40:51.567] [INFO] default - 未登陆
+[2017-12-26T16:40:51.583] [INFO] default - {}
+[2017-12-26T16:40:51.585] [INFO] default - 这不是从session 登陆缓存走的
+[2017-12-26T16:40:51.585] [INFO] default - requireUrl = /kp-api/ssl/h5/Oauth/getUserInfo
+[2017-12-26T16:40:51.585] [INFO] default - requireBody = {"openId":"oW00nwWggzfXeJPTb0dN-xO9h-6A","userId":"3e1040bfa48047308b5927ecc3d199e8","url":"Oauth/getUserInfo"}
+[2017-12-26T16:40:52.591] [ERROR] error - problem with request: connect ECONNREFUSED 192.168.1.93:8080

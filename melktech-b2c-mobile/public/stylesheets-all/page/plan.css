@@ -1,0 +1,64 @@
+.dataList{
+    margin:0.2rem;
+    padding: 0.3rem;
+    box-sizing: border-box;
+    background-color: #ffffff;
+}
+.dataList .dataListTip .ui-block-a{
+    font-size: 0.32rem;
+    font-weight: 600;
+    width: 70%;
+}
+.dataList .dataListTip .ui-block-b{
+    padding: 0 0.2rem;
+    text-align: center;
+    font-size: 0.32rem;
+    width: 30%;
+}
+.dataList .dataListTip .ui-block-b .info{
+    border-radius: 5px;
+    border: 0.02rem solid #00B7FF;
+    color: #00B7FF;
+    font-size: 0.24rem;
+    width: 70%;
+    display: inline-block;
+}
+.dataList .dataListIntroductionShort{
+    margin:  0.2rem 0 ;
+    font-size: 0.24rem;
+}
+.dataList .dataListBottom{
+    color: #ffa62e;
+}
+.dataList .dataListBottom .dataListPrice .unit{
+    font-size: 0.28rem;
+}
+.dataList .dataListBottom .dataListSalemanRate{
+    font-size: 0.28rem;
+    text-align: right;
+}
+.bodyOuterScroller,.scroll{
+    margin-bottom: 0.8rem;
+}
+#screen{
+    opacity: 0.8;
+}
+#screen img{
+    margin-top: -1rem;
+    position: fixed;
+    width: 4rem;
+    height: 4rem;
+    top:50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+#screen span{
+    margin-top: -0.5rem;
+    font-size: 0.28rem;
+    color: #fff;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    text-align: center;
+    transform: translateY(2rem)
+}

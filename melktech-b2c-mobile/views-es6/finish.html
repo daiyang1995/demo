@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%-include("./commonJs.html")%>
+    <%-include("./commonCss.html")%>
+    <title>完成</title>
+    <link rel="stylesheet"  href="<%=localurl%><%=projectUrl%>stylesheets/page/finish.css" />
+</head>
+<body>
+<div class="header">
+  <!--<span class="icon-carat-b-onwer backIcon" ></span>-->
+  <span class="title">完成</span>
+</div>
+<div class="bodyContent">
+    <div class="finishLogo"></div>
+    <div class="success">购买成功</div>
+    <div class="policyNo">您的保单号是:<%=policyNo%></div>
+    <%if(typeof orderNo !== 'undefined' ){%>
+        <div class="policyNo">您的订单号是:<%=orderNo%></div>
+    <%}%>
+
+</div>
+</body>
+</html>

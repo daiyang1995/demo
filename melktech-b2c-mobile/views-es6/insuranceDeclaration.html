@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%-include("./commonJs.html")%>
+    <%-include("./commonCss.html")%>
+  <title>投保声明</title>
+  <script type="text/babel">
+      $(document).ready(function () {
+          $(".header").on("vclick",".backIcon",function (e) {
+              e.preventDefault();
+			  history.back();
+		  });
+      });
+  </script>
+  <style>
+    .bodyContent{
+      font-size: 0.24rem;
+      padding: 0.3rem 0.4rem ;
+    }
+  </style>
+</head>
+<body>
+<div class="header">
+  <span class="icon-carat-b-onwer backIcon" ></span>
+  <span class="title">投保声明</span>
+</div>
+<div class="bodyContent">
+    <%-data.insuranceStatement %>
+</div>
+</body>
+</html>

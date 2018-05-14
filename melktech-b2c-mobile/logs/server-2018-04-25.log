@@ -1,0 +1,319 @@
+[2018-04-25T11:52:56.817] [DEBUG] default - Some debug messages
+[2018-04-25T11:53:28.637] [DEBUG] default - ::1未登录
+[2018-04-25T11:53:38.502] [INFO] default - requireUrl = /melktech-pds-api/apiLogin/login
+[2018-04-25T11:53:38.502] [INFO] default - requireBody = {"mobile":"18363992860","password":"a12345","entCode":"mk","url":"apiLogin/login"}
+[2018-04-25T11:53:39.532] [ERROR] error - problem with request: connect ECONNREFUSED 127.0.0.1:8180
+[2018-04-25T11:54:20.718] [INFO] default - requireUrl = /melktech-pds-api/apiLogin/login
+[2018-04-25T11:54:20.719] [INFO] default - requireBody = {"mobile":"18363992860","password":"a12345","entCode":"mk","url":"apiLogin/login"}
+[2018-04-25T11:54:21.934] [INFO] default - id为1650748138a94678b92e60e7d0e31505邀请码为4H9CSG的邀请二维码放入redis中成功
+[2018-04-25T11:54:21.934] [INFO] default - id为1650748138a94678b92e60e7d0e31505邀请码为4H9CSG的头像放入redis中成功
+[2018-04-25T11:54:21.934] [INFO] default - id为1650748138a94678b92e60e7d0e31505邀请码为4H9CSG的手机号放入redis中成功
+[2018-04-25T11:54:22.594] [INFO] default - requireUrl = /melktech-pds-api/apiPlan/planList
+[2018-04-25T11:54:22.594] [INFO] default - requireBody = {"pageNum":"1","id":"1650748138a94678b92e60e7d0e31505","portraitUrl":"http://dev-test-oss-public.oss-cn-beijing.aliyuncs.com/saleman/1650748138a94678b92e60e7d0e31505/portrait/42350fc1093b4243b1d893534f242216","inviteCode":"4H9CSG","qrCode":"http://dev-test-oss-public.oss-cn-beijing.aliyuncs.com/null","enterpriseId":"2a4d962527a14721bf151a9826f762da","mobile":"18363992860","url":"apiPlan/planList"}
+[2018-04-25T12:01:39.301] [DEBUG] default - Some debug messages
+[2018-04-25T12:02:46.076] [DEBUG] default - Some debug messages
+[2018-04-25T12:02:46.346] [DEBUG] default - ::1未登录
+[2018-04-25T12:02:53.313] [INFO] default - requireUrl = /melktech-pds-api/apiLogin/login
+[2018-04-25T12:02:53.313] [INFO] default - requireBody = {"mobile":"18363992860","password":"a12345","entCode":"mk","url":"apiLogin/login"}
+[2018-04-25T12:02:53.334] [INFO] default - id为1650748138a94678b92e60e7d0e31505邀请码为4H9CSG的邀请二维码放入redis中成功
+[2018-04-25T12:02:53.334] [INFO] default - id为1650748138a94678b92e60e7d0e31505邀请码为4H9CSG的头像放入redis中成功
+[2018-04-25T12:02:53.334] [INFO] default - id为1650748138a94678b92e60e7d0e31505邀请码为4H9CSG的手机号放入redis中成功
+[2018-04-25T12:02:53.877] [INFO] default - requireUrl = /melktech-pds-api/apiPlan/planList
+[2018-04-25T12:02:53.877] [INFO] default - requireBody = {"pageNum":"1","id":"1650748138a94678b92e60e7d0e31505","portraitUrl":"http://dev-test-oss-public.oss-cn-beijing.aliyuncs.com/saleman/1650748138a94678b92e60e7d0e31505/portrait/42350fc1093b4243b1d893534f242216","inviteCode":"4H9CSG","qrCode":"http://dev-test-oss-public.oss-cn-beijing.aliyuncs.com/null","enterpriseId":"2a4d962527a14721bf151a9826f762da","mobile":"18363992860","url":"apiPlan/planList"}
+[2018-04-25T13:54:17.936] [DEBUG] default - ::1未登录
+[2018-04-25T13:54:21.012] [DEBUG] default - ::1未登录
+[2018-04-25T13:54:31.646] [INFO] default - requireUrl = /melktech-pds-api/apiLogin/login
+[2018-04-25T13:54:31.648] [INFO] default - requireBody = {"mobile":"18363992860","password":"a12345","entCode":"mk","url":"apiLogin/login"}
+[2018-04-25T13:54:32.680] [ERROR] error - problem with request: connect ECONNREFUSED 127.0.0.1:8180
+[2018-04-25T13:55:05.456] [INFO] default - requireUrl = /melktech-pds-api/apiLogin/login
+[2018-04-25T13:55:05.458] [INFO] default - requireBody = {"mobile":"18363992860","password":"a12345","entCode":"mk","url":"apiLogin/login"}
+[2018-04-25T13:55:06.927] [INFO] default - id为1650748138a94678b92e60e7d0e31505邀请码为4H9CSG的邀请二维码放入redis中成功
+[2018-04-25T13:55:06.927] [INFO] default - id为1650748138a94678b92e60e7d0e31505邀请码为4H9CSG的头像放入redis中成功
+[2018-04-25T13:55:06.927] [INFO] default - id为1650748138a94678b92e60e7d0e31505邀请码为4H9CSG的手机号放入redis中成功
+[2018-04-25T13:55:07.488] [INFO] default - requireUrl = /melktech-pds-api/apiPlan/planList
+[2018-04-25T13:55:07.488] [INFO] default - requireBody = {"pageNum":"1","id":"1650748138a94678b92e60e7d0e31505","portraitUrl":"http://dev-test-oss-public.oss-cn-beijing.aliyuncs.com/saleman/1650748138a94678b92e60e7d0e31505/portrait/42350fc1093b4243b1d893534f242216","inviteCode":"4H9CSG","qrCode":"http://dev-test-oss-public.oss-cn-beijing.aliyuncs.com/null","enterpriseId":"2a4d962527a14721bf151a9826f762da","mobile":"18363992860","url":"apiPlan/planList"}
+[2018-04-25T14:45:31.213] [DEBUG] default - Some debug messages
+[2018-04-25T14:46:01.531] [INFO] default - requireUrl = /melktech-pds-api/apiLogin/login
+[2018-04-25T14:46:01.532] [INFO] default - requireBody = {"mobile":"18363992860","password":"a12345","entCode":"mk","url":"apiLogin/login"}
+[2018-04-25T14:46:01.629] [INFO] default - id为1650748138a94678b92e60e7d0e31505邀请码为4H9CSG的邀请二维码放入redis中成功
+[2018-04-25T14:46:01.630] [INFO] default - id为1650748138a94678b92e60e7d0e31505邀请码为4H9CSG的头像放入redis中成功
+[2018-04-25T14:46:01.630] [INFO] default - id为1650748138a94678b92e60e7d0e31505邀请码为4H9CSG的手机号放入redis中成功
+[2018-04-25T14:46:02.295] [INFO] default - requireUrl = /melktech-pds-api/apiPlan/planList
+[2018-04-25T14:46:02.296] [INFO] default - requireBody = {"pageNum":"1","id":"1650748138a94678b92e60e7d0e31505","portraitUrl":"http://dev-test-oss-public.oss-cn-beijing.aliyuncs.com/saleman/1650748138a94678b92e60e7d0e31505/portrait/42350fc1093b4243b1d893534f242216","inviteCode":"4H9CSG","qrCode":"http://dev-test-oss-public.oss-cn-beijing.aliyuncs.com/null","enterpriseId":"2a4d962527a14721bf151a9826f762da","mobile":"18363992860","url":"apiPlan/planList"}
+[2018-04-25T14:46:12.779] [INFO] default - requireUrl = /melktech-pds-api/apiPlan/planList
+[2018-04-25T14:46:12.779] [INFO] default - requireBody = {"pageNum":"1","id":"1650748138a94678b92e60e7d0e31505","portraitUrl":"http://dev-test-oss-public.oss-cn-beijing.aliyuncs.com/saleman/1650748138a94678b92e60e7d0e31505/portrait/42350fc1093b4243b1d893534f242216","inviteCode":"4H9CSG","qrCode":"http://dev-test-oss-public.oss-cn-beijing.aliyuncs.com/null","enterpriseId":"2a4d962527a14721bf151a9826f762da","mobile":"18363992860","url":"apiPlan/planList"}
+[2018-04-25T14:46:30.660] [INFO] default - requireUrl = /melktech-pds-api/apiPlan/planList
+[2018-04-25T14:46:30.660] [INFO] default - requireBody = {"pageNum":"1","id":"1650748138a94678b92e60e7d0e31505","portraitUrl":"http://dev-test-oss-public.oss-cn-beijing.aliyuncs.com/saleman/1650748138a94678b92e60e7d0e31505/portrait/42350fc1093b4243b1d893534f242216","inviteCode":"4H9CSG","qrCode":"http://dev-test-oss-public.oss-cn-beijing.aliyuncs.com/null","enterpriseId":"2a4d962527a14721bf151a9826f762da","mobile":"18363992860","url":"apiPlan/planList"}
+[2018-04-25T14:46:34.574] [INFO] default - requireUrl = /melktech-pds-api/apiPlan/planList
+[2018-04-25T14:46:34.574] [INFO] default - requireBody = {"pageNum":"1","id":"1650748138a94678b92e60e7d0e31505","portraitUrl":"http://dev-test-oss-public.oss-cn-beijing.aliyuncs.com/saleman/1650748138a94678b92e60e7d0e31505/portrait/42350fc1093b4243b1d893534f242216","inviteCode":"4H9CSG","qrCode":"http://dev-test-oss-public.oss-cn-beijing.aliyuncs.com/null","enterpriseId":"2a4d962527a14721bf151a9826f762da","mobile":"18363992860","url":"apiPlan/planList"}
+[2018-04-25T14:49:03.333] [INFO] default - requireUrl = /melktech-pds-api/apiPlan/planList
+[2018-04-25T14:49:03.333] [INFO] default - requireBody = {"pageNum":"1","id":"1650748138a94678b92e60e7d0e31505","portraitUrl":"http://dev-test-oss-public.oss-cn-beijing.aliyuncs.com/saleman/1650748138a94678b92e60e7d0e31505/portrait/42350fc1093b4243b1d893534f242216","inviteCode":"4H9CSG","qrCode":"http://dev-test-oss-public.oss-cn-beijing.aliyuncs.com/null","enterpriseId":"2a4d962527a14721bf151a9826f762da","mobile":"18363992860","url":"apiPlan/planList"}
+[2018-04-25T14:49:18.474] [INFO] default - requireUrl = /melktech-pds-api/apiPlan/planList
+[2018-04-25T14:49:18.474] [INFO] default - requireBody = {"pageNum":"1","id":"1650748138a94678b92e60e7d0e31505","portraitUrl":"http://dev-test-oss-public.oss-cn-beijing.aliyuncs.com/saleman/1650748138a94678b92e60e7d0e31505/portrait/42350fc1093b4243b1d893534f242216","inviteCode":"4H9CSG","qrCode":"http://dev-test-oss-public.oss-cn-beijing.aliyuncs.com/null","enterpriseId":"2a4d962527a14721bf151a9826f762da","mobile":"18363992860","url":"apiPlan/planList"}
+[2018-04-25T15:22:51.920] [DEBUG] default - Some debug messages
+[2018-04-25T15:22:54.626] [DEBUG] default - ::1未登录
+[2018-04-25T15:22:59.403] [INFO] default - requireUrl = /melktech-pds-api/apiLogin/login
+[2018-04-25T15:22:59.404] [INFO] default - requireBody = {"mobile":"18363992860","password":"a12345","entCode":"mk","url":"apiLogin/login"}
+[2018-04-25T15:23:00.677] [INFO] default - id为1650748138a94678b92e60e7d0e31505邀请码为4H9CSG的邀请二维码放入redis中成功
+[2018-04-25T15:23:00.677] [INFO] default - id为1650748138a94678b92e60e7d0e31505邀请码为4H9CSG的头像放入redis中成功
+[2018-04-25T15:23:00.677] [INFO] default - id为1650748138a94678b92e60e7d0e31505邀请码为4H9CSG的手机号放入redis中成功
+[2018-04-25T15:23:01.277] [INFO] default - requireUrl = /melktech-pds-api/apiPlan/planList
+[2018-04-25T15:23:01.277] [INFO] default - requireBody = {"pageNum":"1","createTime":1523515114000,"creator":"-1","enterpriseId":"2a4d962527a14721bf151a9826f762da","id":"1650748138a94678b92e60e7d0e31505","inviteCode":"4H9CSG","mobile":"18363992860","password":"a12345","portrait":"http://dev-test-oss-public.oss-cn-beijing.aliyuncs.com/saleman/1650748138a94678b92e60e7d0e31505/portrait/42350fc1093b4243b1d893534f242216","qrCode":"http://dev-test-oss-public.oss-cn-beijing.aliyuncs.com/null","url":"apiPlan/planList"}
+[2018-04-25T15:24:04.539] [DEBUG] default - Some debug messages
+[2018-04-25T15:24:20.999] [DEBUG] default - ::1未登录
+[2018-04-25T15:24:25.688] [INFO] default - requireUrl = /melktech-pds-api/apiLogin/login
+[2018-04-25T15:24:25.688] [INFO] default - requireBody = {"mobile":"18363992860","password":"a12345","entCode":"mk","url":"apiLogin/login"}
+[2018-04-25T15:24:25.708] [INFO] default - id为1650748138a94678b92e60e7d0e31505邀请码为4H9CSG的邀请二维码放入redis中成功
+[2018-04-25T15:24:25.708] [INFO] default - id为1650748138a94678b92e60e7d0e31505邀请码为4H9CSG的头像放入redis中成功
+[2018-04-25T15:24:25.708] [INFO] default - id为1650748138a94678b92e60e7d0e31505邀请码为4H9CSG的手机号放入redis中成功
+[2018-04-25T15:24:26.205] [INFO] default - requireUrl = /melktech-pds-api/apiPlan/planList
+[2018-04-25T15:24:26.205] [INFO] default - requireBody = {"pageNum":"1","createTime":1523515114000,"creator":"-1","enterpriseId":"2a4d962527a14721bf151a9826f762da","id":"1650748138a94678b92e60e7d0e31505","inviteCode":"4H9CSG","mobile":"18363992860","password":"a12345","portrait":"http://dev-test-oss-public.oss-cn-beijing.aliyuncs.com/saleman/1650748138a94678b92e60e7d0e31505/portrait/42350fc1093b4243b1d893534f242216","qrCode":"http://dev-test-oss-public.oss-cn-beijing.aliyuncs.com/null","url":"apiPlan/planList"}
+[2018-04-25T15:24:28.418] [ERROR] error - { localurl: 'http://localhost:3300',
+  projectUrl: '/',
+  message: 'C:\\Users\\owner\\WebstormProjects\\melktech-pds-mobile\\views\\personalInfo.html:1\n >> 1| <!DOCTYPE html><html lang="en"><head></head><body><%-include("./commonJs.html")%><%-include("./commonCss.html")%><title>个人信息</title><link rel="stylesheet" href="<%=localurl%><%=projectUrl%>stylesheets/page/login.css"><script type="text/babel">$(document).ready(function(){ const shark = new SharkTip({ needShark: true}); const loader = new Loaders({style:"rectangle"});  $(".header").on("vclick",".backIcon" , function (e) { e.preventDefault(); window.location.href = "<%=localurl%><%=projectUrl%>userCenter"; }); });</script><div class="header"><span class="icon-carat-b-onwer backIcon"></span> <span class="title">个人信息</span></div><div class="bodyContent"><div class="personalInfo"><div class="ui-grid-a oneline"><span class="ui-block-a icon iconPhone"></span> <span class="ui-block-b input"><input type="text" name="name" class="personalInfo name" data-role="none" placeholder="请输入姓名" value="<%=name%>" autocomplete="off"></span></div><div class="ui-grid-a oneline"><span class="ui-block-a icon iconPhone"></span> <span class="ui-block-b input"><input type="text" name="identifyType" class="personalInfo identifyType" data-role="none" placeholder="请选择证件类型" autocomplete="off" readonly></span></div><div class="ui-grid-a oneline"><span class="ui-block-a icon iconPhone"></span> <span class="ui-block-b input"><input type="text" name="identifyNumber" class="personalInfo identifyNumber" data-role="none" placeholder="请输入证件号码" autocomplete="off"></span></div><div class="ui-grid-a oneline"><span class="ui-block-a icon iconPhone"></span> <span class="ui-block-b input"><input type="text" name="email" class="personalInfo email" data-role="none" placeholder="请输入邮箱" autocomplete="off"></span></div><div class="ui-grid-a oneline"><span class="ui-block-a icon iconPhone"></span> <span class="ui-block-b input"><input type="text" name="name" class="personalInfo name" data-role="none" placeholder="请选择性别" autocomplete="off" readonly></span></div></div><div class="loginDiv"><span class="loginButton">登录</span></div></div></body></html>\n\nname is not defined',
+  error: 
+   { ReferenceError: C:\Users\owner\WebstormProjects\melktech-pds-mobile\views\personalInfo.html:1
+    >> 1| <!DOCTYPE html><html lang="en"><head></head><body><%-include("./commonJs.html")%><%-include("./commonCss.html")%><title>个人信息</title><link rel="stylesheet" href="<%=localurl%><%=projectUrl%>stylesheets/page/login.css"><script type="text/babel">$(document).ready(function(){ const shark = new SharkTip({ needShark: true}); const loader = new Loaders({style:"rectangle"});  $(".header").on("vclick",".backIcon" , function (e) { e.preventDefault(); window.location.href = "<%=localurl%><%=projectUrl%>userCenter"; }); });</script><div class="header"><span class="icon-carat-b-onwer backIcon"></span> <span class="title">个人信息</span></div><div class="bodyContent"><div class="personalInfo"><div class="ui-grid-a oneline"><span class="ui-block-a icon iconPhone"></span> <span class="ui-block-b input"><input type="text" name="name" class="personalInfo name" data-role="none" placeholder="请输入姓名" value="<%=name%>" autocomplete="off"></span></div><div class="ui-grid-a oneline"><span class="ui-block-a icon iconPhone"></span> <span class="ui-block-b input"><input type="text" name="identifyType" class="personalInfo identifyType" data-role="none" placeholder="请选择证件类型" autocomplete="off" readonly></span></div><div class="ui-grid-a oneline"><span class="ui-block-a icon iconPhone"></span> <span class="ui-block-b input"><input type="text" name="identifyNumber" class="personalInfo identifyNumber" data-role="none" placeholder="请输入证件号码" autocomplete="off"></span></div><div class="ui-grid-a oneline"><span class="ui-block-a icon iconPhone"></span> <span class="ui-block-b input"><input type="text" name="email" class="personalInfo email" data-role="none" placeholder="请输入邮箱" autocomplete="off"></span></div><div class="ui-grid-a oneline"><span class="ui-block-a icon iconPhone"></span> <span class="ui-block-b input"><input type="text" name="name" class="personalInfo name" data-role="none" placeholder="请选择性别" autocomplete="off" readonly></span></div></div><div class="loginDiv"><span class="loginButton">登录</span></div></div></body></html>
+   
+   name is not defined
+       at eval (eval at compile (C:\Users\owner\WebstormProjects\melktech-pds-mobile\node_modules\ejs\lib\ejs.js:584:12), <anonymous>:19:25)
+       at returnedFn (C:\Users\owner\WebstormProjects\melktech-pds-mobile\node_modules\ejs\lib\ejs.js:615:17)
+       at tryHandleCache (C:\Users\owner\WebstormProjects\melktech-pds-mobile\node_modules\ejs\lib\ejs.js:251:36)
+       at View.exports.renderFile [as engine] (C:\Users\owner\WebstormProjects\melktech-pds-mobile\node_modules\ejs\lib\ejs.js:472:10)
+       at View.render (C:\Users\owner\WebstormProjects\melktech-pds-mobile\node_modules\express\lib\view.js:127:8)
+       at tryRender (C:\Users\owner\WebstormProjects\melktech-pds-mobile\node_modules\express\lib\application.js:640:10)
+       at EventEmitter.render (C:\Users\owner\WebstormProjects\melktech-pds-mobile\node_modules\express\lib\application.js:592:3)
+       at ServerResponse.render (C:\Users\owner\WebstormProjects\melktech-pds-mobile\node_modules\express\lib\response.js:971:7)
+       at C:\Users\owner\WebstormProjects\melktech-pds-mobile\routes\personalInfo.js:14:6
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\melktech-pds-mobile\node_modules\express\lib\router\layer.js:95:5)
+     path: 'C:\\Users\\owner\\WebstormProjects\\melktech-pds-mobile\\views\\personalInfo.html' } }
+[2018-04-25T15:30:38.453] [DEBUG] default - Some debug messages
+[2018-04-25T15:30:38.571] [DEBUG] default - ::ffff:127.0.0.1未登录
+[2018-04-25T15:30:43.736] [INFO] default - requireUrl = /melktech-pds-api/apiLogin/login
+[2018-04-25T15:30:43.736] [INFO] default - requireBody = {"mobile":"18363992860","password":"a12345","entCode":"mk","url":"apiLogin/login"}
+[2018-04-25T15:30:43.758] [INFO] default - id为1650748138a94678b92e60e7d0e31505邀请码为4H9CSG的邀请二维码放入redis中成功
+[2018-04-25T15:30:43.758] [INFO] default - id为1650748138a94678b92e60e7d0e31505邀请码为4H9CSG的头像放入redis中成功
+[2018-04-25T15:30:43.759] [INFO] default - id为1650748138a94678b92e60e7d0e31505邀请码为4H9CSG的手机号放入redis中成功
+[2018-04-25T15:30:44.312] [INFO] default - requireUrl = /melktech-pds-api/apiPlan/planList
+[2018-04-25T15:30:44.312] [INFO] default - requireBody = {"pageNum":"1","createTime":1523515114000,"creator":"-1","enterpriseId":"2a4d962527a14721bf151a9826f762da","id":"1650748138a94678b92e60e7d0e31505","inviteCode":"4H9CSG","mobile":"18363992860","password":"a12345","portrait":"http://dev-test-oss-public.oss-cn-beijing.aliyuncs.com/saleman/1650748138a94678b92e60e7d0e31505/portrait/42350fc1093b4243b1d893534f242216","qrCode":"http://dev-test-oss-public.oss-cn-beijing.aliyuncs.com/null","url":"apiPlan/planList"}
+[2018-04-25T15:30:46.406] [ERROR] error - { localurl: 'http://localhost:3300',
+  projectUrl: '/',
+  message: 'C:\\Users\\owner\\WebstormProjects\\melktech-pds-mobile\\views\\personalInfo.html:1\n >> 1| <!DOCTYPE html><html lang="en"><head></head><body><%-include("./commonJs.html")%><%-include("./commonCss.html")%><title>个人信息</title><link rel="stylesheet" href="<%=localurl%><%=projectUrl%>stylesheets/page/login.css"><script type="text/babel">$(document).ready(function(){ const shark = new SharkTip({ needShark: true}); const loader = new Loaders({style:"rectangle"});  $(".header").on("vclick",".backIcon" , function (e) { e.preventDefault(); window.location.href = "<%=localurl%><%=projectUrl%>userCenter"; }); });</script><div class="header"><span class="icon-carat-b-onwer backIcon"></span> <span class="title">个人信息</span></div><div class="bodyContent"><div class="personalInfo"><div class="ui-grid-a oneline"><span class="ui-block-a icon iconPhone"></span> <span class="ui-block-b input"><input type="text" name="name" class="personalInfo name" data-role="none" placeholder="请输入姓名" value="<%=name%>" autocomplete="off"></span></div><div class="ui-grid-a oneline"><span class="ui-block-a icon iconPhone"></span> <span class="ui-block-b input"><input type="text" name="identifyType" class="personalInfo identifyType" data-role="none" placeholder="请选择证件类型" autocomplete="off" readonly></span></div><div class="ui-grid-a oneline"><span class="ui-block-a icon iconPhone"></span> <span class="ui-block-b input"><input type="text" name="identifyNumber" class="personalInfo identifyNumber" data-role="none" placeholder="请输入证件号码" value="<%=idCard%>" autocomplete="off"></span></div><div class="ui-grid-a oneline"><span class="ui-block-a icon iconPhone"></span> <span class="ui-block-b input"><input type="text" name="email" class="personalInfo email" data-role="none" placeholder="请输入邮箱" value="<%=eamil%>" autocomplete="off"></span></div><div class="ui-grid-a oneline"><span class="ui-block-a icon iconPhone"></span> <span class="ui-block-b input"><input type="text" name="name" class="personalInfo name" data-role="none" placeholder="请选择性别" autocomplete="off" readonly></span></div></div><div class="loginDiv"><span class="loginButton">登录</span></div></div></body></html>\n\neamil is not defined',
+  error: 
+   { ReferenceError: C:\Users\owner\WebstormProjects\melktech-pds-mobile\views\personalInfo.html:1
+    >> 1| <!DOCTYPE html><html lang="en"><head></head><body><%-include("./commonJs.html")%><%-include("./commonCss.html")%><title>个人信息</title><link rel="stylesheet" href="<%=localurl%><%=projectUrl%>stylesheets/page/login.css"><script type="text/babel">$(document).ready(function(){ const shark = new SharkTip({ needShark: true}); const loader = new Loaders({style:"rectangle"});  $(".header").on("vclick",".backIcon" , function (e) { e.preventDefault(); window.location.href = "<%=localurl%><%=projectUrl%>userCenter"; }); });</script><div class="header"><span class="icon-carat-b-onwer backIcon"></span> <span class="title">个人信息</span></div><div class="bodyContent"><div class="personalInfo"><div class="ui-grid-a oneline"><span class="ui-block-a icon iconPhone"></span> <span class="ui-block-b input"><input type="text" name="name" class="personalInfo name" data-role="none" placeholder="请输入姓名" value="<%=name%>" autocomplete="off"></span></div><div class="ui-grid-a oneline"><span class="ui-block-a icon iconPhone"></span> <span class="ui-block-b input"><input type="text" name="identifyType" class="personalInfo identifyType" data-role="none" placeholder="请选择证件类型" autocomplete="off" readonly></span></div><div class="ui-grid-a oneline"><span class="ui-block-a icon iconPhone"></span> <span class="ui-block-b input"><input type="text" name="identifyNumber" class="personalInfo identifyNumber" data-role="none" placeholder="请输入证件号码" value="<%=idCard%>" autocomplete="off"></span></div><div class="ui-grid-a oneline"><span class="ui-block-a icon iconPhone"></span> <span class="ui-block-b input"><input type="text" name="email" class="personalInfo email" data-role="none" placeholder="请输入邮箱" value="<%=eamil%>" autocomplete="off"></span></div><div class="ui-grid-a oneline"><span class="ui-block-a icon iconPhone"></span> <span class="ui-block-b input"><input type="text" name="name" class="personalInfo name" data-role="none" placeholder="请选择性别" autocomplete="off" readonly></span></div></div><div class="loginDiv"><span class="loginButton">登录</span></div></div></body></html>
+   
+   eamil is not defined
+       at eval (eval at compile (C:\Users\owner\WebstormProjects\melktech-pds-mobile\node_modules\ejs\lib\ejs.js:584:12), <anonymous>:23:25)
+       at returnedFn (C:\Users\owner\WebstormProjects\melktech-pds-mobile\node_modules\ejs\lib\ejs.js:615:17)
+       at tryHandleCache (C:\Users\owner\WebstormProjects\melktech-pds-mobile\node_modules\ejs\lib\ejs.js:251:36)
+       at View.exports.renderFile [as engine] (C:\Users\owner\WebstormProjects\melktech-pds-mobile\node_modules\ejs\lib\ejs.js:472:10)
+       at View.render (C:\Users\owner\WebstormProjects\melktech-pds-mobile\node_modules\express\lib\view.js:127:8)
+       at tryRender (C:\Users\owner\WebstormProjects\melktech-pds-mobile\node_modules\express\lib\application.js:640:10)
+       at EventEmitter.render (C:\Users\owner\WebstormProjects\melktech-pds-mobile\node_modules\express\lib\application.js:592:3)
+       at ServerResponse.render (C:\Users\owner\WebstormProjects\melktech-pds-mobile\node_modules\express\lib\response.js:971:7)
+       at C:\Users\owner\WebstormProjects\melktech-pds-mobile\routes\personalInfo.js:18:6
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\melktech-pds-mobile\node_modules\express\lib\router\layer.js:95:5)
+     path: 'C:\\Users\\owner\\WebstormProjects\\melktech-pds-mobile\\views\\personalInfo.html' } }
+[2018-04-25T15:31:01.692] [ERROR] error - { localurl: 'http://localhost:3300',
+  projectUrl: '/',
+  message: 'C:\\Users\\owner\\WebstormProjects\\melktech-pds-mobile\\views\\personalInfo.html:1\n >> 1| <!DOCTYPE html><html lang="en"><head></head><body><%-include("./commonJs.html")%><%-include("./commonCss.html")%><title>个人信息</title><link rel="stylesheet" href="<%=localurl%><%=projectUrl%>stylesheets/page/login.css"><script type="text/babel">$(document).ready(function(){ const shark = new SharkTip({ needShark: true}); const loader = new Loaders({style:"rectangle"});  $(".header").on("vclick",".backIcon" , function (e) { e.preventDefault(); window.location.href = "<%=localurl%><%=projectUrl%>userCenter"; }); });</script><div class="header"><span class="icon-carat-b-onwer backIcon"></span> <span class="title">个人信息</span></div><div class="bodyContent"><div class="personalInfo"><div class="ui-grid-a oneline"><span class="ui-block-a icon iconPhone"></span> <span class="ui-block-b input"><input type="text" name="name" class="personalInfo name" data-role="none" placeholder="请输入姓名" value="<%=name%>" autocomplete="off"></span></div><div class="ui-grid-a oneline"><span class="ui-block-a icon iconPhone"></span> <span class="ui-block-b input"><input type="text" name="identifyType" class="personalInfo identifyType" data-role="none" placeholder="请选择证件类型" autocomplete="off" readonly></span></div><div class="ui-grid-a oneline"><span class="ui-block-a icon iconPhone"></span> <span class="ui-block-b input"><input type="text" name="identifyNumber" class="personalInfo identifyNumber" data-role="none" placeholder="请输入证件号码" value="<%=idCard%>" autocomplete="off"></span></div><div class="ui-grid-a oneline"><span class="ui-block-a icon iconPhone"></span> <span class="ui-block-b input"><input type="text" name="email" class="personalInfo email" data-role="none" placeholder="请输入邮箱" value="<%=eamil%>" autocomplete="off"></span></div><div class="ui-grid-a oneline"><span class="ui-block-a icon iconPhone"></span> <span class="ui-block-b input"><input type="text" name="name" class="personalInfo name" data-role="none" placeholder="请选择性别" autocomplete="off" readonly></span></div></div><div class="loginDiv"><span class="loginButton">登录</span></div></div></body></html>\n\neamil is not defined',
+  error: 
+   { ReferenceError: C:\Users\owner\WebstormProjects\melktech-pds-mobile\views\personalInfo.html:1
+    >> 1| <!DOCTYPE html><html lang="en"><head></head><body><%-include("./commonJs.html")%><%-include("./commonCss.html")%><title>个人信息</title><link rel="stylesheet" href="<%=localurl%><%=projectUrl%>stylesheets/page/login.css"><script type="text/babel">$(document).ready(function(){ const shark = new SharkTip({ needShark: true}); const loader = new Loaders({style:"rectangle"});  $(".header").on("vclick",".backIcon" , function (e) { e.preventDefault(); window.location.href = "<%=localurl%><%=projectUrl%>userCenter"; }); });</script><div class="header"><span class="icon-carat-b-onwer backIcon"></span> <span class="title">个人信息</span></div><div class="bodyContent"><div class="personalInfo"><div class="ui-grid-a oneline"><span class="ui-block-a icon iconPhone"></span> <span class="ui-block-b input"><input type="text" name="name" class="personalInfo name" data-role="none" placeholder="请输入姓名" value="<%=name%>" autocomplete="off"></span></div><div class="ui-grid-a oneline"><span class="ui-block-a icon iconPhone"></span> <span class="ui-block-b input"><input type="text" name="identifyType" class="personalInfo identifyType" data-role="none" placeholder="请选择证件类型" autocomplete="off" readonly></span></div><div class="ui-grid-a oneline"><span class="ui-block-a icon iconPhone"></span> <span class="ui-block-b input"><input type="text" name="identifyNumber" class="personalInfo identifyNumber" data-role="none" placeholder="请输入证件号码" value="<%=idCard%>" autocomplete="off"></span></div><div class="ui-grid-a oneline"><span class="ui-block-a icon iconPhone"></span> <span class="ui-block-b input"><input type="text" name="email" class="personalInfo email" data-role="none" placeholder="请输入邮箱" value="<%=eamil%>" autocomplete="off"></span></div><div class="ui-grid-a oneline"><span class="ui-block-a icon iconPhone"></span> <span class="ui-block-b input"><input type="text" name="name" class="personalInfo name" data-role="none" placeholder="请选择性别" autocomplete="off" readonly></span></div></div><div class="loginDiv"><span class="loginButton">登录</span></div></div></body></html>
+   
+   eamil is not defined
+       at eval (eval at compile (C:\Users\owner\WebstormProjects\melktech-pds-mobile\node_modules\ejs\lib\ejs.js:584:12), <anonymous>:23:25)
+       at returnedFn (C:\Users\owner\WebstormProjects\melktech-pds-mobile\node_modules\ejs\lib\ejs.js:615:17)
+       at tryHandleCache (C:\Users\owner\WebstormProjects\melktech-pds-mobile\node_modules\ejs\lib\ejs.js:251:36)
+       at View.exports.renderFile [as engine] (C:\Users\owner\WebstormProjects\melktech-pds-mobile\node_modules\ejs\lib\ejs.js:472:10)
+       at View.render (C:\Users\owner\WebstormProjects\melktech-pds-mobile\node_modules\express\lib\view.js:127:8)
+       at tryRender (C:\Users\owner\WebstormProjects\melktech-pds-mobile\node_modules\express\lib\application.js:640:10)
+       at EventEmitter.render (C:\Users\owner\WebstormProjects\melktech-pds-mobile\node_modules\express\lib\application.js:592:3)
+       at ServerResponse.render (C:\Users\owner\WebstormProjects\melktech-pds-mobile\node_modules\express\lib\response.js:971:7)
+       at C:\Users\owner\WebstormProjects\melktech-pds-mobile\routes\personalInfo.js:18:6
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\melktech-pds-mobile\node_modules\express\lib\router\layer.js:95:5)
+     path: 'C:\\Users\\owner\\WebstormProjects\\melktech-pds-mobile\\views\\personalInfo.html' } }
+[2018-04-25T15:42:06.155] [INFO] default - requireUrl = /melktech-pds-api/apiLogin/login
+[2018-04-25T15:42:06.155] [INFO] default - requireBody = {"mobile":"18363992860","password":"a12345","entCode":"mk","url":"apiLogin/login"}
+[2018-04-25T15:42:06.170] [INFO] default - id为1650748138a94678b92e60e7d0e31505邀请码为4H9CSG的邀请二维码放入redis中成功
+[2018-04-25T15:42:06.170] [INFO] default - id为1650748138a94678b92e60e7d0e31505邀请码为4H9CSG的头像放入redis中成功
+[2018-04-25T15:42:06.170] [INFO] default - id为1650748138a94678b92e60e7d0e31505邀请码为4H9CSG的手机号放入redis中成功
+[2018-04-25T15:42:06.724] [INFO] default - requireUrl = /melktech-pds-api/apiPlan/planList
+[2018-04-25T15:42:06.724] [INFO] default - requireBody = {"pageNum":"1","createTime":1523515114000,"creator":"-1","enterpriseId":"2a4d962527a14721bf151a9826f762da","gender":1,"id":"1650748138a94678b92e60e7d0e31505","inviteCode":"4H9CSG","mobile":"18363992860","password":"a12345","portrait":"http://dev-test-oss-public.oss-cn-beijing.aliyuncs.com/saleman/1650748138a94678b92e60e7d0e31505/portrait/42350fc1093b4243b1d893534f242216","qrCode":"http://dev-test-oss-public.oss-cn-beijing.aliyuncs.com/null","url":"apiPlan/planList"}
+[2018-04-25T16:48:28.556] [DEBUG] default - ::1未登录
+[2018-04-25T16:48:36.618] [INFO] default - requireUrl = /melktech-pds-api/apiLogin/login
+[2018-04-25T16:48:36.618] [INFO] default - requireBody = {"mobile":"18363992860","password":"a12345","entCode":"mk","url":"apiLogin/login"}
+[2018-04-25T16:48:36.635] [INFO] default - id为1650748138a94678b92e60e7d0e31505邀请码为4H9CSG的邀请二维码放入redis中成功
+[2018-04-25T16:48:36.635] [INFO] default - id为1650748138a94678b92e60e7d0e31505邀请码为4H9CSG的头像放入redis中成功
+[2018-04-25T16:48:36.635] [INFO] default - id为1650748138a94678b92e60e7d0e31505邀请码为4H9CSG的手机号放入redis中成功
+[2018-04-25T16:48:37.178] [INFO] default - requireUrl = /melktech-pds-api/apiPlan/planList
+[2018-04-25T16:48:37.178] [INFO] default - requireBody = {"pageNum":"1","createTime":1523515114000,"creator":"-1","enterpriseId":"2a4d962527a14721bf151a9826f762da","gender":1,"id":"1650748138a94678b92e60e7d0e31505","inviteCode":"4H9CSG","mobile":"18363992860","password":"a12345","portrait":"http://dev-test-oss-public.oss-cn-beijing.aliyuncs.com/saleman/1650748138a94678b92e60e7d0e31505/portrait/42350fc1093b4243b1d893534f242216","qrCode":"http://dev-test-oss-public.oss-cn-beijing.aliyuncs.com/null","url":"apiPlan/planList"}
+[2018-04-25T18:02:29.866] [ERROR] error - { localurl: 'http://localhost:3300',
+  projectUrl: '/',
+  message: 'C:\\Users\\owner\\WebstormProjects\\melktech-pds-mobile\\views\\personalInfo.html:18\n    16| \t\t\tfor(let identifyTypeJsonIdx = 0 ; identifyTypeJsonIdx < identifyTypeArray.length ; identifyTypeJsonIdx++){\n    17| \t\t\t\tlet  identifyTypeJson = genderArray[identifyTypeJsonIdx];\n >> 18| \t\t\t\tif( identifyTypeJson.id== "<%=identifyType%>" ){\n    19| \t\t\t\t\tidentifyTyperPosition = identifyTypeJsonIdx;\n    20| \t\t\t\t}\n    21| \t\t\t}\n\nidentifyType is not defined',
+  error: 
+   { ReferenceError: C:\Users\owner\WebstormProjects\melktech-pds-mobile\views\personalInfo.html:18
+       16| 			for(let identifyTypeJsonIdx = 0 ; identifyTypeJsonIdx < identifyTypeArray.length ; identifyTypeJsonIdx++){
+       17| 				let  identifyTypeJson = genderArray[identifyTypeJsonIdx];
+    >> 18| 				if( identifyTypeJson.id== "<%=identifyType%>" ){
+       19| 					identifyTyperPosition = identifyTypeJsonIdx;
+       20| 				}
+       21| 			}
+   
+   identifyType is not defined
+       at eval (eval at compile (C:\Users\owner\WebstormProjects\melktech-pds-mobile\node_modules\ejs\lib\ejs.js:584:12), <anonymous>:21:25)
+       at returnedFn (C:\Users\owner\WebstormProjects\melktech-pds-mobile\node_modules\ejs\lib\ejs.js:615:17)
+       at tryHandleCache (C:\Users\owner\WebstormProjects\melktech-pds-mobile\node_modules\ejs\lib\ejs.js:251:36)
+       at View.exports.renderFile [as engine] (C:\Users\owner\WebstormProjects\melktech-pds-mobile\node_modules\ejs\lib\ejs.js:472:10)
+       at View.render (C:\Users\owner\WebstormProjects\melktech-pds-mobile\node_modules\express\lib\view.js:127:8)
+       at tryRender (C:\Users\owner\WebstormProjects\melktech-pds-mobile\node_modules\express\lib\application.js:640:10)
+       at EventEmitter.render (C:\Users\owner\WebstormProjects\melktech-pds-mobile\node_modules\express\lib\application.js:592:3)
+       at ServerResponse.render (C:\Users\owner\WebstormProjects\melktech-pds-mobile\node_modules\express\lib\response.js:971:7)
+       at C:\Users\owner\WebstormProjects\melktech-pds-mobile\routes\personalInfo.js:18:6
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\melktech-pds-mobile\node_modules\express\lib\router\layer.js:95:5)
+     path: 'C:\\Users\\owner\\WebstormProjects\\melktech-pds-mobile\\views\\personalInfo.html' } }
+[2018-04-25T18:02:47.493] [DEBUG] default - Some debug messages
+[2018-04-25T18:03:02.183] [DEBUG] default - ::1未登录
+[2018-04-25T18:03:08.946] [INFO] default - requireUrl = /melktech-pds-api/apiLogin/login
+[2018-04-25T18:03:08.946] [INFO] default - requireBody = {"mobile":"18363992860","password":"a12345","entCode":"mk","url":"apiLogin/login"}
+[2018-04-25T18:03:10.226] [INFO] default - id为1650748138a94678b92e60e7d0e31505邀请码为4H9CSG的邀请二维码放入redis中成功
+[2018-04-25T18:03:10.226] [INFO] default - id为1650748138a94678b92e60e7d0e31505邀请码为4H9CSG的头像放入redis中成功
+[2018-04-25T18:03:10.227] [INFO] default - id为1650748138a94678b92e60e7d0e31505邀请码为4H9CSG的手机号放入redis中成功
+[2018-04-25T18:03:10.816] [INFO] default - requireUrl = /melktech-pds-api/apiPlan/planList
+[2018-04-25T18:03:10.817] [INFO] default - requireBody = {"pageNum":"1","createTime":1523515114000,"creator":"-1","enterpriseId":"2a4d962527a14721bf151a9826f762da","gender":1,"id":"1650748138a94678b92e60e7d0e31505","inviteCode":"4H9CSG","mobile":"18363992860","password":"a12345","portrait":"http://dev-test-oss-public.oss-cn-beijing.aliyuncs.com/saleman/1650748138a94678b92e60e7d0e31505/portrait/42350fc1093b4243b1d893534f242216","qrCode":"http://dev-test-oss-public.oss-cn-beijing.aliyuncs.com/null","url":"apiPlan/planList"}
+[2018-04-25T18:04:42.119] [INFO] default - requireUrl = /melktech-pds-api/apiOther/updatePersonalInfo
+[2018-04-25T18:04:42.120] [INFO] default - requireBody = {"name":"","identifyType":"","identifyNumber":"","email":"","gender":1,"createTime":1523515114000,"creator":"-1","enterpriseId":"2a4d962527a14721bf151a9826f762da","id":"1650748138a94678b92e60e7d0e31505","inviteCode":"4H9CSG","mobile":"18363992860","password":"a12345","portrait":"http://dev-test-oss-public.oss-cn-beijing.aliyuncs.com/saleman/1650748138a94678b92e60e7d0e31505/portrait/42350fc1093b4243b1d893534f242216","qrCode":"http://dev-test-oss-public.oss-cn-beijing.aliyuncs.com/null","url":"apiOther/updatePersonalInfo"}
+[2018-04-25T18:05:41.817] [INFO] default - requireUrl = /melktech-pds-api/apiOther/updatePersonalInfo
+[2018-04-25T18:05:41.817] [INFO] default - requireBody = {"name":"","identifyType":"","identifyNumber":"","email":"","gender":1,"createTime":1523515114000,"creator":"-1","enterpriseId":"2a4d962527a14721bf151a9826f762da","id":"1650748138a94678b92e60e7d0e31505","inviteCode":"4H9CSG","mobile":"18363992860","password":"a12345","portrait":"http://dev-test-oss-public.oss-cn-beijing.aliyuncs.com/saleman/1650748138a94678b92e60e7d0e31505/portrait/42350fc1093b4243b1d893534f242216","qrCode":"http://dev-test-oss-public.oss-cn-beijing.aliyuncs.com/null","url":"apiOther/updatePersonalInfo"}
+[2018-04-25T18:05:52.093] [INFO] default - requireUrl = /melktech-pds-api/apiOther/updatePersonalInfo
+[2018-04-25T18:05:52.094] [INFO] default - requireBody = {"name":"","identifyType":"","identifyNumber":"","email":"","gender":1,"createTime":1523515114000,"creator":"-1","enterpriseId":"2a4d962527a14721bf151a9826f762da","id":"1650748138a94678b92e60e7d0e31505","inviteCode":"4H9CSG","mobile":"18363992860","password":"a12345","portrait":"http://dev-test-oss-public.oss-cn-beijing.aliyuncs.com/saleman/1650748138a94678b92e60e7d0e31505/portrait/42350fc1093b4243b1d893534f242216","qrCode":"http://dev-test-oss-public.oss-cn-beijing.aliyuncs.com/null","passport":"","url":"apiOther/updatePersonalInfo"}
+[2018-04-25T18:07:07.127] [INFO] default - requireUrl = /melktech-pds-api/apiOther/updatePersonalInfo
+[2018-04-25T18:07:07.127] [INFO] default - requireBody = {"name":"","identifyType":"","identifyNumber":"","email":"","gender":1,"createTime":1523515114000,"creator":"-1","enterpriseId":"2a4d962527a14721bf151a9826f762da","id":"1650748138a94678b92e60e7d0e31505","inviteCode":"4H9CSG","mobile":"18363992860","password":"a12345","portrait":"http://dev-test-oss-public.oss-cn-beijing.aliyuncs.com/saleman/1650748138a94678b92e60e7d0e31505/portrait/42350fc1093b4243b1d893534f242216","qrCode":"http://dev-test-oss-public.oss-cn-beijing.aliyuncs.com/null","passport":"","url":"apiOther/updatePersonalInfo"}
+[2018-04-25T18:08:30.220] [INFO] default - requireUrl = /melktech-pds-api/apiOther/updatePersonalInfo
+[2018-04-25T18:08:30.221] [INFO] default - requireBody = {"name":"","identifyType":"","identifyNumber":"","email":"","gender":1,"createTime":1523515114000,"creator":"-1","enterpriseId":"2a4d962527a14721bf151a9826f762da","id":"1650748138a94678b92e60e7d0e31505","inviteCode":"4H9CSG","mobile":"18363992860","password":"a12345","portrait":"http://dev-test-oss-public.oss-cn-beijing.aliyuncs.com/saleman/1650748138a94678b92e60e7d0e31505/portrait/42350fc1093b4243b1d893534f242216","qrCode":"http://dev-test-oss-public.oss-cn-beijing.aliyuncs.com/null","passport":"","url":"apiOther/updatePersonalInfo"}
+[2018-04-25T18:08:37.782] [INFO] default - requireUrl = /melktech-pds-api/apiOther/updatePersonalInfo
+[2018-04-25T18:08:37.783] [INFO] default - requireBody = {"name":"","identifyType":"","identifyNumber":"","email":"","gender":1,"createTime":1523515114000,"creator":"-1","enterpriseId":"2a4d962527a14721bf151a9826f762da","id":"1650748138a94678b92e60e7d0e31505","inviteCode":"4H9CSG","mobile":"18363992860","password":"a12345","portrait":"http://dev-test-oss-public.oss-cn-beijing.aliyuncs.com/saleman/1650748138a94678b92e60e7d0e31505/portrait/42350fc1093b4243b1d893534f242216","qrCode":"http://dev-test-oss-public.oss-cn-beijing.aliyuncs.com/null","passport":"","url":"apiOther/updatePersonalInfo"}
+[2018-04-25T18:10:05.486] [INFO] default - requireUrl = /melktech-pds-api/apiOther/updatePersonalInfo
+[2018-04-25T18:10:05.486] [INFO] default - requireBody = {"name":"","identifyType":"","identifyNumber":"","email":"","gender":1,"createTime":1523515114000,"creator":"-1","enterpriseId":"2a4d962527a14721bf151a9826f762da","id":"1650748138a94678b92e60e7d0e31505","inviteCode":"4H9CSG","mobile":"18363992860","password":"a12345","portrait":"http://dev-test-oss-public.oss-cn-beijing.aliyuncs.com/saleman/1650748138a94678b92e60e7d0e31505/portrait/42350fc1093b4243b1d893534f242216","qrCode":"http://dev-test-oss-public.oss-cn-beijing.aliyuncs.com/null","passport":"","url":"apiOther/updatePersonalInfo"}
+[2018-04-25T18:11:38.260] [INFO] default - requireUrl = /melktech-pds-api/apiOther/updatePersonalInfo
+[2018-04-25T18:11:38.261] [INFO] default - requireBody = {"name":"","identifyType":"","identifyNumber":"","email":"","gender":1,"createTime":1523515114000,"creator":"-1","enterpriseId":"2a4d962527a14721bf151a9826f762da","id":"1650748138a94678b92e60e7d0e31505","inviteCode":"4H9CSG","mobile":"18363992860","password":"a12345","portrait":"http://dev-test-oss-public.oss-cn-beijing.aliyuncs.com/saleman/1650748138a94678b92e60e7d0e31505/portrait/42350fc1093b4243b1d893534f242216","qrCode":"http://dev-test-oss-public.oss-cn-beijing.aliyuncs.com/null","passport":"","url":"apiOther/updatePersonalInfo"}
+[2018-04-25T18:15:38.428] [INFO] default - requireUrl = /melktech-pds-api/apiOther/updatePersonalInfo
+[2018-04-25T18:15:38.428] [INFO] default - requireBody = {"name":"","identifyType":"","identifyNumber":"","email":"","gender":1,"createTime":1523515114000,"creator":"-1","enterpriseId":"2a4d962527a14721bf151a9826f762da","id":"1650748138a94678b92e60e7d0e31505","inviteCode":"4H9CSG","mobile":"18363992860","password":"a12345","portrait":"http://dev-test-oss-public.oss-cn-beijing.aliyuncs.com/saleman/1650748138a94678b92e60e7d0e31505/portrait/42350fc1093b4243b1d893534f242216","qrCode":"http://dev-test-oss-public.oss-cn-beijing.aliyuncs.com/null","passport":"","url":"apiOther/updatePersonalInfo"}
+[2018-04-25T18:16:07.458] [DEBUG] default - Some debug messages
+[2018-04-25T18:16:07.721] [DEBUG] default - ::1未登录
+[2018-04-25T18:16:14.684] [INFO] default - requireUrl = /melktech-pds-api/apiLogin/login
+[2018-04-25T18:16:14.684] [INFO] default - requireBody = {"mobile":"18363992860","password":"a12345","entCode":"mk","url":"apiLogin/login"}
+[2018-04-25T18:16:15.098] [INFO] default - id为1650748138a94678b92e60e7d0e31505邀请码为4H9CSG的邀请二维码放入redis中成功
+[2018-04-25T18:16:15.099] [INFO] default - id为1650748138a94678b92e60e7d0e31505邀请码为4H9CSG的头像放入redis中成功
+[2018-04-25T18:16:15.099] [INFO] default - id为1650748138a94678b92e60e7d0e31505邀请码为4H9CSG的手机号放入redis中成功
+[2018-04-25T18:16:15.624] [INFO] default - requireUrl = /melktech-pds-api/apiPlan/planList
+[2018-04-25T18:16:15.624] [INFO] default - requireBody = {"pageNum":"1","createTime":1523515114000,"creator":"-1","enterpriseId":"2a4d962527a14721bf151a9826f762da","gender":1,"id":"1650748138a94678b92e60e7d0e31505","inviteCode":"4H9CSG","mobile":"18363992860","password":"a12345","portrait":"http://dev-test-oss-public.oss-cn-beijing.aliyuncs.com/saleman/1650748138a94678b92e60e7d0e31505/portrait/42350fc1093b4243b1d893534f242216","qrCode":"http://dev-test-oss-public.oss-cn-beijing.aliyuncs.com/null","url":"apiPlan/planList"}
+[2018-04-25T18:16:25.731] [INFO] default - requireUrl = /melktech-pds-api/apiOther/updatePersonalInfo
+[2018-04-25T18:16:25.731] [INFO] default - requireBody = {"name":"asd","identifyType":"身份证","identifyNumber":"123412asd","email":"50123@qq.com","gender":"男","id":"1650748138a94678b92e60e7d0e31505","url":"apiOther/updatePersonalInfo"}
+[2018-04-25T18:17:34.770] [DEBUG] default - Some debug messages
+[2018-04-25T18:17:34.948] [DEBUG] default - ::1未登录
+[2018-04-25T18:17:43.428] [INFO] default - requireUrl = /melktech-pds-api/apiLogin/login
+[2018-04-25T18:17:43.428] [INFO] default - requireBody = {"mobile":"18363992860","password":"a12345","entCode":"mk","url":"apiLogin/login"}
+[2018-04-25T18:17:43.448] [INFO] default - id为1650748138a94678b92e60e7d0e31505邀请码为4H9CSG的邀请二维码放入redis中成功
+[2018-04-25T18:17:43.449] [INFO] default - id为1650748138a94678b92e60e7d0e31505邀请码为4H9CSG的头像放入redis中成功
+[2018-04-25T18:17:43.449] [INFO] default - id为1650748138a94678b92e60e7d0e31505邀请码为4H9CSG的手机号放入redis中成功
+[2018-04-25T18:17:43.981] [INFO] default - requireUrl = /melktech-pds-api/apiPlan/planList
+[2018-04-25T18:17:43.981] [INFO] default - requireBody = {"pageNum":"1","createTime":1523515114000,"creator":"-1","email":"50123@qq.com","enterpriseId":"2a4d962527a14721bf151a9826f762da","gender":0,"id":"1650748138a94678b92e60e7d0e31505","idCard":"123412asd","identifyNumber":"123412asd","identifyType":"身份证","inviteCode":"4H9CSG","mobile":"18363992860","name":"asd","password":"a12345","portrait":"http://dev-test-oss-public.oss-cn-beijing.aliyuncs.com/saleman/1650748138a94678b92e60e7d0e31505/portrait/42350fc1093b4243b1d893534f242216","qrCode":"http://dev-test-oss-public.oss-cn-beijing.aliyuncs.com/null","url":"apiPlan/planList"}
+[2018-04-25T18:20:02.651] [DEBUG] default - Some debug messages
+[2018-04-25T18:20:03.844] [DEBUG] default - ::1未登录
+[2018-04-25T18:20:08.874] [INFO] default - requireUrl = /melktech-pds-api/apiLogin/login
+[2018-04-25T18:20:08.875] [INFO] default - requireBody = {"mobile":"18363992860","password":"a12345","entCode":"mk","url":"apiLogin/login"}
+[2018-04-25T18:20:08.896] [INFO] default - id为1650748138a94678b92e60e7d0e31505邀请码为4H9CSG的邀请二维码放入redis中成功
+[2018-04-25T18:20:08.896] [INFO] default - id为1650748138a94678b92e60e7d0e31505邀请码为4H9CSG的头像放入redis中成功
+[2018-04-25T18:20:08.897] [INFO] default - id为1650748138a94678b92e60e7d0e31505邀请码为4H9CSG的手机号放入redis中成功
+[2018-04-25T18:20:09.425] [INFO] default - requireUrl = /melktech-pds-api/apiPlan/planList
+[2018-04-25T18:20:09.425] [INFO] default - requireBody = {"pageNum":"1","createTime":1523515114000,"creator":"-1","email":"50123@qq.com","enterpriseId":"2a4d962527a14721bf151a9826f762da","gender":0,"id":"1650748138a94678b92e60e7d0e31505","idCard":"123412asd","identifyNumber":"123412asd","identifyType":"身份证","inviteCode":"4H9CSG","mobile":"18363992860","name":"asd","password":"a12345","portrait":"http://dev-test-oss-public.oss-cn-beijing.aliyuncs.com/saleman/1650748138a94678b92e60e7d0e31505/portrait/42350fc1093b4243b1d893534f242216","qrCode":"http://dev-test-oss-public.oss-cn-beijing.aliyuncs.com/null","url":"apiPlan/planList"}
+[2018-04-25T18:24:09.506] [DEBUG] default - Some debug messages
+[2018-04-25T18:24:09.712] [DEBUG] default - ::1未登录
+[2018-04-25T18:24:14.540] [INFO] default - requireUrl = /melktech-pds-api/apiLogin/login
+[2018-04-25T18:24:14.540] [INFO] default - requireBody = {"mobile":"18363992860","password":"a12345","entCode":"mk","url":"apiLogin/login"}
+[2018-04-25T18:24:14.561] [INFO] default - id为1650748138a94678b92e60e7d0e31505邀请码为4H9CSG的邀请二维码放入redis中成功
+[2018-04-25T18:24:14.561] [INFO] default - id为1650748138a94678b92e60e7d0e31505邀请码为4H9CSG的头像放入redis中成功
+[2018-04-25T18:24:14.561] [INFO] default - id为1650748138a94678b92e60e7d0e31505邀请码为4H9CSG的手机号放入redis中成功
+[2018-04-25T18:24:15.146] [INFO] default - requireUrl = /melktech-pds-api/apiPlan/planList
+[2018-04-25T18:24:15.146] [INFO] default - requireBody = {"pageNum":"1","createTime":1523515114000,"creator":"-1","email":"50123@qq.com","enterpriseId":"2a4d962527a14721bf151a9826f762da","gender":0,"id":"1650748138a94678b92e60e7d0e31505","idCard":"123412asd","identifyNumber":"123412asd","identifyType":"身份证","inviteCode":"4H9CSG","mobile":"18363992860","name":"asd","password":"a12345","portrait":"http://dev-test-oss-public.oss-cn-beijing.aliyuncs.com/saleman/1650748138a94678b92e60e7d0e31505/portrait/42350fc1093b4243b1d893534f242216","qrCode":"http://dev-test-oss-public.oss-cn-beijing.aliyuncs.com/null","url":"apiPlan/planList"}
+[2018-04-25T18:24:52.362] [DEBUG] default - Some debug messages
+[2018-04-25T18:24:52.651] [DEBUG] default - ::1未登录
+[2018-04-25T18:24:57.499] [INFO] default - requireUrl = /melktech-pds-api/apiLogin/login
+[2018-04-25T18:24:57.499] [INFO] default - requireBody = {"mobile":"18363992860","password":"a12345","entCode":"mk","url":"apiLogin/login"}
+[2018-04-25T18:24:57.517] [INFO] default - id为1650748138a94678b92e60e7d0e31505邀请码为4H9CSG的邀请二维码放入redis中成功
+[2018-04-25T18:24:57.517] [INFO] default - id为1650748138a94678b92e60e7d0e31505邀请码为4H9CSG的头像放入redis中成功
+[2018-04-25T18:24:57.518] [INFO] default - id为1650748138a94678b92e60e7d0e31505邀请码为4H9CSG的手机号放入redis中成功
+[2018-04-25T18:24:58.048] [INFO] default - requireUrl = /melktech-pds-api/apiPlan/planList
+[2018-04-25T18:24:58.048] [INFO] default - requireBody = {"pageNum":"1","createTime":1523515114000,"creator":"-1","email":"50123@qq.com","enterpriseId":"2a4d962527a14721bf151a9826f762da","gender":0,"id":"1650748138a94678b92e60e7d0e31505","idCard":"123412asd","identifyNumber":"123412asd","identifyType":"身份证","inviteCode":"4H9CSG","mobile":"18363992860","name":"asd","password":"a12345","portrait":"http://dev-test-oss-public.oss-cn-beijing.aliyuncs.com/saleman/1650748138a94678b92e60e7d0e31505/portrait/42350fc1093b4243b1d893534f242216","qrCode":"http://dev-test-oss-public.oss-cn-beijing.aliyuncs.com/null","url":"apiPlan/planList"}
+[2018-04-25T18:26:19.502] [DEBUG] default - Some debug messages
+[2018-04-25T18:26:20.447] [DEBUG] default - ::1未登录
+[2018-04-25T18:26:27.163] [INFO] default - requireUrl = /melktech-pds-api/apiLogin/login
+[2018-04-25T18:26:27.163] [INFO] default - requireBody = {"mobile":"18363992860","password":"a12345","entCode":"mk","url":"apiLogin/login"}
+[2018-04-25T18:26:27.186] [INFO] default - id为1650748138a94678b92e60e7d0e31505邀请码为4H9CSG的邀请二维码放入redis中成功
+[2018-04-25T18:26:27.186] [INFO] default - id为1650748138a94678b92e60e7d0e31505邀请码为4H9CSG的头像放入redis中成功
+[2018-04-25T18:26:27.187] [INFO] default - id为1650748138a94678b92e60e7d0e31505邀请码为4H9CSG的手机号放入redis中成功
+[2018-04-25T18:26:27.721] [INFO] default - requireUrl = /melktech-pds-api/apiPlan/planList
+[2018-04-25T18:26:27.721] [INFO] default - requireBody = {"pageNum":"1","createTime":1523515114000,"creator":"-1","email":"50123@qq.com","enterpriseId":"2a4d962527a14721bf151a9826f762da","gender":0,"id":"1650748138a94678b92e60e7d0e31505","idCard":"123412asd","identifyNumber":"123412asd","identifyType":"身份证","inviteCode":"4H9CSG","mobile":"18363992860","name":"asd","password":"a12345","portrait":"http://dev-test-oss-public.oss-cn-beijing.aliyuncs.com/saleman/1650748138a94678b92e60e7d0e31505/portrait/42350fc1093b4243b1d893534f242216","qrCode":"http://dev-test-oss-public.oss-cn-beijing.aliyuncs.com/null","url":"apiPlan/planList"}
+[2018-04-25T18:42:03.159] [DEBUG] default - Some debug messages
+[2018-04-25T18:43:00.888] [DEBUG] default - Some debug messages
+[2018-04-25T18:43:14.977] [DEBUG] default - ::1未登录
+[2018-04-25T18:43:21.334] [INFO] default - requireUrl = /melktech-pds-api/apiLogin/login
+[2018-04-25T18:43:21.335] [INFO] default - requireBody = {"mobile":"18363992860","password":"a12345","entCode":"mk","url":"apiLogin/login"}
+[2018-04-25T18:43:22.341] [ERROR] error - problem with request: connect ECONNREFUSED 127.0.0.1:8180
+[2018-04-25T18:43:50.426] [INFO] default - requireUrl = /melktech-pds-api/apiLogin/login
+[2018-04-25T18:43:50.426] [INFO] default - requireBody = {"mobile":"18363992860","password":"a12345","entCode":"mk","url":"apiLogin/login"}
+[2018-04-25T18:43:51.895] [INFO] default - id为1650748138a94678b92e60e7d0e31505邀请码为4H9CSG的邀请二维码放入redis中成功
+[2018-04-25T18:43:51.895] [INFO] default - id为1650748138a94678b92e60e7d0e31505邀请码为4H9CSG的头像放入redis中成功
+[2018-04-25T18:43:51.896] [INFO] default - id为1650748138a94678b92e60e7d0e31505邀请码为4H9CSG的手机号放入redis中成功
+[2018-04-25T18:43:52.471] [INFO] default - requireUrl = /melktech-pds-api/apiPlan/planList
+[2018-04-25T18:43:52.472] [INFO] default - requireBody = {"pageNum":"1","createTime":1523515114000,"creator":"-1","email":"50123@qq.com","enterpriseId":"2a4d962527a14721bf151a9826f762da","gender":0,"id":"1650748138a94678b92e60e7d0e31505","idCard":"123412asd","identifyNumber":"123412asd","identifyType":"身份证","inviteCode":"4H9CSG","mobile":"18363992860","name":"asd","password":"a12345","portrait":"http://dev-test-oss-public.oss-cn-beijing.aliyuncs.com/saleman/1650748138a94678b92e60e7d0e31505/portrait/42350fc1093b4243b1d893534f242216","qrCode":"http://dev-test-oss-public.oss-cn-beijing.aliyuncs.com/null","url":"apiPlan/planList"}
+[2018-04-25T18:44:16.215] [ERROR] error - { localurl: 'http://localhost:3300',
+  projectUrl: '/',
+  message: 'C:\\Users\\owner\\WebstormProjects\\melktech-pds-mobile\\views\\bankCard.html:17\n    15| \t\t\tfor(let identifyTypeJsonIdx = 0 ; identifyTypeJsonIdx < identifyTypeArray.length ; identifyTypeJsonIdx++){\n    16| \t\t\t\tlet  identifyTypeJson = identifyTypeArray[identifyTypeJsonIdx];\n >> 17| \t\t\t\tif( identifyTypeJson.id== "<%=identifyType%>" ){\n    18| \t\t\t\t\tidentifyTyperPosition = identifyTypeJsonIdx;\n    19| \t\t\t\t}\n    20| \t\t\t}\n\nidentifyType is not defined',
+  error: 
+   { ReferenceError: C:\Users\owner\WebstormProjects\melktech-pds-mobile\views\bankCard.html:17
+       15| 			for(let identifyTypeJsonIdx = 0 ; identifyTypeJsonIdx < identifyTypeArray.length ; identifyTypeJsonIdx++){
+       16| 				let  identifyTypeJson = identifyTypeArray[identifyTypeJsonIdx];
+    >> 17| 				if( identifyTypeJson.id== "<%=identifyType%>" ){
+       18| 					identifyTyperPosition = identifyTypeJsonIdx;
+       19| 				}
+       20| 			}
+   
+   identifyType is not defined
+       at eval (eval at compile (C:\Users\owner\WebstormProjects\melktech-pds-mobile\node_modules\ejs\lib\ejs.js:584:12), <anonymous>:21:25)
+       at returnedFn (C:\Users\owner\WebstormProjects\melktech-pds-mobile\node_modules\ejs\lib\ejs.js:615:17)
+       at tryHandleCache (C:\Users\owner\WebstormProjects\melktech-pds-mobile\node_modules\ejs\lib\ejs.js:251:36)
+       at View.exports.renderFile [as engine] (C:\Users\owner\WebstormProjects\melktech-pds-mobile\node_modules\ejs\lib\ejs.js:472:10)
+       at View.render (C:\Users\owner\WebstormProjects\melktech-pds-mobile\node_modules\express\lib\view.js:127:8)
+       at tryRender (C:\Users\owner\WebstormProjects\melktech-pds-mobile\node_modules\express\lib\application.js:640:10)
+       at EventEmitter.render (C:\Users\owner\WebstormProjects\melktech-pds-mobile\node_modules\express\lib\application.js:592:3)
+       at ServerResponse.render (C:\Users\owner\WebstormProjects\melktech-pds-mobile\node_modules\express\lib\response.js:971:7)
+       at C:\Users\owner\WebstormProjects\melktech-pds-mobile\routes\bankCard.js:14:6
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\melktech-pds-mobile\node_modules\express\lib\router\layer.js:95:5)
+     path: 'C:\\Users\\owner\\WebstormProjects\\melktech-pds-mobile\\views\\bankCard.html' } }
+[2018-04-25T18:45:11.407] [ERROR] error - { localurl: 'http://localhost:3300',
+  projectUrl: '/',
+  message: 'C:\\Users\\owner\\WebstormProjects\\melktech-pds-mobile\\views\\bankCard.html:17\n    15| \t\t\tfor(let identifyTypeJsonIdx = 0 ; identifyTypeJsonIdx < identifyTypeArray.length ; identifyTypeJsonIdx++){\n    16| \t\t\t\tlet  identifyTypeJson = identifyTypeArray[identifyTypeJsonIdx];\n >> 17| \t\t\t\tif( identifyTypeJson.id== "<%=identifyType%>" ){\n    18| \t\t\t\t\tidentifyTyperPosition = identifyTypeJsonIdx;\n    19| \t\t\t\t}\n    20| \t\t\t}\n\nidentifyType is not defined',
+  error: 
+   { ReferenceError: C:\Users\owner\WebstormProjects\melktech-pds-mobile\views\bankCard.html:17
+       15| 			for(let identifyTypeJsonIdx = 0 ; identifyTypeJsonIdx < identifyTypeArray.length ; identifyTypeJsonIdx++){
+       16| 				let  identifyTypeJson = identifyTypeArray[identifyTypeJsonIdx];
+    >> 17| 				if( identifyTypeJson.id== "<%=identifyType%>" ){
+       18| 					identifyTyperPosition = identifyTypeJsonIdx;
+       19| 				}
+       20| 			}
+   
+   identifyType is not defined
+       at eval (eval at compile (C:\Users\owner\WebstormProjects\melktech-pds-mobile\node_modules\ejs\lib\ejs.js:584:12), <anonymous>:21:25)
+       at returnedFn (C:\Users\owner\WebstormProjects\melktech-pds-mobile\node_modules\ejs\lib\ejs.js:615:17)
+       at tryHandleCache (C:\Users\owner\WebstormProjects\melktech-pds-mobile\node_modules\ejs\lib\ejs.js:251:36)
+       at View.exports.renderFile [as engine] (C:\Users\owner\WebstormProjects\melktech-pds-mobile\node_modules\ejs\lib\ejs.js:472:10)
+       at View.render (C:\Users\owner\WebstormProjects\melktech-pds-mobile\node_modules\express\lib\view.js:127:8)
+       at tryRender (C:\Users\owner\WebstormProjects\melktech-pds-mobile\node_modules\express\lib\application.js:640:10)
+       at EventEmitter.render (C:\Users\owner\WebstormProjects\melktech-pds-mobile\node_modules\express\lib\application.js:592:3)
+       at ServerResponse.render (C:\Users\owner\WebstormProjects\melktech-pds-mobile\node_modules\express\lib\response.js:971:7)
+       at C:\Users\owner\WebstormProjects\melktech-pds-mobile\routes\bankCard.js:14:6
+       at Layer.handle [as handle_request] (C:\Users\owner\WebstormProjects\melktech-pds-mobile\node_modules\express\lib\router\layer.js:95:5)
+     path: 'C:\\Users\\owner\\WebstormProjects\\melktech-pds-mobile\\views\\bankCard.html' } }

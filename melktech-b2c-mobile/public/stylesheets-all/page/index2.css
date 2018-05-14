@@ -1,0 +1,290 @@
+.bodyContent{
+    margin-bottom: 0.848rem;
+}
+.weight{
+    font-weight: 600;
+}
+.shareIcon:before{
+    font-family: fullIconAll;
+    content: "\f1e0";
+    font-size: 0.4rem;
+}
+#screen img{
+    height: 100%;
+    width: 100%;
+}
+
+.bodyContent .littleHeader{
+    background-color: #FFFFFF;
+}
+.bodyContent .littleHeader .banner{
+    width: 100%;
+}
+.bodyContent .littleHeader .detail{
+    padding:0.2rem;
+}
+.bodyContent .littleHeader .detail .detailTitle{
+    font-size: 0.28rem;
+    padding-bottom: 0.1rem;
+}
+.bodyContent .littleHeader .detail .detailPrice{
+    font-size: 0.28rem;
+    color: #FF9000;
+    padding-bottom: 0.1rem;
+}
+.bodyContent .littleHeader .detail .priceTip{
+    font-size: 0.24rem;
+    padding-left: 0.1rem;
+}
+.bodyContent .littleHeader .detail .detailInfo{
+    font-size: 0.24rem;
+}
+.bodyContent .littleHeader .detail .detailInfo span:first-child{
+    padding-right: 0.1rem;
+}
+
+
+#selectButton , #selectModeButton , #selectSaleAreaButton{
+    margin-top: 0.2rem;
+    font-size: 0.24rem;
+    border-top: 0.02rem solid #E8E8E8;
+    background-color: #FFFFFF;
+}
+#selectButton .selectLine, #selectModeButton .selectLine , #selectSaleAreaButton .selectLine {
+    box-sizing: border-box;
+    height: 0.856rem;
+    line-height: 0.856rem;
+    border-bottom: 0.02rem solid #E8E8E8;
+}
+#selectButton .selectLine .ui-block-a, #selectModeButton .selectLine .ui-block-a,  #selectSaleAreaButton .selectLine .ui-block-a{
+    box-sizing: border-box;
+    padding-left: 0.1rem;
+    width: 40%;
+}
+#selectButton .ui-grid-a .ui-block-b, #selectModeButton .ui-grid-a .ui-block-b , #selectSaleAreaButton .ui-grid-a .ui-block-b{
+    width: 60%;
+    text-align: right;
+    padding-right: 0.2rem;
+    color: #FF9000;
+}
+
+#selectButton .ui-grid-b .ui-block-b, #selectModeButton .ui-grid-b .ui-block-b, #selectSaleAreaButton .ui-grid-b .ui-block-b{
+    width: 50%;
+    text-align: right;
+    color: #FF9000;
+}
+#selectButton .ui-grid-b .ui-block-c, #selectModeButton .ui-grid-b .ui-block-c, #selectSaleAreaButton .ui-grid-b .ui-block-c{
+    width: 10%;
+    text-align: center;
+}
+#selectButton .ui-grid-b .ui-block-c:before , #selectModeButton .ui-grid-b .ui-block-c:before , #selectSaleAreaButton .ui-grid-b .ui-block-c:before{
+    font-family: fullIconAll;
+    content: "\f105";
+    color: #878787;
+}
+
+.bodyContent .jobs{
+    margin-top: 0.2rem;
+    font-size: 0.24rem;
+    background-color: #FFFFFF;
+    box-sizing: border-box;
+}
+.bodyContent .jobs .jobsTitle{
+    height: 0.856rem;
+    line-height: 0.856rem;
+    font-size: 0.28rem;
+    padding-left: 0.1rem;
+}
+.bodyContent .jobs .jobsTipTitle{
+    height: 0.856rem;
+    line-height: 0.856rem;
+}
+.bodyContent .jobs .jobsTipTitle {
+    white-space: nowrap;
+}
+.bodyContent .jobs .secondPlan .ui-block-a{
+    height:0.6rem;
+    line-height: 0.6rem;
+    display: inline-block
+}
+ .bodyContent .jobs .jobsTipTitle .ui-block-a,.bodyContent .jobs .jobsTipTitle .ui-block-b,
+.bodyContent .jobs .secondPlan .ui-block-a ,.bodyContent .jobs .secondPlan .ui-block-b{
+    width: 45%;
+}
+.bodyContent .jobs .jobsTipTitle .ui-block-b{
+    text-align: right;
+}
+.bodyContent .jobs .jobsTipTitle .ui-block-c,.bodyContent .jobs .secondPlan .ui-block-c{
+    text-align: center;
+    width: 10%;
+}
+.bodyContent .jobs .jobsTipTitle .downArrow:before,.bodyContent .jobs .secondPlan .downArrow:before{
+    font-family: fullIconAll;
+    content: "\f107";
+    color: #878787;
+}
+.bodyContent .jobs .jobsTipTitle .upArrow:before,.bodyContent .jobs .secondPlan .upArrow:before{
+    font-family: fullIconAll;
+    content: "\f106";
+    color: #878787;
+}
+.bodyContent .jobs .jobsDetail {
+    padding-right: 0.1rem;
+    font-size: 0.24rem;
+    color: #878787;
+    display: none;
+}
+.bodyContent .jobs .secondPlan{
+    margin-left: 0.1rem;
+    margin-right: 0.2rem;
+    height: 0.6rem;
+    line-height: 0.6rem;
+    border-bottom: 0.02rem dashed #E8E8E8;
+}
+.jobsType .secondPlan:last-child{
+    border-bottom : none;
+}
+.bodyContent .jobs .secondPlan .ui-block-b{
+    text-align: right;
+}
+
+.bodyContent .jobs .jobsTitle:first-child{
+    border-bottom: 0.02rem solid #E8E8E8;
+}
+.bodyContent .jobs .jobsType{
+    margin-left: 0.1rem;
+    border-bottom: 0.02rem dashed #E8E8E8;
+}
+.bodyContent .jobs .jobsType:last-child{
+    border-bottom: none;
+}
+
+.bodyContent .adv{
+    margin-top: 0.2rem;
+    font-size: 0.28rem;
+    background-color: #FFFFFF;
+    box-sizing: border-box;
+}
+.bodyContent .adv .advTitle{
+    height: 0.856rem;
+    line-height: 0.856rem;
+    padding-left: 0.1rem;
+}
+.bodyContent .adv .prd_1,.bodyContent .adv .prd_2,.bodyContent .adv .prd_3,
+.bodyContent .adv .prd_4,.bodyContent .adv .prd_5,.bodyContent .adv .prd_6,
+.bodyContent .adv .prd_7{
+    width: 100%;
+}
+.bodyContent .adv>img{
+    width : 100%;
+}
+
+.bodyContent .introduce{
+    margin-top: 0.2rem;
+    font-size: 0.24rem;
+    background-color: #FFFFFF;
+    box-sizing: border-box;
+}
+.bodyContent .introduce .introduceLine{
+    height: 0.856rem;
+    line-height: 0.856rem;
+}
+.bodyContent .introduce .introduceLine .ui-block-a ,.bodyContent .introduce .introduceLine  .ui-block-b{
+    width: 45%;
+}
+.bodyContent .introduce .introduceLine .ui-block-a{
+    box-sizing: border-box;
+    padding-left: 0.2rem;
+}
+.bodyContent .introduce .introduceLine .ui-block-b{
+    text-align: right;
+    color: #878787;
+}
+.bodyContent .introduce .introduceLine .ui-block-c{
+    width: 10%;
+    text-align: center;
+}
+.bodyContent .introduce .introduceLine .ui-block-c:before{
+    font-family: fullIconAll;
+    content: "\f105";
+    color: #878787;
+}
+
+.bodyContent .question{
+    margin-top: 0.2rem;
+    font-size: 0.24rem;
+    background-color: #FFFFFF;
+    box-sizing: border-box;
+    padding-bottom: 0.4rem;
+}
+.bodyContent .question .questionTitle{
+    font-size: 0.28rem;
+    height: 0.856rem;
+    line-height: 0.856rem;
+    padding-left: 0.1rem;
+    border-bottom: 0.02rem solid #E8E8E8;
+}
+
+.bodyContent .question h3{
+    font-size: 0.24rem;
+}
+.bodyContent .question h3 , .bodyContent .question p{
+    padding: 0 0.4rem;
+}
+.bodyContent .question h3:before{
+    content: "Q";
+    position: absolute;
+    margin-left: -0.3rem;
+    font-size: 0.2rem;
+    text-align: center;
+    width: 0.3rem;
+    height: 0.3rem;
+    line-height: 0.3rem;
+    background-color: #FF9000;
+    border-radius: 25px;
+    color: #FFFFFF;
+}
+.question .questionMore{
+    text-align: center;
+    font-size: 0.28rem;
+}
+.question .questionMore:after{
+    content: "\f107";
+    font-family: fullIconAll;
+    color: #878787;
+    font-size: 0.28rem;
+}
+.question .questionLineMore{
+    display: none;
+}
+
+.footer span{
+    box-sizing: border-box;
+    border: 0.02rem solid #E8E8E8;
+}
+
+.footer .ui-block-a{
+    color: #FF9000;
+    background-color: #FFFFFF;
+    border-right: none;
+}
+.footer .ui-block-b{
+    color: #FFFFFF;
+    background-color: #FF9000;
+}
+
+#screen{
+    opacity: 0.8;
+}
+.shareIcon{
+    color: #ffffff;
+}
+.tel{
+    color: #ffffff !important;
+    text-decoration: none;
+}
+.tel:before{
+    font-family: fullIconAll;
+    content: "\f095";
+    font-size: 0.4rem;
+}

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>常用信息-银行</title>
+    <%-include("../commonJs.html")%>
+    <%-include("../commonCss.html")%>
+    <link rel="stylesheet" href="stylesheets/page/CommonInformation/CheckBankInformation.css">
+    <script type="text/babel">
+        $(document).ready(function(){
+            //初始化账号类型
+            /*************** start  ***************/
+            var accountType = ['银行卡', '银行存折'];
+            var MobileSelect1 = new MobileSelect({
+                trigger: '#accountType',
+                title: '账号类型',
+                wheels: [
+                    {data: accountType}
+                ],
+                position: [0] //初始化定位 打开时默认选中的哪个  如果不填默认为0
+            });
+            $('#accountType').html(accountType[0]);
+            /*************** end  ***************/
+
+            //初始化所属银行
+            /*************** start  ***************/
+            var bankList = ["上海浦东发展银行","中信银行","中国光大银行","中国农业银行","中国工商银行","中国建设银行","中国民生银行","中国邮政储蓄银行","中国银行","交通银行","兴业银行","华夏银行","广发银行","恒丰银行","招商银行","浙商银行","深圳发展银行","渤海银行"];/*eval( {{& bankList}} ).bankList;*/
+            var mobileSelect2 = new MobileSelect({
+                trigger: '#accountName',
+                title: '所属银行',
+                wheels: [
+                    {data: bankList}
+                ],
+                position: [0] //初始化定位 打开时默认选中的哪个  如果不填默认为0
+            });
+            $('#accountName').html(bankList[0]);
+            /*************** end  ***************/
+
+            //取消
+            /*************** start  ***************/
+            $('.header').on('click','.icon-carat-b-onwer',function (e) {
+                let thisJquery = this;
+                let formAction;
+                formAction = $(thisJquery).attr("form-action");
+                var form1 = document.createElement("form");
+                form1.id = "VirtualForm";
+                form1.name = "VirtualForm";
+                document.body.appendChild(form1);
+                $("#VirtualForm").css("display", "none");
+                form1.method = "POST";
+                form1.action = formAction;
+                form1.submit();
+            });
+            /*************** end  ***************/
+
+            //初始化
+            /*************** start  ***************/
+            if( "<%=userBank.bankAccount%>" !="")
+                $('#name').val("<%=userBank.bankAccount%>");
+            if("<%=userBank.accountType%>" != "")
+                $('#accountType').html("<%=userBank.accountType%>");
+            if("<%=userBank.accountImg%>"!="")
+                $('#accountImg').html("<%=userBank.accountImg%>");
+            if("<%=userBank.bankCard%>"!="")
+                $('#accountNum').val("<%=userBank.bankCard%>");
+            if("<%=userBank.bankName%>"!="")
+                $('#accountName').html("<%=userBank.bankName%>");
+            /*************** end  ***************/
+
+            //保存
+            /*************** start  ***************/
+            $('.header').on('click','.header-save',function (e) {
+                let name = formatConversion.SaferHTML( $.trim( $('#name').val()) ) ;
+                let accountType = $('#accountType').html();
+                let accountImg = $('#accountImg').html();
+                let accountNum = formatConversion.SaferHTML( $.trim( $('#accountNum').val()) ) ;
+                let accountName = $('#accountName').html();
+                let isDefault = $('#isDefault').val();
+                let nameCheck = /^[\u4e00-\u9fa5]{2,15}$/ ;
+                let numCheck = /^\d{16,21}$/;
+                let hasError = false; // 是否有错误
+                if(!(nameCheck.test(name) )){
+                    $('#nameError').html("中文姓名不合法");
+                    $('#nameError').show();
+                    hasError = true;
+                }
+                if(accountType == "" || accountType=="请选择账号类型" ){
+                    $('#accountTypeError').html("账号类型不能为空");
+                    $('#accountTypeError').show();
+                    hasError = true;
+                }
+                if(accountImg == "" || accountImg == "未上传1"){ //未做上传
+                    $('#accountImgError').html("账号影像未上传");
+                    $('#accountImgError').show();
+                    hasError = true;
+                }
+                if(!(numCheck.test(accountNum))){
+                    $('#accountNumError').html("银行账号不合法");
+                    $('#accountNumError').show();
+                    hasError = true;
+                }
+                if(accountName == "" || accountName =="请选择所属银行"){
+                    $('#accountNameError').html("所属银行不能为空");
+                    $('#accountNameError').show();
+                    hasError = true;
+                }
+                if(hasError)
+                    return false;
+                else{
+                    $("body").append('<div class="ui-popup-screen ui-overlay-a in popupDialog-screen" id="screen"></div>');
+                    var formData = new FormData();
+                    formData.append("id","<%=userBank.id%>");
+                    formData.append("bankAccount",name);
+                    formData.append("accountType",accountType);
+                    formData.append("accountImg",accountImg);
+                    formData.append("bankCard",accountNum);
+                    formData.append("bankName",accountName);
+                    formData.append("isDefault",isDefault);
+
+                    $.ajax({
+                        url: "saveUserBankInfo",
+                        type: 'POST',
+                        data: formData,
+                        async: true,
+                        cache: false,
+                        dataType:'json',
+                        contentType: false,
+                        processData: false,
+                        success:  (data) => {
+                           $(".header .header-cancel").trigger("click");
+                        },
+                        error:  (data) => {
+                            alert("error");
+                        }
+                    });
+                }
+
+            });
+            /*************** end  ***************/
+
+            //点击错误
+            /*************** start  ***************/
+            $('.inlineRowInput').on('click','.BankInputError',function (e) {
+               $(e.target).hide();
+            });
+            /*************** end  ***************/
+
+            //删除确定弹框声明
+            /*************** start  ***************/
+            var delPopup = popup.init({
+                popup:$('#Confirmdel'),
+                cancel : $('#cancel'),
+                submit : $('#submit'),
+                submitCallback : del
+            });
+            /*************** end  ***************/
+
+            //删除成功弹框声明
+            /*************** start  ***************/
+            var delSuccess = popup.init({
+                popup:$('#SuccessConfirm'),
+                submit : $('#SuccessConfirmButton'),
+                submitCallback : function () {
+                    $(".header .icon-carat-b-onwer").trigger("click");
+                }
+            });
+            /*************** end  ***************/
+
+            //删除
+            /*************** start  ***************/
+            $('.BankDel span').on('click',function (e) {
+                popup.show(delPopup);
+            });
+            /*************** end  ***************/
+
+            //删除操作执行
+            /*************** start  ***************/
+            function  del() {
+                let formData = new FormData();
+                formData.append("id","<%=userBank.id%>");
+                $.ajax({
+                    url: "DelBankInformation",
+                    type: 'POST',
+                    data: formData,
+                    async: true,
+                    cache: false,
+                    dataType:'json',
+                    contentType: false,
+                    processData: false,
+                    success:  (data) => {
+                      if(data.ret == "0" ){
+                          popup.show(delSuccess)
+                      }else{
+                          $('#SuccessConfirm div').html("删除有误，请稍后重试");
+                          popup.show(delSuccess);
+                      }
+                    },
+                    error:  (data) => {
+                        $('#SuccessConfirm div').html("删除有误，请稍后重试");
+                        popup.show(delSuccess)
+                    }
+                });
+            }
+            /*************** end  ***************/
+
+        });
+    </script>
+</head>
+<body>
+<div class="header">
+    <span class="icon-carat-b-onwer backIcon" form-action="BankInformation"></span>
+    <span class="title">查看银行账号</span>
+    <!--<span class="header-save">保存</span>-->
+</div>
+<div class="bodyContent">
+    <div class="cue1">
+        <span class="cue">请绑定银行卡</span>
+    </div>
+    <div class="lable ui-grid-a ui-grid-a">
+        <span class="lable ui-block-a">中文姓名</span><input type="text" class="inputText ui-block-b" id="name" name="name" data-role="none" placeholder="确保与银行账号姓名一致" >
+        <div class="BankInputError" id="nameError"></div><!--错误-->
+    </div>
+    <div class="inlineRowInput  ui-grid-a">
+        <span class="lable ui-block-a">账号类型</span><div id="accountType" class="choice ui-block-b">请选择账号类型</div>
+        <div class="BankInputError" id="accountTypeError"></div><!--错误-->
+    </div>
+    <div id="BankAccountImg" class="inlineRowInput ui-grid-a">
+        <span class="lable ui-block-a">账号影像</span><div id="accountImg" class="choice ui-block-b"><% if(userBank.isExistCardImage){%>已上传<% }else{%>未上传<%}%></div>
+        <div class="BankInputError" id="accountImgError"></div><!--错误-->
+    </div>
+    <div class="cue1">
+        <span class="cue">银行卡可通过影像识别内容。</span><span class="icon-question-onwer"></span>
+    </div>
+    <div class="inlineRowInput ui-grid-a">
+        <span class="lable ui-block-a">银行账号</span><input type="text" id="accountNum" class="inputText ui-block-b" name="accountNum" data-role="none" placeholder="确保与银行账号保持一致">
+        <div class="BankInputError" id="accountNumError"></div><!--错误-->
+    </div>
+    <div id="BankName" class="inlineRowInput ui-grid-a">
+        <span class="lable ui-block-a">所属银行</span><div id="accountName" class="choice ui-block-b">请选择所属银行</div>
+        <div class="BankInputError" id="accountNameError"></div><!--错误-->
+    </div>
+    <div id="SetDefault" class="inlineRowInput ">
+        <span class="lable">设置为默认</span> <select name="isDefault" id="isDefault" data-role="slider" data-mini="true">
+        <option value="0">Off</option>
+        <option value="1"  <% if(userBank.isDefault==true){ %> selected <%}%>>On</option>
+    </select>
+    </div>
+    <div class="BankDel" >
+        <span>删除</span>
+
+    </div>
+    <div id="Confirmdel">
+        <div>你确定要删除么</div>
+        <span id="cancel" style="background: red">取消</span>    <span id="submit" style="background: #17BFB5">确定</span>
+    </div>
+    <div id="SuccessConfirm">
+        <div>删除成功</div>
+        <span id="SuccessConfirmButton" style="background: #17BFB5">确定</span>
+    </div>
+</div>
+
+
+
+</body>
+</html>

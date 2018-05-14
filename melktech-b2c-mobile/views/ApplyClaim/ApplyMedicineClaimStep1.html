@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>申请赔案</title>
+    <%-include("../commonJs.html")%>
+    <%-include("../commonCss.html")%>
+    <link rel="stylesheet" href="stylesheets/page/ApplyClaim/ApplyMedicineClaimStep1.css">
+    <link rel="stylesheet" href="stylesheets/page/ApplyClaim/ApplyMedicineClaimBankList.css">
+    <link rel="stylesheet" href="stylesheets/page/ApplyClaim/ApplyMedicineClaimPolicyList.css">
+    <script type="text/babel" >
+        $(document).ready( ()=>{
+            //出险时间初始化
+            var MobileSelect1 = new MobileSelect({
+                trigger: '#applyDate',
+                title: '出险时间',
+                wheels: [
+                    {data: calDate.init({
+                        startDate:new Date().getFullYear() - 1,
+                        endDate:new Date().getFullYear(),
+                        status : 99
+                    })}
+                ],
+                position: [0][0][0], //初始化定位 打开时默认选中的哪个  如果不填默认为0
+                callback:function(indexArr, data){
+                    $('#applyDate').attr("data-value",data[0].id+"-"+data[1].id+"-"+data[2].id);
+                    $('#applyDate').html(data[0].value+data[1].value+data[2].value); //返回选中的json数据
+                },
+                transitionEnd :function(indexArr, data){
+                    $('#applyDate').attr("data-value",data[0].id+"-"+data[1].id+"-"+data[2].id);
+                    $('#applyDate').html(data[0].value+data[1].value+data[2].value); //返回选中的json数据
+                }
+            });
+            $('#applyDate').html("请选择");
+
+            <% if(policy && policy.policyPersonId != null){ %>
+
+            $('#policy').html("<%=policy.policyNo%>");
+            $('#policy').attr("data-value" , "<%= policy.policyPersonId%>");
+            let entClaimTypeRuleListStr ="[";
+            <% policy.entClaimTypeRuleList.forEach(function(item){ %>
+                entClaimTypeRuleListStr +=`{"id":"<%=item.id%>","value":"<%=item.value%>"},`;
+            <% }) %>
+            entClaimTypeRuleListStr = eval( entClaimTypeRuleListStr.substr(0,entClaimTypeRuleListStr.length -1) +"]" );
+            //初始化出险类型
+            /*************** start  ***************/
+            var MobileSelect1 = new MobileSelect({
+            trigger: '#accidentType',
+            title: '出险类型',
+            wheels: [
+                {data: entClaimTypeRuleListStr }
+            ],
+            position: [0],
+            callback:function(indexArr, data){
+                $('#accidentType').attr("data-value",data[0].id);
+                $('#accidentType').html(data[0].value); //返回选中的json数据
+            },
+            transitionEnd :function(indexArr, data){
+                $('#accidentType').attr("data-value", data[0].id);
+                $('#accidentType').html(data[0].value); //返回选中的json数据
+            }
+            });
+            $('#accidentType').html("请选择");
+           <% }%>
+
+            //动画速度
+            var speed = 500;
+            //点击下一步
+            /*************** start  ***************/
+            $('.bodyContent').on("click",".nextStep",function(e){
+                var thisJquery = this ;
+                let userBankId = $('#bankCard').attr("data-value");
+                let policyPersonId  = $('#policy').attr("data-value");
+                let claimType = $('#accidentType').attr("data-value");
+                let applyDateStr = $('#applyDate').attr("data-value");
+                let hasError = false;
+                if(!userBankId) {
+                    $('#bankCardError').html("请选择银行卡号");
+                    $('#bankCardError').show();
+                    hasError = true;
+                }
+                if(!policyPersonId){
+                    $('#policyError').html("请选择理赔方案");
+                    $('#policyError').show();
+                    hasError = true;
+                }
+                if(!claimType) {
+                    $('#accidentTypeError').html("请选择出险类型");
+                    $('#accidentTypeError').show();
+                    hasError = true;
+                }
+                if(!applyDateStr) {
+                    $('#applyDateError').html("请选择出险时间");
+                    $('#applyDateError').show();
+                    hasError = true;
+                }
+                if(hasError){
+                    return false;
+                }
+                var formData = new FormData();
+                formData.append("userBankId",userBankId);
+                formData.append("policyPersonId",policyPersonId);
+                formData.append("claimType",claimType);
+                formData.append("applyDateStr",applyDateStr);
+                $("body").append(`<div  id="screen"><div id="screenLoading"></div></div>`);
+                $.ajax({
+                    url: $(thisJquery).attr("form-action"),
+                    type: 'POST',
+                    data: formData,
+                    async: true,
+                    cache: false,
+                    dataType: 'json',
+                    contentType: false,
+                    processData: false,
+                    success: (data) => {
+                        console.log(data);
+                        $(".bodyContent").after(` <div class="infoText"><span>`+data.msg+`</span></div>`);
+                        if(data.ret == "0"){
+                            $(".infoText").show();
+                            setTimeout(function(){
+                                $(".infoText").remove();
+                                window.location.href =  "ApplyMedicineClaimStep2?entClaimApplyId="+data.entClaimApplyId;
+                            },2000);
+                        }else{
+                            $(".infoText").show();
+                            setTimeout(function(){
+                                $(".infoText").remove();
+                            },2000);
+                        }
+
+                    },complete: function (XMLHttpRequest, textStatus) {
+                        $('#screen').remove();
+                    },
+                    error: (data) => {
+                        $(".bodyContent").after(` <div class="infoText"><span>`+data.msg+`</span></div>`);
+                        $(".infoText").show();
+                        setTimeout(function(){
+                            $(".infoText").remove();
+                        },2000);
+                    }
+                });
+            });
+            /*************** end  ***************/
+
+            //银行展示
+            /*************** start  ***************/
+            $('.info').on("vclick","#bankCard",() => {
+                $('.ownerPage').animate({left:'-100%'},speed);
+                $('.bankPage').animate({left:'0'},speed);
+            });
+            /*************** end  ***************/
+
+            //点击银行卡选中事件
+            /*************** start  ***************/
+            $('.bankPage').on('vclick','.bankList',function () {
+                let thisJquery = this;
+                $('#bankCard').html(/*"["+$(thisJquery).find(".bankNameInfo").html()+"]"+*/$(thisJquery).find(".bankCardInfo").html());
+                $('#bankCard').attr("data-value",$(thisJquery).attr('open-id'));
+                $('#bankId').val($(thisJquery).attr('open-id'));
+                $('.ownerPage').animate({left:'0'},speed);
+                $('.bankPage').animate({left:'100%'},speed);
+            });
+            /*************** end  ***************/
+
+            //点击银行卡返回事件
+            /*************** start  ***************/
+            $('.bankPage').on('vclick','.icon-carat-b-onwer',function () {
+                $('.ownerPage').animate({left:'0'},speed);
+                $('.bankPage').animate({left:'100%'},speed);
+            });
+            /*************** end  ***************/
+
+            //保单展示
+            /*************** start  ***************/
+            $('.info').on("vclick","#policy",() => {
+                $('.ownerPage').animate({left:'-100%'},speed);
+                $('.policyPage').animate({left:'0'},speed);
+            });
+            /*************** end  ***************/
+
+            //保单点击选中选中
+            /*************** start  ***************/
+            $('.policyPage').on("vclick",".policyList",function() {
+                let thisJquery = this;
+                let policyNo = $(thisJquery).find(".policyNoText").html() ;
+                $('#policy').html(policyNo);
+                $('#policy').attr("data-value" , $(thisJquery).attr("open-id"));
+                $('.ownerPage').animate({left:'0'},speed);
+                $('.policyPage').animate({left:'100%'},speed);
+
+                let jqueryaccidentType = $('#accidentType');
+                jqueryaccidentType.html("请选择");
+
+                var formData = new FormData();
+                formData.append("policyNo" , policyNo);
+                $.ajax({
+                    url: "getMedicineClaimTypeListByPolicyNo",
+                    type: 'POST',
+                    data: formData,
+                    async: true,
+                    cache: false,
+                    dataType: 'json',
+                    contentType: false,
+                    processData: false,
+                    success: (data) => {
+                        console.log(data);
+                        if(data.ret == "0" ){
+                            let entClaimTypeRuleList = data.entClaimTypeRuleList;
+                            //初始化出险类型
+                            /*************** start  ***************/
+                            var MobileSelect1 = new MobileSelect({
+                                trigger: '#accidentType',
+                                title: '出险类型',
+                                wheels: [
+                                    {data: entClaimTypeRuleList}
+                                ],
+                                position: [0], //初始化定位 打开时默认选中的哪个  如果不填默认为0
+                                callback:function(indexArr, data){
+                                    $('#accidentType').attr("data-value",data[0].id);
+                                    $('#accidentType').html(data[0].value); //返回选中的json数据
+                                },
+                                transitionEnd :function(indexArr, data){
+                                    $('#accidentType').attr("data-value", data[0].id);
+                                    $('#accidentType').html(data[0].value); //返回选中的json数据
+                                }
+                            });
+                            $('#accidentType').html("请选择");
+                            /*************** end  ***************/
+                        }
+                    },complete: function(XMLHttpRequest, textStatus) {
+                        jqueryaccidentType.attr("id","accidentType");
+                    },error: (data) => {
+                        $(".bodyContent").after(` <div class="infoText"><span>`+data.msg+`</span></div>`);
+                        $(".infoText").show();
+                        setTimeout(function(){
+                            $(".infoText").remove();
+                        },2000);
+                    }
+                });
+
+            });
+            /*************** end  ***************/
+
+            //点击保单返回事件
+            /*************** start  ***************/
+            $('.policyPage').on('vclick','.icon-carat-b-onwer',function () {
+                $('.ownerPage').animate({left:'0'},speed);
+                $('.policyPage').animate({left:'100%'},speed);
+            });
+            /*************** end  ***************/
+
+            //bank
+            //上拉加载逻辑
+            /*************** start  ***************/
+            var bankIndex = 1;
+            function bankReadd() {
+                var formData = new FormData();
+                formData.append("pageNum", bankIndex);
+                $.ajax({
+                    url:  "getUserBankList",
+                    type: 'POST',
+                    data: formData,
+                    async: true,
+                    cache: false,
+                    dataType: 'json',
+                    contentType: false,
+                    processData: false,
+                    success: (data) => {
+                        if (data.ret == "0") {
+                            $.each(data.userBankList, (idx, obj) => {
+                                if(obj.isDefault ){
+                                    $('.BankOuterScroller .scroll').append(`
+                                        <div class="bankList" open-id='${obj.id}'>
+                                            <span class="line">
+                                                <span class="name">${obj.bankAccount}</span> <span class="default">默认</span>
+                                            </span>
+                                            <span class="line">
+                                                <span class="bankName">银行</span> <span class="bankNameInfo">${obj.bankName}</span>
+                                            </span>
+                                            <span class="line">
+                                                <span class="bankType">类型</span> <span class="bankTypeInfo">${obj.accountType}</span>
+                                            </span>
+                                            <span class="line">
+                                                <span class="bankCard">账号</span> <span class="bankCardInfo">${obj.bankCard}</span>
+                                            </span>
+                                        </div>
+                                        `);
+                                }else{
+                                    $('.BankOuterScroller .scroll').append(`
+                                        <div class="bankList"  open-id='${obj.id}'>
+                                            <span class="line">
+                                                <span class="name">${obj.bankAccount}</span>
+                                            </span>
+                                            <span class="line">
+                                                <span class="bankName">银行</span> <span class="bankNameInfo">${obj.bankName}</span>
+                                            </span>
+                                            <span class="line">
+                                                <span class="bankType">类型</span> <span class="bankTypeInfo">${obj.accountType}</span>
+                                            </span>
+                                            <span class="line">
+                                                <span class="bankCard">账号</span> <span class="bankCardInfo">${obj.bankCard}</span>
+                                            </span>
+                                        </div>
+                                        `);
+                                }
+
+                            });
+                            $('.BankOuterScroller').css('height',$('.BankOuterScroller .scroll').css('height'));
+                            if (data.userBankList.length < 10) {
+                                console.log(data.userBankList);
+                                updownloading.upFinish();
+                            }
+                            bankIndex++;
+                        } else {
+                            updownloading.upFinish();
+                        }
+
+                    },
+                    error: (data) => {
+                        //alert("error");
+                    }
+                });
+            }
+            bankReadd();
+            updownloading.init({
+                outerScroller: '.BankOuterScroller',
+                downLoadingStatus:false,
+                upLoadingStatus:true,
+                upFunction:bankReadd
+            });
+            /*************** end  ***************/
+
+            //policy
+            //上拉加载逻辑
+            /*************** start  ***************/
+            var policyIndex = 1;
+            function policyReadd() {
+                var formData = new FormData();
+                formData.append("pageNum", policyIndex);
+                formData.append("policyStatus", 1);
+                $.ajax({
+                    url:"getPolicyList",
+                    type: 'POST',
+                    data: formData,
+                    async: true,
+                    cache: false,
+                    dataType: 'json',
+                    contentType: false,
+                    processData: false,
+                    success: (data) => {
+                        if (data.ret == "0") {
+                            $.each(data.policyList, (idx, obj) => {
+                                $('.safegurandOuterScroller .scroll').append(`
+                                    <div class="policyList" open-id='${obj.policyPersonId}'>
+                                        <span class="planName">${obj.planName}</span>
+                                        <br/>
+                                        <span class="policyPersonNameInfo">${obj.policyPersonName}</span>
+                                        <br/>
+                                        <span class="policyDateInfo">${obj.policyStartDate} 至 ${obj.policyEndDate}</span>
+                                        <br/>
+                                        <span class="policyNoInfo">电子保单号：<span class="policyNoText">${obj.policyNo}</span></span>
+                                        <span class="protecting"></span>
+                                    </div>
+                                `);
+                            });
+                            $('.safegurandOuterScroller').css('height', $('.safegurandOuterScroller .scroll').css('height'));
+                            if (data.policyList.length < 10) {
+                                console.log(data.policyList);
+                                updownloading.upFinish();
+                            }
+                            policyIndex++;
+                        } else {
+                            updownloading.upFinish();
+                        }
+
+                    },
+                    error: (data) => {
+                        //alert("error");
+                    }
+                });
+            }
+            policyReadd();
+            updownloading.init({
+                outerScroller: '.safegurandOuterScroller',
+                downLoadingStatus: false,
+                upLoadingStatus: true,
+                upFunction: policyReadd
+            });
+            /*************** end  ***************/
+
+            //点击错误
+            /*************** start  ***************/
+            $('.inlineRowInput').on('vclick','.applyClaimInputError',function () {
+                $(this).hide("fast");
+            });
+            /*************** end  ***************/
+        });
+    </script>
+</head>
+<body>
+<div class = "ownerPage">
+    <div class="header">
+        <span class="title">人身险理赔申请</span>
+    </div>
+    <div class="bodyContent">
+        <div class="schedule">
+            <div class="img"></div>
+            <span>填写信息</span>
+            <span>上传影像</span>
+            <span>完成</span>
+        </div>
+        <div class="info">
+            <div class="inlineRowInput ui-grid-a" >
+                <span class="lable ui-block-a">申 请 人</span><div id="name" class="choice ui-block-b"><%=user.name%></div>
+            </div>
+            <div class="inlineRowInput ui-grid-a">
+                <span class="lable ui-block-a">手 机 号</span><div id="mobile" class="choice ui-block-b"><%=user.mobile%></div>
+            </div>
+            <div class="inlineRowInput bankInfo ui-grid-a">
+                <span class="lable ui-block-a">银行卡号</span><div id="bankCard" class="choice ui-block-b" data-value="<%=userBank.userBankId%>"><%=userBank.bankCard%></div>
+                <div class="applyClaimInputError" id="bankCardError"></div><!--错误-->
+            </div>
+            <div class="inlineRowInput ui-grid-a">
+                <span class="lable ui-block-a">出险时间</span><div id="applyDate" class="choice ui-block-b">请选择</div>
+                <div class="applyClaimInputError" id="applyDateError"></div><!--错误-->
+            </div>
+            <div class="inlineRowInput policyInfo ui-grid-a">
+                <span class="lable ui-block-a">理赔方案</span><div id="policy" class="choice ui-block-b">请选择</div>
+                <div class="applyClaimInputError" id="policyError"></div><!--错误-->
+            </div>
+            <div class="inlineRowInput ui-grid-a">
+                <span class="lable ui-block-a">出险类型</span><div id="accidentType" class="choice ui-block-b">请选择</div>
+                <div class="applyClaimInputError" id="accidentTypeError"></div><!--错误-->
+            </div>
+        </div>
+        <div class="nextStep" form-action="saveMedicineClaimStep1">
+            <span>下一步</span>
+        </div>
+    </div>
+</div>
+<div class="bankPage">
+    <%-include("ApplyMedicineClaimBankList.html")%>
+</div>
+<div class="policyPage">
+    <%-include("ApplyMedicineClaimPolicyList.html")%>
+</div>
+</body>
+</html>

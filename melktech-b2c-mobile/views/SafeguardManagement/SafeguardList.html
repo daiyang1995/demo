@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>保障管理列表</title>
+    <%-include("../commonJs.html")%>
+    <%-include("../commonCss.html")%>
+    <link rel="stylesheet" href="stylesheets/page/SafeguardManagement/SafeguardList.css">
+    <script type="text/babel">
+        $(document).ready(function () {
+            //回退
+            /*************** start  ***************/
+            $('.header').on('click', '.icon-carat-b-onwer', function () {
+                var thisJquery = this;
+                var action =  $(thisJquery).attr("form-action");
+                window.location.href = action;
+            });
+            /*************** end  ***************/
+            //历史
+            /*************** start  ***************/
+            $('.SearchHistory ').on('click', '.outerHistory', function () {
+                let formAction;
+                formAction =  $(this).attr("form-action");
+                var form1 = document.createElement("form");
+                form1.id = "VirtualForm";
+                form1.name = "VirtualForm";
+                document.body.appendChild(form1);
+                form1.method = "POST";
+                form1.action = formAction;
+                form1.submit();
+            });
+            /*************** end  ***************/
+            //详情
+            /*************** start  ***************/
+            $('.bodyContent ').on('click', '.policyList', function () {
+                let thisJquery = this;
+                let openId = $(thisJquery).attr("open-id");
+                let formAction;
+                formAction =  "detailInfoList";
+                var form1 = document.createElement("form");
+                form1.id = "VirtualForm";
+                form1.name = "VirtualForm";
+                document.body.appendChild(form1);
+                var input1 = document.createElement("input");
+                input1.type = "text";
+                input1.name = "policyPersonId";
+                input1.value = openId;
+                form1.appendChild(input1);
+                form1.method = "POST";
+                form1.action = formAction;
+                form1.submit();
+            });
+            /*************** end  ***************/
+
+            //上拉加载逻辑
+            /*************** start  ***************/
+            var index = 1;
+            function readd() {
+                var formData = new FormData();
+                formData.append("pageNum", index);
+                formData.append("policyStatus", 1);
+                $.ajax({
+                    url:  "getPolicyList",
+                    type: 'POST',
+                    data: formData,
+                    async: true,
+                    cache: false,
+                    dataType: 'json',
+                    contentType: false,
+                    processData: false,
+                    success: (data) => {
+                        if (data.ret == "0") {
+                            $.each(data.policyList, (idx, obj) => {
+                                $('.safegurandOuterScroller .scroll').append(`
+                                    <div class="policyList" open-id='${obj.policyPersonId}'>
+                                        <span class="planName">${obj.planName}</span>
+                                        <br/>
+                                        <span class="policyPersonNameInfo">${obj.policyPersonName}</span>
+                                        <br/>
+                                        <span class="policyDateInfo">${obj.policyStartDate} 至 ${obj.policyEndDate}</span>
+                                        <br/>
+                                        <span class="policyNoInfo">电子保单号：${obj.policyNo}</span>
+                                        <span class="protecting rentouxiang"></span>
+                                    </div>
+                                `);
+                            });
+                            $('.safegurandOuterScroller').css('height', $('.safegurandOuterScroller .scroll').css('height'));
+                            if (data.policyList.length < 10) {
+                                console.log(data.policyList);
+                                updownloading.upFinish();
+                            }
+                            index++;
+                        } else {
+                            updownloading.upFinish();
+                        }
+
+                    },
+                    error: (data) => {
+                        //alert("error");
+                    }
+                });
+            }
+            readd();
+            updownloading.init({
+                outerScroller: '.safegurandOuterScroller',
+                downLoadingStatus: false,
+                upLoadingStatus: true,
+                upFunction: readd
+            });
+            /*************** end  ***************/
+        });
+    </script>
+</head>
+<body>
+<div class="header">
+    <span class="icon-carat-b-onwer backIcon" form-action="index"></span>
+    <span class="title">保障管理</span>
+</div>
+<div class="bodyContent">
+    <div class="safegurandOuterScroller">
+        <div class = 'scroll'>
+        </div>
+    </div>
+    <div class="SearchHistory">
+        <span class="outerHistory" form-action="historicalSafeguardList">
+            <span class="inner"  >
+                查看历史保单
+            </span>
+        </span>
+    </div>
+</div>
+</body>
+</html>

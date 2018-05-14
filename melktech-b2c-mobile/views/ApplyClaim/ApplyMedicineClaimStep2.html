@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>申请赔案</title>
+    <%-include("../commonJs.html")%>
+    <%-include("../commonCss.html")%>
+    <link rel="stylesheet" href="stylesheets/page/ApplyClaim/ApplyMedicineClaimStep2.css">
+    <script type="text/babel" >
+        $(document).ready(function () {
+            let thisJquery ;
+            //删除确定弹框声明
+            /*************** start  ***************/
+            var delPopup = popup.init({
+                popup:$('#Confirmdel'),
+                cancel : $('#cancel'),
+                submit : $('#submit'),
+                submitCallback : del
+            });
+            /*************** end  ***************/
+
+            //删除成功弹框声明
+            /*************** start  ***************/
+            var delSuccess = popup.init({
+                popup:$('#SuccessConfirm'),
+                submit : $('#SuccessConfirmButton'),
+                submitCallback : function () {
+                    popup.clearAll();
+                }
+            });
+            /*************** end  ***************/
+
+            //图片弹框声明
+            /*************** start  ***************/
+            var imgShow = popup.init({
+                popup:$('#showImg'),
+                submit : $('#SuccessConfirmButton'),
+                submitCallback : function () {
+                    popup.clearAll();
+                }
+            });
+            /*************** end  ***************/
+
+            //添加文件 按钮
+            // *************** start  ***************
+            $('.z_file').on("click",function(){
+                $('#file').trigger("click");
+            });
+            // *************** end  ***************
+
+            //文件上传
+            // *************** start  ***************
+            $('#uploadform').on('change','#file',function(){
+                if($("#file")[0].files.length == 0)
+                    return false;
+                $("body").append(`<div  id="screen"><div id="screenLoading"></div></div>`);
+                var formData = new FormData($('#uploadform')[0]);
+                $.ajax({
+                    url: "uploadMedicineClaimFile",
+                    type: 'POST',
+                    data: formData,
+                    async: true,
+                    cache: false,
+                    dataType: 'json',
+                    contentType: false,
+                    processData: false,
+                    success: (data) => {
+                        console.log(data);
+                        if(data.ret == "0" ){
+                            $.each(data.imgBase64, (idx, obj) => {
+                            $('.z_photo').prepend(`
+                                <div class = "z_addImg">
+                                    <img src="${obj}" />
+                                    <textarea class="base64File" >${obj}</textarea>
+                                </div>
+                            `)
+                            });
+                        }
+                        $(".bodyContent").after(` <div class="infoText"><span>`+data.msg+`</span></div>`);
+                    },complete: function(data) {
+                        $('#screen').remove();
+                        $(".infoText").show();
+                        setTimeout(function(){
+                            $(".infoText").remove();
+                        },2000);
+                    },
+                    error: (data) => {
+                        $(".bodyContent").after(` <div class="infoText"><span>`+data.msg+`</span></div>`);
+                    }
+                });
+
+            });
+            // *************** end  ***************
+
+            //文件删除
+            $('.z_photo').on("vclick", ".z_addImg" , function () {
+                thisJquery  = this ;
+                popup.show(delPopup);
+            });
+
+            function del() {
+                $(thisJquery).remove();
+                thisJquery = "";
+                $('#SuccessConfirm').find(".msg").html("删除成功");
+                popup.show(delSuccess);
+            }
+
+            $('.bodyContent').on("vclick" , ".nextStep", function(){
+                let thisJquery  = this ;
+                let entClaimApplyId = $(thisJquery).attr("data-value");
+                var formData = new FormData();
+                formData.append("entClaimApplyId",entClaimApplyId);
+                let nophoto = true;
+                $('.base64File').each(function (idx , obj) {
+                    nophoto = false;
+                    formData.append("base64Array["+idx+"]",$(obj).val());
+                });
+                if(nophoto){
+                    $('#SuccessConfirm').find(".msg").html("图片未上传");
+                    popup.show(delSuccess);
+                    return false;
+                }
+                $("body").append(`<div  id="screen"><div id="screenLoading"></div></div>`);
+                $.ajax({
+                    url: "saveMedicineClaimStep2",
+                    type: 'POST',
+                    data: formData,
+                    async: true,
+                    cache: false,
+                    dataType: 'json',
+                    contentType: false,
+                    processData: false,
+                    success: (data) => {
+                        console.log(data);
+                        $(".bodyContent").after(` <div class="infoText"><span>`+data.msg+`</span></div>`);
+                        if(data.ret == "0"){
+                            $(".infoText").show();
+                            setTimeout(function(){
+                                $(".infoText").remove();
+                                window.location.href = "ApplyMedicineClaimStep3?entClaimApplyFlowNo=" + data.entClaimApplyFlowNo;
+                            },2000);
+                        }else{
+                            $(".infoText").show();
+                            setTimeout(function(){
+                                $(".infoText").remove();
+                            },2000);
+                        }
+
+                    },complete: function (XMLHttpRequest, textStatus) {
+                        $('#screen').remove();
+                    },
+                    error: (data) => {
+                        $(".bodyContent").after(` <div class="infoText"><span>`+data.msg+`</span></div>`);
+                        $(".infoText").show();
+                        setTimeout(function(){
+                            $(".infoText").remove();
+                        },2000);
+                    }
+                });
+            });
+
+            $('.prompt').on("vclick",".promptMessage",function(){
+                let thisJquery = this;
+                $('#showImg .img').attr("src" , $(thisJquery).attr("data-value"));
+                popup.show(imgShow);
+            });
+
+        })
+
+    </script>
+</head>
+<body>
+<div class="header">
+    <span class="title">人身险理赔申请</span>
+</div>
+<div class="bodyContent">
+    <div class="schedule">
+        <div class="img"></div>
+        <span>填写信息</span>
+        <span>上传影像</span>
+        <span>完成</span>
+    </div>
+    <div class="info">
+        <div class="inlineRowInput">
+            <span class="imgIco ClaimRecord"></span><span class="promptMessage">您的赔案，需要以下资料请进行上传！</span>
+        </div>
+        <% entClaimAttachRuleList.forEach(function(item){ %>
+        <div class="inlineRowInput prompt">
+                <span class="promptMessage" data-value = "<%=item.url%>"><%=item.name%></span> <span class="wenhao"></span>
+        </div>
+        <% }) %>
+        <form id="uploadform"enctype="multipart/form-data" >
+            <input type="file" name="file" id="file" value="" accept="image/png,image/jpeg" multiple="multiple"  data-role="none" />
+        </form>
+        <div class="inlineRowInput picRow">
+            <div class="z_photo">
+                <div class="z_file z_add">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="nextStep" form-action="ApplyMedicineClaimStep2" data-value="<%=entClaimApplyId%>">
+        <span>下一步</span>
+    </div>
+
+    <div id="Confirmdel">
+        <div>你确定要删除么</div>
+        <span id="cancel">取消</span>    <span id="submit" >确定</span>
+    </div>
+    <div id="SuccessConfirm">
+        <div class="msg">删除成功</div>
+        <span id="SuccessConfirmButton">确定</span>
+    </div>
+    <div id="showImg">
+        <img class="img" />
+    </div>
+</div>
+
+
+</body>
+</html>

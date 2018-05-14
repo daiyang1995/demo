@@ -1,0 +1,20 @@
+.bodyContent .finishLogo:before{
+    content: '\f058';
+    font-family: fullIconAll;
+    padding-top: 1rem;
+    font-size: 2rem;
+    color: #33cc99;
+    display: block;
+    text-align: center;
+}
+.bodyContent div{
+    text-align: center;
+}
+.bodyContent .success{
+    font-size: 0.32rem;
+}
+.bodyContent .policyNo{
+    margin-top: 0.3rem;
+    font-size: 0.24rem;
+    color: #a1a1a1;
+}

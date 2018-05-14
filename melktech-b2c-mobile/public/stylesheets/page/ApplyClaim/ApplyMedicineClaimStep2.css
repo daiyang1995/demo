@@ -1,0 +1,146 @@
+.bodyContent .schedule{
+    background: #ffffff;
+    height: 1.5rem;
+}
+.bodyContent .img{
+    background: #gray;
+    height: 0.8rem;
+}
+.bodyContent .schedule span{
+    display: inline-block;
+    width: 32%;
+    text-align: center;
+    font-size: 0.24rem;
+}
+.bodyContent .info{
+    padding-top: 0.2rem;
+}
+.bodyContent .nextStep{
+    margin-top: 0.8rem;
+    width: 100%;
+    background: #33CC99;
+    color: #ffffff;
+    text-align: center;
+    line-height: 0.8rem;
+    height: 0.8rem;
+}
+.bodyContent .nextStep span{
+    display: block;
+    line-height: 0.8rem;
+    margin: 0 auto;
+    padding: 0 30%;
+}
+.inlineRowInput .imgIco{
+    display:  inline-block;
+    height: 0.32rem;
+    width: 0.32rem;
+    background-repeat: no-repeat;
+    background-size: 0.32rem 0.32rem;
+    margin-right: 2%;
+}
+.prompt{
+    padding: 1.8% 3.25%;
+}
+.prompt .wenhao{
+    position: absolute;
+    height: 0.32rem;
+    width: 0.32rem;
+    background-repeat: no-repeat;
+    background-size: 0.32rem 0.32rem;
+    right: 3%;
+}
+.inlineRowInput .promptMessage{
+    font-size: 0.28rem;
+    color: #33CC99;
+}
+.z_file ,.z_addImg{
+    width: 1rem;
+    height: 1rem;
+    display: inline-block;
+    border: 0.02rem solid #A1A1A1;
+    margin: 0% 0.2rem;
+}
+.z_file {
+    background-size: 1rem 1rem;
+}
+.picRow{
+    padding: 2.5% 0 ;
+}
+.z_addImg:after{
+    content: '删除';
+    position: absolute;
+    margin-top: -0.48rem;
+    display: block;
+    font-size: 0.24rem;
+    line-height: 0.4rem;
+    text-align: center;
+    width: 1rem;
+    background-color: #a1a1a1;
+    opacity: 0.7;
+    padding-left: 0.02rem;
+}
+.z_addImg img{
+    width: 1rem;
+    height: 1rem;
+}
+.z_addImg textarea{
+    display: none;
+}
+
+#file {
+    display: none;
+}
+
+#Confirmdel{
+    padding: 0.4rem;
+    display: none;
+    text-align: center;
+    background: #ffffff;
+    font-size: 0.4rem;
+}
+#Confirmdel div{
+    padding: 0.4rem;
+}
+#Confirmdel span{
+    text-align: center;
+    display: inline-block;
+    width: 48%;
+    line-height: 0.7rem;
+    color: #fff;
+}
+
+#SuccessConfirm{
+    padding: 0.4rem;
+    text-align: center;
+    background: #ffffff;
+    font-size: 0.4rem;
+    display: none;
+}
+#SuccessConfirm div{
+    padding: 0.4rem;
+}
+#SuccessConfirm span{
+    text-align: center;
+    display: inline-block;
+    width: 48%;
+    line-height: 0.7rem;
+    color: #fff;
+}
+
+#cancel{
+    background: red
+}
+#submit,#SuccessConfirmButton{
+    background: #17BFB5
+}
+
+#showImg{
+    text-align: center;
+    background: #ffffff;
+    font-size: 0.4rem;
+    display: none;
+}
+#showImg .img{
+    width: 100%;
+    height: auto;
+}

@@ -1,0 +1,2 @@
+[2018-05-03T09:26:31.017] [ERROR] error - problem with request: connect ECONNREFUSED 127.0.0.1:8180
+[2018-05-03T09:27:00.731] [ERROR] error - sendCode  :res is not defined

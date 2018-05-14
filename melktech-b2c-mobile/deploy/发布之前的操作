@@ -1,0 +1,12 @@
+-- 混淆 压缩流程
+1.  运行 npm run build   --- 将会将public/javascript/cutom/*.js 全部编译成 es5 到 ./es5 目录下
+2.  运行 grunt js  可以将 ./es5 目录下所有的js 混淆压缩到 dist/custom 下
+3.  运行 grunt defult  可以将 图片 html css 都压缩
+4.  依次替换 即可.
+
+-- config 配置信息更改
+1. apiApplication  是 api 那边的头部入口
+2. httpUrlConf 是指定 主机名字，http 端口 ,https 端口 , https 证书路径
+3. log3js  是 日志的配置
+4. redisConf  是 redis 的配置文件
+5. startPort  是 指定 此项目的 https、http 端口 ， 以及 此项目的上下文

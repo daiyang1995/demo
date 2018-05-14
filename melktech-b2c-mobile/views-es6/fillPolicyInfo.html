@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%-include("./commonJs.html")%>
+    <%-include("./commonCss.html")%>
+    <link rel="stylesheet"  href="<%=localurl%><%=projectUrl%>stylesheets/page/fillPolicyInfo.css" />
+    <title>投保信息填写</title>
+    <script type="text/babel">
+        $(document).ready(function () {
+            const timeDelay = 60; /*设置验证码发送间隔*/
+			const mobileCheck = /^1[3458][0-9]\d{8}$/;
+			const emailCheck = /^([a-zA-Z0-9]){1}[a-zA-Z0-9_\.-]*([a-zA-Z0-9])@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+){0,10}(.com|.cn|.net|.org)$/;
+			const shark = new SharkTip({  /*初始化弹窗*/
+				needShark: true
+			});
+			const loader =  new Loaders({style:"rectangle"});
+			/* 声明 倒计时 */
+			const countDown = new CountDown({
+				"time":60,
+				"functoinName": notFinish
+			});
+			let haveTime = false; /* 是否处于倒计时状态 */
+			let ccicPayUrl = "";
+			let applyNo = "";
+
+			$("#finishPayScreen").height($(window).height()+"px");
+
+            /*被保险人为本人的时候同步数据*/
+			function orelationChange(){
+				$("#oname").val($("#bname").val()); /*同步姓名*/
+				$("#oidType").val($("#bidType").val()); /*同步证件类型*/
+				$("#oidCard").val($("#bidCard").val());/*同步证件号码*/
+				$("#oemail").val($("#bemail").val());/*同步电子邮箱*/
+				$("#otel").val($("#btel").val()); /*同步手机号*/
+			};
+			/*被保险人数据清空*/
+			function emptyData(){
+				$("#oname").val(""); /*清空姓名*/
+				$("#oidCard").val("");/*清空证件号码*/
+				$("#oemail").val("");/*清空电子邮箱*/
+				$("#otel").val(""); /*清空手机号*/
+            }
+            /*回退*/
+			$("#bodyHeader").on("vclick",".backIcon",function (e) {
+                e.preventDefault();
+                window.location.href= "<%=localurl%><%=projectUrl%>index";
+            });
+            /*证件类型*/
+            const idTypeJson = [ {id:'身份证',value:'身份证'}];
+            let bidTypeSelect = new MobileSelect({
+                trigger: `#bidTypeSpan`,
+                title:`证件类型`,
+                wheels: [
+                    {data: idTypeJson}
+                ],
+                triggerDisplayData : false,
+                position: [0], /*初始化定位 打开时默认选中的哪个  如果不填默认为0,*/
+                callback:function(idx , data ){
+                    $("#bidType").val(data[0].value);
+                },
+                transitionEnd:function (idx, data) {
+                    $("#bidType").val(data[0].value);
+                }
+            });
+            $("#bidType").val(idTypeJson[0].value);
+
+            /*关系*/
+			/*const relationJSon =  [{"id":"01","value":"本人"},{"id":"10","value":"配偶"},{"id":"40","value":"子女"},{"id":"50","value":"父母"}] ;*/
+            const relationJSon =  [{"id":"01","value":"本人"},{"id":"10","value":"配偶"},{"id":"40","value":"子女"}] ;
+            let orelationSelect = new MobileSelect({
+                trigger: `#orelationSpan`,
+                title:`关系`,
+                wheels: [
+                    {data: relationJSon}
+                ],
+                triggerDisplayData : false,
+                position: [0], /*初始化定位 打开时默认选中的哪个  如果不填默认为0,*/
+                callback:function(idx , data ){
+                    $("#orelation").val(data[0].value);
+                    if("本人"== data[0].value){
+						orelationChange();
+                    }else{
+						emptyData();
+                    }
+                },
+                transitionEnd:function (idx, data) {
+                    $("#orelation").val(data[0].value);
+					if("本人" == data[0].value){
+						orelationChange();
+					}else{
+						emptyData();
+					}
+                }
+            });
+            $("#orelation").val(relationJSon[0].value);
+
+            /*证件类型*/
+            let oidTypeSelect = new MobileSelect({
+                trigger: `#oidTypeSpan`,
+                title:`证件类型`,
+                wheels: [
+                    {data: idTypeJson}
+                ],
+                triggerDisplayData : false,
+                position: [0], /*初始化定位 打开时默认选中的哪个  如果不填默认为0,*/
+                callback:function(idx , data ){
+                    $("#oidType").val(data[0].value);
+                },
+                transitionEnd:function (idx, data) {
+                    $("#oidType").val(data[0].value);
+                }
+            });
+            $("#oidType").val(idTypeJson[0].value);
+
+            /*保险生效日期*/
+            let now = new Date();
+            now.setDate(now.getDate()+ Number(<%=effectiveInterval%>)); /*获取 间隔日期之后的天数*/
+            let endNow = new Date();
+			endNow.setMonth(endNow.getMonth() + 2);
+			endNow.setDate(endNow.getDate()+ Number(<%=effectiveInterval%>) -1 ); /*获取 间隔日期之后的天数*/
+			let pSDJson = new CalDate({
+				status : 90 ,
+				startDate : now.getFullYear(),
+				startDateMonth : now.getMonth()+1,
+				startDateDay : now.getDate()  ,
+				endDate: endNow.getFullYear(),
+				endDateMonth : endNow.getMonth()+1,
+				endDateDay : endNow.getDate()
+			}).getValue();
+            let pSDSelect = new MobileSelect({
+                trigger: `#pSDSpan`,
+                title:`保险生效日期`,
+                wheels: [
+                    {data: pSDJson}
+                ],
+                triggerDisplayData : false,
+                position: [0], /*初始化定位 打开时默认选中的哪个  如果不填默认为0,*/
+                callback:function(idx , data ){
+                    let value = "";
+                    for(let i in data){
+                        value += data[i].value+" ";
+                    }
+                    $("#pSD").val(value);
+                },
+                transitionEnd:function (idx, data) {
+                    let value = "";
+                    for(let i in data){
+                        value += data[i].value+" ";
+                    }
+                    $("#pSD").val(value);
+                }
+            });
+            $("#pSD").val(pSDJson[0].value+ " "+pSDJson[0].childs[0].value+ " "+pSDJson[0].childs[0].childs[0].value);
+
+            /*获取验证码*/
+            $(".baseInfo").on("vclick", ".sendCode", function(e){
+                e.preventDefault();
+                let thisJquery = this;
+                let btel = $("#btel").val();
+                if(!btel ||  !(mobileCheck.test(btel)) ){
+					shark.show("请输入正确的手机号");
+                    return false;
+                }
+				loader.show();
+                let formData = new FormData();
+                formData.append("telPhoneNubmer",btel);
+				$.ajax({
+					url: "<%=localurl%><%=projectUrl%>sendCode",
+					type: 'POST',
+					data: formData,
+					async: true,
+					cache: false,
+					dataType: 'json',
+					contentType: false,
+					processData: false,
+					success: (data) => {
+						if(data.ret == "0"){
+                            let thisDelay = timeDelay;
+							$("#sendCode input").val(`${thisDelay}s后重发`);
+							$(thisJquery).removeClass("sendCode");
+							$(".sendCodeComplete").val("1");
+							let i = setInterval(function () {
+								$("#sendCode input").val(`${--thisDelay}s后重发`);
+                                if( !/^(0|[1-9][0-9]*)$/.test(thisDelay)){
+									$(thisJquery).addClass("sendCode");
+                                	clearInterval(i);
+									$("#sendCode input").val("获取验证码");
+                                }
+							} ,1000);
+							shark.show("成功");
+						}else if("-2" == data.ret){
+							shark.show(sharkid,data.msg);
+							setTimeout(function () {
+								window.location.href ="<%=localurl%><%=projectUrl%>index";
+							},2000);
+						}else{
+							shark.show(data.msg);
+						}
+					},complete: function(data) {
+						loader.hide();
+					},
+					error:  (data) => {
+						shark.show("系统异常,请联系管理员");
+					}
+				});
+            });
+
+            /*当是本人时 同步输入*/
+            $(".baseInfo").on("input propertychange","input",function(e){
+                if("本人" == $("#orelation").val() ){
+					orelationChange();
+                }
+            });
+
+            /*各种介绍的点击事件*/
+            $(".notifyDiv").on("vclick",".notice",function(e){
+                e.preventDefault();
+                let thisJquery = this;
+                window.location.href="<%=localurl%><%=projectUrl%>"+$(thisJquery).attr("data-action") ;
+            });
+            /* 下一步 */
+            $(".bodyContent").on("vclick", ".nextStep", function (e) {
+                e.preventDefault();
+                if(!$(".agreeNotify").is(':checked')){
+					shark.show("请勾选 条款及须知");
+					return false;
+                }
+                if("1" != $(".sendCodeComplete").val()){
+					shark.show("请先发送验证码");
+					return false;
+                }
+                let haveError = false; /*是否有错误 默认无*/
+				let bname = $.trim($("#bname").val()); /*投保人姓名*/
+				let bidType = $.trim($("#bidType").val()); /*投保人证件类型*/
+				let bidCard = $.trim($("#bidCard").val()); /*投保人证件号码*/
+				let bemail = $.trim($("#bemail").val()); /*投保人电子邮箱*/
+				let btel = $.trim($("#btel").val()); /*投保人手机号*/
+                let bidentifyingCode = $.trim($("#bidentifyingCode").val());/*验证码*/
+
+				let orelation = $.trim($("#orelation").val()); /*被保险人与投保人的关系*/
+                let oname = $.trim($("#oname").val()); /*被保险人姓名*/
+				let oidType = $.trim($("#oidType").val()); /*被保险人证件类型*/
+				let oidCard = $.trim($("#oidCard").val()); /*被保险人证件号码*/
+				let oemail = $.trim($("#oemail").val()); /*被保险人电子邮箱*/
+				let otel = $.trim($("#otel").val()); /*被保险人手机号*/
+                let psd = $.trim($("#pSD").val()); /*保单生效日期*/
+
+                if(!bname ||　!bidType || !bidCard || !bemail || !btel || !bidentifyingCode ||
+                    !orelation || !oname || !oidType || !oidCard || !oemail || !otel || !psd){
+                	haveError = true;
+                }
+                if(haveError){
+                	let msg = "星号内容必填";
+					shark.show(msg);
+                	return false;
+                }
+                if(!(emailCheck.test(bemail))){
+					shark.show("投保人邮箱格式不正确");
+					return false;
+                }else if(!(emailCheck.test(oemail))){
+					shark.show("被保险人邮箱格式不正确");
+					return false;
+				}else if(!(mobileCheck.test(btel))){
+					shark.show("投保人手机号格式不正确");
+					return false;
+				}else if(!(mobileCheck.test(otel))){
+					shark.show("被保险人手机号格式不正确");
+					return false;
+				}else if(bidentifyingCode.length !=6){
+					shark.show("手机验证码错误");
+					return false;
+                }
+				let formData = new FormData();
+				formData.append("planCode","<%=planCode%>");
+                formData.append("bname",bname);
+                formData.append("bidType",bidType);
+                formData.append("bidCard",bidCard);
+                formData.append("bemail",bemail);
+                formData.append("btel",btel);
+                formData.append("bidentifyingCode",bidentifyingCode);
+				formData.append("orelation",orelation);
+				formData.append("oname",oname);
+				formData.append("oidType",oidType);
+				formData.append("oidCard",oidCard);
+				formData.append("oemail",oemail);
+				formData.append("otel",otel);
+				formData.append("psd",psd);
+
+				loader.show();
+				$.ajax({
+					url: "<%=localurl%><%=projectUrl%>placeAnOrder",
+					type: 'POST',
+					data: formData,
+					async: true,
+					cache: false,
+					dataType: 'json',
+					contentType: false,
+					processData: false,
+					success: (data) => {
+						if("0" == data.ret){
+							/*成功*/
+							$("#payShow").height($(window).height()+"px");
+							ccicPayUrl  = data.payUrl;
+							applyNo = data.applyNo;
+							$("#payShow #payFrame").attr("src" ,data.payUrl);
+							$("#payShow").fadeIn(400);
+							/*window.location.replace(data.payUrl);*/
+                        }else if("-2" == data.ret){
+							shark.show(data.msg);
+							setTimeout(function () {
+								window.location.href ="<%=localurl%><%=projectUrl%>index";
+							},2000);
+                        }else if("-100" == data.ret){
+                        	let errorMsg = data.msg?data.msg:"保险公司处理失败";
+							shark.show(errorMsg);
+                        }else{
+							shark.show(data.msg);
+                        }
+					},complete: function(data) {
+						loader.hide();
+					},
+					error:  (data) => {
+						shark.show("系统异常,请联系管理员");
+					}
+				});
+            });
+
+            /* delay 2000ms  的反向ajax推送， 当收到返回时再推*/
+            function ajaxDelay(){
+				let oidCard = $.trim($("#oidCard").val()); /*被保险人证件号码*/
+				let psd = $.trim($("#pSD").val()); /*保单生效日期*/
+				let formData = new FormData();
+				formData.append("identifyNumber",oidCard);
+				formData.append("startDate",psd);
+				formData.append("applyNo",applyNo);
+				$.ajax({
+					url: "<%=localurl%><%=projectUrl%>genPaymentInfo",
+					type: 'POST',
+					data: formData,
+					async: true,
+					cache: false,
+					dataType: 'json',
+					contentType: false,
+					processData: false,
+					success: (data) => {
+						if("0" == data.ret ){
+							console.log("yes");
+							if(data.url){
+								window.location.replace(data.url);
+							}else{
+								window.location.replace("<%=localurl%><%=projectUrl%>goFinishPage?policyNo="+data.policyNo
+									+"&startDate="+data.startDate+"&endDate="+data.endDate);
+							}
+                        }else{
+							if(haveTime){
+								console.log("no",data.msg);
+								setTimeout(function(){ajaxDelay()},2000);
+							}
+                        }
+					},complete: function(data) {
+					},
+					error:  (data) => {
+						if(haveTime){
+							console.log("no");
+							setTimeout(function(){ajaxDelay()},2000);
+                        }
+					}
+				});
+            };
+
+            /* 支付Ifream的隐藏 */
+			$("#payShow").on("vclick",".icon-carat-b-onwer",function (e) {
+				e.preventDefault();
+				$("#payShow").fadeOut(400);
+				$(".finishPay").fadeIn(400);
+			});
+
+			/* 倒计时 跑完 还没有收到完成的信息 */
+			function notFinish() {
+				shark.show( "您未完成支付");
+				$("#payShow #payFrame").attr("src" ,ccicPayUrl);
+                $("#payShow").fadeIn(400);
+				haveTime = false;
+			};
+        /*    /!*测试使用*!/
+          setTimeout(function(){
+                countDown.show();
+                haveTime = true;
+                ajaxDelay();/!*  反向ajax  请求是否已完成 *!/
+            } , 20000);
+*/
+			/* 已完成支付 */
+            $("#finishPay").on("vclick", ".ensure" , function (e) {
+                e.preventDefault();
+				countDown.show();
+				haveTime = true;
+				ajaxDelay();/*  反向ajax  请求是否已完成 */
+				$(".finishPay").fadeOut(400);
+			});
+            /* 未完成支付 */
+			$("#finishPay").on("vclick", ".cancel" , function (e) {
+				e.preventDefault();
+				$("#payShow #payFrame").attr("src" ,ccicPayUrl);
+				$("#payShow").fadeIn(400);
+				$(".finishPay").fadeOut(400);
+				haveTime = false;
+			});
+
+        });
+    </script>
+</head>
+<body>
+    <div class="header" id="bodyHeader"  >
+        <span class="icon-carat-b-onwer backIcon" ></span>
+        <span class="title">投保信息填写</span>
+    </div>
+    <div class="bodyContent">
+        <div class="baseInfo">
+            <div class="baseInfoTitle paddingLeft">| 投保人信息 </div>
+            <div class="InputInfo ui-grid-a">
+                <span class="ui-block-a infoLabel paddingLeft">姓名<span class="red">*</span></span>
+                <span class="ui-block-b infoInput paddingRight">
+                    <input data-role="none" placeholder="请输入姓名" class="bname" id="bname"  name="bname" >
+                </span>
+            </div>
+            <div class="InputInfo ui-grid-a">
+                <span class="ui-block-a infoLabel paddingLeft">证件类型<span class="red">*</span></span>
+                <span class="ui-block-b infoInput paddingRight downArrow" id="bidTypeSpan">
+                    <input data-role="none"   class="bidType" id="bidType"  name="bidType" readonly >
+                </span>
+            </div>
+            <div class="InputInfo ui-grid-a">
+                <span class="ui-block-a infoLabel paddingLeft">证件号码<span class="red">*</span></span>
+                <span class="ui-block-b infoInput paddingRight">
+                    <input data-role="none" placeholder="请输入证件号码" class="bidCard" id="bidCard"  name="bidCard" >
+                </span>
+            </div>
+            <div class="InputInfo ui-grid-a">
+                <span class="ui-block-a infoLabel paddingLeft">电子邮箱<span class="red">*</span></span>
+                <span class="ui-block-b infoInput paddingRight">
+                    <input data-role="none" placeholder="请输入电子邮箱" class="bemail" id="bemail"  name="bemail" >
+                </span>
+            </div>
+            <div class="InputInfo ui-grid-a">
+                <span class="ui-block-a infoLabel paddingLeft">手机号<span class="red">*</span></span>
+                <span class="ui-block-b infoInput paddingRight">
+                    <input data-role="none" placeholder="请输入手机号" class="btel" id="btel"  name="btel" >
+                </span>
+            </div>
+            <div class="InputInfo ui-grid-b">
+                <span class="ui-block-a infoLabel paddingLeft">验证码<span class="red">*</span></span>
+                <span class="ui-block-b infoInput paddingRight" id="bidentifyingCodeSpan">
+                    <input data-role="none" placeholder="验证码" class="bidentifyingCode" id="bidentifyingCode"  name="bidentifyingCode" >
+                    <input type="hidden" class="sendCodeComplete" value="0" />
+                </span>
+                <span class="ui-block-c sendCode" id="sendCode"  >
+                    <input data-role="none" value="获取验证码" readonly />
+                </span>
+            </div>
+        </div>
+
+        <div class="otherInfo">
+            <div class="otherInfoTitle paddingLeft">| 被保险人信息 </div>
+            <div class="InputInfo ui-grid-a">
+                <span class="ui-block-a infoLabel paddingLeft">是投保人的<span class="red">*</span></span>
+                <span class="ui-block-b infoInput paddingRight downArrow" id="orelationSpan">
+                    <input data-role="none"   class="orelation" id="orelation"  name="orelation" readonly >
+                </span>
+            </div>
+            <div class="InputInfo ui-grid-a">
+                <span class="ui-block-a infoLabel paddingLeft">姓名<span class="red">*</span></span>
+                <span class="ui-block-b infoInput paddingRight">
+                    <input data-role="none" placeholder="请输入姓名" class="oname" id="oname"  name="oname" >
+                </span>
+            </div>
+            <div class="InputInfo ui-grid-a">
+                <span class="ui-block-a infoLabel paddingLeft">证件类型<span class="red">*</span></span>
+                <span class="ui-block-b infoInput paddingRight downArrow" id="oidTypeSpan">
+                    <input data-role="none"   class="oidType" id="oidType"  name="oidType" readonly >
+                </span>
+            </div>
+            <div class="InputInfo ui-grid-a">
+                <span class="ui-block-a infoLabel paddingLeft">证件号码<span class="red">*</span></span>
+                <span class="ui-block-b infoInput paddingRight">
+                    <input data-role="none" placeholder="请输入证件号码" class="oidCard" id="oidCard"  name="oidCard" >
+                </span>
+            </div>
+            <div class="InputInfo ui-grid-a">
+                <span class="ui-block-a infoLabel paddingLeft">电子邮箱<span class="red">*</span></span>
+                <span class="ui-block-b infoInput paddingRight">
+                    <input data-role="none" placeholder="请输入电子邮箱" class="oemail" id="oemail"  name="oemail" >
+                </span>
+            </div>
+            <div class="InputInfo ui-grid-a">
+                <span class="ui-block-a infoLabel paddingLeft">手机号<span class="red">*</span></span>
+                <span class="ui-block-b infoInput paddingRight">
+                    <input data-role="none" placeholder="请输入手机号" class="otel" id="otel"  name="otel" >
+                </span>
+            </div>
+
+        </div>
+
+        <div class="policySD">
+            <div class="policySDTitle paddingLeft">| 保险生效日期 </div>
+            <div class="InputInfo ui-grid-a">
+                <span class="ui-block-a infoLabel paddingLeft">生效日期<span class="red">*</span></span>
+                <span class="ui-block-b infoInput paddingRight downArrow" id="pSDSpan">
+                    <input data-role="none"   class="pSD" id="pSD"  name="pSD" readonly >
+                </span>
+            </div>
+        </div>
+
+        <div class="notifyDiv ui-grid-a">
+            <span class="ui-block-a">
+                <label class="notify"><input type="checkbox" name="agreeNotify" class="agreeNotify">&nbsp;</label>
+            </span>
+            <span class="ui-block-b">本人已认真阅读并同意<span class="notice" data-action="insurancePolicy">投保须知</span>、<span class="notice" data-action="insuranceDeclaration">投保声明</span>和<span class="notice" data-action="insuranceClauses">保险条款</span>的全部内容</span>
+
+        </div>
+
+
+        <div id="nextStep" class="nextStep">
+            <span>下一步</span>
+        </div>
+
+    </div>
+
+    <div id="payShow">
+        <div class="payHeader ">
+            <span class="icon-carat-b-onwer close" >前往预约</span>
+            <span class="payTitle ">支付</span>
+            <a class="header-save tel" data-role="none" href="tel:<%=telephone%>"></a>
+        </div>
+        <iframe id="payFrame" ></iframe>
+    </div>
+
+    <div id="finishPayScreen" class="finishPay"></div>
+    <div id="finishPay" class="finishPay">
+        <div class="title">请您在新打开的页面进行支付<br/>支付完成前请不要关闭该窗口</div>
+        <div class="ui-grid-b action">
+            <span class="ui-block-a ensure">已完成支付</span>
+            <span class="ui-block-b"></span>
+            <span class="ui-block-c cancel">支付遇到问题</span>
+        </div>
+
+    </div>
+
+</body>
+</html>

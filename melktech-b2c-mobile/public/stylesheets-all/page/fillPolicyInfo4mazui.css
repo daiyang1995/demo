@@ -1,0 +1,346 @@
+.paddingLeft {
+    padding-left: 0.1rem;
+}
+
+.paddingRight {
+    padding-right: 0.1rem;
+}
+
+.textAlignRight {
+    text-align: right;
+}
+
+.rigthArrow:after, .downArrow:after {
+    font-family: fullIconAll;
+    color: #cccccc;
+}
+
+.rigthArrow:after {
+    content: "\f105";
+}
+
+.downArrow:after {
+    content: "\f107";
+}
+
+.borderBottom {
+    border-bottom: 0.02rem solid #cccccc;
+}
+
+.marginLAR {
+    margin: 0 0.2rem;
+}
+
+.header {
+    background: none;
+}
+
+.header, .bodyContent .verticalBar, .bodyContent .nextStepDiv .ui-block-b {
+    background-color: #0BA29A;
+}
+
+.bodyContent .nextStepDiv .ui-block-a {
+    color: #0BA29A;
+}
+
+.bodyContent .planBaseInfo, .bodyContent .nextStepDiv, .bodyContent .fillApplicantInfo,
+.bodyContent .fillPolicyPersonInfo, .bodyContent .contactWay {
+    background-color: #ffffff;
+}
+
+.bodyContent .nextStepDiv {
+    color: #ffffff;
+}
+
+.bodyContent .nextStepDiv {
+    border-top: 0.02rem solid #cccccc;
+}
+
+.bodyContent {
+    font-size: 0.28rem;
+}
+
+.bodyContent {
+    margin-bottom: 0.8rem;
+}
+
+.bodyContent .nextStepDiv > span {
+    font-size: 0.36rem;
+}
+
+.bodyContent > div > div, .bodyContent .nextStepDiv {
+    height: 0.8rem;
+    line-height: 0.8rem;
+    box-sizing: border-box;
+}
+
+.bodyContent .planBaseInfo .paddingLeft > span, .bodyContent .fillApplicantInfo .paddingLeft > span,
+.bodyContent .fillPolicyPersonInfo .paddingLeft > span, .bodyContent .contactWay .paddingLeft > span {
+    float: left;
+}
+
+.bodyContent .verticalBar {
+    width: 0.1rem;
+    height: .4rem;
+    margin: 0.2rem 0.1rem 0.2rem 0;
+}
+
+.bodyContent .planBaseInfo .paddingLeft span:last-child, .bodyContent .fillApplicantInfo .paddingLeft span:last-child {
+    font-weight: 600;
+}
+
+.bodyContent .nextStepDiv .ui-block-a, .bodyContent .fillApplicantInfo .ui-grid-a .ui-block-b,
+.bodyContent .fillPolicyPersonInfo .ui-grid-a .ui-block-b, .bodyContent .contactWay .ui-grid-a .ui-block-b {
+    width: 65%;
+}
+
+.bodyContent .nextStepDiv .ui-block-b, .bodyContent .fillApplicantInfo .ui-grid-a .ui-block-a,
+.bodyContent .fillPolicyPersonInfo .ui-grid-a .ui-block-a, .bodyContent .contactWay .innerOneLine .ui-block-a,
+.bodyContent .contactWay .ui-grid-b .ui-block-b ,.bodyContent .fillPolicyPersonInfo .ui-grid-b .ui-block-a,
+.bodyContent .fillApplicantInfo .ui-grid-b .ui-block-a{
+    width: 35%;
+}
+
+.bodyContent .planBaseInfo .ui-grid-b .ui-block-a{
+    width: 40%;
+}
+
+.bodyContent .planBaseInfo .ui-grid-b .ui-block-b {
+    width: 50%;
+}
+.bodyContent .fillApplicantInfo .ui-grid-b .ui-block-b,.bodyContent .fillPolicyPersonInfo .ui-grid-b .ui-block-b{
+    width: 55%;
+}
+
+.bodyContent .planBaseInfo .ui-grid-b .ui-block-c, .bodyContent .fillApplicantInfo .ui-grid-b .ui-block-c,
+.bodyContent .fillPolicyPersonInfo .ui-grid-b .ui-block-c {
+    width: 10%;
+}
+
+.bodyContent .contactWay .ui-grid-b .ui-block-c {
+    width: 30%;
+}
+
+.bodyContent .nextStepDiv {
+    width: 100%;
+    text-align: center;
+    position: fixed;
+    bottom: 0px;
+    z-index: 3; /*因为单、复选框的z-index=2*/
+}
+
+.bodyContent .fillApplicantInfo, .bodyContent .fillPolicyPersonInfo,
+.bodyContent .contactWay {
+    margin-top: 0.2rem;
+}
+
+input {
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: none;
+    border: 0;
+    outline: 0;
+    background: 0 0;
+    padding: 0 .4rem 0 .04rem;
+}
+
+#sendCode {
+    display: inline-block;
+    box-sizing: border-box;
+    border: 0.02rem solid #cccccc;
+    border-radius: 0.1rem;
+    margin: 0.1rem 0;
+    width: 100%;
+    text-align: center;
+    height: 0.6rem;
+    line-height: 0.6rem;
+}
+
+.notifyDiv {
+    margin-bottom: 0.8rem;
+    padding: 0.3rem 0.1rem;
+    line-height: 0.4rem;
+    background-color: #f2f2f2;
+    color: #8b8b8b;
+}
+
+.notifyDiv .notifyCheckbox , .notifyDiv .notifyText{
+    display: inline-block;
+    line-height: 0.3rem;
+    padding-top: 0.1rem;
+}
+
+.notifyDiv .notifyCheckbox {
+    box-sizing: border-box;
+    width: 0.6rem;
+    position: absolute;
+}
+
+.notifyDiv .notifyCheckbox .agreeNotify {
+    display: none;
+}
+
+.notifyDiv .notifyCheckbox .notify , .notifyDiv .notifyCheckbox .notify:after{
+    height: 0.3rem;
+}
+
+.notifyDiv .notifyCheckbox .notify {
+    border: none;
+    background: none;
+}
+
+.notifyDiv .notifyCheckbox .notify:after {
+    transform: translateX(50%);
+    margin: 0px;
+    top: inherit;
+    left: inherit;
+    width: 0.3rem;
+    box-sizing: border-box;
+    background-size: 0.2rem 0.2rem;
+}
+
+.notifyDiv .notifyCheckbox .ui-checkbox {
+    margin: 0;
+}
+
+.notifyDiv .notifyCheckbox .notify:after {
+    border: 0.02rem solid black;
+}
+
+.notifyDiv .notifyText {
+    box-sizing: border-box;
+    width: 100%;
+    padding-left: 0.6rem;
+    font-size: 0.2rem;
+    word-wrap: break-word;
+}
+
+.bodyContent .ui-checkbox-off:after {
+    background-color: #FFFFFF;
+    background-repeat: no-repeat;
+}
+
+.bodyContent .ui-checkbox-on:after {
+    background-color: #0BA95F;
+    background-repeat: no-repeat;
+}
+
+.notifyDiv .notifyText .notice {
+    color: #0BA95F;
+}
+
+
+.red {
+    color: red;
+}
+
+#payShow {
+    z-index: 871229;
+    background-color: #FFFFFF;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+#payShow .payHeader {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: #208bd8 -webkit-linear-gradient(top, #0f79d1, #3ea9e4);
+    z-index: 9871229;
+    height: 0.8rem;
+    font-size: 0.32rem;
+}
+
+#payShow .payHeader .payTitle {
+    width: 100%;
+    text-align: center;
+    display: inline-block;
+    height: 0.8rem;
+    line-height: 0.8rem;
+    color: #FFFFFF;
+}
+
+#payShow .payHeader .close {
+    color: #fff;
+    line-height: 0.48rem;
+    white-space: nowrap;
+}
+
+#payFrame {
+    z-index: 871229;
+    border: none;
+    position: fixed;
+    top: 0;
+    box-sizing: border-box;
+    padding-top: 0.8rem;
+    width: 100%;
+    height: 100%;
+}
+
+#finishPayScreen {
+    opacity: 0.5;
+    z-index: 871229;
+    background-color: #FFFFFF;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+#finishPay {
+    z-index: 871230;
+    position: fixed;
+    display: none;
+    width: 5rem;
+    top: 40%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    font-size: 0.32rem;
+    text-align: center;
+    border: 0.02rem solid #a1a1a1;
+    background-color: #ffffff;
+    text-shadow: none;
+    padding: 0.3rem 0;
+}
+
+#finishPay .title {
+    font-size: 0.24rem;
+    box-shadow: none;
+    text-shadow: none;
+    font-weight: 100;
+    color: #000000;
+}
+
+#finishPay .action {
+    margin: 0.3rem 0.3rem 0 0.3rem
+}
+
+#finishPay .ensure, #finishPay .cancel {
+    font-size: 0.24rem;
+    background-color: #fafafa;
+    color: #000000;
+    height: 1rem;
+    line-height: 1rem;
+    border: 0.02rem solid #a1a1a1;
+    width: 45%;
+    font-weight: 100
+}
+
+#finishPay .action .ui-block-b {
+    width: 10%;
+}
+
+.tel {
+    color: #ffffff !important;
+    text-decoration: none;
+}
+
+.tel:before {
+    font-family: fullIconAll;
+    content: "\f095";
+    font-size: 0.4rem;
+}
