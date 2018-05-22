@@ -1,0 +1,7 @@
+export JAVA_HOME=/usr/local/jdk1.8.0_172/
+
+export PATH=$JAVA_HOME/bin:$PATH
+
+
+
+ES_JAVA_OPTS="-Des.insecure.allow.root=true"
