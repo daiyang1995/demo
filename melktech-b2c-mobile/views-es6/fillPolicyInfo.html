@@ -8,7 +8,7 @@
     <script type="text/babel">
         $(document).ready(function () {
             const timeDelay = 60; /*设置验证码发送间隔*/
-			const mobileCheck = /^1[3458][0-9]\d{8}$/;
+			const mobileCheck = /^1[3456789][0-9]\d{8}$/;
 			const emailCheck = /^([a-zA-Z0-9]){1}[a-zA-Z0-9_\.-]*([a-zA-Z0-9])@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+){0,10}(.com|.cn|.net|.org)$/;
 			const shark = new SharkTip({  /*初始化弹窗*/
 				needShark: true

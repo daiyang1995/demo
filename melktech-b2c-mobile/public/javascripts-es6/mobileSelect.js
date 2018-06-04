@@ -81,10 +81,10 @@
 
 		    _this.ensureBtn.addEventListener('click',function(){
 				if(_this.beforeSelect){
-					var result = _this.beforeSelect(_this.getValue() , _this.trigger);
-					if(result){
-						return false;
-					}
+					_this.beforeSelect(_this.getValue() , _this.trigger);
+					// if(result){
+					// 	return false;
+					// }
 				}
                 _this.mobileSelect.classList.remove('mobileSelect-show');
 		    	if(_this.triggerDisplayData){

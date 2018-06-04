@@ -1,0 +1,27 @@
+<script src = "<%=localurl%><%=projectUrl%>babel/browser.min.js" ></script>
+<script src = "<%=localurl%><%=projectUrl%>jquery/js/jquery.min.js" ></script>
+<script src = "<%=localurl%><%=projectUrl%>jquery/js/jquery.mobile-1.4.5.min.js" ></script>
+<script src = "<%=localurl%><%=projectUrl%>javascripts/calculateSize.js"  ></script>
+<script src = "<%=localurl%><%=projectUrl%>javascripts/zishiying.js"  ></script>
+<script src = "<%=localurl%><%=projectUrl%>javascripts/selectDateCal.js" ></script>
+<script src = "<%=localurl%><%=projectUrl%>javascripts/selectTimeCal.js"  ></script>
+<script src = "<%=localurl%><%=projectUrl%>javascripts/checkiosAndroid.js"  ></script>
+<script src = "<%=localurl%><%=projectUrl%>javascripts/mobileSelect.js" ></script>
+<script src = "<%=localurl%><%=projectUrl%>javascripts/updownloading.js"></script>
+<script src = "<%=localurl%><%=projectUrl%>javascripts/popup.js"  ></script>
+<script src = "<%=localurl%><%=projectUrl%>javascripts/loaders.js"  ></script>
+<script src = "<%=localurl%><%=projectUrl%>javascripts/sharkTip.js"  ></script>
+<script src = "<%=localurl%><%=projectUrl%>javascripts/flipSwitch.js"  ></script>
+<script src = "<%=localurl%><%=projectUrl%>javascripts/horizontalScroll.js"  ></script>
+<script src = "<%=localurl%><%=projectUrl%>javascripts/formatConversion.js"></script>
+<script type="text/babel">
+    if (browser.versions.iPhone || browser.versions.iPad || browser.versions.ios) {
+        console.log("iphone");
+    }else if (browser.versions.android) {
+        console.log("android");
+    }else if(browser.versions.mobile){
+        console.log("mobile");
+    }else{
+       /*window.location.href="pcError"*/
+    }
+</script>

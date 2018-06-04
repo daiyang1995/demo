@@ -7,6 +7,7 @@
     <title>投保信息填写</title>
     <script type="text/babel">
         $(document).ready(function () {
+        	const priceJson = eval(<%-JSON.stringify(data.price)%>);
 			const insureModeJson =eval(<%-data.insureModeJson%>);
 			const effectiveIntervalType = Number("<%=data.effectiveIntervalType%>");
 			const effectiveInterval = Number("<%=data.effectiveInterval%>");
@@ -20,7 +21,7 @@
 				"time":60,
 				"functoinName": notFinish
 			});
-			const mobileCheck = /^1[3458][0-9]\d{8}$/;
+			const mobileCheck = /^1[3456789][0-9]\d{8}$/;
 			const emailCheck = /^([a-zA-Z0-9]){1}[a-zA-Z0-9_\.-]*([a-zA-Z0-9])@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+){0,10}(.com|.cn|.net|.org)$/;
 			const shark = new SharkTip({  /*初始化弹窗*/
 				needShark: true
@@ -33,6 +34,8 @@
 			let ccicPayUrl = "";
 			let applyNo = "";
 
+			$(".nextStepDiv .priceInfo").html(`￥${priceJson.discountFee +
+                ("originFee" in priceJson ? `<span class="originFee">(${priceJson.originFee})</span>`:"") }`);
 			$("#finishPayScreen").height($(window).height()+"px");
 
             new HorizontalScroll({
@@ -42,7 +45,7 @@
 			/*放入投保周期*/
             $("#selectModeButton").append(`
                     <div id="${insureModeJson.ename}" class="selectLine ui-grid-a" data-value="${insureModeJson.items[0].id}">
-                        <span class="ui-block-a">保单期间</span>
+                        <span class="ui-block-a">保险期间</span>
                         <span class="ui-block-b textAlignRight">${insureModeJson.items[0].label}</span>
                     </div>
             `);
@@ -323,9 +326,9 @@
 				let pDateOfBirth = $(".pDateOfBirth").html(); /*被保险人出生日期*/
 				let psd = new Date();
 				if(effectiveIntervalType == 1){/* 日*/
-					now.setDate(now.getDate()+ effectiveInterval); /*获取 间隔日期之后的天数*/
+					psd.setDate(psd.getDate()+ effectiveInterval); /*获取 间隔日期之后的天数*/
                 }else if(effectiveIntervalType == 2){/* 小时 */
-					psd.setHours(now.getHours() + effectiveInterval);
+					psd.setHours(psd.getHours() + effectiveInterval);
                 }
 
                 psd = psd.getFullYear()+"年"+(psd.getMonth()+1)+"月"+psd.getDate()+"日"+psd.getHours()+"时";
@@ -354,7 +357,7 @@
 				let formData = new FormData();
 				formData.append("planCode","<%=data.planCode%>");
 				formData.append("allDimensionCombine","<%=allDimensionCombine%>");
-				formData.append("price","<%=price%>");
+				formData.append("price",priceJson.discountFee);
 				formData.append("aName",aName);
 				formData.append("aIdType",aIdType);
 				formData.append("aIdCard",aIdCard);
@@ -435,7 +438,7 @@
 								window.location.replace(data.url);
                             }else{
 								window.location.replace("<%=localurl%><%=projectUrl%>goFinishPage?policyNo="+data.policyNo+
-                                    data.orderNo?("orderNo="+data.orderNo):"");
+                                    (data.orderNo?("&orderNo="+data.orderNo):""));
                             }
 
 						}else{
@@ -523,7 +526,7 @@
             <%});%>
             <div class="marginLAR ui-grid-a innerOneLine borderBottom">
                 <span class="ui-block-a">生效日期</span>
-                <span class="ui-block-b horizontalScroll textAlignRight " >以保单载明时间为准</span>
+                <span class="ui-block-b horizontalScroll textAlignRight " >保单起保当日手术开始后</span>
             </div>
             <div class="marginLAR ui-grid-a innerOneLine" id="selectModeButton"></div>
         </div>
@@ -629,7 +632,7 @@
         </div>
 
         <div class="nextStepDiv ui-grid-a">
-            <span class="priceInfo ui-block-a">￥<%=price%></span>
+            <span class="priceInfo ui-block-a">￥</span>
             <span id="nextStep"  class="nextStep ui-block-b">支付</span>
         </div>
 

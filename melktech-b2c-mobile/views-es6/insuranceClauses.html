@@ -15,6 +15,7 @@
                 e.preventDefault();
                 let thisJquery = this;
                 let objId = $(thisJquery).attr("objectId");
+				$("#pdfShow .pdfTitle").html($(thisJquery).html());
                 $("#pdfShow #pdfFrame").attr("src" ,
                     "<%=localurl%><%=projectUrl%>generic/web/viewer.html?file="+encodeURIComponent("<%=localurl%><%=projectUrl%>pdf?url="+objId));
                 $("#pdfShow").show(400);

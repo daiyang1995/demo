@@ -1,0 +1,276 @@
+.paddingLeft{
+    padding-left: 0.1rem;
+}
+.paddingRight{
+    padding-right: 0.1rem;
+}
+.bodyContent{
+    font-size: 0.26rem;
+}
+.downArrow:after{
+    position: absolute;
+    right: 0.3rem;
+    color: #bdbdbd;
+    content: "\f107";
+    font-family: fullIconAll;
+}
+
+#bidentifyingCodeSpan{
+    width: 45%;
+    padding-right: 0.2rem;
+}
+#sendCode{
+    box-sizing: border-box;
+    width: 30%;
+    text-align: center;
+    padding-right: 0.1rem;
+}
+#sendCode input{
+    border-radius: 5px;
+    box-shadow: none;
+    border-width: 0.02rem;
+    border-style: solid;
+    border-color: #bdbdbd;
+    padding: 0.1rem ;
+    width: 100%;
+    box-sizing: border-box;
+    outline: none;
+    color: #FF9000;
+    text-align: center;
+}
+
+.bodyContent .baseInfo,.bodyContent .otherInfo ,.bodyContent .policySD,.bodyContent .contactWay{
+    background-color: #FFFFFF;
+}
+.bodyContent .baseInfo .baseInfoTitle,.bodyContent .otherInfo .otherInfoTitle ,
+.bodyContent .policySD .policySDTitle,.bodyContent .contactWay .contactWayTitle{
+    color: #FF9000;
+}
+.bodyContent .baseInfo .baseInfoTitle,.bodyContent .otherInfo .otherInfoTitle,
+.bodyContent .policySD .policySDTitle,.bodyContent .contactWay .contactWayTitle,.bodyContent .InputInfo{
+    height: 0.856rem;
+    line-height:0.856rem;
+}
+.bodyContent .otherInfo ,.bodyContent .policySD,.bodyContent .contactWay{
+    margin-top: 0.3rem;
+}
+
+.bodyContent .infoLabel{
+    width: 25%;
+    box-sizing: border-box;
+}
+.bodyContent .infoInput{
+    width: 75%;
+    box-sizing: border-box;
+}
+.bodyContent .infoInput input{
+    border-radius: 5px;
+    box-shadow: none;
+    border-width: 0.02rem;
+    border-style: solid;
+    border-color: #bdbdbd;
+    padding: 0.1rem ;
+    width: 100%;
+    box-sizing: border-box;
+    outline: none;
+}
+
+
+.notifyDiv{
+    margin-bottom: 0.8rem;
+    padding:0.3rem 0.1rem ;
+    line-height: 0.4rem;
+    background-color: #f2f2f2;
+    color: #8b8b8b;
+}
+.notifyDiv .ui-block-a{
+    box-sizing: border-box;
+    width: 20%;
+}
+.notifyDiv .ui-block-a .agreeNotify{
+    display: none;
+}
+.notifyDiv .ui-block-a .notify{
+    border: none;
+    background: none;
+    height: 0.4rem;
+    line-height: 0.4rem;
+}
+.notifyDiv .ui-block-a .notify:after{
+    transform:  translateX(100%);
+    margin: 0px;
+    top: inherit;
+    left: inherit;
+    width: 0.4rem;
+    height: 0.4rem;
+    box-sizing: border-box;
+    background-size: 0.3rem 0.3rem;
+}
+.notifyDiv .ui-block-a .ui-checkbox{
+    margin: 0;
+}
+.notifyDiv .ui-block-a .notify:after{
+    border: 0.02rem solid #bdbdbd;
+}
+.notifyDiv .ui-block-b{
+    box-sizing: border-box;
+    width: 80%;
+}
+
+
+.bodyContent .ui-checkbox-off:after{
+    background-color: #FFFFFF;
+    background-repeat: no-repeat;
+}
+.bodyContent .ui-checkbox-on:after{
+    background-color: #0BA95F;
+    background-repeat: no-repeat;
+}
+.notifyDiv .ui-block-b .notice{
+    color: #0BA95F;
+}
+
+
+
+
+.bodyContent .nextStep{
+    margin-top: 0.8rem;
+    width: 100%;
+    color: #ffffff;
+    text-align: center;
+    line-height: 0.8rem;
+    height: 0.8rem;
+    position: fixed;
+    bottom: 0px;
+    padding: 0.05rem 0.2rem;
+    z-index: 3;/*因为单、复选框的z-index=2*/
+    box-sizing: border-box;
+    background-color: #FFFFFF;
+}
+.bodyContent .nextStep span{
+    display: block;
+    line-height: 0.7rem;
+    background: #0BA95F;
+    border-radius: 5px;
+}
+
+.red{
+    color: red;
+}
+
+
+
+#payShow ,#noticeShow{
+    z-index: 871229;
+    background-color: #FFFFFF;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+#payShow .payHeader,#noticeShow .noticeShowHeader{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: #208bd8 -webkit-linear-gradient(top,#0f79d1,#3ea9e4);
+    z-index: 9871229;
+    height: 0.8rem;
+    font-size: 0.32rem;
+}
+#payShow .payHeader .payTitle,#noticeShow .noticeShowHeader .noticeTitle{
+    width: 100%;
+    text-align: center;
+    display: inline-block;
+    height: 0.8rem;
+    line-height: 0.8rem;
+    color: #FFFFFF;
+}
+#payShow .close{
+    font-weight: 400;
+}
+#payShow .payHeader .close,#noticeShow .noticeShowHeader .close{
+    color: #fff;
+    line-height: 0.48rem;
+    white-space: nowrap;
+}
+#payShow .close:before{
+    font-family: fullIconAll;
+    content: "\f060";
+    padding-right: 0.1rem;
+}
+#payFrame,#noticeFrame{
+    z-index: 871229;
+    border: none;
+    position: fixed;
+    top: 0;
+    box-sizing: border-box;
+    padding-top: 0.8rem;
+    width: 100%;
+    height: 100%;
+}
+#noticeFrame{
+    padding-top: 0;
+}
+
+
+#finishPayScreen{
+    opacity: 0.5;
+    z-index: 871229;
+    background-color: #FFFFFF;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+#finishPay{
+    z-index: 871230;
+    position: fixed;
+    display: none;
+    width: 5rem;
+    top:40%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    font-size: 0.32rem;
+    text-align: center;
+    border: 0.02rem solid #a1a1a1;
+    background-color: #ffffff;
+    text-shadow: none;
+    padding: 0.3rem 0 ;
+}
+#finishPay .title{
+    font-size: 0.24rem;
+    box-shadow: none;
+    text-shadow: none;
+    font-weight: 100;
+    color: #000000;
+}
+#finishPay .action{
+    margin: 0.3rem 0.3rem 0 0.3rem
+}
+#finishPay .ensure , #finishPay .cancel{
+    font-size: 0.24rem;
+    background-color: #fafafa;
+    color: #000000;
+    height: 1rem;
+    line-height: 1rem;
+    border: 0.02rem solid #a1a1a1;
+    width: 45%;
+    font-weight: 100
+}
+#finishPay .action .ui-block-b{
+    width: 10%;
+}
+.tel{
+     color: #ffffff !important;
+     text-decoration: none;
+ }
+.tel:before{
+    font-family: fullIconAll;
+    content: "\f095";
+    font-size: 0.4rem;
+}
+
+
+

@@ -163,7 +163,7 @@ div.ui-slider {
     line-height: 0.856rem;
 }
 
-.footer span {
+.footer>span {
     color: #fff;
     display: block;
     margin: 0 auto;
@@ -546,4 +546,11 @@ div.ui-slider {
     line-height: 0.48rem;
     font-size: 0.32rem;
     content: "\f053";
+}
+/* 原价 */
+.originFee{
+    text-decoration: line-through;
+    color: #a1a1a1;
+    font-size: 0.2rem;
+    padding-left: 0.1rem;
 }

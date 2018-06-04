@@ -12,7 +12,7 @@
 			const relationJson =  [{"id":"01","value":"本人"},{"id":"10","value":"配偶"},{"id":"40","value":"子女"}] ;
 			const genderJson = [ {id:'男',value:'男'},{id:'女',value:'女'}];
 			const timeDelay = 60; /*设置验证码发送间隔*/
-			const mobileCheck = /^1[3458][0-9]\d{8}$/;
+			const mobileCheck = /^1[3456789][0-9]\d{8}$/;
 			const emailCheck = /^([a-zA-Z0-9]){1}[a-zA-Z0-9_\.-]*([a-zA-Z0-9])@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+){0,10}(.com|.cn|.net|.org)$/;
 			const shark = new SharkTip({  /*初始化弹窗*/
 				needShark: true

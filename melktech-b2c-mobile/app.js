@@ -7,12 +7,13 @@ let session = require('express-session');
 let bodyParser = require('body-parser');
 let multiparty = require('connect-multiparty');
 
-let index = require('./routes/index');
+let ajax = require('./routes/ajax');
 let errorCenter = require('./routes/errorCenter');
 let homePage = require('./routes/homePage');
+let index = require('./routes/index');
 let oneStepInsurance = require('./routes/oneStepInsurance');
 let tool = require('./routes/tool');
-let ajax = require('./routes/ajax');
+
 let startPort = require('./config/startPort');
 
 let log4js = require('log4js');
@@ -61,7 +62,6 @@ app.use(function(req, res ,next){
 
 app.use(startPort.projectUrl ,express.static(path.join(__dirname, 'public')));
 
-
 app.use(startPort.projectUrl,index);
 app.use(startPort.projectUrl,errorCenter);
 app.use(startPort.projectUrl,oneStepInsurance);
@@ -71,15 +71,16 @@ app.use(startPort.projectUrl,ajax);
 //判session中需要的参数在不在 5个必要的参数
 //校验5个参数
 app.use(function(req, res ,next){
-	if(!req.session.finalData || (!req.session.finalData.salemanCode && !req.session.finalData.channelOperator )|| !req.session.finalData.planCode
-		|| !req.session.finalData.planGroupCode || !req.session.finalData.entCode){
+	if(!req.session.finalData || (!req.session.finalData.salemanCode && !req.session.finalData.channelOperator )|| ((!req.session.finalData.planCode
+		|| !req.session.finalData.planGroupCode || !req.session.finalData.entCode) && !req.session.finalData.productCode )){
 		let errorJson = {};
 		errorJson.msg="缺少必要参数，请关闭页面重新进入";
 		res.render("errorCenter" , errorJson);
 		return false;
 	}else{
-		req.body.planCode = req.session.finalData.planCode;
-		req.body.planGroupCode = req.session.finalData.planGroupCode;
+		req.body.planCode = req.session.finalData.planCode ;
+		req.body.planGroupCode = req.session.finalData.planGroupCode ;
+		req.body.productCode = req.session.finalData.productCode;
 		next();
 	}
 });

@@ -1,6 +1,9 @@
 .bodyContent{
     margin-bottom: 0.848rem;
 }
+.orange{
+    color: #FF9000;
+}
 .weight{
     font-weight: 600;
 }
@@ -23,27 +26,38 @@
 .bodyContent .littleHeader .detail{
     padding:0.2rem;
 }
-.bodyContent .littleHeader .detail .detailTitle{
+.bodyContent .littleHeader .detail .detailTitle,.bodyContent .littleHeader .detail .detailPrice{
     font-size: 0.28rem;
     padding-bottom: 0.1rem;
 }
 .bodyContent .littleHeader .detail .detailPrice{
-    font-size: 0.28rem;
     color: #FF9000;
-    padding-bottom: 0.1rem;
 }
 .bodyContent .littleHeader .detail .priceTip{
     font-size: 0.24rem;
     padding-left: 0.1rem;
 }
-.bodyContent .littleHeader .detail .detailInfo{
+.bodyContent .littleHeader .detail .detailInfo,.bodyContent .littleHeader .detail .detailStock{
     font-size: 0.24rem;
+    padding-bottom: 0.1rem;
 }
 .bodyContent .littleHeader .detail .detailInfo span:first-child{
     padding-right: 0.1rem;
 }
 
 
+#ins .oneIns{
+    text-align: center;
+    font-size: .2rem;
+    margin: .1rem;
+}
+#ins .oneIns img{
+    width: 1rem;
+    vertical-align: middle;
+}
+#ins .oneIns .insText{
+    vertical-align: middle;
+}
 #selectButton , #selectModeButton , #selectSaleAreaButton{
     margin-top: 0.2rem;
     font-size: 0.24rem;
@@ -258,19 +272,26 @@
     display: none;
 }
 
-.footer span{
+.footer>span{
     box-sizing: border-box;
     border: 0.02rem solid #E8E8E8;
 }
 
-.footer .ui-block-a{
+.footer>.ui-block-a{
     color: #FF9000;
     background-color: #FFFFFF;
     border-right: none;
+    width: 60%;
 }
-.footer .ui-block-b{
+.footer>.ui-block-b{
     color: #FFFFFF;
     background-color: #FF9000;
+    width: 40%;
+}
+.footer>.sellOut{
+    color: #FFFFFF;
+    text-shadow: none;
+    background-color: #a1a1a1;
 }
 
 #screen{

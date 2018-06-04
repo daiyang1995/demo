@@ -1,0 +1,94 @@
+.blue{
+    color: #00b7ff;
+    text-decoration: underline;
+}
+.gift:before{
+    content: '\f06b';
+}
+.order:before{
+    content: '\f15c';
+}
+.personalInfo:before{
+    content: '\f007';
+}
+.customer:before{
+    content: '\f0c0';
+}
+.bankCard:before{
+    content: '\f022';
+}
+.password:before{
+    content: '\f084';
+}
+
+#uploadPortraitForm , #uploadPortraitForm input{
+    display: none;
+}
+
+.header{
+    height: 2rem;
+    padding-left: 0.2rem;
+}
+.header .headPortrait{
+    display: inline-block;
+    position: relative;
+    top: 1rem;
+    width: 1rem;
+    height: 1rem;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    overflow: hidden;
+}
+.header .headPortrait img{
+    width: 1rem;
+    height: 1rem;
+}
+.header .userAccountName{
+    position: relative;
+    color: #ffffff;
+}
+.bodyContent{
+    margin-top: 2rem;
+    margin-bottom: 0.8rem;
+}
+.bodyContent .commisionLine{
+    padding: 0.2rem 0;
+    background-color: #ffffff;
+    text-align: center;
+}
+.bodyContent .commisionLine .oneLine{
+    font-size: 0.4rem;
+    line-height: 0.4rem;
+}
+.bodyContent .commisionLine .oneLine .desc{
+    color: #00b7ff;
+    font-size: 0.32rem;
+}
+.bodyContent .commisionLine .oneLine .commision{
+    margin-top: 0.1rem;
+    font-weight: 600;
+}
+.bodyContent .commisionLine .oneLine .tip{
+    font-size: 0.24rem;
+    color : #a1a1a1;
+}
+
+.bodyContent .functionList{
+    padding: 0.2rem 0 ;
+    margin-top: 0.2rem;
+    background-color: #ffffff;
+    text-align: center;
+}
+.bodyContent  .functionLine{
+    padding: 0.1rem 0 ;
+}
+.bodyContent  .functionLine>span:before{
+    font-family: fullIconAll;
+    color: #00B7FF;
+    font-size: 0.5rem;
+    text-align: center;
+    width: 100%;
+}
+.bodyContent .functionDesc{
+    display: block;
+}

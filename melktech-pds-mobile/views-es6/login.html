@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%-include("./commonJs.html")%>
+    <%-include("./commonCss.html")%>
+    <title>登录</title>
+    <link rel="stylesheet"  href="<%=localurl%><%=projectUrl%>stylesheets/page/login.css" />
+    <script type="text/babel">
+		$(document).ready(function(){
+			const mobileCheck = /^1[3456789][0-9]\d{8}$/; /*手机号校验*/
+			const passwordCheck = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$/; /*密码校验*/
+			const shark = new SharkTip({ needShark: true});/*初始化弹窗*/
+			const loader = new Loaders({style:"rectangle"});
+			/* 显示passWord*/
+			$(".oneline").on("vclick" ,".passwordShow",function (e) {
+				e.preventDefault();
+				let thisJquery = this;
+				$(thisJquery).removeClass("passwordShow");
+				$(thisJquery).addClass("passwordHide");
+				$(thisJquery).parents("div").find(".password").attr("type","text");
+			});
+			/*隐藏passWord*/
+			$(".oneline").on("vclick" ,".passwordHide",function (e) {
+				e.preventDefault();
+				let thisJquery = this;
+				$(thisJquery).removeClass("passwordHide");
+				$(thisJquery).addClass("passwordShow");
+				$(thisJquery).parents("div").find(".password").attr("type","password");
+			});
+			$(".loginDiv").on("vclick", ".loginButton" , function (e) {
+				e.preventDefault();
+				let phone = $.trim($(".phone").val());
+				let password = $.trim($(".password").val());
+				if(!phone ||  !(mobileCheck.test(phone)) ){
+					shark.show("请输入正确的手机号");
+					return false;
+				}else if(!passwordCheck || !passwordCheck.test(password) ){
+					shark.show("密码格式不正确");
+					return false;
+				}
+				loader.show();
+				let formData = new FormData();
+				formData.append("mobile",phone);
+				formData.append("password" , password);
+				$.ajax({
+					url: "<%=localurl%><%=projectUrl%>loginSubmit",
+					type: 'POST',
+					data: formData,
+					async: true,
+					cache: false,
+					dataType: 'json',
+					contentType: false,
+					processData: false,
+					success: (data) => {
+						if(data.ret == "0"){
+							shark.show("成功");
+							window.location.href="<%=localurl%><%=projectUrl%>planList";
+						}else{
+							shark.show(data.msg);
+						}
+					},complete: function(data) {
+						loader.hide();
+					},
+					error:  (data) => {
+						shark.show("系统异常,请联系管理员");
+					}
+				});
+			});
+            $(".registerDiv").on("vclick",".registerLink" , function (e) {
+                e.preventDefault();
+                window.location.href = "<%=localurl%><%=projectUrl%>register";
+			});
+
+		});
+    </script>
+</head>
+<body>
+<div class="header">
+    <span class="title">登录</span>
+</div>
+<div class="bodyContent">
+    <div class="littleTip">
+        <img src="<%=localurl%><%=projectUrl%>images/banner.png" >
+    </div>
+    <div class="personalInfo">
+        <div class="ui-grid-a oneline">
+            <span class="ui-block-a icon iconPhone"></span>
+            <span class="ui-block-b input"><input type="number" name="phone" class="personalInfo phone" data-role="none" placeholder="请输入手机号"  autocomplete="off"></span>
+        </div>
+
+        <div class="ui-grid-a oneline">
+            <span class="ui-block-a icon iconPassword"></span>
+            <span class="ui-block-b input"><input type="password" name="password" class="personalInfo password" data-role="none" placeholder="请输入密码(6-20位数字和字母)"  autocomplete="off"></span>
+            <span class="passwordShow"></span>
+        </div>
+
+    </div>
+    <div class="loginDiv">
+        <span class="loginButton">登录</span>
+    </div>
+    <!--<div class="registerDiv">-->
+        <!--<span class="registerLink">注册请点这里</span>-->
+    <!--</div>-->
+    <!--<div class="forgetPasswordDiv">-->
+        <!--<span class="forgetPasswordLink">忘记密码</span>-->
+    <!--</div>-->
+</div>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("./commonJs.html") %>
+    <%- include("./commonCss.html") %>
+    <title>好友订单</title>
+    <link rel="stylesheet" href="<%=localurl%><%=projectUrl%>stylesheets/page/friendPolicy.css"/>
+    <script type="text/babel">
+
+		$(document).ready(function () {
+			const shark = new SharkTip({needShark: true});
+			/*初始化弹窗*/
+			const loader = new Loaders({style: "rectangle"});
+
+			/* 回退*/
+			$(".header").on("vclick", ".backIcon", function (e) {
+				e.preventDefault();
+				window.location.href = "<%= localurl %><%= projectUrl %>userCenter";
+			});
+
+			$(".bottomTag").on("vclick", "span", function (e) {
+				e.preventDefault();
+				let urlAction = $(this).attr("data-action");
+				if (urlAction) {
+					window.location.href = urlAction;
+				}
+			});
+			/*上拉加载逻辑*/
+			/*************** start  ***************/
+			var pageIndex = 1;
+
+			function readd() {
+				loader.show();
+				var formData = new FormData();
+				formData.append("pageNum", pageIndex);
+				$.ajax({
+					url: "<%= localurl %><%= projectUrl %>getFriendPolicyList",
+					type: 'POST',
+					data: formData,
+					async: true,
+					cache: false,
+					dataType: 'json',
+					contentType: false,
+					processData: false,
+					success: (data) => {
+						if (data.ret == "0") {
+							let noimg = "<%= localurl %><%= projectUrl %>images/rentouxiang.png";
+							if (data.friendPolicyList) {
+								$.each(data.friendPolicyList, (idx, obj) => {
+									$('.bodyOuterScroller .scroll').append(`
+                                    <div class="dataList" >
+                                        <div class="ui-grid-a">
+                                            <div class="ui-block-a">
+                                                <img class="salemanPortrait" src="${obj.salemanPortrait}" onerror="this.src=\'${noimg}\'" >
+                                                <span>${obj.salemanMobile}</span>
+                                            </div>
+                                            <div class="ui-block-b">
+                                                <div class="ui-grid-a"><span class="ui-block-a">成交笔数：</span><span class="ui-block-b">${obj.policyNum}笔</span></div>
+                                                <div class="ui-grid-a"><span class="ui-block-a">保费总金额：</span><span class="ui-block-b">${obj.policyFee}元</span></div>
+                                                <div class="ui-grid-a"><span class="ui-block-a">推广费总计：</span><span class="ui-block-b">${obj.salemanCommision}元</span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                `);
+								});
+							}
+							$('.bodyOuterScroller').css('max-height', $("body").height() - $(".header").height() - $(".bottomTag").height() + "px");
+							$('.bodyOuterScroller').css('height', $('.bodyOuterScroller .scroll').css('height'));
+							if (data.friendPolicyList && 10 > data.friendPolicyList.length) {
+								if (1 === pageIndex && 0 === data.friendPolicyList.length) {
+									$(".bodyContent").append(`
+                                    <div class="noPolicy">
+                                        <div class="noPolicyImg">
+                                            <img src="<%= localurl %><%= projectUrl %>images/timg.jpg"/>
+                                        </div>
+                                        <div class="noPolicyStr">你的好友还没有完成过保单</div>
+                                    </div>
+                                `);
+								}
+								console.log(data.friendPolicyList);
+								updownloading.callUpFinish();
+							} else if (!data.friendPolicyList) {
+								if (1 === pageIndex) {
+									$(".bodyContent").append(`
+                                    <div class="noPolicy">
+                                        <div class="noPolicyImg">
+                                            <img src="<%= localurl %><%= projectUrl %>images/timg.jpg"/>
+                                        </div>
+                                        <div class="noPolicyStr">你的好友还没有完成过保单</div>
+                                    </div>
+                                `);
+								}
+								updownloading.callUpFinish();
+							}
+							pageIndex++;
+						} else {
+							shark.show(data.msg);
+							setTimeout(function () {
+								window.location.href = "<%= localurl %><%= projectUrl %>login";
+							}, 2000);
+							updownloading.callUpFinish();
+						}
+
+					}, complete: function (data) {
+						loader.hide();
+					},
+					error: (data) => {
+						shark.show("系统异常,请联系管理员");
+					}
+				});
+			}
+
+			readd();
+			let updownloading = new Updownloading({
+				outerScroller: '.bodyOuterScroller',
+				scroll: '.scroll',
+				downLoadingStatus: false,
+				upLoadingStatus: true,
+				upFinish:"我也是有底线的",
+				downFinish:"向上滑动加载更多",
+				resistance: 0.7,
+				upFunction: readd
+			});
+			/*************** end  ***************/
+
+		});
+    </script>
+</head>
+<body>
+<div class="header">
+    <span class="icon-carat-b-onwer backIcon"></span>
+    <span class="title">好友订单</span>
+</div>
+<div class="bodyContent">
+    <div class="bodyOuterScroller">
+        <div class='scroll'>
+        </div>
+    </div>
+
+    <div class="bottomTag ui-grid-a">
+        <span class="ui-block-a" data-action="<%=localurl%><%=projectUrl%>policyList">个人订单</span>
+        <span class="ui-block-b active">好友订单</span>
+    </div>
+</div>
+
+
+</body>
+</html>
