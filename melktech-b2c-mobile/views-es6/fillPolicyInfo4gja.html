@@ -7,6 +7,10 @@
     <title>投保信息填写</title>
     <script type="text/babel">
         $(document).ready(function () {
+			let payTime = 60*15;/* 15分钟*/
+			$("#payShow .payTitle").html(`支付(剩余时间 15:00)`);
+        	let globalOIdCard = ""; /*被保险人证件号码*/
+			let globalPsd = ""; /*保单生效日期*/
             const timeDelay = 60; /*设置验证码发送间隔*/
 			const mobileCheck = /^1[3456789][0-9]\d{8}$/;
 			const emailCheck = /^([a-zA-Z0-9]){1}[a-zA-Z0-9_\.-]*([a-zA-Z0-9])@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+){0,10}(.com|.cn|.net|.org)$/;
@@ -32,7 +36,7 @@
             /*回退*/
 			$("#bodyHeader").on("vclick",".backIcon",function (e) {
                 e.preventDefault();
-                window.location.href= "<%=localurl%><%=projectUrl%>index";
+                window.location.href= "<%=localurl%><%=projectUrl%>index?uniqueCode=<%=uniqueCode%>";
             });
             /*证件类型*/
             const idTypeJson = [ {id:'身份证',value:'身份证'}];
@@ -207,13 +211,13 @@
 					$("#pSD").val(tempStr);
 				}
             }else{
-            	$("#pSDSpan").removeClass("downArrow");
+				$("#pSDSpan").removeClass("downArrow");
 				if(effectiveIntervalType == 1){ /* 天 */
 					now.setDate(now.getDate()+ effectiveInterval); /*获取 间隔日期之后的天数*/
-					$("#pSD").val(`${now.getFullYear()}年 ${ (now.getMonth()+1).length>2? now.getMonth()+1:"0"+(now.getMonth()+1)  }月 ${now.getDate().length>2?now.getDate():"0"+now.getDate()}日`);
+					$("#pSD").val(`${now.getFullYear()}年 ${ (now.getMonth()+1).toString().length>1? now.getMonth()+1:"0"+(now.getMonth()+1)  }月 ${now.getDate().toString().length>1?now.getDate():"0"+now.getDate()}日`);
                 }else if(effectiveIntervalType == 2) {/* 小时 */
 					now.setHours(now.getHours() + effectiveInterval);
-					$("#pSD").val(`${now.getFullYear()}年 ${ (now.getMonth()+1).length>2? now.getMonth()+1:"0"+(now.getMonth()+1)  }月 ${now.getDate().length>2?now.getDate():"0"+now.getDate()}日 ${now.getHours().length>2?now.getHours():"0"+now.getHours()}时`);
+					$("#pSD").val(`${now.getFullYear()}年 ${ (now.getMonth()+1).toString().length>1? now.getMonth()+1:"0"+(now.getMonth()+1)  }月 ${now.getDate().toString().length>1?now.getDate():"0"+now.getDate()}日 ${now.getHours().toString().length>1?now.getHours():"0"+now.getHours()}时`);
 				}
             }
 
@@ -229,6 +233,7 @@
 				loader.show();
                 let formData = new FormData();
                 formData.append("telPhoneNubmer",btel);
+				formData.append("uniqueCode","<%=uniqueCode%>");
 				$.ajax({
 					url: "<%=localurl%><%=projectUrl%>sendCode",
 					type: 'POST',
@@ -256,7 +261,7 @@
 						}else if("-2" == data.ret){
 							shark.show(sharkid,data.msg);
 							setTimeout(function () {
-								window.location.href ="<%=localurl%><%=projectUrl%>index";
+								window.location.href ="<%=localurl%><%=projectUrl%>index?uniqueCode=<%=uniqueCode%>";
 							},2000);
 						}else{
 							shark.show(data.msg);
@@ -304,6 +309,9 @@
 				let otel = btel; /*被保险人手机号*/
                 let psd = $.trim($("#pSD").val()); /*保单生效日期*/
 
+				globalOIdCard = oidCard;
+				globalPsd = psd;
+
                 if(!bname ||　!bidType || !bidCard || !bemail || !btel || !bidentifyingCode ||
                     !orelation || !oname || !oidType || !oidCard || !oemail || !otel || !psd){
                 	haveError = true;
@@ -347,6 +355,7 @@
 				formData.append("oemail",oemail);
 				formData.append("otel",otel);
 				formData.append("psd",psd);
+				formData.append("uniqueCode","<%=uniqueCode%>");
 
 				loader.show();
 				$.ajax({
@@ -366,11 +375,23 @@
 							applyNo = data.applyNo;
 							$("#payShow #payFrame").attr("src" ,data.payUrl);
 							$("#payShow").fadeIn(400);
+							/* 放置支付倒计时 */
+							setInterval(function () {
+								payTime = payTime-1;
+								if(payTime == 0){
+									window.location.reload();
+								}
+								let payMin = Math.floor(payTime/60);
+								payMin = payMin.toString().length < 2 ?"0"+payMin : payMin;
+								let paySec = payTime%60;
+								paySec = paySec.toString().length < 2 ?"0"+paySec : paySec;
+								$("#payShow .payTitle").html(`支付(剩余时间 ${payMin}:${paySec})`);
+							},1000);
 							/*window.location.replace(data.payUrl);*/
                         }else if("-2" == data.ret){
 							shark.show(data.msg);
 							setTimeout(function () {
-								window.location.href ="<%=localurl%><%=projectUrl%>index";
+								window.location.href ="<%=localurl%><%=projectUrl%>index?uniqueCode=<%=uniqueCode%>";
 							},2000);
                         }else if("-100" == data.ret){
                         	let errorMsg = data.msg?data.msg:"保险公司处理失败";
@@ -389,12 +410,13 @@
 
             /* delay 2000ms  的反向ajax推送， 当收到返回时再推*/
             function ajaxDelay(){
-				let oidCard = $.trim($("#oidCard").val()); /*被保险人证件号码*/
-				let psd = $.trim($("#pSD").val()); /*保单生效日期*/
+				let oidCard = globalOIdCard; /*被保险人证件号码*/
+				let psd = globalPsd; /*保单生效日期*/
 				let formData = new FormData();
 				formData.append("identifyNumber",oidCard);
 				formData.append("startDate",psd);
 				formData.append("applyNo",applyNo);
+				formData.append("uniqueCode","<%=uniqueCode%>");
 				$.ajax({
 					url: "<%=localurl%><%=projectUrl%>genPaymentInfo",
 					type: 'POST',
@@ -411,7 +433,7 @@
 								window.location.replace(data.url);
 							}else{
 								window.location.replace("<%=localurl%><%=projectUrl%>goFinishPage?policyNo="+data.policyNo
-									+"&startDate="+data.startDate+"&endDate="+data.endDate);
+									+"&uniqueCode=<%=uniqueCode%>"+"&startDate="+data.startDate+"&endDate="+data.endDate);
 							}
                         }else{
 							if(haveTime){
@@ -472,7 +494,7 @@
 			$(".notifyDiv").on("vclick",".notice",function(e){
 				e.preventDefault();
 				let thisJquery = this;
-				$("#noticeShow #noticeFrame").attr("src" ,"<%=localurl%><%=projectUrl%>"+$(thisJquery).attr("data-action"));
+				$("#noticeShow #noticeFrame").attr("src" ,"<%=localurl%><%=projectUrl%>"+$(thisJquery).attr("data-action")+"?uniqueCode=<%=uniqueCode%>");
 				$("#noticeShow .noticeTitle").html($(thisJquery).html());
 				$("#noticeShow").fadeIn(400);
 			});

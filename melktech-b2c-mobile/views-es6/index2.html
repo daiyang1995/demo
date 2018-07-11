@@ -9,8 +9,6 @@
     <script type="text/babel">
         $(document).ready(function(){
 
-        	let insurantRule = ""; /*人的维度*/
-            let fee = ""; /*金额*/
             /*初始化*/
             const insurantRuleJson = eval(<%-data.insurantRuleJson%>);
             const insureModeJson =eval(<%-data.insureModeJson%>);
@@ -36,16 +34,6 @@
             /* 销售地区 */
             <% if(typeof data.saleArea !== 'undefined' && data.saleArea ){%>
                 let saleArea = eval(<%-data.saleArea%>);
-               /* let showText = "";
-                let json = saleArea.item;
-                while(true){
-					showText += json[0].value +"-";
-					if(!json[0].childs){
-						break;
-                    }else{
-						json = json[0].childs;
-                    }
-                }*/
                 /*放入投保地区*/
                 $("#selectSaleAreaButton").append(`
                         <div id="selectSaleArea" class="selectLine ui-grid-b" >
@@ -54,11 +42,12 @@
                             <span class="ui-block-c"></span>
                         </div>
                 `);
-                let selectModeButton  = new MobileSelect({
+                let saleAreaJson = eval(saleArea.item);
+                let selectSaleAreaButton  = new MobileSelect({
                     trigger: `#selectSaleArea`,
                     title:`${saleArea.label}`,
                     wheels: [
-                        {data: eval(saleArea.item)}
+                        {data: saleAreaJson}
                     ],
                     reloadPosition : true,
                     triggerDisplayData : false,
@@ -69,6 +58,20 @@
                             text+= data[i].value+"-";
                         }
                         $($(this)[0].trigger).find(".ui-block-b").html(text.substring(0,text.length-1)) ;
+                        let tempJson = saleAreaJson;
+                        for(let i in selectSaleAreaButton.getIndexArr()){
+                        	let idx = selectSaleAreaButton.getIndexArr()[i];
+							tempJson = tempJson[idx].childs ? tempJson[idx].childs:tempJson[idx];
+                        }
+                        if("remark" in tempJson && tempJson.remark != ""){
+                        	if($("#saleAreaRemark").length > 0){
+                                $("#saleAreaRemark").html(tempJson.remark);
+                            }else{
+								$("#selectSaleAreaButton").after(`<div id="saleAreaRemark">${tempJson.remark}</div>`);
+                            }
+                        }else{
+                            $("#saleAreaRemark").remove();
+                        }
                     }
                 });
             <%}%>
@@ -265,7 +268,7 @@
 				};
 				noFound = true;
 				$(".footer .ui-block-a").html("");
-				shark.show("选项组合不存在,请选择正确的人员属性和正确的保额");
+				shark.show("选项组合不存在,请选择正确的人员属性,保障年限和保额");
 				return true;
 			}
 
@@ -296,7 +299,7 @@
             $(".introduce").on("vclick",".introduceLine",function(e){
                e.preventDefault();
                let thisJquery = this;
-               window.location.href="<%=localurl%><%=projectUrl%>"+$(thisJquery).attr("data-action");
+               window.location.href="<%=localurl%><%=projectUrl%>"+$(thisJquery).attr("data-action")+"?uniqueCode=<%=uniqueCode%>";
             });
             /*查看更多 问题*/
             $(".question").on("vclick",".questionMore",function (e) {
@@ -304,7 +307,7 @@
                 $(this).hide();
                 $(".question .questionLineMore").show();
             });
-
+			beforeSelect();
             /*立即投保*/
             $(".footer").on("vclick", ".coverBtn", function (e) {
 				e.preventDefault();
@@ -317,7 +320,7 @@
 					shark.show(`请选择${$("#selectSaleArea .ui-block-a").html()}`);
 					return false;
                 }
-				var formAction =  "<%=localurl%><%=projectUrl%>goToHealthInfo";
+				var formAction =  "<%=localurl%><%=projectUrl%>goToHealthInfo?uniqueCode=<%=uniqueCode%>";
 				var form1 = document.createElement("form");
 				form1.id = "VirtualForm";
 				form1.name = "VirtualForm";
@@ -331,6 +334,12 @@
 				let input1 = document.createElement("input");
 				input1.type = "text";input1.name = "allDimensionCombine";input1.value = allDimensionCombine;   /*放入人的维度*/
 				form1.appendChild(input1);
+
+				if($("#selectSaleArea").length != 0 ){
+					let input2 = document.createElement("input");
+					input2.type = "text";input2.name = "assa";input2.value = $("#selectSaleArea .ui-block-b").html();   /*放入人的维度*/
+					form1.appendChild(input2);
+				}
 
 				form1.method = "POST";
 				form1.action = formAction;
@@ -353,7 +362,6 @@
                e.preventDefault();
                $("#screen").remove();
 			});
-
         });
     </script>
 </head>
@@ -366,11 +374,7 @@
 <div class="bodyContent">
     <!-- 小头-->
     <div class="littleHeader" >
-        <%if(planCode=="1"){%>
-            <img class="banner" src="<%=localurl%><%=projectUrl%>images/1/banner.jpg">
-        <%}else{%>
-            <img class="banner" src="<%=data.banner[0]%>">
-        <%}%>
+        <img class="banner" src="<%=data.banner[0]%>">
         <div class="detail">
             <div class="detailTitle weight"><span><%=data.planName%></span></div>
             <div class="detailPrice"><span>￥<%=data.price.discountFee%>元</span><span class="priceTip">起</span><%if(data.price.originFee != null ){%><span class="originFee">(￥<%=data.price.originFee%>元)</span><%}%></div>
@@ -380,6 +384,12 @@
             <% } %>
         </div>
     </div>
+    <% if(typeof data.insJson !== 'undefined' && data.insJson  ) {%>
+    <!-- 由XX承保 -->
+    <div id="ins">
+
+    </div>
+    <%}%>
     <!--选择-->
     <div id="selectButton">
 
@@ -392,13 +402,6 @@
     <% if(typeof data.saleArea !== 'undefined' && data.saleArea  ) {%>
     <!--投保地区选择-->
     <div id="selectSaleAreaButton">
-
-    </div>
-    <%}%>
-
-    <% if(typeof data.insJson !== 'undefined' && data.insJson  ) {%>
-    <!-- 由XX承保 -->
-    <div id="ins">
 
     </div>
     <%}%>

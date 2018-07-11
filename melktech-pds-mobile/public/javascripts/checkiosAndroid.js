@@ -1,4 +1,0 @@
-/*! melktech-pds-mobile 2018-05-10 */
-
-"use strict";var browser={versions:function(){var e=navigator.userAgent;navigator.appVersion;return{trident:-1<e.indexOf("Trident"),presto:-1<e.indexOf("Presto"),webKit:-1<e.indexOf("AppleWebKit"),gecko:-1<e.indexOf("Gecko")&&-1==e.indexOf("KHTML"),mobile:!!e.match(/AppleWebKit.*Mobile/i)||!!e.match(/MIDP|SymbianOS|NOKIA|SAMSUNG|LG|NEC|TCL|Alcatel|BIRD|DBTEL|Dopod|PHILIPS|HAIER|LENOVO|MOT-|Nokia|SonyEricsson|SIE-|Amoi|ZTE/),ios:!!e.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/),android:-1<e.indexOf("Android")||-1<e.indexOf("Linux"),iPhone:-1<e.indexOf("iPhone")||-1<e.indexOf("Mac"),iPad:-1<e.indexOf("iPad"),webApp:-1==e.indexOf("Safari")}}(),language:(navigator.browserLanguage||navigator.language).toLowerCase()};
-/*! melktech-pds-mobile 最后修改于： 2018-05-10 */

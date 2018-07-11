@@ -97,18 +97,13 @@
 .bodyContent .nextStepDiv .ui-block-b, .bodyContent .fillApplicantInfo .ui-grid-a .ui-block-a,
 .bodyContent .fillPolicyPersonInfo .ui-grid-a .ui-block-a, .bodyContent .contactWay .innerOneLine .ui-block-a,
 .bodyContent .contactWay .ui-grid-b .ui-block-b ,.bodyContent .fillPolicyPersonInfo .ui-grid-b .ui-block-a,
-.bodyContent .fillApplicantInfo .ui-grid-b .ui-block-a{
+.bodyContent .fillApplicantInfo .ui-grid-b .ui-block-a,
+.bodyContent .planBaseInfo .ui-grid-b .ui-block-a{
     width: 35%;
 }
 
-.bodyContent .planBaseInfo .ui-grid-b .ui-block-a{
-    width: 40%;
-}
-
+.bodyContent .fillApplicantInfo .ui-grid-b .ui-block-b,.bodyContent .fillPolicyPersonInfo .ui-grid-b .ui-block-b,
 .bodyContent .planBaseInfo .ui-grid-b .ui-block-b {
-    width: 50%;
-}
-.bodyContent .fillApplicantInfo .ui-grid-b .ui-block-b,.bodyContent .fillPolicyPersonInfo .ui-grid-b .ui-block-b{
     width: 55%;
 }
 

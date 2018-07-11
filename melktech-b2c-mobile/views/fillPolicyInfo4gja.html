@@ -1,1 +1,493 @@
-<!DOCTYPE html><html lang="en"><head></head><body><%-include("./commonJs.html")%><%-include("./commonCss.html")%><link rel="stylesheet" href="<%=localurl%><%=projectUrl%>stylesheets/page/fillPolicyInfo4gja.css"><title>投保信息填写</title><script type="text/babel">$(document).ready(function () { const timeDelay = 60;  const mobileCheck = /^1[3456789][0-9]\d{8}$/; const emailCheck = /^([a-zA-Z0-9]){1}[a-zA-Z0-9_\.-]*([a-zA-Z0-9])@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+){0,10}(.com|.cn|.net|.org)$/; const effectiveIntervalFix = Number("<%=effectiveIntervalFix%>"); const effectiveIntervalType = Number("<%=effectiveIntervalType%>"); const effectiveInterval = Number("<%=effectiveInterval%>"); const shark = new SharkTip({  needShark: true }); const loader = new Loaders({style:"rectangle"});  const countDown = new CountDown({ "time":60, "functoinName": notFinish }); let haveTime = false;  let ccicPayUrl = ""; let applyNo = ""; $("#finishPayScreen").height($(window).height()+"px");  $("#bodyHeader").on("vclick",".backIcon",function (e) { e.preventDefault(); window.location.href= "<%=localurl%><%=projectUrl%>index"; });  const idTypeJson = [ {id:'身份证',value:'身份证'}]; let bidTypeSelect = new MobileSelect({ trigger: `#bidTypeSpan`, title:`证件类型`, wheels: [ {data: idTypeJson} ], triggerDisplayData : false, position: [0],  callback:function(idx , data ){ $("#bidType").val(data[0].value); }, transitionEnd:function (idx, data) { $("#bidType").val(data[0].value); } }); $("#bidType").val(idTypeJson[0].value);  let oidTypeSelect = new MobileSelect({ trigger: `#oidTypeSpan`, title:`证件类型`, wheels: [ {data: idTypeJson} ], triggerDisplayData : false, position: [0],  callback:function(idx , data ){ $("#oidType").val(data[0].value); }, transitionEnd:function (idx, data) { $("#oidType").val(data[0].value); } }); $("#oidType").val(idTypeJson[0].value);  function orelationChange(){ $("#oname").val($("#bname").val());  $("#oidCard").val($("#bidCard").val()); };  function emptyData(){ $("#oname").val("");  $("#oidCard").val(""); }   const relationJSon = [{"id":"01","value":"本人"},{"id":"10","value":"配偶"},{"id":"40","value":"子女"}] ; let orelationSelect = new MobileSelect({ trigger: `#orelationSpan`, title:`关系`, wheels: [ {data: relationJSon} ], triggerDisplayData : false, position: [0],  callback:function(idx , data ){ $("#orelation").val(data[0].value); if("本人"== data[0].value){ orelationChange(); }else{ emptyData(); } }, transitionEnd:function (idx, data) { $("#orelation").val(data[0].value); if("本人" == data[0].value){ orelationChange(); }else{ emptyData(); } } }); $("#orelation").val(relationJSon[0].value);  let now = new Date(); if(0 == effectiveIntervalFix){ let endNow = new Date(); if(effectiveIntervalType == 1){ now.setDate(now.getDate()+ effectiveInterval);  endNow.setMonth(endNow.getMonth() + 2); endNow.setDate(endNow.getDate()+ effectiveInterval -1 );  let pSDJson = new CalDate({ status : 90 , startDate : now.getFullYear(), startDateMonth : now.getMonth()+1, startDateDay : now.getDate() , endDate: endNow.getFullYear(), endDateMonth : endNow.getMonth()+1, endDateDay : endNow.getDate() }).getValue(); let pSDSelect = new MobileSelect({ trigger: `#pSDSpan`, title:`保险生效日期`, wheels: [ {data: pSDJson} ], triggerDisplayData : false, position: [0],  callback:function(idx , data ){ let value = ""; for(let i in data){ value += data[i].value+" "; } $("#pSD").val(value); }, transitionEnd:function (idx, data) { let value = ""; for(let i in data){ value += data[i].value+" "; } $("#pSD").val(value); } }); let tempStr = "" ,tempPSDJson = pSDJson[0]; while("childs" in tempPSDJson){ tempStr += tempPSDJson.value+" "; tempPSDJson = tempPSDJson.childs[0]; } tempStr += tempPSDJson.value; $("#pSD").val(tempStr); }else if(effectiveIntervalType == 2){ now.setHours(now.getHours() + effectiveInterval); endNow.setMonth(endNow.getMonth() + 2); endNow.setDate(endNow.getDate()+ effectiveInterval -1 );  let pSDJson = new CalDate({ status : 90 , startDate : now.getFullYear(), startDateMonth : now.getMonth()+1, startDateDay : now.getDate() , endDate: endNow.getFullYear(), endDateMonth : endNow.getMonth()+1, endDateDay : endNow.getDate(), type:2, startDateHour: now.getHours(), endDateHour : now.getHours() }).getValue(); let pSDSelect = new MobileSelect({ trigger: `#pSDSpan`, title:`保险生效日期`, wheels: [ {data: pSDJson} ], triggerDisplayData : false, position: [0],  callback:function(idx , data ){ let value = ""; for(let i in data){ value += data[i].value+" "; } $("#pSD").val(value); }, transitionEnd:function (idx, data) { let value = ""; for(let i in data){ value += data[i].value+" "; } $("#pSD").val(value); } }); let tempStr = "" ,tempPSDJson = pSDJson[0]; while("childs" in tempPSDJson){ tempStr += tempPSDJson.value+" "; tempPSDJson = tempPSDJson.childs[0]; } tempStr += tempPSDJson.value; $("#pSD").val(tempStr); } }else{ $("#pSDSpan").removeClass("downArrow"); if(effectiveIntervalType == 1){  now.setDate(now.getDate()+ effectiveInterval);  $("#pSD").val(`${now.getFullYear()}年 ${ (now.getMonth()+1).length>2? now.getMonth()+1:"0"+(now.getMonth()+1) }月 ${now.getDate().length>2?now.getDate():"0"+now.getDate()}日`); }else if(effectiveIntervalType == 2) { now.setHours(now.getHours() + effectiveInterval); $("#pSD").val(`${now.getFullYear()}年 ${ (now.getMonth()+1).length>2? now.getMonth()+1:"0"+(now.getMonth()+1) }月 ${now.getDate().length>2?now.getDate():"0"+now.getDate()}日 ${now.getHours().length>2?now.getHours():"0"+now.getHours()}时`); } }  $(".contactWay").on("vclick", ".sendCode", function(e){ e.preventDefault(); let thisJquery = this; let btel = $("#btel").val(); if(!btel || !(mobileCheck.test(btel)) ){ shark.show("请输入正确的手机号"); return false; } loader.show(); let formData = new FormData(); formData.append("telPhoneNubmer",btel); $.ajax({ url: "<%=localurl%><%=projectUrl%>sendCode", type: 'POST', data: formData, async: true, cache: false, dataType: 'json', contentType: false, processData: false, success: (data) => { if(data.ret == "0"){ let thisDelay = timeDelay; $("#sendCode input").val(`${thisDelay}s后重发`); $(thisJquery).removeClass("sendCode"); $(".sendCodeComplete").val("1"); let i = setInterval(function () { $("#sendCode input").val(`${--thisDelay}s后重发`); if( !/^(0|[1-9][0-9]*)$/.test(thisDelay)){ $(thisJquery).addClass("sendCode"); clearInterval(i); $("#sendCode input").val("获取验证码"); } } ,1000); shark.show("成功"); }else if("-2" == data.ret){ shark.show(sharkid,data.msg); setTimeout(function () { window.location.href ="<%=localurl%><%=projectUrl%>index"; },2000); }else{ shark.show(data.msg); } },complete: function(data) { loader.hide(); }, error: (data) => { shark.show("系统异常,请联系管理员"); } }); });  $(".baseInfo").on("input propertychange","input",function(e){ if("本人" == $("#orelation").val() ){ orelationChange(); } });  $(".bodyContent").on("vclick", ".nextStep", function (e) { e.preventDefault(); if(!$(".agreeNotify").is(':checked')){ shark.show("请勾选 条款及须知"); return false; } if("1" != $(".sendCodeComplete").val()){ shark.show("请先发送验证码"); return false; } let haveError = false;  let bname = $.trim($("#bname").val());  let bidType = $.trim($("#bidType").val());  let bidCard = $.trim($("#bidCard").val());  let bemail = $.trim($("#bemail").val());  let btel = $.trim($("#btel").val());  let bidentifyingCode = $.trim($("#bidentifyingCode").val()); let orelation = $.trim($("#orelation").val());  let oname = $.trim($("#oname").val());  let oidType = $.trim($("#oidType").val());  let oidCard = $.trim($("#oidCard").val());  let oemail = bemail;  let otel = btel;  let psd = $.trim($("#pSD").val());  if(!bname ||　!bidType || !bidCard || !bemail || !btel || !bidentifyingCode || !orelation || !oname || !oidType || !oidCard || !oemail || !otel || !psd){ haveError = true; } if(haveError){ let msg = "星号内容必填"; shark.show(msg); return false; } if(!(emailCheck.test(bemail))){ shark.show("投保人邮箱格式不正确"); return false; }else if(!(emailCheck.test(oemail))){ shark.show("被保险人邮箱格式不正确"); return false; }else if(!(mobileCheck.test(btel))){ shark.show("投保人手机号格式不正确"); return false; }else if(!(mobileCheck.test(otel))){ shark.show("被保险人手机号格式不正确"); return false; }else if(bidentifyingCode.length !=6){ shark.show("手机验证码错误"); return false; } let formData = new FormData(); formData.append("planCode","<%=planCode%>"); formData.append("planGroupCode","<%=planGroupCode%>"); formData.append("productCode","<%=productCode%>"); formData.append("bname",bname); formData.append("bidType",bidType); formData.append("bidCard",bidCard); formData.append("bemail",bemail); formData.append("btel",btel); formData.append("bidentifyingCode",bidentifyingCode); formData.append("orelation",orelation); formData.append("oname",oname); formData.append("oidType",oidType); formData.append("oidCard",oidCard); formData.append("oemail",oemail); formData.append("otel",otel); formData.append("psd",psd); loader.show(); $.ajax({ url: "<%=localurl%><%=projectUrl%>placeAnOrder", type: 'POST', data: formData, async: true, cache: false, dataType: 'json', contentType: false, processData: false, success: (data) => { if("0" == data.ret){  $("#payShow").height($(window).height()+"px"); ccicPayUrl = data.payUrl; applyNo = data.applyNo; $("#payShow #payFrame").attr("src" ,data.payUrl); $("#payShow").fadeIn(400);  }else if("-2" == data.ret){ shark.show(data.msg); setTimeout(function () { window.location.href ="<%=localurl%><%=projectUrl%>index"; },2000); }else if("-100" == data.ret){ let errorMsg = data.msg?data.msg:"保险公司处理失败"; shark.show(errorMsg); }else{ shark.show(data.msg); } },complete: function(data) { loader.hide(); }, error: (data) => { shark.show("系统异常,请联系管理员"); } }); });  function ajaxDelay(){ let oidCard = $.trim($("#oidCard").val());  let psd = $.trim($("#pSD").val());  let formData = new FormData(); formData.append("identifyNumber",oidCard); formData.append("startDate",psd); formData.append("applyNo",applyNo); $.ajax({ url: "<%=localurl%><%=projectUrl%>genPaymentInfo", type: 'POST', data: formData, async: true, cache: false, dataType: 'json', contentType: false, processData: false, success: (data) => { if("0" == data.ret ){ console.log("yes"); if(data.url){ window.location.replace(data.url); }else{ window.location.replace("<%=localurl%><%=projectUrl%>goFinishPage?policyNo="+data.policyNo +"&startDate="+data.startDate+"&endDate="+data.endDate); } }else{ if(haveTime){ console.log("no",data.msg); setTimeout(function(){ajaxDelay()},2000); } } },complete: function(data) { }, error: (data) => { if(haveTime){ console.log("no"); setTimeout(function(){ajaxDelay()},2000); } } }); };  $("#payShow").on("vclick",".icon-carat-b-onwer",function (e) { e.preventDefault(); $("#payShow").fadeOut(400); $(".finishPay").fadeIn(400); });  function notFinish() { shark.show( "您未完成支付"); $("#payShow #payFrame").attr("src" ,ccicPayUrl); $("#payShow").fadeIn(400); haveTime = false; };   $("#finishPay").on("vclick", ".ensure" , function (e) { e.preventDefault(); countDown.show(); haveTime = true; ajaxDelay(); $(".finishPay").fadeOut(400); });  $("#finishPay").on("vclick", ".cancel" , function (e) { e.preventDefault(); $("#payShow #payFrame").attr("src" ,ccicPayUrl); $("#payShow").fadeIn(400); $(".finishPay").fadeOut(400); haveTime = false; });  $(".notifyDiv").on("vclick",".notice",function(e){ e.preventDefault(); let thisJquery = this; $("#noticeShow #noticeFrame").attr("src" ,"<%=localurl%><%=projectUrl%>"+$(thisJquery).attr("data-action")); $("#noticeShow .noticeTitle").html($(thisJquery).html()); $("#noticeShow").fadeIn(400); });  $("#noticeShow").on("vclick",".icon-carat-b-onwer",function (e) { e.preventDefault(); $("#noticeShow").fadeOut(400); }); });</script><div class="header" id="bodyHeader"><span class="icon-carat-b-onwer backIcon"></span> <span class="title">投保信息填写</span></div><div class="bodyContent"><div class="baseInfo"><div class="baseInfoTitle paddingLeft">| 投保人信息</div><div class="InputInfo ui-grid-a"><span class="ui-block-a infoLabel paddingLeft">姓名<span class="red">*</span></span> <span class="ui-block-b infoInput paddingRight"><input data-role="none" placeholder="请输入姓名" class="bname" id="bname" name="bname"></span></div><div class="InputInfo ui-grid-a"><span class="ui-block-a infoLabel paddingLeft">证件类型<span class="red">*</span></span> <span class="ui-block-b infoInput paddingRight downArrow" id="bidTypeSpan"><input data-role="none" class="bidType" id="bidType" name="bidType" readonly></span></div><div class="InputInfo ui-grid-a"><span class="ui-block-a infoLabel paddingLeft">证件号码<span class="red">*</span></span> <span class="ui-block-b infoInput paddingRight"><input data-role="none" placeholder="请输入证件号码" class="bidCard" id="bidCard" name="bidCard"></span></div></div><div class="otherInfo"><div class="otherInfoTitle paddingLeft">| 被保险人信息</div><div class="InputInfo ui-grid-a"><span class="ui-block-a infoLabel paddingLeft">是投保人的<span class="red">*</span></span> <span class="ui-block-b infoInput paddingRight downArrow" id="orelationSpan"><input data-role="none" class="orelation" id="orelation" name="orelation" readonly></span></div><div class="InputInfo ui-grid-a"><span class="ui-block-a infoLabel paddingLeft">姓名<span class="red">*</span></span> <span class="ui-block-b infoInput paddingRight"><input data-role="none" placeholder="请输入姓名" class="oname" id="oname" name="oname"></span></div><div class="InputInfo ui-grid-a"><span class="ui-block-a infoLabel paddingLeft">证件类型<span class="red">*</span></span> <span class="ui-block-b infoInput paddingRight downArrow" id="oidTypeSpan"><input data-role="none" class="oidType" id="oidType" name="oidType" readonly></span></div><div class="InputInfo ui-grid-a"><span class="ui-block-a infoLabel paddingLeft">证件号码<span class="red">*</span></span> <span class="ui-block-b infoInput paddingRight"><input data-role="none" placeholder="请输入证件号码" class="oidCard" id="oidCard" name="oidCard"></span></div></div><div class="policySD"><div class="policySDTitle paddingLeft">| 保险生效日期</div><div class="InputInfo ui-grid-a"><span class="ui-block-a infoLabel paddingLeft">生效日期<span class="red">*</span></span> <span class="ui-block-b infoInput paddingRight downArrow" id="pSDSpan"><input data-role="none" class="pSD" id="pSD" name="pSD" readonly></span></div></div><div class="contactWay"><div class="contactWayTitle paddingLeft">| 通讯信息</div><div class="InputInfo ui-grid-a"><span class="ui-block-a infoLabel paddingLeft">电子邮箱<span class="red">*</span></span> <span class="ui-block-b infoInput paddingRight"><input data-role="none" placeholder="请输入电子邮箱" class="bemail" id="bemail" name="bemail"></span></div><div class="InputInfo ui-grid-a"><span class="ui-block-a infoLabel paddingLeft">手机号<span class="red">*</span></span> <span class="ui-block-b infoInput paddingRight"><input data-role="none" placeholder="请输入手机号" class="btel" id="btel" name="btel"></span></div><div class="InputInfo ui-grid-b"><span class="ui-block-a infoLabel paddingLeft">验证码<span class="red">*</span></span> <span class="ui-block-b infoInput paddingRight" id="bidentifyingCodeSpan"><input data-role="none" placeholder="验证码" class="bidentifyingCode" id="bidentifyingCode" name="bidentifyingCode"> <input type="hidden" class="sendCodeComplete" value="0"></span> <span class="ui-block-c sendCode" id="sendCode"><input data-role="none" value="获取验证码" readonly></span></div></div><div class="notifyDiv ui-grid-a"><span class="ui-block-a"><label class="notify"><input type="checkbox" name="agreeNotify" class="agreeNotify"></label></span> <span class="ui-block-b">本人已认真阅读并同意<span class="notice" data-action="insurancePolicy">投保须知</span>、<span class="notice" data-action="insuranceDeclaration">投保声明</span>和<span class="notice" data-action="insuranceClauses">保险条款</span>的全部内容</span></div><div id="nextStep" class="nextStep"><span>下一步</span></div></div><div id="payShow"><div class="payHeader"><span class="icon-carat-b-onwer close">疫苗预约</span> <span class="payTitle">支付</span> <a class="header-save tel" data-role="none" href="tel:<%=telephone%>"></a></div><iframe id="payFrame"></iframe></div><div id="noticeShow"><div class="noticeShowHeader"><span class="icon-carat-b-onwer close">回退</span> <span class="noticeTitle"></span></div><iframe id="noticeFrame"></iframe></div><div id="finishPayScreen" class="finishPay"></div><div id="finishPay" class="finishPay"><div class="title">请您在新打开的页面进行支付<br>支付完成前请不要关闭该窗口</div><div class="ui-grid-b action"><span class="ui-block-a ensure">已完成支付</span> <span class="ui-block-b"></span> <span class="ui-block-c cancel">支付遇到问题</span></div></div></body></html>
+<!DOCTYPE html><html lang="en"><head></head><body><%-include("./commonJs.html")%><%-include("./commonCss.html")%><link rel="stylesheet" href="<%=localurl%><%=projectUrl%>stylesheets/page/fillPolicyInfo4gja.css"><title>投保信息填写</title><script type="text/babel">$(document).ready(function () {
+			let payTime = 60*15;
+			$("#payShow .payTitle").html(`支付(剩余时间 15:00)`);
+        	let globalOIdCard = ""; 
+			let globalPsd = ""; 
+            const timeDelay = 60; 
+			const mobileCheck = /^1[3456789][0-9]\d{8}$/;
+			const emailCheck = /^([a-zA-Z0-9]){1}[a-zA-Z0-9_\.-]*([a-zA-Z0-9])@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+){0,10}(.com|.cn|.net|.org)$/;
+			const effectiveIntervalFix = Number("<%=effectiveIntervalFix%>");
+			const effectiveIntervalType = Number("<%=effectiveIntervalType%>");
+			const effectiveInterval = Number("<%=effectiveInterval%>");
+			const shark = new SharkTip({  
+				needShark: true
+			});
+			const loader =  new Loaders({style:"rectangle"});
+			
+			const countDown = new CountDown({
+				"time":60,
+				"functoinName": notFinish
+			});
+			let haveTime = false; 
+			let ccicPayUrl = "";
+			let applyNo = "";
+
+			$("#finishPayScreen").height($(window).height()+"px");
+
+
+            
+			$("#bodyHeader").on("vclick",".backIcon",function (e) {
+                e.preventDefault();
+                window.location.href= "<%=localurl%><%=projectUrl%>index?uniqueCode=<%=uniqueCode%>";
+            });
+            
+            const idTypeJson = [ {id:'身份证',value:'身份证'}];
+            let bidTypeSelect = new MobileSelect({
+                trigger: `#bidTypeSpan`,
+                title:`证件类型`,
+                wheels: [
+                    {data: idTypeJson}
+                ],
+                triggerDisplayData : false,
+                position: [0], 
+                callback:function(idx , data ){
+                    $("#bidType").val(data[0].value);
+                },
+                transitionEnd:function (idx, data) {
+                    $("#bidType").val(data[0].value);
+                }
+            });
+            $("#bidType").val(idTypeJson[0].value);
+
+			
+			let oidTypeSelect = new MobileSelect({
+				trigger: `#oidTypeSpan`,
+				title:`证件类型`,
+				wheels: [
+					{data: idTypeJson}
+				],
+				triggerDisplayData : false,
+				position: [0], 
+				callback:function(idx , data ){
+					$("#oidType").val(data[0].value);
+				},
+				transitionEnd:function (idx, data) {
+					$("#oidType").val(data[0].value);
+				}
+			});
+			$("#oidType").val(idTypeJson[0].value);
+
+			
+			function orelationChange(){
+				$("#oname").val($("#bname").val()); 
+				$("#oidCard").val($("#bidCard").val());
+			};
+			
+			function emptyData(){
+				$("#oname").val(""); 
+				$("#oidCard").val("");
+			}
+            
+			
+            const relationJSon =  [{"id":"01","value":"本人"},{"id":"10","value":"配偶"},{"id":"40","value":"子女"}] ;
+            let orelationSelect = new MobileSelect({
+                trigger: `#orelationSpan`,
+                title:`关系`,
+                wheels: [
+                    {data: relationJSon}
+                ],
+                triggerDisplayData : false,
+                position: [0], 
+                callback:function(idx , data ){
+                    $("#orelation").val(data[0].value);
+                    if("本人"== data[0].value){
+						orelationChange();
+                    }else{
+						emptyData();
+                    }
+                },
+                transitionEnd:function (idx, data) {
+                    $("#orelation").val(data[0].value);
+					if("本人" == data[0].value){
+						orelationChange();
+					}else{
+						emptyData();
+					}
+                }
+            });
+            $("#orelation").val(relationJSon[0].value);
+
+            
+			let now = new Date();
+            if(0 == effectiveIntervalFix){
+				let endNow = new Date();
+				if(effectiveIntervalType == 1){
+					now.setDate(now.getDate()+ effectiveInterval); 
+					endNow.setMonth(endNow.getMonth() + 2);
+					endNow.setDate(endNow.getDate()+ effectiveInterval -1 ); 
+					let pSDJson = new CalDate({
+						status : 90 ,
+						startDate : now.getFullYear(),
+						startDateMonth : now.getMonth()+1,
+						startDateDay : now.getDate()  ,
+						endDate: endNow.getFullYear(),
+						endDateMonth : endNow.getMonth()+1,
+						endDateDay : endNow.getDate()
+					}).getValue();
+					let pSDSelect = new MobileSelect({
+						trigger: `#pSDSpan`,
+						title:`保险生效日期`,
+						wheels: [
+							{data: pSDJson}
+						],
+						triggerDisplayData : false,
+						position: [0], 
+						callback:function(idx , data ){
+							let value = "";
+							for(let i in data){
+								value += data[i].value+" ";
+							}
+							$("#pSD").val(value);
+						},
+						transitionEnd:function (idx, data) {
+							let value = "";
+							for(let i in data){
+								value += data[i].value+" ";
+							}
+							$("#pSD").val(value);
+						}
+					});
+					let tempStr = "" ,tempPSDJson = pSDJson[0];
+					while("childs" in tempPSDJson){
+						tempStr += tempPSDJson.value+" ";
+						tempPSDJson = tempPSDJson.childs[0];
+					}
+					tempStr += tempPSDJson.value;
+					$("#pSD").val(tempStr);
+				}else if(effectiveIntervalType == 2){
+					now.setHours(now.getHours() + effectiveInterval);
+					endNow.setMonth(endNow.getMonth() + 2);
+					endNow.setDate(endNow.getDate()+ effectiveInterval -1 ); 
+					let pSDJson = new CalDate({
+						status : 90 ,
+						startDate : now.getFullYear(),
+						startDateMonth : now.getMonth()+1,
+						startDateDay : now.getDate()  ,
+						endDate: endNow.getFullYear(),
+						endDateMonth : endNow.getMonth()+1,
+						endDateDay : endNow.getDate(),
+                        type:2,
+						startDateHour: now.getHours(),
+						endDateHour : now.getHours()
+					}).getValue();
+					let pSDSelect = new MobileSelect({
+						trigger: `#pSDSpan`,
+						title:`保险生效日期`,
+						wheels: [
+							{data: pSDJson}
+						],
+						triggerDisplayData : false,
+						position: [0], 
+						callback:function(idx , data ){
+							let value = "";
+							for(let i in data){
+								value += data[i].value+" ";
+							}
+							$("#pSD").val(value);
+						},
+						transitionEnd:function (idx, data) {
+							let value = "";
+							for(let i in data){
+								value += data[i].value+" ";
+							}
+							$("#pSD").val(value);
+						}
+					});
+					let tempStr = "" ,tempPSDJson = pSDJson[0];
+
+					while("childs" in tempPSDJson){
+						tempStr += tempPSDJson.value+" ";
+						tempPSDJson = tempPSDJson.childs[0];
+                    }
+					tempStr += tempPSDJson.value;
+					$("#pSD").val(tempStr);
+				}
+            }else{
+				$("#pSDSpan").removeClass("downArrow");
+				if(effectiveIntervalType == 1){ 
+					now.setDate(now.getDate()+ effectiveInterval); 
+					$("#pSD").val(`${now.getFullYear()}年 ${ (now.getMonth()+1).toString().length>1? now.getMonth()+1:"0"+(now.getMonth()+1)  }月 ${now.getDate().toString().length>1?now.getDate():"0"+now.getDate()}日`);
+                }else if(effectiveIntervalType == 2) {
+					now.setHours(now.getHours() + effectiveInterval);
+					$("#pSD").val(`${now.getFullYear()}年 ${ (now.getMonth()+1).toString().length>1? now.getMonth()+1:"0"+(now.getMonth()+1)  }月 ${now.getDate().toString().length>1?now.getDate():"0"+now.getDate()}日 ${now.getHours().toString().length>1?now.getHours():"0"+now.getHours()}时`);
+				}
+            }
+
+            
+            $(".contactWay").on("vclick", ".sendCode", function(e){
+                e.preventDefault();
+                let thisJquery = this;
+                let btel = $("#btel").val();
+                if(!btel ||  !(mobileCheck.test(btel)) ){
+					shark.show("请输入正确的手机号");
+                    return false;
+                }
+				loader.show();
+                let formData = new FormData();
+                formData.append("telPhoneNubmer",btel);
+				formData.append("uniqueCode","<%=uniqueCode%>");
+				$.ajax({
+					url: "<%=localurl%><%=projectUrl%>sendCode",
+					type: 'POST',
+					data: formData,
+					async: true,
+					cache: false,
+					dataType: 'json',
+					contentType: false,
+					processData: false,
+					success: (data) => {
+						if(data.ret == "0"){
+                            let thisDelay = timeDelay;
+							$("#sendCode input").val(`${thisDelay}s后重发`);
+							$(thisJquery).removeClass("sendCode");
+							$(".sendCodeComplete").val("1");
+							let i = setInterval(function () {
+								$("#sendCode input").val(`${--thisDelay}s后重发`);
+                                if( !/^(0|[1-9][0-9]*)$/.test(thisDelay)){
+									$(thisJquery).addClass("sendCode");
+                                	clearInterval(i);
+									$("#sendCode input").val("获取验证码");
+                                }
+							} ,1000);
+							shark.show("成功");
+						}else if("-2" == data.ret){
+							shark.show(sharkid,data.msg);
+							setTimeout(function () {
+								window.location.href ="<%=localurl%><%=projectUrl%>index?uniqueCode=<%=uniqueCode%>";
+							},2000);
+						}else{
+							shark.show(data.msg);
+						}
+					},complete: function(data) {
+						loader.hide();
+					},
+					error:  (data) => {
+						shark.show("系统异常,请联系管理员");
+					}
+				});
+            });
+
+            
+            $(".baseInfo").on("input propertychange","input",function(e){
+                if("本人" == $("#orelation").val() ){
+					orelationChange();
+                }
+            });
+
+            
+            $(".bodyContent").on("vclick", ".nextStep", function (e) {
+                e.preventDefault();
+                if(!$(".agreeNotify").is(':checked')){
+					shark.show("请勾选 条款及须知");
+					return false;
+                }
+                if("1" != $(".sendCodeComplete").val()){
+					shark.show("请先发送验证码");
+					return false;
+                }
+                let haveError = false; 
+				let bname = $.trim($("#bname").val()); 
+				let bidType = $.trim($("#bidType").val()); 
+				let bidCard = $.trim($("#bidCard").val()); 
+				let bemail = $.trim($("#bemail").val()); 
+				let btel = $.trim($("#btel").val()); 
+                let bidentifyingCode = $.trim($("#bidentifyingCode").val());
+
+				let orelation = $.trim($("#orelation").val()); 
+                let oname = $.trim($("#oname").val()); 
+				let oidType = $.trim($("#oidType").val()); 
+				let oidCard = $.trim($("#oidCard").val()); 
+				let oemail = bemail; 
+				let otel = btel; 
+                let psd = $.trim($("#pSD").val()); 
+
+				globalOIdCard = oidCard;
+				globalPsd = psd;
+
+                if(!bname ||　!bidType || !bidCard || !bemail || !btel || !bidentifyingCode ||
+                    !orelation || !oname || !oidType || !oidCard || !oemail || !otel || !psd){
+                	haveError = true;
+                }
+                if(haveError){
+                	let msg = "星号内容必填";
+					shark.show(msg);
+                	return false;
+                }
+                if(!(emailCheck.test(bemail))){
+					shark.show("投保人邮箱格式不正确");
+					return false;
+                }else if(!(emailCheck.test(oemail))){
+					shark.show("被保险人邮箱格式不正确");
+					return false;
+				}else if(!(mobileCheck.test(btel))){
+					shark.show("投保人手机号格式不正确");
+					return false;
+				}else if(!(mobileCheck.test(otel))){
+					shark.show("被保险人手机号格式不正确");
+					return false;
+				}else if(bidentifyingCode.length !=6){
+					shark.show("手机验证码错误");
+					return false;
+                }
+				let formData = new FormData();
+				formData.append("planCode","<%=planCode%>");
+				formData.append("planGroupCode","<%=planGroupCode%>");
+				formData.append("productCode","<%=productCode%>");
+
+                formData.append("bname",bname);
+                formData.append("bidType",bidType);
+                formData.append("bidCard",bidCard);
+                formData.append("bemail",bemail);
+                formData.append("btel",btel);
+                formData.append("bidentifyingCode",bidentifyingCode);
+				formData.append("orelation",orelation);
+				formData.append("oname",oname);
+				formData.append("oidType",oidType);
+				formData.append("oidCard",oidCard);
+				formData.append("oemail",oemail);
+				formData.append("otel",otel);
+				formData.append("psd",psd);
+				formData.append("uniqueCode","<%=uniqueCode%>");
+
+				loader.show();
+				$.ajax({
+					url: "<%=localurl%><%=projectUrl%>placeAnOrder",
+					type: 'POST',
+					data: formData,
+					async: true,
+					cache: false,
+					dataType: 'json',
+					contentType: false,
+					processData: false,
+					success: (data) => {
+						if("0" == data.ret){
+							
+							$("#payShow").height($(window).height()+"px");
+							ccicPayUrl  = data.payUrl;
+							applyNo = data.applyNo;
+							$("#payShow #payFrame").attr("src" ,data.payUrl);
+							$("#payShow").fadeIn(400);
+							
+							setInterval(function () {
+								payTime = payTime-1;
+								if(payTime == 0){
+									window.location.reload();
+								}
+								let payMin = Math.floor(payTime/60);
+								payMin = payMin.toString().length < 2 ?"0"+payMin : payMin;
+								let paySec = payTime%60;
+								paySec = paySec.toString().length < 2 ?"0"+paySec : paySec;
+								$("#payShow .payTitle").html(`支付(剩余时间 ${payMin}:${paySec})`);
+							},1000);
+							
+                        }else if("-2" == data.ret){
+							shark.show(data.msg);
+							setTimeout(function () {
+								window.location.href ="<%=localurl%><%=projectUrl%>index?uniqueCode=<%=uniqueCode%>";
+							},2000);
+                        }else if("-100" == data.ret){
+                        	let errorMsg = data.msg?data.msg:"保险公司处理失败";
+							shark.show(errorMsg);
+                        }else{
+							shark.show(data.msg);
+                        }
+					},complete: function(data) {
+						loader.hide();
+					},
+					error:  (data) => {
+						shark.show("系统异常,请联系管理员");
+					}
+				});
+            });
+
+            
+            function ajaxDelay(){
+				let oidCard = globalOIdCard; 
+				let psd = globalPsd; 
+				let formData = new FormData();
+				formData.append("identifyNumber",oidCard);
+				formData.append("startDate",psd);
+				formData.append("applyNo",applyNo);
+				formData.append("uniqueCode","<%=uniqueCode%>");
+				$.ajax({
+					url: "<%=localurl%><%=projectUrl%>genPaymentInfo",
+					type: 'POST',
+					data: formData,
+					async: true,
+					cache: false,
+					dataType: 'json',
+					contentType: false,
+					processData: false,
+					success: (data) => {
+						if("0" == data.ret ){
+							console.log("yes");
+							if(data.url){
+								window.location.replace(data.url);
+							}else{
+								window.location.replace("<%=localurl%><%=projectUrl%>goFinishPage?policyNo="+data.policyNo
+									+"&uniqueCode=<%=uniqueCode%>"+"&startDate="+data.startDate+"&endDate="+data.endDate);
+							}
+                        }else{
+							if(haveTime){
+								console.log("no",data.msg);
+								setTimeout(function(){ajaxDelay()},2000);
+							}
+                        }
+					},complete: function(data) {
+					},
+					error:  (data) => {
+						if(haveTime){
+							console.log("no");
+							setTimeout(function(){ajaxDelay()},2000);
+                        }
+					}
+				});
+            };
+
+            
+			$("#payShow").on("vclick",".icon-carat-b-onwer",function (e) {
+				e.preventDefault();
+				$("#payShow").fadeOut(400);
+				$(".finishPay").fadeIn(400);
+			});
+
+			
+			function notFinish() {
+				shark.show( "您未完成支付");
+				$("#payShow #payFrame").attr("src" ,ccicPayUrl);
+                $("#payShow").fadeIn(400);
+				haveTime = false;
+			};
+        
+			
+            $("#finishPay").on("vclick", ".ensure" , function (e) {
+                e.preventDefault();
+				countDown.show();
+				haveTime = true;
+				ajaxDelay();
+				$(".finishPay").fadeOut(400);
+			});
+            
+			$("#finishPay").on("vclick", ".cancel" , function (e) {
+				e.preventDefault();
+				$("#payShow #payFrame").attr("src" ,ccicPayUrl);
+				$("#payShow").fadeIn(400);
+				$(".finishPay").fadeOut(400);
+				haveTime = false;
+			});
+
+			
+			$(".notifyDiv").on("vclick",".notice",function(e){
+				e.preventDefault();
+				let thisJquery = this;
+				$("#noticeShow #noticeFrame").attr("src" ,"<%=localurl%><%=projectUrl%>"+$(thisJquery).attr("data-action")+"?uniqueCode=<%=uniqueCode%>");
+				$("#noticeShow .noticeTitle").html($(thisJquery).html());
+				$("#noticeShow").fadeIn(400);
+			});
+			
+			$("#noticeShow").on("vclick",".icon-carat-b-onwer",function (e) {
+				e.preventDefault();
+				$("#noticeShow").fadeOut(400);
+			});
+
+        });</script><div class="header" id="bodyHeader"><span class="icon-carat-b-onwer backIcon"></span> <span class="title">投保信息填写</span></div><div class="bodyContent"><div class="baseInfo"><div class="baseInfoTitle paddingLeft">| 投保人信息</div><div class="InputInfo ui-grid-a"><span class="ui-block-a infoLabel paddingLeft">姓名<span class="red">*</span></span> <span class="ui-block-b infoInput paddingRight"><input data-role="none" placeholder="请输入姓名" class="bname" id="bname" name="bname"></span></div><div class="InputInfo ui-grid-a"><span class="ui-block-a infoLabel paddingLeft">证件类型<span class="red">*</span></span> <span class="ui-block-b infoInput paddingRight downArrow" id="bidTypeSpan"><input data-role="none" class="bidType" id="bidType" name="bidType" readonly></span></div><div class="InputInfo ui-grid-a"><span class="ui-block-a infoLabel paddingLeft">证件号码<span class="red">*</span></span> <span class="ui-block-b infoInput paddingRight"><input data-role="none" placeholder="请输入证件号码" class="bidCard" id="bidCard" name="bidCard"></span></div></div><div class="otherInfo"><div class="otherInfoTitle paddingLeft">| 被保险人信息</div><div class="InputInfo ui-grid-a"><span class="ui-block-a infoLabel paddingLeft">是投保人的<span class="red">*</span></span> <span class="ui-block-b infoInput paddingRight downArrow" id="orelationSpan"><input data-role="none" class="orelation" id="orelation" name="orelation" readonly></span></div><div class="InputInfo ui-grid-a"><span class="ui-block-a infoLabel paddingLeft">姓名<span class="red">*</span></span> <span class="ui-block-b infoInput paddingRight"><input data-role="none" placeholder="请输入姓名" class="oname" id="oname" name="oname"></span></div><div class="InputInfo ui-grid-a"><span class="ui-block-a infoLabel paddingLeft">证件类型<span class="red">*</span></span> <span class="ui-block-b infoInput paddingRight downArrow" id="oidTypeSpan"><input data-role="none" class="oidType" id="oidType" name="oidType" readonly></span></div><div class="InputInfo ui-grid-a"><span class="ui-block-a infoLabel paddingLeft">证件号码<span class="red">*</span></span> <span class="ui-block-b infoInput paddingRight"><input data-role="none" placeholder="请输入证件号码" class="oidCard" id="oidCard" name="oidCard"></span></div></div><div class="policySD"><div class="policySDTitle paddingLeft">| 保险生效日期</div><div class="InputInfo ui-grid-a"><span class="ui-block-a infoLabel paddingLeft">生效日期<span class="red">*</span></span> <span class="ui-block-b infoInput paddingRight downArrow" id="pSDSpan"><input data-role="none" class="pSD" id="pSD" name="pSD" readonly></span></div></div><div class="contactWay"><div class="contactWayTitle paddingLeft">| 通讯信息</div><div class="InputInfo ui-grid-a"><span class="ui-block-a infoLabel paddingLeft">电子邮箱<span class="red">*</span></span> <span class="ui-block-b infoInput paddingRight"><input data-role="none" placeholder="请输入电子邮箱" class="bemail" id="bemail" name="bemail"></span></div><div class="InputInfo ui-grid-a"><span class="ui-block-a infoLabel paddingLeft">手机号<span class="red">*</span></span> <span class="ui-block-b infoInput paddingRight"><input data-role="none" placeholder="请输入手机号" class="btel" id="btel" name="btel"></span></div><div class="InputInfo ui-grid-b"><span class="ui-block-a infoLabel paddingLeft">验证码<span class="red">*</span></span> <span class="ui-block-b infoInput paddingRight" id="bidentifyingCodeSpan"><input data-role="none" placeholder="验证码" class="bidentifyingCode" id="bidentifyingCode" name="bidentifyingCode"> <input type="hidden" class="sendCodeComplete" value="0"></span> <span class="ui-block-c sendCode" id="sendCode"><input data-role="none" value="获取验证码" readonly></span></div></div><div class="notifyDiv ui-grid-a"><span class="ui-block-a"><label class="notify"><input type="checkbox" name="agreeNotify" class="agreeNotify"></label></span> <span class="ui-block-b">本人已认真阅读并同意<span class="notice" data-action="insurancePolicy">投保须知</span>、<span class="notice" data-action="insuranceDeclaration">投保声明</span>和<span class="notice" data-action="insuranceClauses">保险条款</span>的全部内容</span></div><div id="nextStep" class="nextStep"><span>下一步</span></div></div><div id="payShow"><div class="payHeader"><span class="icon-carat-b-onwer close">疫苗预约</span> <span class="payTitle">支付</span> <a class="header-save tel" data-role="none" href="tel:<%=telephone%>"></a></div><iframe id="payFrame"></iframe></div><div id="noticeShow"><div class="noticeShowHeader"><span class="icon-carat-b-onwer close">回退</span> <span class="noticeTitle"></span></div><iframe id="noticeFrame"></iframe></div><div id="finishPayScreen" class="finishPay"></div><div id="finishPay" class="finishPay"><div class="title">请您在新打开的页面进行支付<br>支付完成前请不要关闭该窗口</div><div class="ui-grid-b action"><span class="ui-block-a ensure">已完成支付</span> <span class="ui-block-b"></span> <span class="ui-block-c cancel">支付遇到问题</span></div></div></body></html>

@@ -13,7 +13,11 @@ let homePage = require('./routes/homePage');
 let index = require('./routes/index');
 let oneStepInsurance = require('./routes/oneStepInsurance');
 let tool = require('./routes/tool');
+let preCookie  = require('./routes/preCookie');
 
+let cryptoTool = require('./tool/crypto');
+
+let cryptoConf = require('./config/cryptoConf');
 let startPort = require('./config/startPort');
 
 let log4js = require('log4js');
@@ -30,9 +34,10 @@ app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(startPort.projectUrl,favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 app.use(logger('dev'));
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser('cookieMelktechB2c'));
@@ -46,7 +51,7 @@ app.use(session({
     saveUninitialized:true
 }));
 app.use(multiparty({uploadDir:'./temp',maxFieldsSize: 100 * 1024 * 1024 }));
-app.use(startPort.projectUrl, express.static(path.join(__dirname, 'public')));
+
 app.use(function(req, res, next){ // 如果用户还有操作 延时
     req.session._garbage = Date();
     req.session.touch();
@@ -60,27 +65,39 @@ app.use(function(req, res ,next){
 });
 
 
-app.use(startPort.projectUrl ,express.static(path.join(__dirname, 'public')));
+let  options = {
+	dotfiles: 'ignore',
+	etag:true,
+	extensions : ['css','js','png','jpg','jpeg','woff','gif'],
+	maxage: 1000 * 60 * 60 * 24,
+	setHeaders: function (res, path, stat) {
+	}
+};
+app.use(startPort.projectUrl,express.static(path.join(__dirname, 'public'),options));
 
+app.use(startPort.projectUrl,ajax);
 app.use(startPort.projectUrl,index);
 app.use(startPort.projectUrl,errorCenter);
 app.use(startPort.projectUrl,oneStepInsurance);
 app.use(startPort.projectUrl,tool);
-app.use(startPort.projectUrl,ajax);
+app.use(startPort.projectUrl,preCookie);
 
 //判session中需要的参数在不在 5个必要的参数
 //校验5个参数
 app.use(function(req, res ,next){
-	if(!req.session.finalData || (!req.session.finalData.salemanCode && !req.session.finalData.channelOperator )|| ((!req.session.finalData.planCode
-		|| !req.session.finalData.planGroupCode || !req.session.finalData.entCode) && !req.session.finalData.productCode )){
+	req.body = Object.assign(req.body, req.query); //拼接 req.body 和req.query
+	let uniqueCode = cryptoTool.getDecAse192(req.body.uniqueCode , cryptoConf.privateKey);
+
+	if(!req.session[uniqueCode] || (!req.session[uniqueCode].salemanCode && !req.session[uniqueCode].channelOperator )|| ((!req.session[uniqueCode].planCode
+		|| !req.session[uniqueCode].planGroupCode ) && !req.session[uniqueCode].productCode ) || !req.session[uniqueCode].entCode){
 		let errorJson = {};
 		errorJson.msg="缺少必要参数，请关闭页面重新进入";
 		res.render("errorCenter" , errorJson);
 		return false;
 	}else{
-		req.body.planCode = req.session.finalData.planCode ;
-		req.body.planGroupCode = req.session.finalData.planGroupCode ;
-		req.body.productCode = req.session.finalData.productCode;
+		req.body.planCode = req.session[uniqueCode].planCode ;
+		req.body.planGroupCode = req.session[uniqueCode].planGroupCode ;
+		req.body.productCode = req.session[uniqueCode].productCode;
 		next();
 	}
 });
@@ -109,7 +126,7 @@ app.use(function(err, req, res, next) {
     // render the error page
     res.status(err.status || 500);
     if(err.status == 404){
-        return res.redirect(startPort.projectUrl);
+        // return res.redirect(startPort.projectUrl);
     }
     res.render('errorCenter');
 });

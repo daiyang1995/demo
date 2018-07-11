@@ -45,7 +45,9 @@
     padding-right: 0.1rem;
 }
 
-
+#ins{
+    margin-top: 0.2rem;
+}
 #ins .oneIns{
     text-align: center;
     font-size: .2rem;
@@ -58,6 +60,12 @@
 #ins .oneIns .insText{
     vertical-align: middle;
 }
+#saleAreaRemark{
+    margin-top: 0.2rem;
+    font-size: 0.2rem;
+    padding-left: 0.1rem;
+}
+
 #selectButton , #selectModeButton , #selectSaleAreaButton{
     margin-top: 0.2rem;
     font-size: 0.24rem;
