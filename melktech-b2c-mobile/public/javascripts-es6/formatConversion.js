@@ -25,7 +25,8 @@
 			}
 			return rs;
 		},
-		getNowFormatDate: function (day) {
+		getFormatDate: function (day = new Date(), type = 1) {
+			/* type : 1->yyyy-MM-dd 2:yyyy-MM-dd HH:mm:ss*/
 			let Year;
 			let Month;
 			let Day;
@@ -34,17 +35,16 @@
 			Month = day.getMonth() + 1;
 			Day = day.getDate();
 			CurrentDate += Year + "-";
-			if (Month >= 10) {
-				CurrentDate += Month + "-";
-			}
-			else {
-				CurrentDate += "0" + Month + "-"
-			}
-			if (Day >= 10) {
-				CurrentDate += Day;
-			}
-			else {
-				CurrentDate += "0" + Day;
+			CurrentDate += (Month >= 10 ? Month : "0" + Month) + "-";
+			CurrentDate += Day >= 10 ? Day : "0" + Day;
+			if(type == 2){
+				CurrentDate += " ";
+				let Hour = day.getHours();
+				let Minutes = day.getMinutes();
+				let Seconds = day.getSeconds();
+				CurrentDate += (Hour >= 10 ? Hour : "0"+Hour )+ "-";
+				CurrentDate += (Minutes >= 10 ? Minutes : "0"+Minutes) + "-";
+				CurrentDate += Seconds >= 10 ? Seconds : "0"+Seconds;
 			}
 			return CurrentDate;
 		},
@@ -66,7 +66,7 @@
 				return str;
 			} else if (new Date(day) < new Date()) {
 				//之前
-				return formatConversion.getNowFormatDate(day);
+				return this.getNowFormatDate(day);
 			}
 		},
 		getGender : function (idCard) {

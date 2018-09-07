@@ -59,9 +59,9 @@
 		this.downFunctionParam = (config && config.downFunctionParam)?config.downFunctionParam : null;
 		this.upLoadingStatus = (config && config.upLoadingStatus && this.upFunction);
 		this.downLoadingStatus = (config && config.downLoadingStatus && this.downFunction);
-		this.speed = (config && config.speed )? config.speed : 1;
+		this.speed = (config && config.speed )? config.speed : 1000; //默认1S
 		this.change = false;
-		this.intervalTime ;
+		/*this.intervalTime ;*/
 		this.touchStartY = 0;
 		this.touchStartX = 0;
 		this.scrollDom;
@@ -73,7 +73,7 @@
 	Updownloading.prototype = {
 		constructor: Updownloading,
 		init: function () {
-			let _this = this;
+			const _this = this;
 			_this.setCss();
 			_this.scrollDom = document.querySelector(_this.scroll);
 			_this.outerScrollerDom = document.querySelector(_this.outerScroller);
@@ -83,17 +83,18 @@
 			 */
 			_this.outerScrollerDom.addEventListener('touchstart', (event) => {
 				event.preventDefault();
-				var touch = event.targetTouches[0];
+				const touch = event.targetTouches[0];
 				// 把元素放在手指所在的位置
 				_this.touchStartY = touch.pageY * _this.resistance;
 				_this.touchStartX = touch.pageX * _this.resistance;
-				clearInterval(_this.intervalTime);
+				/*clearInterval(_this.intervalTime);*/
+				$(_this.scrollDom).stop(true,false);
 			}, false);
 
 			_this.outerScrollerDom.addEventListener('touchmove', (event) => {
 				event.preventDefault();
 				event.stopPropagation();
-				var touch = event.targetTouches[0];
+				const touch = event.targetTouches[0];
 				if (Math.abs(touch.pageY * _this.resistance - _this.touchStartY) > Math.abs(touch.pageX * _this.resistance - _this.touchStartX)) {
 					_this.change = true;
 					let i = _this.scrollDom.offsetTop + ( touch.pageY ) * _this.resistance - _this.touchStartY;
@@ -101,21 +102,21 @@
 					_this.touchStartY = touch.pageY * _this.resistance;
 					let top = _this.scrollDom.offsetTop;
 					if (top > 0 && _this.downLoadingStatus) {
-						$("#loading").html(_this.downLoading);
-						$("#loading").css({"bottom":"auto","top":"-20px"});
-						$("#loading").fadeIn();
+						$(_this.scroll+' .loading').html(_this.downLoading);
+						$(_this.scroll+' .loading').css({"bottom":"auto","top":"-20px"});
+						$(_this.scroll+' .loading').fadeIn();
 					} else if (top < 0 && _this.upLoadingStatus) {
-						$("#loading").html(_this.upLoading);
-						$("#loading").css({"bottom":"-20px","top":"auto"});
-						$("#loading").fadeIn();
+						$(_this.scroll+' .loading').html(_this.upLoading);
+						$(_this.scroll+' .loading').css({"bottom":"-20px","top":"auto"});
+						$(_this.scroll+' .loading').fadeIn();
 					} else if (top > 0 && !(_this.downLoadingStatus)) {
-						$("#loading").html(_this.downFinish);
-						$("#loading").css({"bottom":"auto","top":"-20px"});
-						$("#loading").fadeIn();
+						$(_this.scroll+' .loading').html(_this.downFinish);
+						$(_this.scroll+' .loading').css({"bottom":"auto","top":"-20px"});
+						$(_this.scroll+' .loading').fadeIn();
 					} else if (top < 0 && !(_this.upLoadingStatus)) {
-						$("#loading").html(_this.upFinish);
-						$("#loading").css({"bottom":"-20px","top":"auto"});
-						$("#loading").fadeIn();
+						$(_this.scroll+' .loading').html(_this.upFinish);
+						$(_this.scroll+' .loading').css({"bottom":"-20px","top":"auto"});
+						$(_this.scroll+' .loading').fadeIn();
 					}
 				}
 			}, false);
@@ -125,19 +126,25 @@
 				if (_this.change) {
 					event.stopPropagation();
 					_this.touchStartY = 0;
-					let top = _this.scrollDom.offsetTop;
+					const top = _this.scrollDom.offsetTop;
 					//下拉刷新
 					if (top > _this.triggerHeight && _this.downLoadingStatus) {
-						$("#loading").html(_this.loading);
-						$("#loading").fadeIn();
-						$("#loading").css({"bottom":"auto","top":"-20px"});
+						$(_this.scroll+' .loading').html(_this.loading);
+						$(_this.scroll+' .loading').fadeIn();
+						$(_this.scroll+' .loading').css({"bottom":"auto","top":"-20px"});
 						_this.downFunction(_this.downFunctionParam);
 					}
 					if (top > 0) {
-						if(_this.intervalTime)
-							clearInterval(_this.intervalTime);
+						//new
 
-						_this.intervalTime = setInterval(() => {
+						$(_this.scrollDom).animate({"top": 0+'px'}, _this.speed,"swing",()=>{
+							$(_this.outerScroller).css("height", $(_this.scroll).css("height"));
+							$(_this.scroll+' .loading').fadeOut();
+						});
+						//old
+						/*if(_this.intervalTime)
+													clearInterval(_this.intervalTime);*/
+						/*_this.intervalTime = setInterval(() => {
 							let num = _this.scrollDom.offsetTop - _this.speed;
 							if(num < 0 ){
 								num = 0 ;
@@ -145,66 +152,79 @@
 							_this.scrollDom.style.top = num + 'px';
 							if (_this.scrollDom.offsetTop <= 0) {
 								$(_this.outerScroller).css("height", $(_this.scroll).css("height"));
-								$("#loading").fadeOut();
+								$(_this.scroll+' .loading').fadeOut();
 								clearInterval(_this.intervalTime);
 							}
-						}, 1)
+						}, 1)*/
 					}
 					//上拉加载
-					var top1 = $(_this.scroll).outerHeight(true) - $(_this.outerScroller).outerHeight(true);
-					var to2 = _this.scrollDom.offsetTop - (top + top1);
+					const top1 = $(_this.scroll).outerHeight(true) - $(_this.outerScroller).outerHeight(true);
+					const to2 = _this.scrollDom.offsetTop - (top + top1);
 					if (top1 >= 0 && top + top1 < -1 * _this.triggerHeight && _this.upLoadingStatus && top < 0) {
-						$("#loading").html(_this.loading);
-						$("#loading").fadeIn();
-						$("#loading").css({"bottom":"-20px","top":"auto"});
+						$(_this.scroll+' .loading').html(_this.loading);
+						$(_this.scroll+' .loading').fadeIn();
+						$(_this.scroll+' .loading').css({"bottom":"-20px","top":"auto"});
 						_this.upFunction(_this.upFunctionParam);
 					}
 					if (_this.scrollDom.offsetTop < to2) {
-						if(_this.intervalTime)
-							clearInterval(_this.intervalTime);
+						let num = to2;
+						if(top1 < 0){
+							num = to2>0?0:to2;
+						}
+						$(_this.scrollDom).animate({"top": num+'px'}, _this.speed,"swing",()=>{
+							$(_this.outerScroller).css("height", $(_this.scroll).css("height"));
+							$(_this.scroll+' .loading').fadeOut();
+						});
 
-						_this.intervalTime = setInterval(() => {
-							let num = _this.scrollDom.offsetTop + _this.speed;
-							if(num >= to2){
-								num = to2;
-							}else if(num >= 1){
-								num = 0;
-							}
-							_this.scrollDom.style.top = num + 'px';
-							if (_this.scrollDom.offsetTop >= to2   || (top1 < 0 &&_this.scrollDom.offsetTop  >= 0) ) {
-								$(_this.outerScroller).css("height", $(_this.scroll).css("height"));
+
+						//old
+							/*if(_this.intervalTime)
 								clearInterval(_this.intervalTime);
-								$("#loading").fadeOut();
-							}
-						}, 1)
-					}
+
+							_this.intervalTime = setInterval(() => {
+								let num = _this.scrollDom.offsetTop + 1;
+								if(num >= to2){
+									num = to2;
+								}else if(num >= 1){
+									num = 0;
+								}
+								_this.scrollDom.style.top = num + 'px';
+								if (_this.scrollDom.offsetTop >= to2   || (top1 < 0 &&_this.scrollDom.offsetTop  >= 0) ) {
+									console.log(_this.scrollDom.offsetTop);
+									$(_this.outerScroller).css("height", $(_this.scroll).css("height"));
+									clearInterval(_this.intervalTime);
+									$("#loading").fadeOut();
+								}
+							}, 1)*/
+						}
 					_this.change = false;
 				}
 			});
 		},
 		setCss : function () {
-			let _this = this;
+			const _this = this;
 			$(_this.scroll).css({"width": "100%","margin-top": "0px","position": "absolute","left": "0px","padding": "0px","top": "0px"});
 			$(_this.outerScroller).css({"position": "relative", "top": "0", "bottom": "0", "width": "100%", "left": "0px"});
-			$(_this.scroll).prepend("<div id='loading'>" + _this.loading + "</div>");
+			$(_this.scroll).prepend("<div class='loading' style='position: absolute;text-align: center;width: 100%;display: none;'>" + _this.loading + "</div>");
 		},
 		remove : function () {
-			$('#loading').hide();
+			const _this = this;
+			$(_this.scroll+' .loading').hide();
 		},
 		callUpFinish : function () {
-			let _this = this;
+			const _this = this;
 			_this.upLoadingStatus = false;
 		},
 		callDownFinish : function () {
-			let _this = this;
+			const _this = this;
 			_this.downLoadingStatus = false;
 		},
 		reSetUpFunctionParam : function (upFunctionParam) {
-			let _this = this;
+			const _this = this;
 			_this.upFunctionParam = upFunctionParam ? upFunctionParam : null;
 		},
 		reSetDownFunctionParam : function (downFunctionParam) {
-			let _this = this;
+			const _this = this;
 			_this.downFunctionParam = downFunctionParam ? downFunctionParam : null;
 		}
 	};
