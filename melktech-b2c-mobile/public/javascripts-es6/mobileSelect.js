@@ -14,7 +14,7 @@
 		this.wheelsData = config.wheels;
 		this.jsonType =  false;
 		this.cascadeJsonData = [];
-		this.displayJson = []; 
+		this.displayJson = [];
 		this.cascade = false;
 		this.startY;
 		this.moveEndY;
@@ -31,7 +31,7 @@
 	MobileSelect.prototype = {
 		constructor: MobileSelect,
 		init: function(config){
-			var _this = this; 
+			var _this = this;
 			_this.keyMap = config.keyMap ? config.keyMap : {id:'id', value:'value', childs:'childs'};
 			_this.checkDataType();
 			_this.renderWheels(_this.wheelsData, config.cancelBtnText, config.ensureBtnText);
@@ -41,10 +41,10 @@
 				return false;
 			}
 			_this.wheel = getClass(_this.mobileSelect,'wheel');
-			_this.slider = getClass(_this.mobileSelect,'selectContainer'); 
+			_this.slider = getClass(_this.mobileSelect,'selectContainer');
 			_this.wheels = _this.mobileSelect.querySelector('.wheels');
 			_this.liHeight = config.liHeight ? config.liHeight : 40;
-            _this.triggerDisplayData = config.triggerDisplayData == false ?  false : true;
+			_this.triggerDisplayData = config.triggerDisplayData == false ?  false : true;
 			_this.ensureBtn = _this.mobileSelect.querySelector('.ensure');
 			_this.cancelBtn = _this.mobileSelect.querySelector('.cancel');
 			_this.grayLayer = _this.mobileSelect.querySelector('.grayLayer');
@@ -79,20 +79,20 @@
 
 			//按钮监听
 
-		    _this.ensureBtn.addEventListener('click',function(){
+			_this.ensureBtn.addEventListener('click',function(){
 				if(_this.beforeSelect){
 					_this.beforeSelect(_this.getValue() , _this.trigger);
 					// if(result){
 					// 	return false;
 					// }
 				}
-                _this.mobileSelect.classList.remove('mobileSelect-show');
-		    	if(_this.triggerDisplayData){
-                    var tempValue ='';
-                    for(var i=0; i<_this.wheel.length; i++){
-                        i==_this.wheel.length-1 ? tempValue += _this.getInnerHtml(i) : tempValue += _this.getInnerHtml(i) + _this.connector;
-                    }
-                    _this.trigger.innerHTML = tempValue;
+				_this.mobileSelect.classList.remove('mobileSelect-show');
+				if(_this.triggerDisplayData){
+					var tempValue ='';
+					for(var i=0; i<_this.wheel.length; i++){
+						i==_this.wheel.length-1 ? tempValue += _this.getInnerHtml(i) : tempValue += _this.getInnerHtml(i) + _this.connector;
+					}
+					_this.trigger.innerHTML = tempValue;
 				}
 				_this.callback(_this.getIndexArr(),_this.getValue());
 				if(_this.reloadPosition){
@@ -100,8 +100,8 @@
 				}
 			},false);
 
-		    _this.trigger.addEventListener('click',function(){
-		    	if(_this.reloadPosition){
+			_this.trigger.addEventListener('click',function(){
+				if(_this.reloadPosition){
 					if( _this.nowPosition){
 						for(var index = 0 ; index < _this.nowPosition.length ; index++ ){
 							_this.movePosition(_this.slider[index],_this.nowPosition[index]);
@@ -115,17 +115,17 @@
 						_this.nowPosition = _this.curDistance.slice(0);
 					}
 				}
-		    	_this.mobileSelect.classList.add('mobileSelect-show');
-		    },false);
+				_this.mobileSelect.classList.add('mobileSelect-show');
+			},false);
 			_this.cancelBtn.addEventListener('click',function(){
 				_this.mobileSelect.classList.remove('mobileSelect-show');
 			},false);
-		    _this.grayLayer.addEventListener('click',function(){
-		    	_this.mobileSelect.classList.remove('mobileSelect-show');
-		    },false);
-		    _this.popUp.addEventListener('click',function(){
-		    	event.stopPropagation(); 
-		    },false);
+			_this.grayLayer.addEventListener('click',function(){
+				_this.mobileSelect.classList.remove('mobileSelect-show');
+			},false);
+			_this.popUp.addEventListener('click',function(){
+				event.stopPropagation();
+			},false);
 
 			_this.fixRowStyle(); //修正列数
 		},
@@ -166,22 +166,22 @@
 
 		checkIsPC: function(){
 			var _this = this;
-		    var sUserAgent = navigator.userAgent.toLowerCase();
-		    var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
-		    var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
-		    var bIsMidp = sUserAgent.match(/midp/i) == "midp";
-		    var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
-		    var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
-		    var bIsAndroid = sUserAgent.match(/android/i) == "android";
-		    var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
-		    var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
-		    if ((bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM)) {
-		        _this.isPC = false;
-		    }
+			var sUserAgent = navigator.userAgent.toLowerCase();
+			var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+			var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+			var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+			var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+			var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+			var bIsAndroid = sUserAgent.match(/android/i) == "android";
+			var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+			var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
+			if ((bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM)) {
+				_this.isPC = false;
+			}
 		},
 
 		show: function(){
-		    this.mobileSelect.classList.add('mobileSelect-show');	
+			this.mobileSelect.classList.add('mobileSelect-show');
 		},
 
 		renderWheels: function(wheelsData, cancelBtnText, ensureBtnText){
@@ -190,41 +190,41 @@
 			var ensureText = ensureBtnText ? ensureBtnText : '确认';
 			_this.mobileSelect = document.createElement("div");
 			_this.mobileSelect.className = "mobileSelect";
-			_this.mobileSelect.innerHTML = 
-		    	'<div class="grayLayer"></div>'+
-		        '<div class="content">'+
-		            '<div class="btnBar">'+
-		                '<div class="fixWidth">'+
-		                    '<div class="cancel">'+ cancelText +'</div>'+
-		                    '<div class="title"></div>'+
-		                    '<div class="ensure">'+ ensureText +'</div>'+
-		                '</div>'+
-		            '</div>'+
-		            '<div class="panel">'+
-		                '<div class="fixWidth">'+
-		                	'<div class="wheels">'+
-			                '</div>'+
-		                    '<div class="selectLine"></div>'+
-		                    '<div class="shadowMask"></div>'+
-		                '</div>'+
-		            '</div>'+
-		        '</div>';
-		    document.body.appendChild(_this.mobileSelect);
+			_this.mobileSelect.innerHTML =
+				'<div class="grayLayer"></div>'+
+				'<div class="content">'+
+				'<div class="btnBar">'+
+				'<div class="fixWidth">'+
+				'<div class="cancel">'+ cancelText +'</div>'+
+				'<div class="title"></div>'+
+				'<div class="ensure">'+ ensureText +'</div>'+
+				'</div>'+
+				'</div>'+
+				'<div class="panel">'+
+				'<div class="fixWidth">'+
+				'<div class="wheels">'+
+				'</div>'+
+				'<div class="selectLine"></div>'+
+				'<div class="shadowMask"></div>'+
+				'</div>'+
+				'</div>'+
+				'</div>';
+			document.body.appendChild(_this.mobileSelect);
 
 			//根据数据长度来渲染
 
 			var tempHTML='';
-			for(var i=0; i<wheelsData.length; i++){ 
-			//列
+			for(var i=0; i<wheelsData.length; i++){
+				//列
 				tempHTML += '<div class="wheel"><ul class="selectContainer">';
 				if(_this.jsonType){
-					for(var j=0; j<wheelsData[i].data.length; j++){ 
-					//行
+					for(var j=0; j<wheelsData[i].data.length; j++){
+						//行
 						tempHTML += '<li data-id="'+wheelsData[i].data[j][_this.keyMap.id]+'">'+wheelsData[i].data[j][_this.keyMap.value]+'</li>';
 					}
 				}else{
-					for(var j=0; j<wheelsData[i].data.length; j++){ 
-					//行
+					for(var j=0; j<wheelsData[i].data.length; j++){
+						//行
 						tempHTML += '<li>'+wheelsData[i].data[j]+'</li>';
 					}
 				}
@@ -282,7 +282,7 @@
 			}
 		},
 
-		checkDataType: function(){ 
+		checkDataType: function(){
 			var _this = this;
 			if(typeof(_this.wheelsData[0].data[0])=='object'){
 				_this.jsonType = true;
@@ -291,7 +291,7 @@
 
 		checkCascade: function(){
 			var _this = this;
-			if(_this.jsonType){ 
+			if(_this.jsonType){
 				var node = _this.wheelsData[0].data;
 				for(var i=0; i<node.length; i++){
 					if(_this.keyMap.childs in node[i] && node[i][_this.keyMap.childs].length > 0){
@@ -310,10 +310,10 @@
 			var keyMap_id = this.keyMap.id;
 			var keyMap_value = this.keyMap.value;
 			for(var i=0; i<targetArr.length; i++){
-				var tempObj = {}; 
+				var tempObj = {};
 				tempObj[keyMap_id] = targetArr[i][this.keyMap.id];
 				tempObj[keyMap_value] = targetArr[i][this.keyMap.value];
-				tempArr.push(tempObj);	
+				tempArr.push(tempObj);
 			}
 			return tempArr;
 		},
@@ -334,7 +334,7 @@
 			var _this = this;
 			if(parent){
 				if (_this.keyMap.childs in parent && parent[_this.keyMap.childs].length > 0) {
-					_this.displayJson.push(_this.generateArrData(parent[_this.keyMap.childs])); 
+					_this.displayJson.push(_this.generateArrData(parent[_this.keyMap.childs]));
 					_this.initDeepCount++;
 					var nextNode = parent[_this.keyMap.childs][_this.initPosition[_this.initDeepCount]];
 					if(nextNode){
@@ -346,7 +346,7 @@
 			}
 		},
 
-		checkArrDeep: function (parent) { 
+		checkArrDeep: function (parent) {
 			//检测子节点深度  修改 displayJson
 			var _this = this;
 			if(parent){
@@ -382,20 +382,20 @@
 			var _this = this;
 			var tempPosArr = posIndexArr;
 			var tempCount;
-			if(_this.slider.length > posIndexArr.length){ 
+			if(_this.slider.length > posIndexArr.length){
 				tempCount = _this.slider.length - posIndexArr.length;
-				for(var i=0; i<tempCount; i++){  
+				for(var i=0; i<tempCount; i++){
 					tempPosArr.push(0);
 				}
 			}else if(_this.slider.length < posIndexArr.length){
 				tempCount = posIndexArr.length - _this.slider.length;
 				for(var i=0; i<tempCount; i++){
 					tempPosArr.pop();
-				}	
+				}
 			}
 			for(var i=index+1; i< tempPosArr.length; i++){
 				tempPosArr[i] = 0;
-			} 
+			}
 			return tempPosArr;
 		},
 
@@ -408,14 +408,14 @@
 					_this.wheels.removeChild(_this.wheel[_this.wheel.length-1]);
 				}
 			}
-			for(var i=0; i<_this.displayJson.length; i++){ 
-			//列
+			for(var i=0; i<_this.displayJson.length; i++){
+				//列
 				(function (i) {
 					var tempHTML='';
 					if(_this.wheel[i]){
 						//console.log('插入Li');
-						for(var j=0; j<_this.displayJson[i].length; j++){ 
-						//行
+						for(var j=0; j<_this.displayJson[i].length; j++){
+							//行
 							tempHTML += '<li data-id="'+_this.displayJson[i][j][_this.keyMap.id]+'">'+_this.displayJson[i][j][_this.keyMap.value]+'</li>';
 						}
 						_this.slider[i].innerHTML = tempHTML;
@@ -424,15 +424,15 @@
 						var tempWheel = document.createElement("div");
 						tempWheel.className = "wheel";
 						tempHTML = '<ul class="selectContainer">';
-						for(var j=0; j<_this.displayJson[i].length; j++){ 
-						//行
+						for(var j=0; j<_this.displayJson[i].length; j++){
+							//行
 							tempHTML += '<li data-id="'+_this.displayJson[i][j][_this.keyMap.id]+'">'+_this.displayJson[i][j][_this.keyMap.value]+'</li>';
 						}
 						tempHTML += '</ul>';
 						tempWheel.innerHTML = tempHTML;
 
 						_this.addListenerWheel(tempWheel, i);
-				    	_this.wheels.appendChild(tempWheel); 
+						_this.wheels.appendChild(tempWheel);
 					}
 					_this.addListenerLi(i);
 				})(i);
@@ -462,21 +462,21 @@
 		updateWheel: function(sliderIndex, data){
 			var _this = this;
 			var tempHTML='';
-	    	if(_this.cascade){
-	    		console.error('级联格式不支持updateWheel(),请使用updateWheels()更新整个数据源');
+			if(_this.cascade){
+				console.error('级联格式不支持updateWheel(),请使用updateWheels()更新整个数据源');
 				return false;
-	    	}
-	    	else if(_this.jsonType){
+			}
+			else if(_this.jsonType){
 				for(var j=0; j<data.length; j++){
 					tempHTML += '<li data-id="'+data[j][_this.keyMap.id]+'">'+data[j][_this.keyMap.value]+'</li>';
 				}
 				_this.wheelsData[sliderIndex] = {data: data};
-	    	}else{
+			}else{
 				for(var j=0; j<data.length; j++){
 					tempHTML += '<li>'+data[j]+'</li>';
 				}
 				_this.wheelsData[sliderIndex] = data;
-	    	}
+			}
 			_this.slider[sliderIndex].innerHTML = tempHTML;
 			_this.addListenerLi(sliderIndex);
 		},
@@ -489,18 +489,18 @@
 			}
 		},
 
-	    getIndex: function(distance){
-	        return Math.round((2*this.liHeight-distance)/this.liHeight);
-	    },
+		getIndex: function(distance){
+			return Math.round((2*this.liHeight-distance)/this.liHeight);
+		},
 
-	    getIndexArr: function(){
-	    	var _this = this;
-	    	var temp = [];
-	    	for(var i=0; i<_this.curDistance.length; i++){
-	    		temp.push(_this.getIndex(_this.curDistance[i]));
-	    	}
-	    	return temp;
-	    },
+		getIndexArr: function(){
+			var _this = this;
+			var temp = [];
+			for(var i=0; i<_this.curDistance.length; i++){
+				temp.push(_this.getIndex(_this.curDistance[i]));
+			}
+			return temp;
+		},
 		resetValue:function (resetValue) {
 			var _this = this;
 			var data = _this.wheelsData[0].data;
@@ -513,7 +513,7 @@
 						if(data[index][idStr] == resetValue[i]){
 							positionArr.push(index);
 							data = (childsStr in data[index])? data[index][childsStr] : data ;
-							continue;
+							break;
 						}else if(index == data.length){
 							return false;
 						}
@@ -549,40 +549,40 @@
 			_this.reSetCurDistance(positionArr);
 			_this.ensureBtn.click();
 		},
-	    getValue: function(){
-	    	var _this = this;
-	    	var temp = [];
-	    	var positionArr = _this.getIndexArr();
-	    	if(_this.cascade){
-		    	for(var i=0; i<_this.wheel.length; i++){
-		    		temp.push(_this.displayJson[i][positionArr[i]]);
-		    	}
-	    	}
-	    	else if(_this.jsonType){
-		    	for(var i=0; i<_this.curDistance.length; i++){
-		    		temp.push(_this.wheelsData[i].data[_this.getIndex(_this.curDistance[i])]);
-		    	}
-	    	}else{
-		    	for(var i=0; i<_this.curDistance.length; i++){
-		    		temp.push(_this.getInnerHtml(i));
-		    	}
-	    	}
-	    	return temp;
-	    },
+		getValue: function(){
+			var _this = this;
+			var temp = [];
+			var positionArr = _this.getIndexArr();
+			if(_this.cascade){
+				for(var i=0; i<_this.wheel.length; i++){
+					temp.push(_this.displayJson[i][positionArr[i]]);
+				}
+			}
+			else if(_this.jsonType){
+				for(var i=0; i<_this.curDistance.length; i++){
+					temp.push(_this.wheelsData[i].data[_this.getIndex(_this.curDistance[i])]);
+				}
+			}else{
+				for(var i=0; i<_this.curDistance.length; i++){
+					temp.push(_this.getInnerHtml(i));
+				}
+			}
+			return temp;
+		},
 
-	    calcDistance: function(index){
+		calcDistance: function(index){
 			return 2*this.liHeight-index*this.liHeight;
-	    },
+		},
 
-	    setCurDistance: function(indexArr){
-	    	var _this = this;
-	    	var temp = [];
-	    	for(var i=0; i<_this.slider.length; i++){
-	    		temp.push(_this.calcDistance(indexArr[i]));
-	    		_this.movePosition(_this.slider[i],temp[i]);
-	    	}
-	    	_this.curDistance = temp;
-	    },
+		setCurDistance: function(indexArr){
+			var _this = this;
+			var temp = [];
+			for(var i=0; i<_this.slider.length; i++){
+				temp.push(_this.calcDistance(indexArr[i]));
+				_this.movePosition(_this.slider[i],temp[i]);
+			}
+			_this.curDistance = temp;
+		},
 		reSetCurDistance: function(indexArr){
 			var _this = this;
 			var temp = [];
@@ -596,162 +596,162 @@
 			}
 		},
 
-	    fixPosition: function(distance){
-	        return -(this.getIndex(distance)-2)*this.liHeight;
-	    },
+		fixPosition: function(distance){
+			return -(this.getIndex(distance)-2)*this.liHeight;
+		},
 
-	    movePosition: function(theSlider, distance){
-	        theSlider.style.webkitTransform = 'translate3d(0,' + distance + 'px, 0)';
-	        theSlider.style.transform = 'translate3d(0,' + distance + 'px, 0)';
-	    },
+		movePosition: function(theSlider, distance){
+			theSlider.style.webkitTransform = 'translate3d(0,' + distance + 'px, 0)';
+			theSlider.style.transform = 'translate3d(0,' + distance + 'px, 0)';
+		},
 
-	    locatePostion: function(index, posIndex){
-	    	this.curDistance[index] = this.calcDistance(posIndex);
-	    	this.movePosition(this.slider[index],this.curDistance[index]);
-	    },
+		locatePostion: function(index, posIndex){
+			this.curDistance[index] = this.calcDistance(posIndex);
+			this.movePosition(this.slider[index],this.curDistance[index]);
+		},
 
-	    updateCurDistance: function(theSlider, index){
-	        this.curDistance[index] = parseInt(theSlider.style.transform.split(',')[1]);
-	    },
+		updateCurDistance: function(theSlider, index){
+			this.curDistance[index] = parseInt(theSlider.style.transform.split(',')[1]);
+		},
 
-	    getDistance:function(theSlider){
-	    	return parseInt(theSlider.style.transform.split(',')[1]);
-	    },
+		getDistance:function(theSlider){
+			return parseInt(theSlider.style.transform.split(',')[1]);
+		},
 
-	    getInnerHtml: function(sliderIndex){
-	    	var _this = this;
-	    	var index = _this.getIndex(_this.curDistance[sliderIndex]);
-	    	return _this.slider[sliderIndex].getElementsByTagName('li')[index].innerHTML;
-	    },
+		getInnerHtml: function(sliderIndex){
+			var _this = this;
+			var index = _this.getIndex(_this.curDistance[sliderIndex]);
+			return _this.slider[sliderIndex].getElementsByTagName('li')[index].innerHTML;
+		},
 
-	    touch: function(event, theSlider, index){
-	    	var _this = this;
-	    	event = event || window.event;
-	    	switch(event.type){
-	    		case "touchstart":
-			        _this.startY = event.touches[0].clientY;
-			        _this.oldMoveY = _this.startY;
-	    			break;
+		touch: function(event, theSlider, index){
+			var _this = this;
+			event = event || window.event;
+			switch(event.type){
+				case "touchstart":
+					_this.startY = event.touches[0].clientY;
+					_this.oldMoveY = _this.startY;
+					break;
 
-	    		case "touchend":
+				case "touchend":
 
-			        _this.moveEndY = event.changedTouches[0].clientY;
-			        _this.offsetSum = _this.moveEndY - _this.startY;
-
-					//修正位置
-			        _this.updateCurDistance(theSlider, index);
-			        _this.curDistance[index] = _this.fixPosition(_this.curDistance[index]);
-			        _this.movePosition(theSlider, _this.curDistance[index]);
-			        _this.oversizeBorder = -(theSlider.getElementsByTagName('li').length-3)*_this.liHeight;
-
-			        //反弹
-			        if(_this.curDistance[index] + _this.offsetSum > 2*_this.liHeight){
-			            _this.curDistance[index] = 2*_this.liHeight;
-			            setTimeout(function(){
-			                _this.movePosition(theSlider, _this.curDistance[index]);
-			            }, 100);
-
-			        }else if(_this.curDistance[index] + _this.offsetSum < _this.oversizeBorder){
-			            _this.curDistance[index] = _this.oversizeBorder;
-			            setTimeout(function(){
-			                _this.movePosition(theSlider, _this.curDistance[index]);
-			            }, 100);
-			        }
-
-			        _this.transitionEnd(_this.getIndexArr(),_this.getValue());
-
-			        if(_this.cascade){
-				        var tempPosArr = _this.getIndexArr();
-				        tempPosArr[index] = _this.getIndex(_this.curDistance[index]);
-			        	_this.checkRange(index, tempPosArr);
-			        }
-
-	    			break;
-
-	    		case "touchmove":
-			        event.preventDefault();
-			        _this.moveY = event.touches[0].clientY;
-			        _this.offset = _this.moveY - _this.oldMoveY;
-
-			        _this.updateCurDistance(theSlider, index);
-			        _this.curDistance[index] = _this.curDistance[index] + _this.offset;
-			        _this.movePosition(theSlider, _this.curDistance[index]);
-			        _this.oldMoveY = _this.moveY;
-	    			break;
-	    	}
-	    },
-
-	    dragClick: function(event, theSlider, index){
-	    	var _this = this;
-	    	event = event || window.event;
-	    	switch(event.type){
-	    		case "mousedown":
-			        _this.startY = event.clientY;
-			        _this.oldMoveY = _this.startY;
-			        _this.clickStatus = true;
-	    			break;
-
-	    		case "mouseup":
-
-			        _this.moveEndY = event.clientY;
-			        _this.offsetSum = _this.moveEndY - _this.startY;
+					_this.moveEndY = event.changedTouches[0].clientY;
+					_this.offsetSum = _this.moveEndY - _this.startY;
 
 					//修正位置
-			        _this.updateCurDistance(theSlider, index);
-			        _this.curDistance[index] = _this.fixPosition(_this.curDistance[index]);
-			        _this.movePosition(theSlider, _this.curDistance[index]);
-			        _this.oversizeBorder = -(theSlider.getElementsByTagName('li').length-3)*_this.liHeight; 
+					_this.updateCurDistance(theSlider, index);
+					_this.curDistance[index] = _this.fixPosition(_this.curDistance[index]);
+					_this.movePosition(theSlider, _this.curDistance[index]);
+					_this.oversizeBorder = -(theSlider.getElementsByTagName('li').length-3)*_this.liHeight;
+
+					//反弹
+					if(_this.curDistance[index] + _this.offsetSum > 2*_this.liHeight){
+						_this.curDistance[index] = 2*_this.liHeight;
+						setTimeout(function(){
+							_this.movePosition(theSlider, _this.curDistance[index]);
+						}, 100);
+
+					}else if(_this.curDistance[index] + _this.offsetSum < _this.oversizeBorder){
+						_this.curDistance[index] = _this.oversizeBorder;
+						setTimeout(function(){
+							_this.movePosition(theSlider, _this.curDistance[index]);
+						}, 100);
+					}
+
+					_this.transitionEnd(_this.getIndexArr(),_this.getValue());
+
+					if(_this.cascade){
+						var tempPosArr = _this.getIndexArr();
+						tempPosArr[index] = _this.getIndex(_this.curDistance[index]);
+						_this.checkRange(index, tempPosArr);
+					}
+
+					break;
+
+				case "touchmove":
+					event.preventDefault();
+					_this.moveY = event.touches[0].clientY;
+					_this.offset = _this.moveY - _this.oldMoveY;
+
+					_this.updateCurDistance(theSlider, index);
+					_this.curDistance[index] = _this.curDistance[index] + _this.offset;
+					_this.movePosition(theSlider, _this.curDistance[index]);
+					_this.oldMoveY = _this.moveY;
+					break;
+			}
+		},
+
+		dragClick: function(event, theSlider, index){
+			var _this = this;
+			event = event || window.event;
+			switch(event.type){
+				case "mousedown":
+					_this.startY = event.clientY;
+					_this.oldMoveY = _this.startY;
+					_this.clickStatus = true;
+					break;
+
+				case "mouseup":
+
+					_this.moveEndY = event.clientY;
+					_this.offsetSum = _this.moveEndY - _this.startY;
+
+					//修正位置
+					_this.updateCurDistance(theSlider, index);
+					_this.curDistance[index] = _this.fixPosition(_this.curDistance[index]);
+					_this.movePosition(theSlider, _this.curDistance[index]);
+					_this.oversizeBorder = -(theSlider.getElementsByTagName('li').length-3)*_this.liHeight;
 
 
-			        //反弹
-			        if(_this.curDistance[index] + _this.offsetSum > 2*_this.liHeight){
-			            _this.curDistance[index] = 2*_this.liHeight;
-			            setTimeout(function(){
-			                _this.movePosition(theSlider, _this.curDistance[index]);
-			            }, 100);
+					//反弹
+					if(_this.curDistance[index] + _this.offsetSum > 2*_this.liHeight){
+						_this.curDistance[index] = 2*_this.liHeight;
+						setTimeout(function(){
+							_this.movePosition(theSlider, _this.curDistance[index]);
+						}, 100);
 
-			        }else if(_this.curDistance[index] + _this.offsetSum < _this.oversizeBorder){
-			            _this.curDistance[index] = _this.oversizeBorder;
-			            setTimeout(function(){
-			                _this.movePosition(theSlider, _this.curDistance[index]);
-			            }, 100);
-			        }
+					}else if(_this.curDistance[index] + _this.offsetSum < _this.oversizeBorder){
+						_this.curDistance[index] = _this.oversizeBorder;
+						setTimeout(function(){
+							_this.movePosition(theSlider, _this.curDistance[index]);
+						}, 100);
+					}
 
-			        _this.clickStatus = false;
-			        _this.transitionEnd(_this.getIndexArr(),_this.getValue());
-			        if(_this.cascade){
-				        var tempPosArr = _this.getIndexArr();
-				        tempPosArr[index] = _this.getIndex(_this.curDistance[index]);
-			        	_this.checkRange(index, tempPosArr);
-			        }
-	    			break;
+					_this.clickStatus = false;
+					_this.transitionEnd(_this.getIndexArr(),_this.getValue());
+					if(_this.cascade){
+						var tempPosArr = _this.getIndexArr();
+						tempPosArr[index] = _this.getIndex(_this.curDistance[index]);
+						_this.checkRange(index, tempPosArr);
+					}
+					break;
 
-	    		case "mousemove":
-			        event.preventDefault();
-			        if(_this.clickStatus){
-				        _this.moveY = event.clientY;
-				        _this.offset = _this.moveY - _this.oldMoveY;
-				        _this.updateCurDistance(theSlider, index);
-				        _this.curDistance[index] = _this.curDistance[index] + _this.offset;
-				        _this.movePosition(theSlider, _this.curDistance[index]);
-				        _this.oldMoveY = _this.moveY;
-			        }
-	    			break;
-	    	}
-	    },
+				case "mousemove":
+					event.preventDefault();
+					if(_this.clickStatus){
+						_this.moveY = event.clientY;
+						_this.offset = _this.moveY - _this.oldMoveY;
+						_this.updateCurDistance(theSlider, index);
+						_this.curDistance[index] = _this.curDistance[index] + _this.offset;
+						_this.movePosition(theSlider, _this.curDistance[index]);
+						_this.oldMoveY = _this.moveY;
+					}
+					break;
+			}
+		},
 
-	    singleClick: function(theLi, index, sliderIndex){
-	    	var _this = this;
-	        if(_this.cascade){
-		        var tempPosArr = _this.getIndexArr();
-		        tempPosArr[sliderIndex] = index;
-	        	_this.checkRange(sliderIndex, tempPosArr);
+		singleClick: function(theLi, index, sliderIndex){
+			var _this = this;
+			if(_this.cascade){
+				var tempPosArr = _this.getIndexArr();
+				tempPosArr[sliderIndex] = index;
+				_this.checkRange(sliderIndex, tempPosArr);
 
-	        }else{
-		        _this.curDistance[sliderIndex] = (2-index)*_this.liHeight;
-		        _this.movePosition(theLi.parentNode, _this.curDistance[sliderIndex]);
-	        }
-	    }
+			}else{
+				_this.curDistance[sliderIndex] = (2-index)*_this.liHeight;
+				_this.movePosition(theLi.parentNode, _this.curDistance[sliderIndex]);
+			}
+		}
 
 	};
 

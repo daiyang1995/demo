@@ -85,5 +85,11 @@ redisTool.hgetall =function(hashkey,callback){
     client.hgetall(hashkey,callback);
 };
 
+/**
+ *  删除某一个
+ */
+redisTool.hdel = function (hashkey,field,callback) {
+    client.hdel(hashkey,field,callback)
+};
 
 module.exports = redisTool;

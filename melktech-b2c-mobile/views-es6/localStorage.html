@@ -1,8 +1,10 @@
 <script type="text/javascript">
 	//入口函数
-    var tempCode = 'pater-8';
-    var jsImportantFile =  "<%=localurl%><%=projectUrl%>jquery/js/jquery.min.js,"+
+	var tempCode = 'pater-8';
+
+	var jsImportantFile =  "<%=localurl%><%=projectUrl%>jquery/js/jquery.min.js,"+
 		"<%=localurl%><%=projectUrl%>jquery/js/jquery.mobile-1.4.5.min.js";
+
 	var cssFile = "<%=localurl%><%=projectUrl%>jquery/css/jquery.mobile-1.4.5.min.css,"+
 		"<%=localurl%><%=projectUrl%>stylesheets/mainCss.css,"+
 		"<%=localurl%><%=projectUrl%>stylesheets/updownloading.css,"+
@@ -13,9 +15,8 @@
 		"<%=localurl%><%=projectUrl%>stylesheets/loaders.css,"+
 		"<%=localurl%><%=projectUrl%>stylesheets/countDown.css";
 
-
 	var jsFile =
-        "<%=localurl%><%=projectUrl%>babel/browser.min.js,"+
+		"<%=localurl%><%=projectUrl%>babel/browser.min.js,"+
 		"<%=localurl%><%=projectUrl%>javascripts/calculateSize.js,"+
 		"<%=localurl%><%=projectUrl%>javascripts/zishiying.js,"+
 		"<%=localurl%><%=projectUrl%>javascripts/selectDateCal.js,"+
@@ -32,11 +33,10 @@
 
 	var cssFileArray = cssFile.split(",");
 	var jsFileArray = jsFile.split(",");
-    var jsImportantFileArray = jsImportantFile.split(",");
+	var jsImportantFileArray = jsImportantFile.split(",");
 
-    addFile("","js"); //这个大小超了
 	if (window.localStorage) {
-        initJs(0,jsImportantFileArray);
+		initJs(0,jsImportantFileArray);
 		for(var cssIndex = 0 ; cssIndex < cssFileArray.length ; cssIndex++){
 			initCss(tempCode + cssFileArray[cssIndex] ,cssFileArray[cssIndex]);
 		}
@@ -67,30 +67,32 @@
 			xhr.open("GET", url);
 			xhr.send(null);
 			xhr.onreadystatechange = function () {
+				var tempJsIndex = jsIndex + 1;
 				if (xhr.readyState == 4 && xhr.status == 200) {
 					js = xhr.responseText;
 					localStorage.setItem(name, js);
 					js = js == null ? "" : js;
 					addTxt(js, "js");
-					if(++jsIndex == jsImportantFileArray.length){
+					if(tempJsIndex == jsImportantFileArray.length){
 						for(var jsCustomIndex = 0 ; jsCustomIndex < jsFileArray.length ; jsCustomIndex++){
 							initCustomJs(jsCustomIndex,jsFileArray);
 						}
 						return  true;
-                    }else{
-						return initJs(jsIndex++,jsImportantFileArray); //确保按顺序执行
-                    }
+					}else{
+						return initJs(tempJsIndex ,jsImportantFileArray); //确保按顺序执行
+					}
 				}
 			};
 		} else {
+			var tempJsIndex = jsIndex + 1;
 			addTxt(js, "js");
-			if(++jsIndex == jsImportantFileArray.length){
+			if(tempJsIndex == jsImportantFileArray.length){
 				for(var jsCustomIndex = 0 ; jsCustomIndex < jsFileArray.length ; jsCustomIndex++){
 					initCustomJs(jsCustomIndex,jsFileArray);
 				}
 				return  true;
 			}else{
-				return initJs(jsIndex++,jsImportantFileArray); //确保按顺序执行
+				return initJs(tempJsIndex ,jsImportantFileArray); //确保按顺序执行
 			}
 		}
 	}
@@ -182,4 +184,18 @@
 		}
 		head.appendChild(link);
 	}
+
+	//获取页面script
+	function getScript(){
+		var scriptList = document.getElementsByTagName('script');
+		for(var index = 0 ; index < scriptList.length ; index++ ){
+			var script = scriptList[index];
+			if(script.type == "text/babel"){
+				addTxt(script.innerHTML,"js");
+				script.parentNode.removeChild(script);
+			}
+		}
+	}
+
+
 </script>

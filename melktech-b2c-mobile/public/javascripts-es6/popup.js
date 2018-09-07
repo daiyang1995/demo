@@ -93,6 +93,14 @@
 			_this.contentScreen.css({'z-index': _this.zIndex, "position": "fixed"});
 			_this.content.css({'z-index': (_this.zIndex + 1), "position": "fixed"});
 		},
+		reSetCancelCallbackParam: function (param) {
+			let _this = this;
+			_this.cancelCallbackParam = param;
+		},
+		reSetSubmitCallbackParam: function (param) {
+			let _this = this;
+			_this.submitCallbackParam = param;
+		},
 		Callback: function (id) {
 			let _this = this;
 			let index = id ? id : _this.zIndex;

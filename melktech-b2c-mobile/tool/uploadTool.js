@@ -5,26 +5,59 @@
 'use strict';
 var fs = require('fs');
 var images = require("images");
-function uploadTool() {
-}
+var ExifImage = require('exif').ExifImage;
+var Jimp = require("jimp");
+var log4js = require('log4js');
+var loggerInfo = log4js.getLogger("default");
+var loggerError = log4js.getLogger("error");
 
-uploadTool.uploadSingleGZip = (req,resize = 400) =>{ // 默认缩放到400
+function uploadTool() {}
+
+uploadTool.uploadSingleGZip = (req, resolve, resizeNum = 400) =>{ // 默认缩放到400
     let json = {};
     if(req.files.file.length){
         json.ret = "-1";
         json.msg = "只允许上传一张图片";
+        if(resolve){
+			resolve(json);
+		}
         return json;
+
     }
     let path = req.files.file.path;
     let type = req.files.file.type;
-    let data = fs.readFileSync("./"+path);
 
-    let dataReturn  = images( new Buffer(data) ).size(resize).encode("jpg", {operation:50}).toString('base64');//回显页面的压缩过的base64
-    let dataOriginal = new Buffer(data).toString('base64'); // 放入redis的原始base64
-    console.log(dataOriginal);
-    dataReturn ="data:"+type+";base64,"  +dataReturn;
-    json.imgBase64 = dataReturn;
-    return json;
+	let data = fs.readFileSync("./"+path);
+	let dataOriginal = new Buffer(data).toString('base64'); // 原始base64
+	dataOriginal ="data:"+type+";base64,"  +dataOriginal;
+
+	Jimp.read("./"+path , function (err, image) {
+		if (err) {
+		    console.log(err);
+			json.imgBase64 = dataOriginal;
+			json.imgBase64Original = dataOriginal;
+			if(resolve){
+				resolve(json);
+			}
+			return json;
+        }
+        image.exifRotate()
+			.resize(resizeNum, Jimp.AUTO)
+			.getBase64(Jimp.AUTO, function (err, dataReturn) {
+				json.imgBase64Original = dataOriginal;
+				if(!err){
+					json.imgBase64 = dataReturn; //压缩后的base64
+				}else {
+					json.imgBase64 = dataOriginal;
+					loggerError.info(err);
+				}
+				if(resolve){
+					resolve(json);
+				}
+				return json;
+			});
+	});
+
 };
 uploadTool.uploadSingle = (req) =>{
     let json = {};

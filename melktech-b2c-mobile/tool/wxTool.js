@@ -71,13 +71,13 @@ wxTool.getJsapiTicketo =function(access_token ,callBackFunction ){
  */
 wxTool.getWxSignature = function(req ,jsapiTicket ,shareUrl,shareTitle,shareContent,shareImg){
 	let finalJson = {};
-	finalJson.timestamp = Math.floor( new Date().getTime()/1000);
+	finalJson.timestamp = Math.floor( new Date().getTime().timestamp/1000);
 	finalJson.url = req.protocol+"://"+req.headers.host+req.originalUrl;
 
-	finalJson.shareTitle = shareTitle ? shareTitle : "分享";
-	finalJson.shareContent = shareContent ? shareContent : "分享";
-	finalJson.shareImg = shareImg ? shareImg : "";
-	finalJson.shareUrl = shareUrl ? shareUrl : finalJson.url;
+	finalJson.shareTitle = shareTitle ? shareTitle : req.session.shareTitle;
+	finalJson.shareContent = shareContent ? shareContent : req.session.shareContent;
+	finalJson.shareImg = shareImg ? shareImg : req.session.shareImg;
+	finalJson.shareUrl = shareUrl ? shareUrl : req.session.shareUrl;
 
 	finalJson.noncestr = "pater";
 	finalJson.appId = wxConf.appId;

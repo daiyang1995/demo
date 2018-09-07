@@ -10,7 +10,7 @@
 	function CountDown(config) {
 		this.countDownInterval;
 		this.countDownTime = (config &&config.time )?config.time : 60;
-		this.functoinName = (config &&config.functoinName )?config.functoinName : null;
+		this.functionName = (config &&config.functionName )?config.functionName : null;
 		this.paramJson = (config &&config.paramJson )?config.paramJson : null;
 		this.init(config);
 	}
@@ -43,8 +43,8 @@
 				time--;
 				if(1 > time){
 					_this.hide();
-					if(_this.functoinName){
-						_this.functoinName(_this.paramJson);
+					if(_this.functionName){
+						_this.functionName(_this.paramJson);
 					}
 				}else {
 					$("#countDown .num").html(time);

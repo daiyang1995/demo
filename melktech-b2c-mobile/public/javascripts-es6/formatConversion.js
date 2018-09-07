@@ -8,6 +8,15 @@
 
 	FormatConversion.prototype = {
 		constructor: FormatConversion,
+
+		isWeixinBrowser: function(){
+			var agent = navigator.userAgent.toLowerCase();
+			if (agent.match(/MicroMessenger/i) == "micromessenger") {
+				return true;
+			} else {
+				return false;
+			}
+		},
 		SaferHTML: function (s) {
 			var pattern = new RegExp("[`~!@#$^&*()=|{}':;',\\[\\].<>/?~！@#￥……&*（）——|{}【】‘；：”“'。，、？]");
 			var rs = "";

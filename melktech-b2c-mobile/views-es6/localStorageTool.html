@@ -1,0 +1,228 @@
+<script>
+	/**
+	 * 插件功能：使用localStorage缓存js和css文件，减少http请求和页面渲染时间，适用于Web移动端H5页面制作。
+	 * 使用方法：
+	 *   1.使用此插件前，需要给插件的pageVersion变量赋值，建议变量值由服务器后端输出，当需要更新客户端资源时，修改版本值即可。
+	 *   2.加载Js：由于js加载有顺序要求，所以需要将后加载的脚本作为前一个脚本的回调参数传入，如：
+	 *   whir.res.loadJs("jquery", "<%= BasePath %>Turntable/Script/jquery-1.8.3.min.js",
+	 *       function () {
+*            whir.res.loadJs("turntable", "Script/whir.turntable.js", null);
+*    });
+	 *   3.加载css，如：whir.res.loadCss("css", "/Style/css_whir.css", null);
+	 */
+	var whir = window.whir || {};
+	whir.res = {
+		pageVersion: "", //页面版本，由页面输出，用于刷新localStorage缓存
+		//动态加载js文件并缓存
+		loadJs: function (name, url, callback , param) {
+			if (window.localStorage) {
+				var xhr;
+				var js = localStorage.getItem(name);
+				if (js == null || js.length == 0 || this.pageVersion != localStorage.getItem("version")) {
+					if (window.ActiveXObject) {
+						xhr = new ActiveXObject("Microsoft.XMLHTTP");
+					} else if (window.XMLHttpRequest) {
+						xhr = new XMLHttpRequest();
+					}
+					if (xhr != null) {
+						xhr.open("GET", url);
+						xhr.send(null);
+						xhr.onreadystatechange = function () {
+							if (xhr.readyState == 4 && xhr.status == 200) {
+								js = xhr.responseText;
+								localStorage.setItem(name, js);
+								localStorage.setItem("version", whir.res.pageVersion);
+								js = js == null ? "" : js;
+								whir.res.writeJs(js);
+								if (callback != null) {
+									callback(param); //回调，执行下一个引用
+								}
+							}
+						};
+					}
+				} else {
+					whir.res.writeJs(js);
+					if (callback != null) {
+						callback(param); //回调，执行下一个引用
+					}
+				}
+			} else {
+				whir.res.linkJs(url);
+			}
+		},
+		loadCss: function (name, url , callback , param) {
+			if (window.localStorage) {
+				var xhr;
+				var css = localStorage.getItem(name);
+				if (css == null || css.length == 0 || this.pageVersion != localStorage.getItem("version")) {
+					if (window.ActiveXObject) {
+						xhr = new ActiveXObject("Microsoft.XMLHTTP");
+					} else if (window.XMLHttpRequest) {
+						xhr = new XMLHttpRequest();
+					}
+					if (xhr != null) {
+						xhr.open("GET", url);
+						xhr.send(null);
+						xhr.onreadystatechange = function () {
+							if (xhr.readyState == 4 && xhr.status == 200) {
+								css = xhr.responseText;
+								localStorage.setItem(name, css);
+								localStorage.setItem("version", whir.res.pageVersion);
+								css = css == null ? "" : css;
+								css = css.replace(/images\//g, "style/images/"); //css里的图片路径需单独处理
+								whir.res.writeCss(css);
+								if (callback != null) {
+									callback(param); //回调，执行下一个引用
+								}
+							}
+						};
+					}
+				} else {
+					css = css.replace(/images\//g, "style/images/"); //css里的图片路径需单独处理
+					whir.res.writeCss(css);
+					if (callback != null) {
+						callback(param); //回调，执行下一个引用
+					}
+				}
+			} else {
+				whir.res.linkCss(url);
+			}
+		},
+		//往页面写入js脚本
+		writeJs: function (text) {
+			var head = document.getElementsByTagName('HEAD').item(0);
+			var link = document.createElement("script");
+			link.type = "text/javascript";
+			link.innerHTML = text;
+			head.appendChild(link);
+		},
+		//往页面写入css样式
+		writeCss: function (text) {
+			var head = document.getElementsByTagName('HEAD').item(0);
+			var link = document.createElement("style");
+			link.type = "text/css";
+			text = text.replace(/.\/ziti\//g, "<%=localurl%><%=projectUrl%>stylesheets/ziti/");
+			link.innerHTML = text;
+			head.appendChild(link);
+		},
+		//往页面引入js脚本
+		linkJs: function (url) {
+			var head = document.getElementsByTagName('HEAD').item(0);
+			var link = document.createElement("script");
+			link.type = "text/javascript";
+			link.src = url;
+			head.appendChild(link);
+		},
+		//往页面引入css样式
+		linkCss: function (url) {
+			var head = document.getElementsByTagName('HEAD').item(0);
+			var link = document.createElement("link");
+			link.type = "text/css";
+			link.rel = "stylesheet";
+			link.rev = "stylesheet";
+			link.media = "screen";
+			link.href = url;
+			head.appendChild(link);
+		}
+	}
+
+
+	var jsImportantFile =  "<%=localurl%><%=projectUrl%>jquery/js/jquery.min.js,"+
+		"<%=localurl%><%=projectUrl%>jquery/js/jquery.mobile-1.4.5.min.js";
+
+	var cssFile = "<%=localurl%><%=projectUrl%>jquery/css/jquery.mobile-1.4.5.min.css,"+
+		"<%=localurl%><%=projectUrl%>stylesheets/mainCss.css,"+
+		"<%=localurl%><%=projectUrl%>stylesheets/updownloading.css,"+
+		"<%=localurl%><%=projectUrl%>stylesheets/popup.css,"+
+		"<%=localurl%><%=projectUrl%>stylesheets/sharkTip.css,"+
+		"<%=localurl%><%=projectUrl%>stylesheets/mobileSelect.css,"+
+		"<%=localurl%><%=projectUrl%>stylesheets/horizontalScroll.css,"+
+		"<%=localurl%><%=projectUrl%>stylesheets/loaders.css,"+
+		"<%=localurl%><%=projectUrl%>stylesheets/countDown.css";
+
+	var jsFile =
+		"<%=localurl%><%=projectUrl%>babel/browser.min.js,"+
+		"<%=localurl%><%=projectUrl%>javascripts/calculateSize.js,"+
+		"<%=localurl%><%=projectUrl%>javascripts/zishiying.js,"+
+		"<%=localurl%><%=projectUrl%>javascripts/selectDateCal.js,"+
+		"<%=localurl%><%=projectUrl%>javascripts/selectTimeCal.js,"+
+		"<%=localurl%><%=projectUrl%>javascripts/checkiosAndroid.js,"+
+		"<%=localurl%><%=projectUrl%>javascripts/mobileSelect.js,"+
+		"<%=localurl%><%=projectUrl%>javascripts/updownloading.js,"+
+		"<%=localurl%><%=projectUrl%>javascripts/popup.js,"+
+		"<%=localurl%><%=projectUrl%>javascripts/loaders.js,"+
+		"<%=localurl%><%=projectUrl%>javascripts/countDown.js,"+
+		"<%=localurl%><%=projectUrl%>javascripts/sharkTip.js,"+
+		"<%=localurl%><%=projectUrl%>javascripts/flipSwitch.js,"+
+	    "<%=localurl%><%=projectUrl%>javascripts/horizontalScroll.js,"+
+		"<%=localurl%><%=projectUrl%>javascripts/idCardCheck.js,"+
+		"<%=localurl%><%=projectUrl%>javascripts/formatConversion.js";
+
+	var cssFileArray = cssFile.split(",");
+	var jsFileArray = jsFile.split(",");
+	var jsImportantFileArray = jsImportantFile.split(",");
+
+	//入口函数
+	whir.res.pageVersion = "pater-6";  //页面版本，用于检测是否需要更新缓存
+
+
+    function loadCssSyn(index = 0){
+    	if(index < cssFileArray.length){
+			var cssNameIndex = cssFileArray[index].lastIndexOf("\/");
+			var str  = cssFileArray[index].substring(cssNameIndex + 1, cssFileArray[index].length);
+			whir.res.loadCss(str, cssFileArray[index] , loadCssSyn , ++index);
+        }else{
+			var pageCssList = document.getElementsByTagName('link')
+			for(var pageCssIndex = 0 ; pageCssIndex < pageCssList.length ; pageCssIndex++ ) {
+				var pageCss = pageCssList[pageCssIndex];
+				if (pageCss.getAttribute("owner") == "page") {
+					var href = pageCss.getAttribute("href");
+					var cssNameIndex = href.lastIndexOf("\/");
+					var str  = href.substring(cssNameIndex + 1, href.length);
+					whir.res.loadCss(str, href);
+					pageCss.parentNode.removeChild(pageCss);
+				}
+			}
+		}
+    }
+	loadCssSyn();
+
+    function loadJsFileSyn(jsIndex = 0){
+		if(jsIndex < jsFileArray.length){
+			var jsNameIndex = jsFileArray[jsIndex].lastIndexOf("\/");
+			var str  = jsFileArray[jsIndex].substring(jsNameIndex + 1, jsFileArray[jsIndex].length);
+			whir.res.loadJs(str, jsFileArray[jsIndex] , loadJsFileSyn , ++jsIndex);
+		}else{
+			var scriptList = document.getElementsByTagName('script');
+			for(var index = 0 ; index < scriptList.length ; index++ ){
+				var script = scriptList[index];
+				if(script.type == "text/babel"){
+					whir.res.writeJs(script.innerHTML);
+					script.parentNode.removeChild(script);
+				}
+			}
+		}
+    }
+
+    function loadJsImportantFileSyn(index = 0 ){
+		if(index < jsImportantFileArray.length){
+			var jsNameIndex = jsImportantFileArray[index].lastIndexOf("\/");
+			var str  = jsImportantFileArray[index].substring(jsNameIndex + 1, jsImportantFileArray[index].length);
+			whir.res.loadJs(str, jsImportantFileArray[index] , loadJsImportantFileSyn , ++index);
+		}else{
+			loadJsFileSyn();
+        }
+    }
+	loadJsImportantFileSyn();
+
+
+	var head = document.getElementsByTagName('HEAD').item(0);
+	var meta1 = document.createElement("meta");
+	meta1.charset="UTF-8";
+	head.appendChild(meta1);
+	var meta2 = document.createElement("meta");
+	meta2.name="viewport";
+	meta2.content="width=device-width, initial-scale=1";
+	head.appendChild(meta2);
+
+</script>

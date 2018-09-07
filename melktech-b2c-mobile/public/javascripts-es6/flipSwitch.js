@@ -10,11 +10,15 @@
 	function FlipSwitch(config) {
 		this.flipSwitch = {};
 		this.trigger = config.trigger ? config.trigger : "";
-		this.onMsg = config.onMsg ? config.onMsg : "on";
-		this.offMsg = config.offMsg ? config.offMsg : "off";
+		this.onMsg = config.onMsg!=undefined ? config.onMsg : "on";
+		this.offMsg = config.offMsg!=undefined ? config.offMsg : "off";
 		this.onBackGroundColor = config.onBackGroundColor ? config.onBackGroundColor : "#3ea9e4";
 		this.offBackGroundColor = config.offBackGroundColor ? config.offBackGroundColor : "#ffffff";
 		this.circleBackGroundColor = config.circleBackGroundColor ? config.circleBackGroundColor : "#A1A1A1";
+		this.height = config.height ? config.height : "0.6rem";
+		this.lineWidth = config.lineWidth ? config.lineWidth : "50%";
+		this.customCss = config.customCss ? config.customCss : null;
+		this.changeFunction = config.changeFunction ? config.changeFunction : null;
 		this.init();
 	}
 
@@ -46,16 +50,25 @@
 				} else {
 					_this.switchOff();
 				}
+				if(_this.changeFunction){
+					_this.changeFunction();
+				}
 			});
 			_this.flipSwitch.trigger.on("swipeleft", {"config": _this}, function (e) {
 				e.preventDefault();
 				let _this = e.data.config;
 				_this.switchOff();
+				if(_this.changeFunction){
+					_this.changeFunction();
+				}
 			});
 			_this.flipSwitch.trigger.on("swiperight", {"config": _this}, function (e) {
 				e.preventDefault();
 				let _this = e.data.config;
 				_this.switchOn();
+				if(_this.changeFunction){
+					_this.changeFunction();
+				}
 			});
 		},
 		triggerCss: function () {
@@ -63,16 +76,17 @@
 			_this.flipSwitch.trigger.css({
 				"display": "block",
 				"margin": "0 auto",
-				"height": "100%",
-				"width": "50%",
+				"box-sizing": "border-box",
+				"width": _this.lineWidth,
 				"border-radius": "2rem",
 				"border": "0.02rem solid #a1a1a1",
 				"background-color": _this.offBackGroundColor
-			})
-			_this.flipSwitch.childSpan.css({"height": "0.6rem", "width": "0.6rem", "line-height": "0.6rem"});
-			_this.flipSwitch.onSpan.css({"float": "left", "transform": "translateX(50%)", "display": "none"});
-			_this.flipSwitch.offSpan.css({"float": "right", "transform": "translateX(-50%)", "display": "none"});
-			_this.flipSwitch.circle.css({"float": "left", "display": "block", "border-radius": "50%", "background-color": "#a1a1a1"});
+			});
+			_this.customCss? _this.flipSwitch.trigger.css(_this.customCss):"";
+			_this.flipSwitch.childSpan.css({"box-sizing": "border-box","height": _this.height, "width": _this.height, "line-height": _this.height});
+			_this.flipSwitch.onSpan.css({"box-sizing": "border-box","float": "left", "transform": "translateX(50%)", "display": "none"});
+			_this.flipSwitch.offSpan.css({"box-sizing": "border-box","float": "right", "transform": "translateX(-50%)", "display": "none"});
+			_this.flipSwitch.circle.css({"box-sizing": "border-box","float": "left", "display": "block", "border-radius": "50%", "background-color": _this.circleBackGroundColor});
 		},
 		switchOn: function () {
 			let _this = this;
