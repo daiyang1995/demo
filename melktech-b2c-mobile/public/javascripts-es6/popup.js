@@ -59,6 +59,11 @@
 			/* 禁止遮罩层下部的移动事件 */
 			_this.contentScreen.on("touchmove", function (e) {
 				e.preventDefault();
+				e.stopPropagation();
+			});
+			_this.content.on("touchmove", function (e) {
+				e.preventDefault();
+				e.stopPropagation();
 			});
 
 			/* 取消按钮的点击事件 */

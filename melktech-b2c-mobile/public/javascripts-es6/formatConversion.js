@@ -42,8 +42,8 @@
 				let Hour = day.getHours();
 				let Minutes = day.getMinutes();
 				let Seconds = day.getSeconds();
-				CurrentDate += (Hour >= 10 ? Hour : "0"+Hour )+ "-";
-				CurrentDate += (Minutes >= 10 ? Minutes : "0"+Minutes) + "-";
+				CurrentDate += (Hour >= 10 ? Hour : "0"+Hour )+ ":";
+				CurrentDate += (Minutes >= 10 ? Minutes : "0"+Minutes) + ":";
 				CurrentDate += Seconds >= 10 ? Seconds : "0"+Seconds;
 			}
 			return CurrentDate;

@@ -60,7 +60,7 @@
 				}
 			}
 			if (_this.nextIdx == _this.count) {
-				console.error("图片只有一个，不需要轮播");
+				/*console.error("图片只有一个，不需要轮播");*/
 				return false;
 			}
 			_this.setHtml();
@@ -82,8 +82,7 @@
  				}
 			}, _this.timeout/2 );
 
-			$(_this.trigger).on("swipeleft", function (e) {
-				e.preventDefault();
+			$(_this.trigger).on("swipeleft", function () {
 				if (!_this.doing) {
 					_this.doing = true;
 					_this.time = 0 ;
@@ -96,8 +95,7 @@
 				}
 
 			});
-			$(_this.trigger).on("swiperight", function (e) {
-				e.preventDefault();
+			$(_this.trigger).on("swiperight", function () {
 				if (!_this.doing) {
 					_this.doing = true;
 					_this.time = 0 ;
@@ -111,11 +109,11 @@
 		},
 		swipeLeftFunction: function () {
 			let _this = this;
+			$(_this.trigger + ` img:eq(${_this.nextIdx})`).hide().css({left:"100%"}).show();
 			$(_this.trigger + ` img:eq(${_this.idx})`).animate({left: "-100%"}, _this.speed);
-			$(_this.trigger + ` img:eq(${_this.nextIdx})`).animate({left: "0%"}, _this.speed, function () {
-					_this.doing = false;
-				});
-			$(_this.trigger + ` img:eq(${_this.preIdx})`).css("left", "100%");
+			$(_this.trigger + ` img:eq(${_this.nextIdx})`).animate({left: "0%"}, _this.speed,"swing", function () {
+				_this.doing = false;
+			});
 			_this.preIdx = _this.idx;
 			_this.idx = _this.nextIdx;
 			_this.nextIdx = _this.nextIdx + 1 < _this.count ? _this.nextIdx + 1 : 0;
@@ -123,18 +121,19 @@
 		},
 		swipeRightFunction: function () {
 			let _this = this;
-			$(_this.trigger + ` img:eq(${_this.preIdx})`).animate({left: "0%"}, _this.speed, function () {
-					_this.doing = false;
-				});
+			$(_this.trigger + ` img:eq(${_this.preIdx})`).hide().css({left:"-100%"}).show();
+			$(_this.trigger + ` img:eq(${_this.preIdx})`).animate({left: "0%"}, _this.speed,"swing", function () {
+				_this.doing = false;
+			});
 			$(_this.trigger + ` img:eq(${_this.idx})`).animate({left: "100%"}, _this.speed);
 			_this.nextIdx = _this.idx;
 			_this.idx = _this.preIdx;
 			_this.preIdx = _this.preIdx - 1 < 0 ? _this.count - 1 : _this.preIdx - 1;
-			$(_this.trigger + ` img:eq(${_this.preIdx})`).css("left", "-100%");
 			_this.setActive();
 		},
 		swipeLeftFunction2: function () {
 			let _this = this;
+			$(_this.trigger + ` img:eq(${_this.nextIdx})`).hide().css({left:"100%"}).show();
 			$(_this.trigger + ` img:eq(${_this.idx})`)
 				.animate({marginLeft:_this.minLeft+"px",marginTop:_this.minTop+"rem",width:_this.minWidth+"px",height:_this.minHeight+"rem"},_this.speed/3)
 				.animate({left: "-100%"}, _this.speed/3);
@@ -144,7 +143,6 @@
 				.animate({margin: "0",width:"100%",height:_this.height+"rem"}, _this.speed/3, function () {
 					_this.doing = false;
 				});
-			$(_this.trigger + ` img:eq(${_this.preIdx})`).css("left", "100%");
 			_this.preIdx = _this.idx;
 			_this.idx = _this.nextIdx;
 			_this.nextIdx = _this.nextIdx + 1 < _this.count ? _this.nextIdx + 1 : 0;
@@ -152,6 +150,7 @@
 		},
 		swipeRightFunction2: function () {
 			let _this = this;
+			$(_this.trigger + ` img:eq(${_this.preIdx})`).hide().css({left:"-100%"}).show();
 			$(_this.trigger + ` img:eq(${_this.preIdx})`)
 				.animate({marginLeft:_this.minLeft+"px",marginTop:_this.minTop+"rem",width:_this.minWidth+"px",height:_this.minHeight+"rem"},_this.speed/3)
 				.animate({left: "0%"}, _this.speed/3)
@@ -164,7 +163,6 @@
 			_this.nextIdx = _this.idx;
 			_this.idx = _this.preIdx;
 			_this.preIdx = _this.preIdx - 1 < 0 ? _this.count - 1 : _this.preIdx - 1;
-			$(_this.trigger + ` img:eq(${_this.preIdx})`).css("left", "-100%");
 			_this.setActive();
 		},
 		setActive: function () {
@@ -183,7 +181,7 @@
 		},
 		setCss: function () {
 			let _this = this;
-			let style = `<style>${_this.trigger}{width: 100%;height: ${_this.height}rem;}${_this.trigger} img{width: 100%;height: ${_this.height}rem;position: absolute;left:100%;}${_this.trigger} .carouselIdx{position: absolute;z-index: 871229;width: 100%;line-height: 0.2rem;height: .2rem;transform: translateY(${_this.height-0.4}rem);text-align: center;}${_this.trigger} .carouselCircle{display: inline-block;box-sizing: border-box;width: .2rem;height: .2rem;border:0.02rem solid #a1a1a1;border-radius: 50%;margin: 0 0.1rem;}${_this.trigger} .carouselActive{background-color: #0f79d1;}
+			let style = `<style>${_this.trigger}{width: 100%;height: ${_this.height}rem;touch-action: none; }${_this.trigger} img{width: 100%;height: ${_this.height}rem;position: absolute;left:100%;}${_this.trigger} .carouselIdx{position: absolute;z-index: 871229;width: 100%;line-height: 0.2rem;height: .2rem;transform: translateY(${_this.height-0.4}rem);text-align: center;}${_this.trigger} .carouselCircle{display: inline-block;box-sizing: border-box;width: .2rem;height: .2rem;border:0.02rem solid #a1a1a1;border-radius: 50%;margin: 0 0.1rem;}${_this.trigger} .carouselActive{background-color: #0f79d1;}
 </style>`;
 			if ($(_this.trigger).closest("div[data-role='page']").length > 0) {
 				$(_this.trigger).closest("div[data-role='page']").prepend(style);

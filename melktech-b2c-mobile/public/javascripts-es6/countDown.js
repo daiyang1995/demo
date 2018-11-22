@@ -31,6 +31,10 @@
 					<div class="num">${_this.countDownTime}</div>
 				</div>
 			`);
+			$("#countDown").on("touchmove", function (e) {
+				e.preventDefault();
+				e.stopPropagation();
+			});
 			$("#countDown").height($(window).height()+"px");
 		},
 		show : function () {

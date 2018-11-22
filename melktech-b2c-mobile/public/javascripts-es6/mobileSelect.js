@@ -56,7 +56,8 @@
 			_this.connector = config.connector ? config.connector : ' ';
 			_this.trigger.style.cursor='pointer';
 			_this.beforeSelect = config.beforeSelect? config.beforeSelect:function(){};
-			_this.nowPosition = null;
+			_this.nowValue = null;
+			_this.disabled = false;
 			_this.reloadPosition =  config.reloadPosition ? true : false;
 			_this.setStyle(config);
 			_this.setTitle(_this.titleText);
@@ -96,26 +97,25 @@
 				}
 				_this.callback(_this.getIndexArr(),_this.getValue());
 				if(_this.reloadPosition){
-					_this.nowPosition = _this.curDistance.slice(0);
+					_this.nowValue = _this.getValue();
 				}
 			},false);
 
 			_this.trigger.addEventListener('click',function(){
+				if(_this.disabled){
+					return false;
+				}
 				if(_this.reloadPosition){
-					if( _this.nowPosition){
-						for(var index = 0 ; index < _this.nowPosition.length ; index++ ){
-							_this.movePosition(_this.slider[index],_this.nowPosition[index]);
-							if(_this.curDistance[index] != _this.nowPosition[index]){
-								var tempPosArr = _this.getIndexArr();
-								tempPosArr[index] = _this.getIndex(_this.nowPosition[index]);
-								_this.checkRange(index, tempPosArr);
-							}
+					if( _this.nowValue != null){
+						let tempArray = [];
+						for(let idx in _this.nowValue){
+							tempArray.push( _this.nowValue[idx][_this.keyMap.id])
 						}
-					}else{
-						_this.nowPosition = _this.curDistance.slice(0);
+						_this.resetValue(tempArray);
 					}
 				}
 				_this.mobileSelect.classList.add('mobileSelect-show');
+
 			},false);
 			_this.cancelBtn.addEventListener('click',function(){
 				_this.mobileSelect.classList.remove('mobileSelect-show');
@@ -513,15 +513,18 @@
 						if(data[index][idStr] == resetValue[i]){
 							positionArr.push(index);
 							data = (childsStr in data[index])? data[index][childsStr] : data ;
+							let temp = [];
+							for(let key in positionArr){
+								temp.push(Number(positionArr[key]));
+							}
+							_this.checkRange(i, temp);
 							break;
 						}else if(index == data.length){
 							return false;
 						}
-
 					}
 				}
-			}
-			else if(_this.jsonType){
+			}else if(_this.jsonType){
 				for(var i=0; i<_this.curDistance.length; i++){
 					for(var index = 0 ; index < data.length ; index++){
 						if(data[index][idStr] == resetValue[i]){
@@ -591,9 +594,6 @@
 				_this.movePosition(_this.slider[i],temp[i]);
 			}
 			_this.curDistance = temp;
-			if(_this.reloadPosition){
-				_this.nowPosition = _this.curDistance.slice(0);
-			}
 		},
 
 		fixPosition: function(distance){
@@ -634,7 +634,6 @@
 					break;
 
 				case "touchend":
-
 					_this.moveEndY = event.changedTouches[0].clientY;
 					_this.offsetSum = _this.moveEndY - _this.startY;
 
@@ -657,8 +656,10 @@
 							_this.movePosition(theSlider, _this.curDistance[index]);
 						}, 100);
 					}
+					setTimeout(function(){
+						_this.transitionEnd(_this.getIndexArr(),_this.getValue());
+					}, 100);
 
-					_this.transitionEnd(_this.getIndexArr(),_this.getValue());
 
 					if(_this.cascade){
 						var tempPosArr = _this.getIndexArr();
@@ -718,7 +719,10 @@
 					}
 
 					_this.clickStatus = false;
-					_this.transitionEnd(_this.getIndexArr(),_this.getValue());
+					setTimeout(function(){
+						_this.transitionEnd(_this.getIndexArr(),_this.getValue());
+					}, 100);
+
 					if(_this.cascade){
 						var tempPosArr = _this.getIndexArr();
 						tempPosArr[index] = _this.getIndex(_this.curDistance[index]);
